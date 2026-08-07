@@ -1,0 +1,1755 @@
+/* Generated from Figma Variables. First mode = :root default.
+   FLOAT tokens are unitless — multiply by 1px in calc() where a length is needed. */
+
+:root {
+  --base-background: var(--colors-background-light); /* @kind color */
+  --base-destructive: var(--colors-destructive-light); /* @kind color */
+  --base-foreground: var(--colors-foreground-light); /* @kind color */
+  --base-input: var(--colors-input-light); /* @kind color */
+  --base-muted-foreground: var(--colors-muted-foreground-light); /* @kind color */
+  --base-muted: var(--colors-muted-light); /* @kind color */
+  --base-primary-foreground: var(--colors-primary-foreground-light); /* @kind color */
+  --base-primary: var(--hcp-primary-blue); /* @kind color */
+  --base-ring-offset: var(--colors-background-light); /* @kind color */
+  --base-ring: var(--colors-ring-light); /* @kind color */
+  --base-sidebar-accent-foreground: var(--colors-sidebar-accent-foreground-light); /* @kind color */
+  --base-sidebar-accent: var(--colors-sidebar-accent-light); /* @kind color */
+  --base-sidebar-background: var(--colors-sidebar-background-light); /* @kind color */
+  --base-sidebar-border: var(--colors-sidebar-border-light); /* @kind color */
+  --base-sidebar-foreground: var(--colors-sidebar-foreground-light); /* @kind color */
+  --base-sidebar-primary-foreground: var(--colors-sidebar-primary-foreground-light); /* @kind color */
+  --base-sidebar-primary: var(--colors-sidebar-primary-light); /* @kind color */
+  --base-sidebar-ring: var(--colors-sidebar-ring-light); /* @kind color */
+  --border-radius-rounded-full: 9999;
+  --border-radius-rounded-lg: var(--radius-lg);
+  --border-radius-rounded-md: var(--radius-md);
+  --border-width-border-2: 2; /* @kind spacing */
+  --border-width-border: 1; /* @kind spacing */
+  --color-blue-300: rgb(147,193,254); /* @kind color */
+  --color-blue-600: rgb(8,99,197); /* @kind color */
+  --color-grey-0: rgb(255,255,255); /* @kind color */
+  --color-grey-900: rgb(18,18,18); /* @kind color */
+  --colors-background-light: var(--tailwind-colors-base-white); /* @kind color */
+  --colors-destructive-light: var(--tailwind-colors-red-700); /* @kind color */
+  --colors-disable-dark: var(--tailwind-colors-zinc-600); /* @kind color */
+  --colors-disable-light: var(--tailwind-colors-zinc-200); /* @kind color */
+  --colors-foreground-light: var(--hcp-black); /* @kind color */
+  --colors-input-light: var(--tailwind-colors-slate-300); /* @kind color */
+  --colors-muted-foreground-light: var(--hcp-neutral-500); /* @kind color */
+  --colors-muted-light: var(--tailwind-colors-slate-100); /* @kind color */
+  --colors-primary-foreground-light: var(--tailwind-colors-slate-50); /* @kind color */
+  --colors-ring-light: var(--tailwind-colors-slate-400); /* @kind color */
+  --colors-sidebar-accent-foreground-light: var(--hcp-black); /* @kind color */
+  --colors-sidebar-accent-light: var(--tailwind-colors-slate-100); /* @kind color */
+  --colors-sidebar-background-light: var(--tailwind-colors-slate-50); /* @kind color */
+  --colors-sidebar-border-light: var(--tailwind-colors-slate-200); /* @kind color */
+  --colors-sidebar-foreground-light: var(--hcp-black); /* @kind color */
+  --colors-sidebar-primary-foreground-light: var(--tailwind-colors-slate-50); /* @kind color */
+  --colors-sidebar-primary-light: var(--tailwind-colors-slate-900); /* @kind color */
+  --colors-sidebar-ring-light: var(--tailwind-colors-slate-400); /* @kind color */
+  --colors-warning-dark: var(--tailwind-colors-orange-600); /* @kind color */
+  --custom-background-dark-input-30: var(--base-background); /* @kind color */
+  --custom-destructive-dark-destructive-60: var(--base-destructive); /* @kind color */
+  --font-font-sans: "Inter";
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --gray-neutral-90: rgb(36,36,36); /* @kind color */
+  --hcp-black: var(--hcp-neutral-700); /* @kind color */
+  --hcp-brand-blue: rgb(40,106,248); /* @kind color */
+  --hcp-neutral-500: rgb(85,100,124); /* @kind color */
+  --hcp-neutral-700: rgb(37,54,84); /* @kind color */
+  --hcp-primary-blue: rgb(17,67,173); /* @kind color */
+  --height-h-4: 16; /* @kind spacing */
+  --height-h-5: 20; /* @kind spacing */
+  --height-h-7: 28; /* @kind spacing */
+  --height-h-8: 32; /* @kind spacing */
+  --icon-size-icon-20: var(--spacing-5);
+  --icon-size-icon-24: var(--spacing-6);
+  --jds-accent-bg-default: var(--jds-blue-700); /* @kind color */
+  --jds-accent-bg-muted: var(--jds-blue-100); /* @kind color */
+  --jds-accent-border-color-default: var(--jds-blue-500); /* @kind color */
+  --jds-accent-border-color-emphasis: var(--jds-blue-700); /* @kind color */
+  --jds-accent-border-color-muted: var(--jds-blue-200); /* @kind color */
+  --jds-accent-color-default: var(--jds-blue-600); /* @kind color */
+  --jds-accent-color-emphasis: var(--jds-blue-700); /* @kind color */
+  --jds-accent-color-fixed-dark: var(--jds-blue-600); /* @kind color */
+  --jds-accent-color-fixed-light: var(--jds-blue-400); /* @kind color */
+  --jds-accent-surface-default: var(--jds-blue-600); /* @kind color */
+  --jds-accent-surface-emphasis: var(--jds-blue-700); /* @kind color */
+  --jds-accent-surface-muted: var(--jds-blue-100); /* @kind color */
+  --jds-accordion-border-color: var(--jds-border-color-muted); /* @kind color */
+  --jds-accordion-border-radius: var(--jds-border-radius-md);
+  --jds-accordion-border-width: var(--jds-border-width-1);
+  --jds-accordion-compact-padding-bottom: var(--jds-padding-md);
+  --jds-accordion-compact-padding-top: var(--jds-padding-xs);
+  --jds-accordion-compact-padding-x: var(--jds-padding-md);
+  --jds-accordion-compact-padding-y: var(--jds-padding-md);
+  --jds-accordion-default-padding-bottom: var(--jds-padding-lg);
+  --jds-accordion-default-padding-top: var(--jds-padding-xs);
+  --jds-accordion-default-padding-x: var(--jds-padding-lg);
+  --jds-accordion-default-padding-y: var(--jds-padding-lg);
+  --jds-accordion-gap: var(--jds-gap-md);
+  --jds-accordion-group-gap: var(--jds-gap-xl);
+  --jds-accordion-hover-bg: var(--jds-bg-translucent-subtle); /* @kind color */
+  --jds-accordion-icon-color: var(--jds-color-subtle); /* @kind color */
+  --jds-accordion-spacious-padding-bottom: var(--jds-padding-xl);
+  --jds-accordion-spacious-padding-top: var(--jds-padding-xs);
+  --jds-accordion-spacious-padding-x: var(--jds-padding-xl);
+  --jds-accordion-spacious-padding-y: var(--jds-padding-xl);
+  --jds-accordion-title-color: var(--jds-color-default); /* @kind color */
+  --jds-alert-border-radius: var(--jds-border-radius-md);
+  --jds-alert-border-width: var(--jds-border-width-1);
+  --jds-alert-content-gap: var(--jds-gap-md);
+  --jds-alert-content-padding-right: var(--jds-padding-2-xl);
+  --jds-alert-danger-bg-emphasis: var(--jds-danger-surface-default); /* @kind color */
+  --jds-alert-danger-bg-muted: var(--jds-danger-surface-muted); /* @kind color */
+  --jds-alert-danger-border-color: var(--jds-danger-border-color-muted); /* @kind color */
+  --jds-alert-gap: var(--jds-gap-sm);
+  --jds-alert-info-bg-emphasis: var(--jds-accent-surface-default); /* @kind color */
+  --jds-alert-info-bg-muted: var(--jds-accent-surface-muted); /* @kind color */
+  --jds-alert-info-border-color: var(--jds-accent-border-color-muted); /* @kind color */
+  --jds-alert-neutral-bg-emphasis: var(--jds-neutral-surface-emphasis); /* @kind color */
+  --jds-alert-neutral-bg-muted: var(--jds-neutral-surface-muted); /* @kind color */
+  --jds-alert-neutral-border-color: var(--jds-neutral-border-color-muted); /* @kind color */
+  --jds-alert-padding-x: var(--jds-padding-lg);
+  --jds-alert-padding-y: var(--jds-padding-lg);
+  --jds-alert-success-bg-emphasis: var(--jds-success-surface-default); /* @kind color */
+  --jds-alert-success-bg-muted: var(--jds-success-surface-muted); /* @kind color */
+  --jds-alert-success-border-color: var(--jds-success-border-color-muted); /* @kind color */
+  --jds-alert-title-gap: var(--jds-gap-2-xs);
+  --jds-alert-warning-bg-emphasis: var(--jds-warning-surface-default); /* @kind color */
+  --jds-alert-warning-bg-muted: var(--jds-warning-surface-muted); /* @kind color */
+  --jds-alert-warning-border-color: var(--jds-warning-border-color-muted); /* @kind color */
+  --jds-badge-accent-bg-emphasis: var(--jds-accent-surface-default); /* @kind color */
+  --jds-badge-accent-bg-muted: var(--jds-accent-surface-muted); /* @kind color */
+  --jds-badge-accent-border-color: var(--jds-accent-border-color-muted); /* @kind color */
+  --jds-badge-border-radius: var(--jds-border-radius-sm);
+  --jds-badge-border-width: var(--jds-border-width-1);
+  --jds-badge-cyan-bg-emphasis: var(--jds-cyan-surface-default); /* @kind color */
+  --jds-badge-cyan-bg-muted: var(--jds-cyan-surface-muted); /* @kind color */
+  --jds-badge-cyan-border-color: var(--jds-cyan-border-color-muted); /* @kind color */
+  --jds-badge-danger-bg-emphasis: var(--jds-danger-surface-default); /* @kind color */
+  --jds-badge-danger-bg-muted: var(--jds-danger-surface-muted); /* @kind color */
+  --jds-badge-danger-border-color: var(--jds-danger-border-color-muted); /* @kind color */
+  --jds-badge-group-gap: var(--jds-gap-xs);
+  --jds-badge-height: var(--jds-dimension-24);
+  --jds-badge-label-max-width: var(--jds-dimension-192);
+  --jds-badge-label-padding-x: var(--jds-padding-3-xs);
+  --jds-badge-min-width: var(--jds-dimension-24);
+  --jds-badge-neutral-bg-emphasis: var(--jds-neutral-surface-default); /* @kind color */
+  --jds-badge-neutral-bg-muted: var(--jds-neutral-surface-muted); /* @kind color */
+  --jds-badge-neutral-border-color: var(--jds-neutral-border-color-muted); /* @kind color */
+  --jds-badge-padding-x: var(--jds-padding-xs);
+  --jds-badge-primary-bg-emphasis: var(--jds-primary-surface-default); /* @kind color */
+  --jds-badge-primary-bg-muted: var(--jds-primary-surface-muted); /* @kind color */
+  --jds-badge-primary-border-color: var(--jds-primary-border-color-muted); /* @kind color */
+  --jds-badge-purple-bg-emphasis: var(--jds-purple-surface-default); /* @kind color */
+  --jds-badge-purple-bg-muted: var(--jds-purple-surface-muted); /* @kind color */
+  --jds-badge-purple-border-color: var(--jds-purple-border-color-muted); /* @kind color */
+  --jds-badge-success-bg-emphasis: var(--jds-success-surface-default); /* @kind color */
+  --jds-badge-success-bg-muted: var(--jds-success-surface-muted); /* @kind color */
+  --jds-badge-success-border-color: var(--jds-success-border-color-muted); /* @kind color */
+  --jds-badge-warning-bg-emphasis: var(--jds-warning-surface-default); /* @kind color */
+  --jds-badge-warning-bg-muted: var(--jds-warning-surface-muted); /* @kind color */
+  --jds-badge-warning-border-color: var(--jds-warning-border-color-muted); /* @kind color */
+  --jds-badge-white-bg-emphasis: var(--jds-surface-fixed-light); /* @kind color */
+  --jds-badge-white-bg-muted: var(--jds-surface-fixed-light); /* @kind color */
+  --jds-badge-white-border-color: var(--jds-border-color-translucent); /* @kind color */
+  --jds-bg-alternate: var(--jds-gray-50); /* @kind color */
+  --jds-bg-default: var(--jds-gray-0); /* @kind color */
+  --jds-bg-fixed-dark: var(--jds-gray-1100); /* @kind color */
+  --jds-bg-fixed-light: var(--jds-gray-0); /* @kind color */
+  --jds-bg-overlay: rgba(14,14,14,0.5); /* @kind color */
+  --jds-bg-translucent-fixed-dark: rgba(14,14,14,0.1); /* @kind color */
+  --jds-bg-translucent-fixed-light: rgba(255,255,255,0.1); /* @kind color */
+  --jds-bg-translucent-inverse: rgba(255,255,255,0.1); /* @kind color */
+  --jds-bg-translucent-subtle: rgba(14,14,14,0.05); /* @kind color */
+  --jds-bg-translucent: rgba(14,14,14,0.1); /* @kind color */
+  --jds-bg-transparent: rgba(255,255,255,0); /* @kind color */
+  --jds-blue-100: rgb(236,245,254); /* @kind color */
+  --jds-blue-200: rgb(200,226,251); /* @kind color */
+  --jds-blue-300: rgb(150,199,247); /* @kind color */
+  --jds-blue-400: rgb(96,170,244); /* @kind color */
+  --jds-blue-500: rgb(30,135,239); /* @kind color */
+  --jds-blue-600: rgb(2,105,208); /* @kind color */
+  --jds-blue-700: rgb(1,81,160); /* @kind color */
+  --jds-blue-800: rgb(1,60,119); /* @kind color */
+  --jds-blue-900: rgb(1,42,84); /* @kind color */
+  --jds-body-color-default: var(--jds-gray-1000); /* @kind color */
+  --jds-body-color-subtle: var(--jds-gray-700); /* @kind color */
+  --jds-border-color-default: var(--jds-gray-500); /* @kind color */
+  --jds-border-color-emphasis: var(--jds-gray-800); /* @kind color */
+  --jds-border-color-fixed-dark: var(--jds-gray-1000); /* @kind color */
+  --jds-border-color-fixed-light: var(--jds-gray-0); /* @kind color */
+  --jds-border-color-muted: var(--jds-gray-200); /* @kind color */
+  --jds-border-color-translucent: rgba(14,14,14,0.05); /* @kind color */
+  --jds-border-color-transparent: rgba(255,255,255,0); /* @kind color */
+  --jds-border-radius-2-xl: 24;
+  --jds-border-radius-3-xl: 32;
+  --jds-border-radius-full: 999;
+  --jds-border-radius-lg: 12;
+  --jds-border-radius-md: 8;
+  --jds-border-radius-none: 0;
+  --jds-border-radius-sm: 4;
+  --jds-border-radius-xl: 16;
+  --jds-border-radius-xs: 2;
+  --jds-border-width-0: 0; /* @kind spacing */
+  --jds-border-width-1: 1; /* @kind spacing */
+  --jds-border-width-2: 2; /* @kind spacing */
+  --jds-border-width-3: 3; /* @kind spacing */
+  --jds-border-width-4: 4; /* @kind spacing */
+  --jds-breadcrumb-group-gap: var(--jds-gap-xs);
+  --jds-breadcrumb-icon-color: var(--jds-color-subtle); /* @kind color */
+  --jds-breadcrumb-max-width: var(--jds-dimension-256);
+  --jds-breakpoint-2-xl: var(--jds-dimension-1440);
+  --jds-breakpoint-lg: var(--jds-dimension-1024);
+  --jds-breakpoint-md: var(--jds-dimension-768);
+  --jds-breakpoint-sm: var(--jds-dimension-512);
+  --jds-breakpoint-xl: var(--jds-dimension-1280);
+  --jds-breakpoint-xs: var(--jds-dimension-320);
+  --jds-btn-border-radius: var(--jds-border-radius-md);
+  --jds-btn-border-width: var(--jds-border-width-1);
+  --jds-btn-ghost-brand-color: var(--jds-primary-color-default); /* @kind color */
+  --jds-btn-ghost-brand-hover-bg: var(--jds-primary-surface-translucent); /* @kind color */
+  --jds-btn-ghost-danger-color: var(--jds-danger-color-default); /* @kind color */
+  --jds-btn-ghost-danger-hover-bg: var(--jds-danger-surface-translucent); /* @kind color */
+  --jds-btn-ghost-fixed-light-color: var(--jds-color-fixed-light); /* @kind color */
+  --jds-btn-ghost-fixed-light-hover-bg: var(--jds-bg-translucent-fixed-light); /* @kind color */
+  --jds-btn-ghost-neutral-color: var(--jds-color-default); /* @kind color */
+  --jds-btn-ghost-neutral-hover-bg: var(--jds-bg-translucent-subtle); /* @kind color */
+  --jds-btn-group-gap: var(--jds-gap-md);
+  --jds-btn-icon-gap: var(--jds-gap-2-xs);
+  --jds-btn-label-padding-x: var(--jds-padding-2-xs);
+  --jds-btn-lg-height: var(--jds-dimension-56);
+  --jds-btn-lg-min-width: var(--jds-dimension-112);
+  --jds-btn-lg-padding-x: var(--jds-padding-xl);
+  --jds-btn-md-height: var(--jds-dimension-48);
+  --jds-btn-md-min-width: var(--jds-dimension-96);
+  --jds-btn-md-padding-x: var(--jds-padding-lg);
+  --jds-btn-outlined-brand-border-color: var(--jds-primary-border-color-default); /* @kind color */
+  --jds-btn-outlined-brand-color: var(--jds-primary-color-default); /* @kind color */
+  --jds-btn-outlined-brand-hover-bg: var(--jds-primary-bg-translucent); /* @kind color */
+  --jds-btn-outlined-danger-border-color: var(--jds-danger-border-color-default); /* @kind color */
+  --jds-btn-outlined-danger-color: var(--jds-danger-color-default); /* @kind color */
+  --jds-btn-outlined-danger-hover-bg: var(--jds-danger-surface-translucent); /* @kind color */
+  --jds-btn-outlined-fixed-light-border-color: var(--jds-border-color-fixed-light); /* @kind color */
+  --jds-btn-outlined-fixed-light-color: var(--jds-color-fixed-light); /* @kind color */
+  --jds-btn-outlined-fixed-light-hover-bg: var(--jds-bg-translucent-fixed-light); /* @kind color */
+  --jds-btn-outlined-neutral-border-color: var(--jds-border-color-emphasis); /* @kind color */
+  --jds-btn-outlined-neutral-color: var(--jds-color-default); /* @kind color */
+  --jds-btn-outlined-neutral-hover-bg: var(--jds-bg-translucent-subtle); /* @kind color */
+  --jds-btn-primary-brand-color: var(--jds-color-fixed-light); /* @kind color */
+  --jds-btn-primary-brand-default-bg: var(--jds-primary-surface-default); /* @kind color */
+  --jds-btn-primary-brand-hover-bg: var(--jds-primary-surface-emphasis); /* @kind color */
+  --jds-btn-primary-danger-color: var(--jds-color-fixed-light); /* @kind color */
+  --jds-btn-primary-danger-default-bg: var(--jds-danger-surface-default); /* @kind color */
+  --jds-btn-primary-danger-hover-bg: var(--jds-danger-surface-emphasis); /* @kind color */
+  --jds-btn-primary-fixed-light-color: var(--jds-color-fixed-dark); /* @kind color */
+  --jds-btn-primary-fixed-light-default-bg: var(--jds-surface-fixed-light); /* @kind color */
+  --jds-btn-primary-fixed-light-hover-bg: var(--jds-bg-translucent-fixed-dark); /* @kind color */
+  --jds-btn-primary-neutral-color: var(--jds-color-inverse); /* @kind color */
+  --jds-btn-primary-neutral-default-bg: var(--jds-surface-inverse); /* @kind color */
+  --jds-btn-primary-neutral-hover-bg: var(--jds-bg-translucent-inverse); /* @kind color */
+  --jds-btn-sm-height: var(--jds-dimension-40);
+  --jds-btn-sm-min-width: var(--jds-dimension-80);
+  --jds-btn-sm-padding-x: var(--jds-padding-md);
+  --jds-btn-xs-height: var(--jds-dimension-32);
+  --jds-btn-xs-min-width: var(--jds-dimension-64);
+  --jds-btn-xs-padding-x: var(--jds-padding-sm);
+  --jds-card-border-radius: var(--jds-border-radius-md);
+  --jds-card-border-width: var(--jds-border-width-1);
+  --jds-card-gap: var(--jds-gap-lg);
+  --jds-card-padding-bottom: var(--jds-padding-xl);
+  --jds-card-padding-left: var(--jds-padding-xl);
+  --jds-card-padding-right: var(--jds-padding-xl);
+  --jds-card-padding-top: var(--jds-padding-xs);
+  --jds-card-padding-x: var(--jds-padding-xl);
+  --jds-card-padding-y: var(--jds-padding-xl);
+  --jds-card-slot-gap: var(--jds-gap-sm);
+  --jds-card-subtitle-gap: var(--jds-gap-2-xs);
+  --jds-card-title-gap: var(--jds-gap-xs);
+  --jds-checkbox-border-radius: var(--jds-border-radius-md);
+  --jds-checkbox-gap: var(--jds-gap-xs);
+  --jds-checkbox-group-gap: var(--jds-gap-xs);
+  --jds-checkbox-input-size: var(--jds-dimension-24);
+  --jds-checkbox-padding-y: var(--jds-padding-2-xs);
+  --jds-close-btn-border-radius: var(--jds-border-radius-sm);
+  --jds-close-btn-md-height: var(--jds-dimension-32);
+  --jds-close-btn-md-width: var(--jds-dimension-32);
+  --jds-close-btn-sm-height: var(--jds-dimension-24);
+  --jds-close-btn-sm-width: var(--jds-dimension-24);
+  --jds-color-default: var(--jds-gray-1000); /* @kind color */
+  --jds-color-fixed-dark: var(--jds-gray-1000); /* @kind color */
+  --jds-color-fixed-light: var(--jds-gray-100); /* @kind color */
+  --jds-color-inverse: var(--jds-gray-100); /* @kind color */
+  --jds-color-muted: var(--jds-gray-300); /* @kind color */
+  --jds-color-subtle: var(--jds-gray-700); /* @kind color */
+  --jds-color-transparent: rgba(255,255,255,0); /* @kind color */
+  --jds-column-12: 12; /* @kind spacing */
+  --jds-column-4: 4; /* @kind spacing */
+  --jds-column-8: 8; /* @kind spacing */
+  --jds-combobox-input-height: var(--jds-dimension-48);
+  --jds-combobox-input-max-height: var(--jds-dimension-80);
+  --jds-combobox-item-active-bg: var(--jds-primary-bg-translucent); /* @kind color */
+  --jds-combobox-item-active-color: var(--jds-primary-color-default); /* @kind color */
+  --jds-combobox-item-gap: var(--jds-gap-sm);
+  --jds-combobox-item-label-gap: var(--jds-gap-2-xs);
+  --jds-combobox-item-label-padding-y: var(--jds-padding-3-xs);
+  --jds-combobox-item-padding-x: var(--jds-padding-md);
+  --jds-combobox-item-padding-y: var(--jds-padding-sm);
+  --jds-combobox-menu-max-height: var(--jds-dimension-320);
+  --jds-combobox-menu-min-width: var(--jds-dimension-256);
+  --jds-combobox-menu-padding-y: var(--jds-padding-xs);
+  --jds-component-gap-lg: var(--jds-spacer-9);
+  --jds-component-gap-md: var(--jds-spacer-8);
+  --jds-component-gap-sm: var(--jds-spacer-7);
+  --jds-component-gap-xl: var(--jds-spacer-10);
+  --jds-component-gap-xs: var(--jds-spacer-6);
+  --jds-component-padding-lg: var(--jds-spacer-10);
+  --jds-component-padding-md: var(--jds-spacer-9);
+  --jds-component-padding-sm: var(--jds-spacer-8);
+  --jds-component-padding-xl: var(--jds-spacer-11);
+  --jds-component-padding-xs: var(--jds-spacer-7);
+  --jds-container-max-width-2-xl: var(--jds-dimension-1312);
+  --jds-container-max-width-3-xl: var(--jds-dimension-1440);
+  --jds-container-max-width-lg: var(--jds-dimension-888);
+  --jds-container-max-width-md: var(--jds-dimension-768);
+  --jds-container-max-width-xl: var(--jds-dimension-1168);
+  --jds-container-width: var(--jds-dimension-1312); /* @kind spacing */
+  --jds-cyan-100: rgb(224,247,252); /* @kind color */
+  --jds-cyan-200: rgb(168,233,247); /* @kind color */
+  --jds-cyan-300: rgb(73,210,239); /* @kind color */
+  --jds-cyan-400: rgb(0,180,218); /* @kind color */
+  --jds-cyan-500: rgb(0,146,177); /* @kind color */
+  --jds-cyan-600: rgb(0,117,141); /* @kind color */
+  --jds-cyan-700: rgb(0,90,109); /* @kind color */
+  --jds-cyan-800: rgb(0,67,82); /* @kind color */
+  --jds-cyan-900: rgb(0,47,56); /* @kind color */
+  --jds-cyan-bg-default: var(--jds-cyan-700); /* @kind color */
+  --jds-cyan-bg-muted: var(--jds-cyan-100); /* @kind color */
+  --jds-cyan-border-color-default: var(--jds-cyan-500); /* @kind color */
+  --jds-cyan-border-color-emphasis: var(--jds-cyan-700); /* @kind color */
+  --jds-cyan-border-color-muted: var(--jds-cyan-200); /* @kind color */
+  --jds-cyan-color-default: var(--jds-cyan-600); /* @kind color */
+  --jds-cyan-color-emphasis: var(--jds-cyan-700); /* @kind color */
+  --jds-cyan-color-fixed-dark: var(--jds-cyan-600); /* @kind color */
+  --jds-cyan-color-fixed-light: var(--jds-cyan-400); /* @kind color */
+  --jds-cyan-surface-default: var(--jds-cyan-600); /* @kind color */
+  --jds-cyan-surface-emphasis: var(--jds-cyan-700); /* @kind color */
+  --jds-cyan-surface-muted: var(--jds-cyan-100); /* @kind color */
+  --jds-danger-bg-default: var(--jds-red-700); /* @kind color */
+  --jds-danger-bg-muted: var(--jds-red-100); /* @kind color */
+  --jds-danger-border-color-default: var(--jds-red-600); /* @kind color */
+  --jds-danger-border-color-emphasis: var(--jds-red-700); /* @kind color */
+  --jds-danger-border-color-muted: var(--jds-red-200); /* @kind color */
+  --jds-danger-color-default: var(--jds-red-600); /* @kind color */
+  --jds-danger-color-emphasis: var(--jds-red-700); /* @kind color */
+  --jds-danger-color-fixed-dark: var(--jds-red-600); /* @kind color */
+  --jds-danger-color-fixed-light: var(--jds-red-400); /* @kind color */
+  --jds-danger-surface-default: var(--jds-red-600); /* @kind color */
+  --jds-danger-surface-emphasis: var(--jds-red-700); /* @kind color */
+  --jds-danger-surface-muted: var(--jds-red-100); /* @kind color */
+  --jds-danger-surface-translucent: rgba(161,27,27,0.08); /* @kind color */
+  --jds-date-picker-border-radius: var(--jds-border-radius-md);
+  --jds-date-picker-input-height: var(--jds-dimension-48);
+  --jds-date-picker-item-size: var(--jds-dimension-40);
+  --jds-date-picker-menu-gap: var(--jds-gap-2-xs);
+  --jds-date-picker-menu-padding-x: var(--jds-padding-md);
+  --jds-date-picker-menu-padding-y: var(--jds-padding-sm);
+  --jds-date-picker-menu-width: var(--jds-dimension-320);
+  --jds-date-picker-padding-x: var(--jds-padding-md);
+  --jds-description-list-border-radius: var(--jds-border-radius-md);
+  --jds-description-list-column-gap: var(--jds-gap-2-xl);
+  --jds-description-list-data-row-gap: var(--jds-gap-md);
+  --jds-description-list-gap: var(--jds-gap-xs);
+  --jds-description-list-max-width: var(--jds-dimension-280);
+  --jds-description-list-padding-bottom: var(--jds-padding-lg);
+  --jds-description-list-padding-x: var(--jds-padding-xl);
+  --jds-description-list-padding-y: var(--jds-padding-lg);
+  --jds-description-list-row-gap: var(--jds-gap-2-xs);
+  --jds-dimension-0: 0; /* @kind spacing */
+  --jds-dimension-1024: 1024; /* @kind spacing */
+  --jds-dimension-112: 112; /* @kind spacing */
+  --jds-dimension-1168: 1168; /* @kind spacing */
+  --jds-dimension-120: 120; /* @kind spacing */
+  --jds-dimension-1280: 1280; /* @kind spacing */
+  --jds-dimension-128: 128; /* @kind spacing */
+  --jds-dimension-12: 12; /* @kind spacing */
+  --jds-dimension-1312: 1312; /* @kind spacing */
+  --jds-dimension-132: 132; /* @kind spacing */
+  --jds-dimension-136: 136; /* @kind spacing */
+  --jds-dimension-1440: 1440; /* @kind spacing */
+  --jds-dimension-144: 144; /* @kind spacing */
+  --jds-dimension-160: 160; /* @kind spacing */
+  --jds-dimension-168: 168; /* @kind spacing */
+  --jds-dimension-16: 16; /* @kind spacing */
+  --jds-dimension-192: 192; /* @kind spacing */
+  --jds-dimension-1: 1; /* @kind spacing */
+  --jds-dimension-20: 20; /* @kind spacing */
+  --jds-dimension-224: 224; /* @kind spacing */
+  --jds-dimension-24: 24; /* @kind spacing */
+  --jds-dimension-256: 256; /* @kind spacing */
+  --jds-dimension-280: 280; /* @kind spacing */
+  --jds-dimension-288: 288; /* @kind spacing */
+  --jds-dimension-28: 28; /* @kind spacing */
+  --jds-dimension-2: 2; /* @kind spacing */
+  --jds-dimension-320: 320; /* @kind spacing */
+  --jds-dimension-328: 328; /* @kind spacing */
+  --jds-dimension-32: 32; /* @kind spacing */
+  --jds-dimension-332: 332; /* @kind spacing */
+  --jds-dimension-340: 340; /* @kind spacing */
+  --jds-dimension-344: 344; /* @kind spacing */
+  --jds-dimension-360: 360; /* @kind spacing */
+  --jds-dimension-384: 384; /* @kind spacing */
+  --jds-dimension-400: 400; /* @kind spacing */
+  --jds-dimension-40: 40; /* @kind spacing */
+  --jds-dimension-480: 480; /* @kind spacing */
+  --jds-dimension-48: 48; /* @kind spacing */
+  --jds-dimension-4: 4; /* @kind spacing */
+  --jds-dimension-512: 512; /* @kind spacing */
+  --jds-dimension-52: 52; /* @kind spacing */
+  --jds-dimension-56: 56; /* @kind spacing */
+  --jds-dimension-60: 60; /* @kind spacing */
+  --jds-dimension-640: 640; /* @kind spacing */
+  --jds-dimension-64: 64; /* @kind spacing */
+  --jds-dimension-688: 688; /* @kind spacing */
+  --jds-dimension-68: 68; /* @kind spacing */
+  --jds-dimension-72: 72; /* @kind spacing */
+  --jds-dimension-768: 768; /* @kind spacing */
+  --jds-dimension-76: 76; /* @kind spacing */
+  --jds-dimension-800: 800; /* @kind spacing */
+  --jds-dimension-80: 80; /* @kind spacing */
+  --jds-dimension-840: 840; /* @kind spacing */
+  --jds-dimension-864: 864; /* @kind spacing */
+  --jds-dimension-872: 872; /* @kind spacing */
+  --jds-dimension-888: 888; /* @kind spacing */
+  --jds-dimension-88: 88; /* @kind spacing */
+  --jds-dimension-8: 8; /* @kind spacing */
+  --jds-dimension-960: 960; /* @kind spacing */
+  --jds-dimension-96: 96; /* @kind spacing */
+  --jds-display-color-default: var(--jds-gray-1000); /* @kind color */
+  --jds-display-color-subtle: var(--jds-gray-800); /* @kind color */
+  --jds-divider-border-color: var(--jds-border-color-muted); /* @kind color */
+  --jds-divider-border-width-thick: var(--jds-border-width-2);
+  --jds-divider-border-width-thicker: var(--jds-border-width-4);
+  --jds-divider-border-width-thin: var(--jds-border-width-1);
+  --jds-divider-min-height: var(--jds-dimension-8);
+  --jds-divider-min-width: var(--jds-dimension-8);
+  --jds-drawer-border-radius: var(--jds-border-radius-md);
+  --jds-drawer-gap: var(--jds-gap-2-xl);
+  --jds-drawer-lg-max-width: var(--jds-dimension-1024);
+  --jds-drawer-max-height: var(--jds-dimension-640);
+  --jds-drawer-md-max-width: var(--jds-dimension-768);
+  --jds-drawer-mobile-padding-x: var(--jds-padding-lg);
+  --jds-drawer-mobile-padding-y: var(--jds-padding-lg);
+  --jds-drawer-padding-x: var(--jds-padding-2-xl);
+  --jds-drawer-padding-y: var(--jds-padding-2-xl);
+  --jds-drawer-sm-max-width: var(--jds-dimension-512);
+  --jds-drawer-title-gap: var(--jds-gap-xs);
+  --jds-dropdown-border-radius: var(--jds-border-radius-md);
+  --jds-dropdown-item-active-bg: var(--jds-bg-translucent-subtle); /* @kind color */
+  --jds-dropdown-item-active-color: var(--jds-primary-color-emphasis); /* @kind color */
+  --jds-dropdown-item-color: var(--jds-color-default); /* @kind color */
+  --jds-dropdown-item-gap: var(--jds-gap-sm);
+  --jds-dropdown-item-padding-x: var(--jds-padding-lg);
+  --jds-dropdown-item-padding-y: var(--jds-padding-sm);
+  --jds-dropdown-max-height: var(--jds-dimension-480);
+  --jds-dropdown-min-width: var(--jds-dimension-280);
+  --jds-dropdown-padding-y: var(--jds-padding-xs);
+  --jds-file-upload-dragdrop-border-radius: var(--jds-border-radius-md);
+  --jds-file-upload-dragdrop-border-width: var(--jds-border-width-1);
+  --jds-file-upload-dragdrop-gap: var(--jds-gap-md);
+  --jds-file-upload-dragdrop-min-height: var(--jds-dimension-128);
+  --jds-file-upload-dragdrop-padding-x: var(--jds-padding-2-xl);
+  --jds-file-upload-dragdrop-padding-y: var(--jds-padding-2-xl);
+  --jds-file-upload-file-gap: var(--jds-gap-xs);
+  --jds-file-upload-file-padding-x: var(--jds-padding-md);
+  --jds-file-upload-file-padding-y: var(--jds-padding-sm);
+  --jds-focus-outline: var(--jds-blue-500); /* @kind color */
+  --jds-font-family-brand: "Inter";
+  --jds-font-size-12: 12;
+  --jds-font-size-14: 14;
+  --jds-font-size-16: 16;
+  --jds-font-size-18: 18;
+  --jds-font-size-20: 20;
+  --jds-font-size-22: 22;
+  --jds-font-size-24: 24;
+  --jds-font-size-26: 26;
+  --jds-font-size-28: 28;
+  --jds-font-size-30: 30;
+  --jds-font-size-32: 32;
+  --jds-font-size-36: 36;
+  --jds-font-size-40: 40;
+  --jds-font-size-44: 44;
+  --jds-font-size-48: 48;
+  --jds-font-size-52: 52;
+  --jds-font-size-56: 56;
+  --jds-font-size-body-lg: var(--jds-font-size-20);
+  --jds-font-size-body-md: var(--jds-font-size-16);
+  --jds-font-size-body-sm: var(--jds-font-size-14);
+  --jds-font-size-caption-md: var(--jds-font-size-14);
+  --jds-font-size-display-lg: var(--jds-font-size-56);
+  --jds-font-size-display-md: var(--jds-font-size-48);
+  --jds-font-size-display-sm: var(--jds-font-size-40);
+  --jds-font-size-heading-lg: var(--jds-font-size-32);
+  --jds-font-size-heading-md: var(--jds-font-size-28);
+  --jds-font-size-heading-sm: var(--jds-font-size-24);
+  --jds-font-size-heading-xl: var(--jds-font-size-40);
+  --jds-font-size-label-lg: var(--jds-font-size-20);
+  --jds-font-size-label-md: var(--jds-font-size-16);
+  --jds-font-size-label-sm: var(--jds-font-size-14);
+  --jds-font-size-label-xs: var(--jds-font-size-12);
+  --jds-font-size-link-lg: var(--jds-font-size-20);
+  --jds-font-size-link-md: var(--jds-font-size-16);
+  --jds-font-size-link-sm: var(--jds-font-size-14);
+  --jds-font-size-link-xs: var(--jds-font-size-12);
+  --jds-font-size-list-lg: var(--jds-font-size-20);
+  --jds-font-size-list-md: var(--jds-font-size-16);
+  --jds-font-size-list-sm: var(--jds-font-size-14);
+  --jds-font-size-overline-md: var(--jds-font-size-14);
+  --jds-font-size-subtitle-md: var(--jds-font-size-20);
+  --jds-font-size-subtitle-sm: var(--jds-font-size-16);
+  --jds-font-weight-bold: 700;
+  --jds-font-weight-light: 300;
+  --jds-font-weight-regular: 400;
+  --jds-font-weight-semibold: 600;
+  --jds-form-border-radius: var(--jds-border-radius-md);
+  --jds-form-border-width-default: var(--jds-border-width-1);
+  --jds-form-border-width-emphasis: var(--jds-border-width-2);
+  --jds-form-color-default: var(--jds-gray-900); /* @kind color */
+  --jds-form-color-fixed-dark: var(--jds-gray-1100); /* @kind color */
+  --jds-form-color-fixed-light: var(--jds-gray-0); /* @kind color */
+  --jds-form-color-inverse: var(--jds-gray-100); /* @kind color */
+  --jds-form-color-muted: var(--jds-gray-300); /* @kind color */
+  --jds-form-color-subtle: var(--jds-gray-700); /* @kind color */
+  --jds-form-danger-border-color-default: var(--jds-red-500); /* @kind color */
+  --jds-form-danger-color-default: var(--jds-red-600); /* @kind color */
+  --jds-form-danger-surface-default: var(--jds-red-600); /* @kind color */
+  --jds-form-feedback-gap: var(--jds-gap-2-xs);
+  --jds-form-gap-alt: var(--jds-gap-sm);
+  --jds-form-gap: var(--jds-gap-xs);
+  --jds-form-group-gap: var(--jds-gap-xl);
+  --jds-form-input-label-gap: var(--jds-gap-2-xs);
+  --jds-form-padding-x: var(--jds-padding-md);
+  --jds-form-padding-y: var(--jds-padding-sm);
+  --jds-form-primary-color-default: var(--jds-primary-600); /* @kind color */
+  --jds-form-primary-surface-default: var(--jds-primary-600); /* @kind color */
+  --jds-form-primary-surface-emphasis: var(--jds-primary-700); /* @kind color */
+  --jds-form-success-border-color-default: var(--jds-green-500); /* @kind color */
+  --jds-form-success-color-default: var(--jds-green-600); /* @kind color */
+  --jds-form-success-surface-default: var(--jds-green-600); /* @kind color */
+  --jds-form-surface-default: var(--jds-gray-0); /* @kind color */
+  --jds-form-surface-emphasis: var(--jds-gray-700); /* @kind color */
+  --jds-form-surface-fixed-dark: var(--jds-gray-900); /* @kind color */
+  --jds-form-surface-fixed-light: var(--jds-gray-0); /* @kind color */
+  --jds-form-surface-inverse: var(--jds-gray-900); /* @kind color */
+  --jds-form-surface-muted: var(--jds-gray-200); /* @kind color */
+  --jds-form-surface-raised: var(--jds-gray-100); /* @kind color */
+  --jds-form-surface-subtle: var(--jds-gray-400); /* @kind color */
+  --jds-gap-2-xl: var(--jds-spacer-8);
+  --jds-gap-2-xs: var(--jds-spacer-2);
+  --jds-gap-3-xl: var(--jds-spacer-9);
+  --jds-gap-4-xl: var(--jds-spacer-10);
+  --jds-gap-lg: var(--jds-spacer-6);
+  --jds-gap-md: var(--jds-spacer-5);
+  --jds-gap-none: var(--jds-spacer-0);
+  --jds-gap-sm: var(--jds-spacer-4);
+  --jds-gap-xl: var(--jds-spacer-7);
+  --jds-gap-xs: var(--jds-spacer-3);
+  --jds-gray-0: rgb(255,255,255); /* @kind color */
+  --jds-gray-1000: rgb(26,26,26); /* @kind color */
+  --jds-gray-100: rgb(243,243,243); /* @kind color */
+  --jds-gray-1100: rgb(14,14,14); /* @kind color */
+  --jds-gray-200: rgb(223,223,223); /* @kind color */
+  --jds-gray-300: rgb(198,198,198); /* @kind color */
+  --jds-gray-400: rgb(165,165,165); /* @kind color */
+  --jds-gray-500: rgb(134,134,134); /* @kind color */
+  --jds-gray-50: rgb(247,247,247); /* @kind color */
+  --jds-gray-600: rgb(107,107,107); /* @kind color */
+  --jds-gray-700: rgb(82,82,82); /* @kind color */
+  --jds-gray-800: rgb(59,59,59); /* @kind color */
+  --jds-gray-900: rgb(42,42,42); /* @kind color */
+  --jds-green-100: rgb(227,249,237); /* @kind color */
+  --jds-green-200: rgb(177,237,203); /* @kind color */
+  --jds-green-300: rgb(98,219,150); /* @kind color */
+  --jds-green-400: rgb(22,189,94); /* @kind color */
+  --jds-green-500: rgb(18,154,77); /* @kind color */
+  --jds-green-600: rgb(14,124,61); /* @kind color */
+  --jds-green-700: rgb(11,94,47); /* @kind color */
+  --jds-green-800: rgb(8,69,35); /* @kind color */
+  --jds-green-900: rgb(6,49,25); /* @kind color */
+  --jds-gutter-lg: var(--jds-dimension-32);
+  --jds-gutter-md: var(--jds-dimension-24);
+  --jds-gutter-sm: var(--jds-dimension-16);
+  --jds-heading-color-default: var(--jds-gray-900); /* @kind color */
+  --jds-heading-color-subtle: var(--jds-gray-800); /* @kind color */
+  --jds-icon-btn-border-radius: var(--jds-border-radius-md);
+  --jds-icon-btn-border-width: var(--jds-border-width-1);
+  --jds-icon-btn-danger-color: var(--jds-color-fixed-light); /* @kind color */
+  --jds-icon-btn-danger-default-bg: var(--jds-danger-surface-default); /* @kind color */
+  --jds-icon-btn-danger-hover-bg: var(--jds-danger-surface-emphasis); /* @kind color */
+  --jds-icon-btn-disabled-opacity: var(--jds-opacity-50);
+  --jds-icon-btn-ghost-color: var(--jds-primary-color-default); /* @kind color */
+  --jds-icon-btn-ghost-hover-bg: var(--jds-primary-surface-translucent); /* @kind color */
+  --jds-icon-btn-group-gap: var(--jds-gap-md);
+  --jds-icon-btn-outline-border-color: var(--jds-primary-border-color-default); /* @kind color */
+  --jds-icon-btn-outline-color: var(--jds-primary-color-default); /* @kind color */
+  --jds-icon-btn-outline-hover-bg: var(--jds-primary-surface-translucent); /* @kind color */
+  --jds-icon-btn-primary-color: var(--jds-color-fixed-light); /* @kind color */
+  --jds-icon-btn-primary-default-bg: var(--jds-primary-surface-default); /* @kind color */
+  --jds-icon-btn-primary-hover-bg: var(--jds-primary-surface-emphasis); /* @kind color */
+  --jds-icon-btn-size-lg: var(--jds-dimension-56);
+  --jds-icon-btn-size-md: var(--jds-dimension-48);
+  --jds-icon-btn-size-sm: var(--jds-dimension-40);
+  --jds-icon-btn-size-xs: var(--jds-dimension-32);
+  --jds-icon-size-2-xl: 48;
+  --jds-icon-size-3-xl: 64;
+  --jds-icon-size-lg: 24;
+  --jds-icon-size-md: 20;
+  --jds-icon-size-sm: 16;
+  --jds-icon-size-xl: 32;
+  --jds-icon-size-xs: 12;
+  --jds-label-color-default: var(--jds-gray-900); /* @kind color */
+  --jds-label-color-subtle: var(--jds-gray-700); /* @kind color */
+  --jds-layout-gap-2-xs: var(--jds-spacer-5);
+  --jds-layout-gap-lg: var(--jds-spacer-9);
+  --jds-layout-gap-md: var(--jds-spacer-8);
+  --jds-layout-gap-sm: var(--jds-spacer-7);
+  --jds-layout-gap-xl: var(--jds-spacer-10);
+  --jds-layout-gap-xs: var(--jds-spacer-6);
+  --jds-layout-padding-lg: var(--jds-spacer-10);
+  --jds-layout-padding-md: var(--jds-spacer-9);
+  --jds-layout-padding-sm: var(--jds-spacer-8);
+  --jds-layout-padding-xl: var(--jds-spacer-11);
+  --jds-layout-padding-xs: var(--jds-spacer-7);
+  --jds-letter-spacing-normal: 0;
+  --jds-letter-spacing-tight: -0.4;
+  --jds-letter-spacing-tighter: -1;
+  --jds-letter-spacing-wide: 1;
+  --jds-letter-spacing-wider: 2;
+  --jds-line-height-16: 16;
+  --jds-line-height-2-xl: var(--jds-line-height-56);
+  --jds-line-height-2-xs: var(--jds-line-height-20);
+  --jds-line-height-20: 20;
+  --jds-line-height-24: 24;
+  --jds-line-height-28: 28;
+  --jds-line-height-3-xl: var(--jds-line-height-64);
+  --jds-line-height-3-xs: var(--jds-line-height-16);
+  --jds-line-height-32: 32;
+  --jds-line-height-36: 36;
+  --jds-line-height-40: 40;
+  --jds-line-height-44: 44;
+  --jds-line-height-48: 48;
+  --jds-line-height-52: 52;
+  --jds-line-height-56: 56;
+  --jds-line-height-60: 60;
+  --jds-line-height-64: 64;
+  --jds-line-height-lg: var(--jds-line-height-40);
+  --jds-line-height-md: var(--jds-line-height-32);
+  --jds-line-height-sm: var(--jds-line-height-28);
+  --jds-line-height-xl: var(--jds-line-height-48);
+  --jds-line-height-xs: var(--jds-line-height-24);
+  --jds-link-active-color: var(--jds-color-default); /* @kind color */
+  --jds-link-color-default: var(--jds-blue-600); /* @kind color */
+  --jds-link-color-emphasis: var(--jds-blue-700); /* @kind color */
+  --jds-link-danger-color: var(--jds-danger-color-default); /* @kind color */
+  --jds-link-danger-hover-color: var(--jds-danger-color-emphasis); /* @kind color */
+  --jds-link-gap: var(--jds-gap-md);
+  --jds-link-icon-gap: var(--jds-gap-2-xs);
+  --jds-link-primary-color: var(--jds-link-color-default); /* @kind color */
+  --jds-link-primary-hover-color: var(--jds-link-color-emphasis); /* @kind color */
+  --jds-list-group-gap: var(--jds-gap-xs);
+  --jds-list-icon-gap: var(--jds-gap-xs);
+  --jds-list-spacing-lg: 16;
+  --jds-list-spacing-md: 12;
+  --jds-list-spacing-none: 0;
+  --jds-list-spacing-sm: 8;
+  --jds-mainnav-gap: var(--jds-gap-xl);
+  --jds-mainnav-height: var(--jds-dimension-72);
+  --jds-mainnav-item-border-width: var(--jds-border-width-2);
+  --jds-mainnav-item-gap: var(--jds-gap-2-xs);
+  --jds-mainnav-item-mobile-gap: var(--jds-gap-2-xs);
+  --jds-mainnav-item-mobile-padding-x: var(--jds-padding-lg);
+  --jds-mainnav-item-mobile-padding-y: var(--jds-padding-sm);
+  --jds-mainnav-item-padding-x: var(--jds-padding-sm);
+  --jds-mainnav-menu-padding-y: var(--jds-padding-xs);
+  --jds-mainnav-mobile-gap: var(--jds-gap-xs);
+  --jds-mainnav-mobile-padding-x: var(--jds-padding-lg);
+  --jds-mainnav-padding-x: var(--jds-padding-2-xl);
+  --jds-margin-2-xl: var(--jds-spacer-8);
+  --jds-margin-2-xs: var(--jds-spacer-2);
+  --jds-margin-3-xl: var(--jds-spacer-9);
+  --jds-margin-3-xs: var(--jds-spacer-1);
+  --jds-margin-4-xl: var(--jds-spacer-10);
+  --jds-margin-5-xl: var(--jds-spacer-11);
+  --jds-margin-lg: var(--jds-spacer-6);
+  --jds-margin-md: var(--jds-spacer-5);
+  --jds-margin-none: var(--jds-spacer-0);
+  --jds-margin-sm: var(--jds-spacer-4);
+  --jds-margin-xl: var(--jds-spacer-7);
+  --jds-margin-xs: var(--jds-spacer-3);
+  --jds-mega-menu-max-width: var(--jds-dimension-480);
+  --jds-mega-menu-menu-item-gap: var(--jds-gap-xs);
+  --jds-mega-menu-menu-item-padding-x: var(--jds-padding-lg);
+  --jds-mega-menu-menu-item-padding-y: var(--jds-padding-sm);
+  --jds-mega-menu-min-height: var(--jds-dimension-320);
+  --jds-mega-menu-mobile-padding-y: var(--jds-padding-md);
+  --jds-mega-menu-padding-y: var(--jds-padding-sm);
+  --jds-modal-action-gap: var(--jds-gap-md);
+  --jds-modal-border-radius: var(--jds-border-radius-md);
+  --jds-modal-gap: var(--jds-gap-2-xl);
+  --jds-modal-lg-max-width: var(--jds-dimension-888);
+  --jds-modal-md-max-width: var(--jds-dimension-640);
+  --jds-modal-padding-x: var(--jds-padding-xl);
+  --jds-modal-padding-y: var(--jds-padding-xl);
+  --jds-modal-sm-max-width: var(--jds-dimension-512);
+  --jds-modal-title-gap: var(--jds-gap-sm);
+  --jds-modal-xl-max-width: var(--jds-dimension-1280);
+  --jds-navy-100: rgb(237,243,253); /* @kind color */
+  --jds-navy-200: rgb(207,220,244); /* @kind color */
+  --jds-navy-300: rgb(171,191,226); /* @kind color */
+  --jds-navy-400: rgb(136,160,204); /* @kind color */
+  --jds-navy-500: rgb(96,123,173); /* @kind color */
+  --jds-navy-600: rgb(70,95,140); /* @kind color */
+  --jds-navy-700: rgb(49,72,112); /* @kind color */
+  --jds-navy-800: rgb(40,60,97); /* @kind color */
+  --jds-navy-900: rgb(25,37,60); /* @kind color */
+  --jds-neutral-bg-default: var(--jds-gray-700); /* @kind color */
+  --jds-neutral-bg-muted: var(--jds-gray-100); /* @kind color */
+  --jds-neutral-border-color-default: var(--jds-gray-600); /* @kind color */
+  --jds-neutral-border-color-emphasis: var(--jds-gray-700); /* @kind color */
+  --jds-neutral-border-color-muted: var(--jds-gray-200); /* @kind color */
+  --jds-neutral-color-default: var(--jds-gray-600); /* @kind color */
+  --jds-neutral-color-emphasis: var(--jds-gray-700); /* @kind color */
+  --jds-neutral-color-fixed-dark: var(--jds-gray-600); /* @kind color */
+  --jds-neutral-color-fixed-light: var(--jds-gray-400); /* @kind color */
+  --jds-neutral-surface-default: var(--jds-gray-700); /* @kind color */
+  --jds-neutral-surface-emphasis: var(--jds-gray-800); /* @kind color */
+  --jds-neutral-surface-muted: var(--jds-gray-100); /* @kind color */
+  --jds-neutral-surface-translucent: rgba(14,14,14,0.15); /* @kind color */
+  --jds-opacity-0: 0; /* @kind other */
+  --jds-opacity-100: 100; /* @kind other */
+  --jds-opacity-10: 10; /* @kind other */
+  --jds-opacity-20: 20; /* @kind other */
+  --jds-opacity-30: 30; /* @kind other */
+  --jds-opacity-3: 3; /* @kind other */
+  --jds-opacity-40: 40; /* @kind other */
+  --jds-opacity-50: 50; /* @kind other */
+  --jds-opacity-5: 5; /* @kind other */
+  --jds-opacity-60: 60; /* @kind other */
+  --jds-opacity-70: 70; /* @kind other */
+  --jds-opacity-80: 80; /* @kind other */
+  --jds-opacity-90: 90; /* @kind other */
+  --jds-overflow-menu-border-radius: var(--jds-border-radius-sm);
+  --jds-overflow-menu-md-height: var(--jds-dimension-32);
+  --jds-overflow-menu-md-width: var(--jds-dimension-32);
+  --jds-overflow-menu-sm-height: var(--jds-dimension-24);
+  --jds-overflow-menu-sm-width: var(--jds-dimension-24);
+  --jds-padding-2-xl: var(--jds-spacer-8);
+  --jds-padding-2-xs: var(--jds-spacer-2);
+  --jds-padding-3-xl: var(--jds-spacer-9);
+  --jds-padding-3-xs: var(--jds-spacer-1);
+  --jds-padding-4-xl: var(--jds-spacer-10);
+  --jds-padding-5-xl: var(--jds-spacer-11);
+  --jds-padding-lg: var(--jds-spacer-6);
+  --jds-padding-md: var(--jds-spacer-5);
+  --jds-padding-none: var(--jds-spacer-0);
+  --jds-padding-sm: var(--jds-spacer-4);
+  --jds-padding-xl: var(--jds-spacer-7);
+  --jds-padding-xs: var(--jds-spacer-3);
+  --jds-pagination-btn-active-bg: var(--jds-primary-surface-default); /* @kind color */
+  --jds-pagination-btn-active-color: var(--jds-color-fixed-light); /* @kind color */
+  --jds-pagination-btn-border-radius: var(--jds-border-radius-md);
+  --jds-pagination-btn-group-gap: var(--jds-gap-2-xs);
+  --jds-pagination-btn-hover-bg: var(--jds-primary-bg-translucent); /* @kind color */
+  --jds-pagination-btn-hover-color: var(--jds-primary-color-default); /* @kind color */
+  --jds-pagination-btn-label-color: var(--jds-color-default); /* @kind color */
+  --jds-pagination-btn-md-height: var(--jds-dimension-48);
+  --jds-pagination-btn-md-width: var(--jds-dimension-48);
+  --jds-pagination-btn-sm-height: var(--jds-dimension-32);
+  --jds-pagination-btn-sm-width: var(--jds-dimension-32);
+  --jds-paragraph-spacing-lg: 24;
+  --jds-paragraph-spacing-md: 16;
+  --jds-paragraph-spacing-none: 0;
+  --jds-paragraph-spacing-sm: 8;
+  --jds-paragraph-spacing-xl: 32;
+  --jds-primary-100: rgb(252,241,242); /* @kind color */
+  --jds-primary-200: rgb(248,215,219); /* @kind color */
+  --jds-primary-300: rgb(241,178,184); /* @kind color */
+  --jds-primary-400: rgb(233,139,148); /* @kind color */
+  --jds-primary-500: rgb(224,89,104); /* @kind color */
+  --jds-primary-600: rgb(160,40,66); /* @kind color */
+  --jds-primary-700: rgb(139,34,50); /* @kind color */
+  --jds-primary-800: rgb(117,28,36); /* @kind color */
+  --jds-primary-900: rgb(85,14,25); /* @kind color */
+  --jds-primary-bg-default: var(--jds-primary-700); /* @kind color */
+  --jds-primary-bg-muted: var(--jds-primary-100); /* @kind color */
+  --jds-primary-bg-translucent: rgba(14,14,14,0.1); /* @kind color */
+  --jds-primary-border-color-default: var(--jds-primary-600); /* @kind color */
+  --jds-primary-border-color-emphasis: var(--jds-primary-700); /* @kind color */
+  --jds-primary-border-color-muted: var(--jds-primary-200); /* @kind color */
+  --jds-primary-color-default: var(--jds-primary-600); /* @kind color */
+  --jds-primary-color-emphasis: var(--jds-primary-700); /* @kind color */
+  --jds-primary-color-fixed-dark: var(--jds-primary-600); /* @kind color */
+  --jds-primary-color-fixed-light: var(--jds-primary-400); /* @kind color */
+  --jds-primary-surface-default: var(--jds-primary-600); /* @kind color */
+  --jds-primary-surface-emphasis: var(--jds-primary-700); /* @kind color */
+  --jds-primary-surface-muted: var(--jds-primary-100); /* @kind color */
+  --jds-primary-surface-translucent: rgba(14,14,14,0.1); /* @kind color */
+  --jds-progress-bar-gap: var(--jds-gap-2-xs);
+  --jds-progress-bar-height: var(--jds-dimension-4);
+  --jds-progress-bar-neutral-bg: var(--jds-neutral-surface-default); /* @kind color */
+  --jds-progress-bar-primary-bg: var(--jds-primary-surface-default); /* @kind color */
+  --jds-purple-100: rgb(251,240,254); /* @kind color */
+  --jds-purple-200: rgb(242,214,252); /* @kind color */
+  --jds-purple-300: rgb(230,173,249); /* @kind color */
+  --jds-purple-400: rgb(217,131,246); /* @kind color */
+  --jds-purple-500: rgb(201,76,242); /* @kind color */
+  --jds-purple-600: rgb(172,28,219); /* @kind color */
+  --jds-purple-700: rgb(133,22,169); /* @kind color */
+  --jds-purple-800: rgb(100,17,128); /* @kind color */
+  --jds-purple-900: rgb(70,12,90); /* @kind color */
+  --jds-purple-bg-default: var(--jds-purple-700); /* @kind color */
+  --jds-purple-bg-muted: var(--jds-purple-100); /* @kind color */
+  --jds-purple-border-color-default: var(--jds-purple-500); /* @kind color */
+  --jds-purple-border-color-emphasis: var(--jds-purple-700); /* @kind color */
+  --jds-purple-border-color-muted: var(--jds-purple-200); /* @kind color */
+  --jds-purple-color-default: var(--jds-purple-600); /* @kind color */
+  --jds-purple-color-emphasis: var(--jds-purple-700); /* @kind color */
+  --jds-purple-color-fixed-dark: var(--jds-purple-600); /* @kind color */
+  --jds-purple-color-fixed-light: var(--jds-purple-400); /* @kind color */
+  --jds-purple-surface-default: var(--jds-purple-600); /* @kind color */
+  --jds-purple-surface-emphasis: var(--jds-purple-700); /* @kind color */
+  --jds-purple-surface-muted: var(--jds-purple-100); /* @kind color */
+  --jds-radio-button-border-radius: var(--jds-border-radius-full);
+  --jds-radio-button-gap: var(--jds-gap-xs);
+  --jds-radio-button-group-gap: var(--jds-gap-xs);
+  --jds-radio-button-input-size: var(--jds-dimension-24);
+  --jds-radio-button-padding-y: var(--jds-padding-2-xs);
+  --jds-red-100: rgb(252,241,241); /* @kind color */
+  --jds-red-200: rgb(248,215,215); /* @kind color */
+  --jds-red-300: rgb(241,178,178); /* @kind color */
+  --jds-red-400: rgb(233,139,139); /* @kind color */
+  --jds-red-500: rgb(224,89,89); /* @kind color */
+  --jds-red-600: rgb(207,35,35); /* @kind color */
+  --jds-red-700: rgb(161,27,27); /* @kind color */
+  --jds-red-800: rgb(121,20,20); /* @kind color */
+  --jds-red-900: rgb(85,14,14); /* @kind color */
+  --jds-search-action-gap: var(--jds-gap-sm);
+  --jds-search-border-radius: var(--jds-border-radius-md);
+  --jds-search-height: var(--jds-dimension-48);
+  --jds-search-input-gap: var(--jds-gap-xs);
+  --jds-search-input-padding-x: var(--jds-padding-md);
+  --jds-search-item-padding-x: var(--jds-padding-md);
+  --jds-search-item-padding-y: var(--jds-padding-sm);
+  --jds-search-padding-x: var(--jds-padding-2-xs);
+  --jds-search-padding-y: var(--jds-padding-xs);
+  --jds-secondary-100: rgb(237,243,253); /* @kind color */
+  --jds-secondary-200: rgb(207,220,244); /* @kind color */
+  --jds-secondary-300: rgb(171,191,226); /* @kind color */
+  --jds-secondary-400: rgb(136,160,204); /* @kind color */
+  --jds-secondary-500: rgb(96,123,173); /* @kind color */
+  --jds-secondary-600: rgb(70,95,140); /* @kind color */
+  --jds-secondary-700: rgb(49,72,112); /* @kind color */
+  --jds-secondary-800: rgb(40,60,97); /* @kind color */
+  --jds-secondary-900: rgb(25,37,60); /* @kind color */
+  --jds-secondary-bg-default: var(--jds-secondary-700); /* @kind color */
+  --jds-secondary-bg-muted: var(--jds-secondary-100); /* @kind color */
+  --jds-secondary-bg-translucent: rgba(14,14,14,0.1); /* @kind color */
+  --jds-secondary-border-color-default: var(--jds-secondary-600); /* @kind color */
+  --jds-secondary-border-color-emphasis: var(--jds-secondary-700); /* @kind color */
+  --jds-secondary-border-color-muted: var(--jds-secondary-200); /* @kind color */
+  --jds-secondary-color-default: var(--jds-secondary-600); /* @kind color */
+  --jds-secondary-color-emphasis: var(--jds-secondary-700); /* @kind color */
+  --jds-secondary-color-fixed-dark: var(--jds-secondary-600); /* @kind color */
+  --jds-secondary-color-fixed-light: var(--jds-secondary-400); /* @kind color */
+  --jds-secondary-surface-default: var(--jds-secondary-600); /* @kind color */
+  --jds-secondary-surface-emphasis: var(--jds-secondary-700); /* @kind color */
+  --jds-secondary-surface-muted: var(--jds-secondary-100); /* @kind color */
+  --jds-secondary-surface-translucent: rgba(14,14,14,0.1); /* @kind color */
+  --jds-select-border-radius: var(--jds-border-radius-md);
+  --jds-select-input-height: var(--jds-dimension-48);
+  --jds-select-item-active-bg: var(--jds-primary-bg-translucent); /* @kind color */
+  --jds-select-item-active-color: var(--jds-primary-color-default); /* @kind color */
+  --jds-select-item-gap: var(--jds-gap-sm);
+  --jds-select-item-label-padding-y: var(--jds-padding-2-xs);
+  --jds-select-item-padding-x: var(--jds-padding-md);
+  --jds-select-item-padding-y: var(--jds-padding-sm);
+  --jds-select-menu-max-height: var(--jds-dimension-320);
+  --jds-select-menu-min-width: var(--jds-dimension-256);
+  --jds-select-padding-y: var(--jds-padding-xs);
+  --jds-sidenav-border-radius: var(--jds-border-radius-md);
+  --jds-sidenav-menu-item-gap: var(--jds-gap-2-xs);
+  --jds-sidenav-menu-item-icon-gap: var(--jds-gap-xs);
+  --jds-sidenav-menu-item-label-indent-1: var(--jds-padding-md);
+  --jds-sidenav-menu-item-label-indent-2: var(--jds-padding-2-xl);
+  --jds-sidenav-menu-item-label-indent-3: var(--jds-padding-3-xl);
+  --jds-sidenav-menu-item-label-indent-4: var(--jds-padding-4-xl);
+  --jds-sidenav-menu-item-padding-left: var(--jds-padding-md);
+  --jds-sidenav-menu-item-padding-right: var(--jds-padding-sm);
+  --jds-sidenav-menu-item-padding-x: var(--jds-padding-sm);
+  --jds-sidenav-menu-item-padding-y: var(--jds-padding-xs);
+  --jds-skeleton-border-radius: var(--jds-border-radius-sm);
+  --jds-skeleton-gap: var(--jds-gap-xs);
+  --jds-spacer-0: 0; /* @kind spacing */
+  --jds-spacer-10: 64; /* @kind spacing */
+  --jds-spacer-11: 96; /* @kind spacing */
+  --jds-spacer-12: 128; /* @kind spacing */
+  --jds-spacer-1: 2; /* @kind spacing */
+  --jds-spacer-2: 4; /* @kind spacing */
+  --jds-spacer-3: 8; /* @kind spacing */
+  --jds-spacer-4: 12; /* @kind spacing */
+  --jds-spacer-5: 16; /* @kind spacing */
+  --jds-spacer-6: 20; /* @kind spacing */
+  --jds-spacer-7: 24; /* @kind spacing */
+  --jds-spacer-8: 32; /* @kind spacing */
+  --jds-spacer-9: 48; /* @kind spacing */
+  --jds-spinner-dark-bg: var(--jds-surface-fixed-dark); /* @kind color */
+  --jds-spinner-gap: var(--jds-gap-xs);
+  --jds-spinner-light-bg: var(--jds-surface-fixed-light); /* @kind color */
+  --jds-spinner-neutral-bg: var(--jds-neutral-surface-default); /* @kind color */
+  --jds-spinner-primary-bg: var(--jds-primary-surface-default); /* @kind color */
+  --jds-spinner-size-lg: var(--jds-dimension-48);
+  --jds-spinner-size-md: var(--jds-dimension-32);
+  --jds-spinner-size-sm: var(--jds-dimension-24);
+  --jds-spinner-size-xl: var(--jds-dimension-64);
+  --jds-spinner-size-xs: var(--jds-dimension-16);
+  --jds-stepper-active-bg: var(--jds-primary-surface-default); /* @kind color */
+  --jds-stepper-border-radius: var(--jds-border-radius-full);
+  --jds-stepper-border-width: var(--jds-border-width-2);
+  --jds-stepper-complete-border-color: var(--jds-primary-border-color-default); /* @kind color */
+  --jds-stepper-complete-color: var(--jds-primary-color-default); /* @kind color */
+  --jds-stepper-gap: var(--jds-gap-sm);
+  --jds-stepper-hover-bg: var(--jds-primary-surface-emphasis); /* @kind color */
+  --jds-stepper-indicator-size: var(--jds-dimension-32);
+  --jds-stepper-label-gap: var(--jds-gap-2-xs);
+  --jds-stepper-label-max-width: var(--jds-dimension-128);
+  --jds-stepper-label-padding-bottom: var(--jds-padding-xl);
+  --jds-stepper-label-padding-top: var(--jds-padding-2-xs);
+  --jds-stepper-padding-x: var(--jds-padding-xs);
+  --jds-subnav-action-gap: var(--jds-gap-md);
+  --jds-subnav-action-padding-x: var(--jds-padding-lg);
+  --jds-subnav-action-padding-y: var(--jds-padding-md);
+  --jds-subnav-active-bg: var(--jds-primary-surface-default); /* @kind color */
+  --jds-subnav-active-color: var(--jds-primary-color-default); /* @kind color */
+  --jds-subnav-color: var(--jds-color-default); /* @kind color */
+  --jds-subnav-gap: var(--jds-gap-xl);
+  --jds-subnav-header-gap: var(--jds-gap-md);
+  --jds-subnav-header-min-width: var(--jds-dimension-320);
+  --jds-subnav-header-padding-x: var(--jds-padding-2-xl);
+  --jds-subnav-hover-color: var(--jds-color-subtle); /* @kind color */
+  --jds-subnav-item-gap: var(--jds-gap-2-xs);
+  --jds-subnav-item-indicator-size: var(--jds-dimension-2);
+  --jds-subnav-item-label-padding-y: var(--jds-padding-3-xs);
+  --jds-subnav-item-mobile-padding-x: var(--jds-padding-lg);
+  --jds-subnav-item-mobile-padding-y: var(--jds-padding-sm);
+  --jds-subnav-item-padding-y: var(--jds-padding-lg);
+  --jds-subnav-menu-group-gap: var(--jds-gap-lg);
+  --jds-subnav-padding-top: var(--jds-padding-lg);
+  --jds-subnav-padding-x: var(--jds-padding-lg);
+  --jds-subnav-padding-y: var(--jds-padding-md);
+  --jds-success-bg-default: var(--jds-green-700); /* @kind color */
+  --jds-success-bg-muted: var(--jds-green-100); /* @kind color */
+  --jds-success-border-color-default: var(--jds-green-600); /* @kind color */
+  --jds-success-border-color-emphasis: var(--jds-green-700); /* @kind color */
+  --jds-success-border-color-muted: var(--jds-green-200); /* @kind color */
+  --jds-success-color-default: var(--jds-green-600); /* @kind color */
+  --jds-success-color-emphasis: var(--jds-green-700); /* @kind color */
+  --jds-success-color-fixed-dark: var(--jds-green-600); /* @kind color */
+  --jds-success-color-fixed-light: var(--jds-green-400); /* @kind color */
+  --jds-success-surface-default: var(--jds-green-600); /* @kind color */
+  --jds-success-surface-emphasis: var(--jds-green-700); /* @kind color */
+  --jds-success-surface-muted: var(--jds-green-100); /* @kind color */
+  --jds-surface-default: var(--jds-gray-0); /* @kind color */
+  --jds-surface-fixed-dark: var(--jds-gray-900); /* @kind color */
+  --jds-surface-fixed-light: var(--jds-gray-0); /* @kind color */
+  --jds-surface-inverse: var(--jds-gray-900); /* @kind color */
+  --jds-surface-raised: var(--jds-gray-50); /* @kind color */
+  --jds-switch-border-radius: var(--jds-border-radius-full);
+  --jds-switch-lg-height: var(--jds-dimension-40);
+  --jds-switch-lg-thumb-size: var(--jds-dimension-32);
+  --jds-switch-lg-width: var(--jds-dimension-72);
+  --jds-switch-md-height: var(--jds-dimension-32);
+  --jds-switch-md-thumb-size: var(--jds-dimension-24);
+  --jds-switch-md-width: var(--jds-dimension-56);
+  --jds-switch-padding-x: var(--jds-padding-2-xs);
+  --jds-switch-padding-y: var(--jds-padding-2-xs);
+  --jds-switch-sm-height: var(--jds-dimension-24);
+  --jds-switch-sm-thumb-size: var(--jds-dimension-16);
+  --jds-switch-sm-width: var(--jds-dimension-40);
+  --jds-system-banner-gap: var(--jds-gap-xl);
+  --jds-system-banner-icon-gap: var(--jds-gap-sm);
+  --jds-system-banner-label-padding-y: var(--jds-padding-2-xs);
+  --jds-system-banner-min-height: var(--jds-dimension-64);
+  --jds-system-banner-mobile-gap: var(--jds-gap-xs);
+  --jds-system-banner-mobile-padding-x: var(--jds-padding-lg);
+  --jds-system-banner-mobile-padding-y: var(--jds-padding-sm);
+  --jds-system-banner-neutral-bg: var(--jds-surface-fixed-dark); /* @kind color */
+  --jds-system-banner-padding-left: var(--jds-padding-2-xl);
+  --jds-system-banner-padding-right: var(--jds-padding-2-xl);
+  --jds-system-banner-padding-x: var(--jds-padding-2-xl);
+  --jds-system-banner-padding-y: var(--jds-padding-sm);
+  --jds-tab-border-radius: var(--jds-border-radius-md);
+  --jds-tab-color: var(--jds-color-default); /* @kind color */
+  --jds-tab-compact-min-height: var(--jds-dimension-40);
+  --jds-tab-compact-padding-x: var(--jds-padding-sm);
+  --jds-tab-compact-padding-y: var(--jds-padding-xs);
+  --jds-tab-default-padding-x: var(--jds-padding-md);
+  --jds-tab-default-padding-y: var(--jds-padding-sm);
+  --jds-tab-gap: var(--jds-gap-xs);
+  --jds-tab-group-gap: var(--jds-gap-xs);
+  --jds-tab-icon-color: var(--jds-color-subtle); /* @kind color */
+  --jds-tab-indicator-size: var(--jds-dimension-2);
+  --jds-tab-solid-active-bg: var(--jds-primary-surface-default); /* @kind color */
+  --jds-tab-solid-active-color: var(--jds-color-fixed-light); /* @kind color */
+  --jds-tab-solid-bg: var(--jds-surface-raised); /* @kind color */
+  --jds-tab-solid-hover-bg: var(--jds-bg-translucent); /* @kind color */
+  --jds-tab-underlined-active-bg: var(--jds-primary-surface-default); /* @kind color */
+  --jds-tab-underlined-active-color: var(--jds-primary-color-default); /* @kind color */
+  --jds-tab-underlined-hover-bg: var(--jds-surface-raised); /* @kind color */
+  --jds-table-border-radius: var(--jds-border-radius-md);
+  --jds-table-cell-gap: var(--jds-gap-2-xs);
+  --jds-table-cell-height: var(--jds-dimension-80);
+  --jds-table-cell-padding-left: var(--jds-padding-md);
+  --jds-table-cell-padding-right: var(--jds-padding-md);
+  --jds-table-cell-padding-x: var(--jds-padding-md);
+  --jds-table-cell-padding-y: var(--jds-padding-sm);
+  --jds-table-column-max-width-sm: var(--jds-dimension-96);
+  --jds-table-column-max-width-xs: var(--jds-dimension-64);
+  --jds-table-column-min-width-lg: var(--jds-dimension-288);
+  --jds-table-column-min-width-md: var(--jds-dimension-128);
+  --jds-table-column-min-width-sm: var(--jds-dimension-96);
+  --jds-table-column-min-width-xl: var(--jds-dimension-384);
+  --jds-table-column-min-width-xs: var(--jds-dimension-64);
+  --jds-table-gap: var(--jds-gap-md);
+  --jds-table-of-content-gap: var(--jds-gap-md);
+  --jds-table-of-content-header-gap: var(--jds-gap-md);
+  --jds-table-padding-x: var(--jds-padding-lg);
+  --jds-table-padding-y: var(--jds-padding-lg);
+  --jds-text-area-height: var(--jds-dimension-120);
+  --jds-text-area-min-height: var(--jds-dimension-136);
+  --jds-text-area-min-width: var(--jds-dimension-256);
+  --jds-text-gap-2-xl: var(--jds-spacer-8);
+  --jds-text-gap-2-xs: var(--jds-spacer-2);
+  --jds-text-gap-lg: var(--jds-spacer-6);
+  --jds-text-gap-md: var(--jds-spacer-5);
+  --jds-text-gap-sm: var(--jds-spacer-4);
+  --jds-text-gap-xl: var(--jds-spacer-7);
+  --jds-text-gap-xs: var(--jds-spacer-3);
+  --jds-text-input-height: var(--jds-dimension-48);
+  --jds-text-input-min-width: var(--jds-dimension-256);
+  --jds-text-max-width: var(--jds-dimension-864);
+  --jds-tile-border-radius: var(--jds-border-radius-md);
+  --jds-tile-gap: var(--jds-gap-md);
+  --jds-tile-min-width: var(--jds-dimension-256);
+  --jds-tile-padding-right: var(--jds-padding-2-xl);
+  --jds-tile-padding-x: var(--jds-padding-xl);
+  --jds-tile-padding-y: var(--jds-padding-xl);
+  --jds-tile-title-gap: var(--jds-gap-xs);
+  --jds-toast-border-radius: var(--jds-border-radius-md);
+  --jds-toast-content-gap: var(--jds-gap-sm);
+  --jds-toast-content-padding-right: var(--jds-padding-xl);
+  --jds-toast-danger-color: var(--jds-danger-color-default); /* @kind color */
+  --jds-toast-gap: var(--jds-gap-sm);
+  --jds-toast-info-color: var(--jds-primary-color-default); /* @kind color */
+  --jds-toast-max-width: var(--jds-dimension-480);
+  --jds-toast-min-width: var(--jds-dimension-280);
+  --jds-toast-neutral-color: var(--jds-neutral-color-default); /* @kind color */
+  --jds-toast-padding-x: var(--jds-padding-md);
+  --jds-toast-padding-y: var(--jds-padding-md);
+  --jds-toast-success-color: var(--jds-success-color-default); /* @kind color */
+  --jds-toast-tltle-gap: var(--jds-gap-2-xs);
+  --jds-toast-warning-color: var(--jds-warning-color-fixed-light); /* @kind color */
+  --jds-tooltip-border-radius: var(--jds-border-radius-md);
+  --jds-tooltip-max-width: var(--jds-dimension-320);
+  --jds-tooltip-padding-x: var(--jds-padding-sm);
+  --jds-tooltip-padding-y: var(--jds-padding-xs);
+  --jds-warning-bg-default: var(--jds-yellow-200); /* @kind color */
+  --jds-warning-bg-muted: var(--jds-yellow-100); /* @kind color */
+  --jds-warning-border-color-default: var(--jds-yellow-600); /* @kind color */
+  --jds-warning-border-color-emphasis: var(--jds-yellow-700); /* @kind color */
+  --jds-warning-border-color-muted: var(--jds-yellow-200); /* @kind color */
+  --jds-warning-color-default: var(--jds-yellow-600); /* @kind color */
+  --jds-warning-color-emphasis: var(--jds-yellow-700); /* @kind color */
+  --jds-warning-color-fixed-dark: var(--jds-yellow-600); /* @kind color */
+  --jds-warning-color-fixed-light: var(--jds-yellow-300); /* @kind color */
+  --jds-warning-surface-default: var(--jds-yellow-200); /* @kind color */
+  --jds-warning-surface-emphasis: var(--jds-yellow-600); /* @kind color */
+  --jds-warning-surface-muted: var(--jds-yellow-100); /* @kind color */
+  --jds-yellow-100: rgb(254,244,203); /* @kind color */
+  --jds-yellow-200: rgb(252,222,99); /* @kind color */
+  --jds-yellow-300: rgb(229,191,41); /* @kind color */
+  --jds-yellow-400: rgb(194,162,35); /* @kind color */
+  --jds-yellow-500: rgb(157,132,28); /* @kind color */
+  --jds-yellow-600: rgb(126,105,23); /* @kind color */
+  --jds-yellow-700: rgb(96,81,17); /* @kind color */
+  --jds-yellow-800: rgb(72,60,13); /* @kind color */
+  --jds-yellow-900: rgb(50,41,9); /* @kind color */
+  --opacity-opacity-50: 50; /* @kind other */
+  --opacity-opacity-60: 60; /* @kind other */
+  --opacity-opacity-70: 70; /* @kind other */
+  --paragraph-font-weight-bold: "bold";
+  --radius-lg: 10;
+  --radius-md: 8;
+  --sgds-bg-muted: var(--jds-gray-300); /* @kind color */
+  --sgds-body-font-size: 16;
+  --sgds-body-line-height: 32;
+  --sgds-btn-default-focus-box-shadow-color: var(--jds-gray-500); /* @kind color */
+  --sgds-btn-icon-size-default: 20;
+  --sgds-caption-color: var(--jds-gray-600); /* @kind color */
+  --sgds-color-disabled: var(--jds-gray-400); /* @kind color */
+  --sgds-color-on-surface-fixed-light: var(--jds-gray-100); /* @kind color */
+  --sgds-danger-300: var(--jds-red-300); /* @kind color */
+  --sgds-danger-bg-emphasis: var(--jds-red-700); /* @kind color */
+  --sgds-danger-border-color-subtle: var(--jds-red-300); /* @kind color */
+  --sgds-danger: var(--jds-red-600); /* @kind color */
+  --sgds-default-bg-emphasis: var(--jds-gray-800); /* @kind color */
+  --sgds-default-bg-subtle: var(--jds-gray-500); /* @kind color */
+  --sgds-default-border-color-inverse: var(--jds-gray-0); /* @kind color */
+  --sgds-default-border-color-subtle: var(--jds-gray-300); /* @kind color */
+  --sgds-default-color-emphasis: var(--jds-gray-800); /* @kind color */
+  --sgds-default-color-on-light: var(--jds-gray-800); /* @kind color */
+  --sgds-display-font-size: 56;
+  --sgds-display-line-height: 64;
+  --sgds-focus-border: var(--jds-gray-400); /* @kind color */
+  --sgds-focus-width: 2; /* @kind spacing */
+  --sgds-font-family-inter: "Inter";
+  --sgds-font-family: "Inter";
+  --sgds-font-size-0: 12;
+  --sgds-font-size-1-2: 14;
+  --sgds-font-size-1: 12;
+  --sgds-font-size-2: 16;
+  --sgds-font-size-3: 20;
+  --sgds-font-size-4: 24;
+  --sgds-font-size-5: 28;
+  --sgds-font-size-6: 32;
+  --sgds-font-size-7: 40;
+  --sgds-font-size-8: 48;
+  --sgds-font-size-9: 56;
+  --sgds-font-weight-bold: "bold";
+  --sgds-font-weight-light: "light";
+  --sgds-font-weight-regular: "regular";
+  --sgds-font-weight-semibold: "semibold";
+  --sgds-form-bg-emphasis: var(--jds-gray-700); /* @kind color */
+  --sgds-form-bg-inverse: var(--jds-gray-900); /* @kind color */
+  --sgds-form-bg-muted: var(--jds-gray-100); /* @kind color */
+  --sgds-form-bg-on-dark: var(--jds-gray-0); /* @kind color */
+  --sgds-form-bg-on-light: var(--jds-gray-800); /* @kind color */
+  --sgds-form-bg-subtle: var(--jds-gray-400); /* @kind color */
+  --sgds-form-bg-translucent: rgba(14,14,14,0.05); /* @kind color */
+  --sgds-form-bg-transparent: rgba(255,255,255,0); /* @kind color */
+  --sgds-form-border-color-emphasis: var(--jds-gray-800); /* @kind color */
+  --sgds-form-border-color-muted: var(--jds-gray-200); /* @kind color */
+  --sgds-form-border-color: var(--jds-gray-500); /* @kind color */
+  --sgds-form-border-radius-sm: var(--jds-border-radius-sm);
+  --sgds-form-border-width: var(--jds-border-width-1);
+  --sgds-form-color-inverse: var(--jds-gray-0); /* @kind color */
+  --sgds-form-color-muted: var(--jds-gray-200); /* @kind color */
+  --sgds-form-color-on-dark: var(--jds-gray-0); /* @kind color */
+  --sgds-form-color-on-light: var(--jds-gray-800); /* @kind color */
+  --sgds-form-color-subtle: var(--jds-gray-500); /* @kind color */
+  --sgds-form-color: var(--jds-gray-800); /* @kind color */
+  --sgds-form-danger-border-color: var(--jds-red-600); /* @kind color */
+  --sgds-form-danger-color: var(--jds-red-600); /* @kind color */
+  --sgds-form-danger-surface-default: var(--jds-red-600); /* @kind color */
+  --sgds-form-gap-md: var(--sgds-gap-xs);
+  --sgds-form-invalid-border-color: var(--sgds-danger); /* @kind color */
+  --sgds-form-invalid-color: var(--sgds-danger); /* @kind color */
+  --sgds-form-padding-inline-sm: var(--sgds-padding-2-xs);
+  --sgds-form-success-bg: var(--jds-green-600); /* @kind color */
+  --sgds-form-success-border-color: var(--jds-green-600); /* @kind color */
+  --sgds-form-success-color: var(--jds-green-600); /* @kind color */
+  --sgds-form-surface-default: var(--jds-gray-0); /* @kind color */
+  --sgds-gap-sm: var(--jds-spacer-4);
+  --sgds-gap-xs: var(--jds-spacer-3);
+  --sgds-header-1-font-size: 40;
+  --sgds-header-1-line-height: 48;
+  --sgds-header-2-font-size: 32;
+  --sgds-header-2-line-height: 40;
+  --sgds-header-3-font-size: 24;
+  --sgds-header-3-line-height: 32;
+  --sgds-header-4-font-size: 18;
+  --sgds-header-4-line-height: 32;
+  --sgds-info-bg: var(--jds-blue-600); /* @kind color */
+  --sgds-input-border-color: var(--sgds-focus-border); /* @kind color */
+  --sgds-input-color: var(--jds-display-color-default); /* @kind color */
+  --sgds-input-icon-size: var(--sgds-btn-icon-size-default);
+  --sgds-input-padding-x: var(--sgds-not-done-input-btn-padding-x);
+  --sgds-input-padding-y: var(--sgds-not-done-input-btn-padding-y);
+  --sgds-input-placeholder-color: var(--jds-gray-400); /* @kind color */
+  --sgds-letter-spacing-lg: 0; /* @kind spacing */
+  --sgds-letter-spacing-md: -0.4; /* @kind spacing */
+  --sgds-letter-spacing-sm: -1; /* @kind spacing */
+  --sgds-letter-spacing-xl: 2; /* @kind spacing */
+  --sgds-link: var(--jds-blue-600); /* @kind color */
+  --sgds-modal-padding-x: var(--sgds-padding-xl);
+  --sgds-modal-padding-y: var(--sgds-padding-xl);
+  --sgds-neutral-bg-inverse: var(--jds-gray-0); /* @kind color */
+  --sgds-not-done-input-btn-gap: var(--jds-spacer-2);
+  --sgds-not-done-input-btn-padding-x: var(--jds-spacer-3);
+  --sgds-not-done-input-btn-padding-y: var(--jds-spacer-2);
+  --sgds-overline-color: var(--jds-gray-600); /* @kind color */
+  --sgds-padding-2-xs: var(--jds-spacer-2);
+  --sgds-padding-xl: var(--jds-spacer-7);
+  --sgds-paragraph-font-size: var(--sgds-body-font-size);
+  --sgds-paragraph-line-height: var(--sgds-body-line-height);
+  --sgds-paragraph-spacing-0: 0;
+  --sgds-paragraph-spacing-1: 24;
+  --sgds-primary-border-color-subtle: var(--sgds-product-primary-400); /* @kind color */
+  --sgds-product-primary-400: rgb(169,153,243); /* @kind color */
+  --sgds-product-primary-700: rgb(82,58,188); /* @kind color */
+  --sgds-secondary-300: var(--jds-cyan-300); /* @kind color */
+  --sgds-small-font-size: 14;
+  --sgds-small-line-height: 28;
+  --sgds-stepper-active-color: var(--sgds-color-on-surface-fixed-light); /* @kind color */
+  --sgds-stepper-bg: var(--jds-bg-translucent); /* @kind color */
+  --sgds-stepper-color: var(--jds-color-default); /* @kind color */
+  --sgds-stepper-complete-bg: var(--jds-bg-transparent); /* @kind color */
+  --sgds-stepper-indicator-width: var(--jds-dimension-32);
+  --sgds-subtitle-color-subtle: var(--jds-gray-700); /* @kind color */
+  --sgds-subtitle-color: var(--jds-gray-800); /* @kind color */
+  --sgds-success-300: var(--jds-green-300); /* @kind color */
+  --sgds-success-bg-emphasis: var(--jds-green-700); /* @kind color */
+  --sgds-success-border-color-subtle: var(--jds-green-300); /* @kind color */
+  --sgds-warning-bg-emphasis: var(--jds-yellow-700); /* @kind color */
+  --sgds-warning-bg: var(--jds-yellow-600); /* @kind color */
+  --sgds-warning-border-color-subtle: var(--jds-yellow-300); /* @kind color */
+  --sgds-white: rgb(255,255,255); /* @kind color */
+  --spacing-0-5: 2;
+  --spacing-1-5: 6;
+  --spacing-1: 4;
+  --spacing-2: 8;
+  --spacing-3: 12;
+  --spacing-5: 20;
+  --spacing-6: 24;
+  --tailwind-colors-base-white: rgb(255,255,255); /* @kind color */
+  --tailwind-colors-orange-600: rgb(234,88,12); /* @kind color */
+  --tailwind-colors-red-700: rgb(185,28,28); /* @kind color */
+  --tailwind-colors-slate-100: rgb(241,245,249); /* @kind color */
+  --tailwind-colors-slate-200: rgb(226,232,240); /* @kind color */
+  --tailwind-colors-slate-300: rgb(203,213,225); /* @kind color */
+  --tailwind-colors-slate-400: rgb(148,163,184); /* @kind color */
+  --tailwind-colors-slate-50: rgb(248,250,252); /* @kind color */
+  --tailwind-colors-slate-900: rgb(15,23,42); /* @kind color */
+  --tailwind-colors-zinc-200: rgb(228,228,231); /* @kind color */
+  --tailwind-colors-zinc-600: rgb(82,82,91); /* @kind color */
+  --text-base-font-size: 16;
+  --text-base-line-height: 24;
+  --text-default: var(--color-grey-900); /* @kind color */
+  --text-link: var(--color-blue-600); /* @kind color */
+  --text-sm-font-size: 14;
+  --text-sm-line-height: 20;
+  --text-xs-font-size: 12;
+  --text-xs-line-height: 16;
+  --type-color-header-light: var(--gray-neutral-90); /* @kind color */
+  --width-w-10: 40; /* @kind spacing */
+  --width-w-12: 48; /* @kind spacing */
+  --width-w-4: 16; /* @kind spacing */
+  --width-w-5: 20; /* @kind spacing */
+  --width-w-6: 24; /* @kind spacing */
+  --width-w-8: 32; /* @kind spacing */
+}
+
+:root[data-theme="dark"], .dark {
+  --jds-accent-bg-default: var(--jds-blue-600); /* @kind color */
+  --jds-accent-bg-muted: var(--jds-blue-200); /* @kind color */
+  --jds-accent-border-color-default: var(--jds-blue-500); /* @kind color */
+  --jds-accent-border-color-emphasis: var(--jds-blue-200); /* @kind color */
+  --jds-accent-border-color-muted: var(--jds-blue-700); /* @kind color */
+  --jds-accent-color-default: var(--jds-blue-400); /* @kind color */
+  --jds-accent-color-emphasis: var(--jds-blue-300); /* @kind color */
+  --jds-accent-color-fixed-dark: var(--jds-blue-600); /* @kind color */
+  --jds-accent-color-fixed-light: var(--jds-blue-400); /* @kind color */
+  --jds-accent-surface-default: var(--jds-blue-600); /* @kind color */
+  --jds-accent-surface-emphasis: var(--jds-blue-700); /* @kind color */
+  --jds-accent-surface-muted: var(--jds-blue-900); /* @kind color */
+  --jds-bg-alternate: var(--jds-gray-1000); /* @kind color */
+  --jds-bg-default: var(--jds-gray-1100); /* @kind color */
+  --jds-bg-fixed-dark: var(--jds-gray-1100); /* @kind color */
+  --jds-bg-fixed-light: var(--jds-gray-0); /* @kind color */
+  --jds-bg-overlay: rgba(14,14,14,0.5); /* @kind color */
+  --jds-bg-translucent-fixed-dark: rgba(14,14,14,0.1); /* @kind color */
+  --jds-bg-translucent-fixed-light: rgba(255,255,255,0.1); /* @kind color */
+  --jds-bg-translucent-inverse: rgba(14,14,14,0.1); /* @kind color */
+  --jds-bg-translucent-subtle: rgba(255,255,255,0.1); /* @kind color */
+  --jds-bg-translucent: rgba(255,255,255,0.1); /* @kind color */
+  --jds-bg-transparent: rgba(255,255,255,0); /* @kind color */
+  --jds-body-color-default: var(--jds-gray-0); /* @kind color */
+  --jds-body-color-subtle: var(--jds-gray-300); /* @kind color */
+  --jds-border-color-default: var(--jds-gray-500); /* @kind color */
+  --jds-border-color-emphasis: var(--jds-gray-200); /* @kind color */
+  --jds-border-color-fixed-dark: var(--jds-gray-1000); /* @kind color */
+  --jds-border-color-fixed-light: var(--jds-gray-0); /* @kind color */
+  --jds-border-color-muted: var(--jds-gray-800); /* @kind color */
+  --jds-border-color-translucent: rgba(255,255,255,0.1); /* @kind color */
+  --jds-border-color-transparent: rgba(255,255,255,0); /* @kind color */
+  --jds-color-default: var(--jds-gray-100); /* @kind color */
+  --jds-color-fixed-dark: var(--jds-gray-1000); /* @kind color */
+  --jds-color-fixed-light: var(--jds-gray-100); /* @kind color */
+  --jds-color-inverse: var(--jds-gray-1000); /* @kind color */
+  --jds-color-muted: var(--jds-gray-800); /* @kind color */
+  --jds-color-subtle: var(--jds-gray-400); /* @kind color */
+  --jds-color-transparent: rgba(255,255,255,0); /* @kind color */
+  --jds-cyan-bg-default: var(--jds-cyan-600); /* @kind color */
+  --jds-cyan-bg-muted: var(--jds-cyan-200); /* @kind color */
+  --jds-cyan-border-color-default: var(--jds-cyan-500); /* @kind color */
+  --jds-cyan-border-color-emphasis: var(--jds-cyan-200); /* @kind color */
+  --jds-cyan-border-color-muted: var(--jds-cyan-700); /* @kind color */
+  --jds-cyan-color-default: var(--jds-cyan-400); /* @kind color */
+  --jds-cyan-color-emphasis: var(--jds-cyan-300); /* @kind color */
+  --jds-cyan-color-fixed-dark: var(--jds-cyan-600); /* @kind color */
+  --jds-cyan-color-fixed-light: var(--jds-cyan-400); /* @kind color */
+  --jds-cyan-surface-default: var(--jds-cyan-600); /* @kind color */
+  --jds-cyan-surface-emphasis: var(--jds-cyan-700); /* @kind color */
+  --jds-cyan-surface-muted: var(--jds-cyan-900); /* @kind color */
+  --jds-danger-bg-default: var(--jds-red-600); /* @kind color */
+  --jds-danger-bg-muted: var(--jds-red-200); /* @kind color */
+  --jds-danger-border-color-default: var(--jds-red-400); /* @kind color */
+  --jds-danger-border-color-emphasis: var(--jds-red-200); /* @kind color */
+  --jds-danger-border-color-muted: var(--jds-red-700); /* @kind color */
+  --jds-danger-color-default: var(--jds-red-400); /* @kind color */
+  --jds-danger-color-emphasis: var(--jds-red-300); /* @kind color */
+  --jds-danger-color-fixed-dark: var(--jds-red-600); /* @kind color */
+  --jds-danger-color-fixed-light: var(--jds-red-400); /* @kind color */
+  --jds-danger-surface-default: var(--jds-red-600); /* @kind color */
+  --jds-danger-surface-emphasis: var(--jds-red-700); /* @kind color */
+  --jds-danger-surface-muted: var(--jds-red-900); /* @kind color */
+  --jds-danger-surface-translucent: rgba(252,241,241,0.08); /* @kind color */
+  --jds-display-color-default: var(--jds-gray-0); /* @kind color */
+  --jds-display-color-subtle: var(--jds-gray-200); /* @kind color */
+  --jds-focus-outline: var(--jds-blue-500); /* @kind color */
+  --jds-form-color-default: var(--jds-gray-100); /* @kind color */
+  --jds-form-color-fixed-dark: var(--jds-gray-1100); /* @kind color */
+  --jds-form-color-fixed-light: var(--jds-gray-0); /* @kind color */
+  --jds-form-color-inverse: var(--jds-gray-900); /* @kind color */
+  --jds-form-color-muted: var(--jds-gray-700); /* @kind color */
+  --jds-form-color-subtle: var(--jds-gray-300); /* @kind color */
+  --jds-form-danger-border-color-default: var(--jds-red-500); /* @kind color */
+  --jds-form-danger-color-default: var(--jds-red-500); /* @kind color */
+  --jds-form-danger-surface-default: var(--jds-red-600); /* @kind color */
+  --jds-form-primary-color-default: var(--jds-primary-400); /* @kind color */
+  --jds-form-primary-surface-default: var(--jds-primary-600); /* @kind color */
+  --jds-form-primary-surface-emphasis: var(--jds-primary-700); /* @kind color */
+  --jds-form-success-border-color-default: var(--jds-green-500); /* @kind color */
+  --jds-form-success-color-default: var(--jds-green-500); /* @kind color */
+  --jds-form-success-surface-default: var(--jds-green-600); /* @kind color */
+  --jds-form-surface-default: var(--jds-gray-900); /* @kind color */
+  --jds-form-surface-emphasis: var(--jds-gray-200); /* @kind color */
+  --jds-form-surface-fixed-dark: var(--jds-gray-900); /* @kind color */
+  --jds-form-surface-fixed-light: var(--jds-gray-0); /* @kind color */
+  --jds-form-surface-inverse: var(--jds-gray-0); /* @kind color */
+  --jds-form-surface-muted: var(--jds-gray-700); /* @kind color */
+  --jds-form-surface-raised: var(--jds-gray-800); /* @kind color */
+  --jds-form-surface-subtle: var(--jds-gray-500); /* @kind color */
+  --jds-heading-color-default: var(--jds-gray-100); /* @kind color */
+  --jds-heading-color-subtle: var(--jds-gray-200); /* @kind color */
+  --jds-label-color-default: var(--jds-gray-100); /* @kind color */
+  --jds-label-color-subtle: var(--jds-gray-300); /* @kind color */
+  --jds-link-color-default: var(--jds-blue-400); /* @kind color */
+  --jds-link-color-emphasis: var(--jds-blue-300); /* @kind color */
+  --jds-neutral-bg-default: var(--jds-gray-600); /* @kind color */
+  --jds-neutral-bg-muted: var(--jds-gray-200); /* @kind color */
+  --jds-neutral-border-color-default: var(--jds-gray-400); /* @kind color */
+  --jds-neutral-border-color-emphasis: var(--jds-gray-200); /* @kind color */
+  --jds-neutral-border-color-muted: var(--jds-gray-700); /* @kind color */
+  --jds-neutral-color-default: var(--jds-gray-400); /* @kind color */
+  --jds-neutral-color-emphasis: var(--jds-gray-300); /* @kind color */
+  --jds-neutral-color-fixed-dark: var(--jds-gray-600); /* @kind color */
+  --jds-neutral-color-fixed-light: var(--jds-gray-400); /* @kind color */
+  --jds-neutral-surface-default: var(--jds-gray-600); /* @kind color */
+  --jds-neutral-surface-emphasis: var(--jds-gray-700); /* @kind color */
+  --jds-neutral-surface-muted: var(--jds-gray-900); /* @kind color */
+  --jds-neutral-surface-translucent: rgba(255,255,255,0.15); /* @kind color */
+  --jds-primary-bg-default: var(--jds-primary-600); /* @kind color */
+  --jds-primary-bg-muted: var(--jds-primary-200); /* @kind color */
+  --jds-primary-bg-translucent: rgba(255,255,255,0.05); /* @kind color */
+  --jds-primary-border-color-default: var(--jds-primary-400); /* @kind color */
+  --jds-primary-border-color-emphasis: var(--jds-primary-200); /* @kind color */
+  --jds-primary-border-color-muted: var(--jds-primary-700); /* @kind color */
+  --jds-primary-color-default: var(--jds-primary-400); /* @kind color */
+  --jds-primary-color-emphasis: var(--jds-primary-300); /* @kind color */
+  --jds-primary-color-fixed-dark: var(--jds-primary-600); /* @kind color */
+  --jds-primary-color-fixed-light: var(--jds-primary-400); /* @kind color */
+  --jds-primary-surface-default: var(--jds-primary-600); /* @kind color */
+  --jds-primary-surface-emphasis: var(--jds-primary-700); /* @kind color */
+  --jds-primary-surface-muted: var(--jds-primary-900); /* @kind color */
+  --jds-primary-surface-translucent: rgba(255,255,255,0.1); /* @kind color */
+  --jds-purple-bg-default: var(--jds-purple-600); /* @kind color */
+  --jds-purple-bg-muted: var(--jds-purple-200); /* @kind color */
+  --jds-purple-border-color-default: var(--jds-purple-500); /* @kind color */
+  --jds-purple-border-color-emphasis: var(--jds-purple-200); /* @kind color */
+  --jds-purple-border-color-muted: var(--jds-purple-700); /* @kind color */
+  --jds-purple-color-default: var(--jds-purple-400); /* @kind color */
+  --jds-purple-color-emphasis: var(--jds-purple-300); /* @kind color */
+  --jds-purple-color-fixed-dark: var(--jds-purple-600); /* @kind color */
+  --jds-purple-color-fixed-light: var(--jds-purple-400); /* @kind color */
+  --jds-purple-surface-default: var(--jds-purple-600); /* @kind color */
+  --jds-purple-surface-emphasis: var(--jds-purple-700); /* @kind color */
+  --jds-purple-surface-muted: var(--jds-purple-900); /* @kind color */
+  --jds-secondary-bg-default: var(--jds-secondary-600); /* @kind color */
+  --jds-secondary-bg-muted: var(--jds-secondary-200); /* @kind color */
+  --jds-secondary-bg-translucent: rgba(255,255,255,0.05); /* @kind color */
+  --jds-secondary-border-color-default: var(--jds-secondary-400); /* @kind color */
+  --jds-secondary-border-color-emphasis: var(--jds-secondary-200); /* @kind color */
+  --jds-secondary-border-color-muted: var(--jds-secondary-700); /* @kind color */
+  --jds-secondary-color-default: var(--jds-secondary-400); /* @kind color */
+  --jds-secondary-color-emphasis: var(--jds-secondary-300); /* @kind color */
+  --jds-secondary-color-fixed-dark: var(--jds-secondary-600); /* @kind color */
+  --jds-secondary-color-fixed-light: var(--jds-secondary-400); /* @kind color */
+  --jds-secondary-surface-default: var(--jds-secondary-600); /* @kind color */
+  --jds-secondary-surface-emphasis: var(--jds-secondary-700); /* @kind color */
+  --jds-secondary-surface-muted: var(--jds-secondary-900); /* @kind color */
+  --jds-secondary-surface-translucent: rgba(255,255,255,0.1); /* @kind color */
+  --jds-success-bg-default: var(--jds-green-600); /* @kind color */
+  --jds-success-bg-muted: var(--jds-green-200); /* @kind color */
+  --jds-success-border-color-default: var(--jds-green-400); /* @kind color */
+  --jds-success-border-color-emphasis: var(--jds-green-200); /* @kind color */
+  --jds-success-border-color-muted: var(--jds-green-700); /* @kind color */
+  --jds-success-color-default: var(--jds-green-400); /* @kind color */
+  --jds-success-color-emphasis: var(--jds-green-300); /* @kind color */
+  --jds-success-color-fixed-dark: var(--jds-green-600); /* @kind color */
+  --jds-success-color-fixed-light: var(--jds-green-400); /* @kind color */
+  --jds-success-surface-default: var(--jds-green-600); /* @kind color */
+  --jds-success-surface-emphasis: var(--jds-green-700); /* @kind color */
+  --jds-success-surface-muted: var(--jds-green-900); /* @kind color */
+  --jds-surface-default: var(--jds-gray-900); /* @kind color */
+  --jds-surface-fixed-dark: var(--jds-gray-900); /* @kind color */
+  --jds-surface-fixed-light: var(--jds-gray-0); /* @kind color */
+  --jds-surface-inverse: var(--jds-gray-0); /* @kind color */
+  --jds-surface-raised: var(--jds-gray-800); /* @kind color */
+  --jds-warning-bg-default: var(--jds-yellow-300); /* @kind color */
+  --jds-warning-bg-muted: var(--jds-yellow-200); /* @kind color */
+  --jds-warning-border-color-default: var(--jds-yellow-400); /* @kind color */
+  --jds-warning-border-color-emphasis: var(--jds-yellow-200); /* @kind color */
+  --jds-warning-border-color-muted: var(--jds-yellow-700); /* @kind color */
+  --jds-warning-color-default: var(--jds-yellow-300); /* @kind color */
+  --jds-warning-color-emphasis: var(--jds-yellow-200); /* @kind color */
+  --jds-warning-color-fixed-dark: var(--jds-yellow-600); /* @kind color */
+  --jds-warning-color-fixed-light: var(--jds-yellow-300); /* @kind color */
+  --jds-warning-surface-default: var(--jds-yellow-200); /* @kind color */
+  --jds-warning-surface-emphasis: var(--jds-yellow-600); /* @kind color */
+  --jds-warning-surface-muted: var(--jds-yellow-900); /* @kind color */
+  --sgds-bg-muted: var(--jds-gray-800); /* @kind color */
+  --sgds-caption-color: var(--jds-gray-300); /* @kind color */
+  --sgds-color-disabled: var(--jds-gray-400); /* @kind color */
+  --sgds-color-on-surface-fixed-light: var(--jds-gray-100); /* @kind color */
+  --sgds-danger-300: var(--jds-red-300); /* @kind color */
+  --sgds-danger-bg-emphasis: var(--jds-red-600); /* @kind color */
+  --sgds-danger-border-color-subtle: var(--jds-red-300); /* @kind color */
+  --sgds-danger: var(--jds-red-400); /* @kind color */
+  --sgds-default-bg-emphasis: var(--jds-gray-200); /* @kind color */
+  --sgds-default-bg-subtle: var(--jds-gray-500); /* @kind color */
+  --sgds-default-border-color-inverse: var(--jds-gray-900); /* @kind color */
+  --sgds-default-border-color-subtle: var(--jds-gray-600); /* @kind color */
+  --sgds-default-color-emphasis: var(--jds-gray-100); /* @kind color */
+  --sgds-default-color-on-light: var(--jds-gray-800); /* @kind color */
+  --sgds-focus-border: var(--jds-gray-500); /* @kind color */
+  --sgds-form-bg-emphasis: var(--jds-gray-200); /* @kind color */
+  --sgds-form-bg-inverse: var(--jds-gray-0); /* @kind color */
+  --sgds-form-bg-muted: var(--jds-gray-800); /* @kind color */
+  --sgds-form-bg-on-dark: var(--jds-gray-0); /* @kind color */
+  --sgds-form-bg-on-light: var(--jds-gray-800); /* @kind color */
+  --sgds-form-bg-subtle: var(--jds-gray-500); /* @kind color */
+  --sgds-form-bg-translucent: rgba(255,255,255,0.1); /* @kind color */
+  --sgds-form-bg-transparent: rgba(255,255,255,0); /* @kind color */
+  --sgds-form-border-color-emphasis: var(--jds-gray-100); /* @kind color */
+  --sgds-form-border-color-muted: var(--jds-gray-700); /* @kind color */
+  --sgds-form-border-color: var(--jds-gray-400); /* @kind color */
+  --sgds-form-border-radius-sm: var(--jds-border-radius-sm);
+  --sgds-form-border-width: var(--jds-border-width-1);
+  --sgds-form-color-inverse: var(--jds-gray-800); /* @kind color */
+  --sgds-form-color-muted: var(--jds-gray-600); /* @kind color */
+  --sgds-form-color-on-dark: var(--jds-gray-0); /* @kind color */
+  --sgds-form-color-on-light: var(--jds-gray-800); /* @kind color */
+  --sgds-form-color-subtle: var(--jds-gray-300); /* @kind color */
+  --sgds-form-color: var(--jds-gray-0); /* @kind color */
+  --sgds-form-danger-border-color: var(--jds-red-500); /* @kind color */
+  --sgds-form-danger-color: var(--jds-red-400); /* @kind color */
+  --sgds-form-danger-surface-default: var(--jds-red-600); /* @kind color */
+  --sgds-form-gap-md: var(--sgds-gap-xs);
+  --sgds-form-invalid-border-color: var(--sgds-danger); /* @kind color */
+  --sgds-form-invalid-color: var(--sgds-danger); /* @kind color */
+  --sgds-form-padding-inline-sm: var(--sgds-padding-2-xs);
+  --sgds-form-success-bg: var(--jds-green-500); /* @kind color */
+  --sgds-form-success-border-color: var(--jds-green-500); /* @kind color */
+  --sgds-form-success-color: var(--jds-green-400); /* @kind color */
+  --sgds-form-surface-default: var(--jds-gray-900); /* @kind color */
+  --sgds-info-bg: var(--jds-blue-500); /* @kind color */
+  --sgds-link: var(--jds-blue-400); /* @kind color */
+  --sgds-neutral-bg-inverse: var(--jds-gray-800); /* @kind color */
+  --sgds-overline-color: var(--jds-gray-300); /* @kind color */
+  --sgds-primary-border-color-subtle: var(--sgds-product-primary-700); /* @kind color */
+  --sgds-secondary-300: var(--jds-cyan-300); /* @kind color */
+  --sgds-subtitle-color-subtle: var(--jds-gray-200); /* @kind color */
+  --sgds-subtitle-color: var(--jds-gray-100); /* @kind color */
+  --sgds-success-300: var(--jds-green-300); /* @kind color */
+  --sgds-success-bg-emphasis: var(--jds-green-600); /* @kind color */
+  --sgds-success-border-color-subtle: var(--jds-green-300); /* @kind color */
+  --sgds-warning-bg-emphasis: var(--jds-yellow-600); /* @kind color */
+  --sgds-warning-bg: var(--jds-yellow-500); /* @kind color */
+  --sgds-warning-border-color-subtle: var(--jds-yellow-300); /* @kind color */
+  --sgds-white: rgb(255,255,255); /* @kind color */
+  --text-default: var(--color-grey-0); /* @kind color */
+  --text-link: var(--color-blue-300); /* @kind color */
+}
+
+:root[data-mode="mobile"] {
+  --jds-component-gap-lg: var(--jds-spacer-6);
+  --jds-component-gap-md: var(--jds-spacer-5);
+  --jds-component-gap-sm: var(--jds-spacer-4);
+  --jds-component-gap-xl: var(--jds-spacer-7);
+  --jds-component-gap-xs: var(--jds-spacer-3);
+  --jds-component-padding-lg: var(--jds-spacer-8);
+  --jds-component-padding-md: var(--jds-spacer-7);
+  --jds-component-padding-sm: var(--jds-spacer-6);
+  --jds-component-padding-xl: var(--jds-spacer-9);
+  --jds-component-padding-xs: var(--jds-spacer-5);
+  --jds-container-width: var(--jds-dimension-360); /* @kind spacing */
+  --jds-font-size-body-lg: var(--jds-font-size-18);
+  --jds-font-size-body-md: var(--jds-font-size-16);
+  --jds-font-size-body-sm: var(--jds-font-size-14);
+  --jds-font-size-caption-md: var(--jds-font-size-14);
+  --jds-font-size-display-lg: var(--jds-font-size-40);
+  --jds-font-size-display-md: var(--jds-font-size-36);
+  --jds-font-size-display-sm: var(--jds-font-size-32);
+  --jds-font-size-heading-lg: var(--jds-font-size-28);
+  --jds-font-size-heading-md: var(--jds-font-size-24);
+  --jds-font-size-heading-sm: var(--jds-font-size-20);
+  --jds-font-size-heading-xl: var(--jds-font-size-32);
+  --jds-font-size-label-lg: var(--jds-font-size-18);
+  --jds-font-size-label-md: var(--jds-font-size-16);
+  --jds-font-size-label-sm: var(--jds-font-size-14);
+  --jds-font-size-label-xs: var(--jds-font-size-12);
+  --jds-font-size-link-lg: var(--jds-font-size-18);
+  --jds-font-size-link-md: var(--jds-font-size-16);
+  --jds-font-size-link-sm: var(--jds-font-size-14);
+  --jds-font-size-link-xs: var(--jds-font-size-12);
+  --jds-font-size-list-lg: var(--jds-font-size-18);
+  --jds-font-size-list-md: var(--jds-font-size-16);
+  --jds-font-size-list-sm: var(--jds-font-size-14);
+  --jds-font-size-overline-md: var(--jds-font-size-14);
+  --jds-font-size-subtitle-md: var(--jds-font-size-18);
+  --jds-font-size-subtitle-sm: var(--jds-font-size-16);
+  --jds-layout-gap-2-xs: var(--jds-spacer-2);
+  --jds-layout-gap-lg: var(--jds-spacer-6);
+  --jds-layout-gap-md: var(--jds-spacer-5);
+  --jds-layout-gap-sm: var(--jds-spacer-4);
+  --jds-layout-gap-xl: var(--jds-spacer-7);
+  --jds-layout-gap-xs: var(--jds-spacer-3);
+  --jds-layout-padding-lg: var(--jds-spacer-8);
+  --jds-layout-padding-md: var(--jds-spacer-7);
+  --jds-layout-padding-sm: var(--jds-spacer-6);
+  --jds-layout-padding-xl: var(--jds-spacer-9);
+  --jds-layout-padding-xs: var(--jds-spacer-5);
+  --jds-line-height-2-xl: var(--jds-line-height-44);
+  --jds-line-height-2-xs: var(--jds-line-height-20);
+  --jds-line-height-3-xl: var(--jds-line-height-48);
+  --jds-line-height-3-xs: var(--jds-line-height-16);
+  --jds-line-height-lg: var(--jds-line-height-32);
+  --jds-line-height-md: var(--jds-line-height-28);
+  --jds-line-height-sm: var(--jds-line-height-24);
+  --jds-line-height-xl: var(--jds-line-height-40);
+  --jds-line-height-xs: var(--jds-line-height-24);
+  --jds-text-gap-2-xl: var(--jds-spacer-7);
+  --jds-text-gap-2-xs: var(--jds-spacer-2);
+  --jds-text-gap-lg: var(--jds-spacer-5);
+  --jds-text-gap-md: var(--jds-spacer-4);
+  --jds-text-gap-sm: var(--jds-spacer-3);
+  --jds-text-gap-xl: var(--jds-spacer-6);
+  --jds-text-gap-xs: var(--jds-spacer-3);
+  --paragraph-font-weight-bold: "bold";
+  --sgds-body-font-size: 16;
+  --sgds-body-line-height: 32;
+  --sgds-display-font-size: 56;
+  --sgds-display-line-height: 64;
+  --sgds-font-family-inter: "Inter";
+  --sgds-font-size-0: 12;
+  --sgds-font-size-1-2: 14;
+  --sgds-font-size-1: 12;
+  --sgds-font-size-2: 16;
+  --sgds-font-size-3: 18;
+  --sgds-font-size-4: 20;
+  --sgds-font-size-5: 24;
+  --sgds-font-size-6: 28;
+  --sgds-font-size-7: 32;
+  --sgds-font-size-8: 36;
+  --sgds-font-size-9: 40;
+  --sgds-font-weight-bold: "bold";
+  --sgds-font-weight-light: "light";
+  --sgds-font-weight-regular: "regular";
+  --sgds-font-weight-semibold: "semibold";
+  --sgds-header-1-font-size: 40;
+  --sgds-header-1-line-height: 48;
+  --sgds-header-2-font-size: 32;
+  --sgds-header-2-line-height: 40;
+  --sgds-header-3-font-size: 24;
+  --sgds-header-3-line-height: 32;
+  --sgds-header-4-font-size: 18;
+  --sgds-header-4-line-height: 32;
+  --sgds-letter-spacing-lg: 0; /* @kind spacing */
+  --sgds-letter-spacing-md: -0.4; /* @kind spacing */
+  --sgds-letter-spacing-sm: -1; /* @kind spacing */
+  --sgds-letter-spacing-xl: 2; /* @kind spacing */
+  --sgds-paragraph-font-size: var(--sgds-body-font-size);
+  --sgds-paragraph-line-height: var(--sgds-body-line-height);
+  --sgds-paragraph-spacing-0: 0;
+  --sgds-paragraph-spacing-1: 24;
+  --sgds-small-font-size: 14;
+  --sgds-small-line-height: 16;
+}
+
+:root[data-mode="tablet"] {
+  --jds-component-gap-lg: var(--jds-spacer-8);
+  --jds-component-gap-md: var(--jds-spacer-7);
+  --jds-component-gap-sm: var(--jds-spacer-6);
+  --jds-component-gap-xl: var(--jds-spacer-9);
+  --jds-component-gap-xs: var(--jds-spacer-5);
+  --jds-component-padding-lg: var(--jds-spacer-9);
+  --jds-component-padding-md: var(--jds-spacer-8);
+  --jds-component-padding-sm: var(--jds-spacer-7);
+  --jds-component-padding-xl: var(--jds-spacer-10);
+  --jds-component-padding-xs: var(--jds-spacer-6);
+  --jds-container-width: var(--jds-dimension-888); /* @kind spacing */
+  --jds-font-size-body-lg: var(--jds-font-size-20);
+  --jds-font-size-body-md: var(--jds-font-size-16);
+  --jds-font-size-body-sm: var(--jds-font-size-14);
+  --jds-font-size-caption-md: var(--jds-font-size-14);
+  --jds-font-size-display-lg: var(--jds-font-size-52);
+  --jds-font-size-display-md: var(--jds-font-size-44);
+  --jds-font-size-display-sm: var(--jds-font-size-36);
+  --jds-font-size-heading-lg: var(--jds-font-size-30);
+  --jds-font-size-heading-md: var(--jds-font-size-26);
+  --jds-font-size-heading-sm: var(--jds-font-size-22);
+  --jds-font-size-heading-xl: var(--jds-font-size-36);
+  --jds-font-size-label-lg: var(--jds-font-size-20);
+  --jds-font-size-label-md: var(--jds-font-size-16);
+  --jds-font-size-label-sm: var(--jds-font-size-14);
+  --jds-font-size-label-xs: var(--jds-font-size-12);
+  --jds-font-size-link-lg: var(--jds-font-size-20);
+  --jds-font-size-link-md: var(--jds-font-size-16);
+  --jds-font-size-link-sm: var(--jds-font-size-14);
+  --jds-font-size-link-xs: var(--jds-font-size-12);
+  --jds-font-size-list-lg: var(--jds-font-size-20);
+  --jds-font-size-list-md: var(--jds-font-size-16);
+  --jds-font-size-list-sm: var(--jds-font-size-14);
+  --jds-font-size-overline-md: var(--jds-font-size-14);
+  --jds-font-size-subtitle-md: var(--jds-font-size-20);
+  --jds-font-size-subtitle-sm: var(--jds-font-size-16);
+  --jds-layout-gap-2-xs: var(--jds-spacer-4);
+  --jds-layout-gap-lg: var(--jds-spacer-8);
+  --jds-layout-gap-md: var(--jds-spacer-7);
+  --jds-layout-gap-sm: var(--jds-spacer-6);
+  --jds-layout-gap-xl: var(--jds-spacer-9);
+  --jds-layout-gap-xs: var(--jds-spacer-5);
+  --jds-layout-padding-lg: var(--jds-spacer-9);
+  --jds-layout-padding-md: var(--jds-spacer-8);
+  --jds-layout-padding-sm: var(--jds-spacer-7);
+  --jds-layout-padding-xl: var(--jds-spacer-10);
+  --jds-layout-padding-xs: var(--jds-spacer-6);
+  --jds-line-height-2-xl: var(--jds-line-height-52);
+  --jds-line-height-2-xs: var(--jds-line-height-20);
+  --jds-line-height-3-xl: var(--jds-line-height-60);
+  --jds-line-height-3-xs: var(--jds-line-height-16);
+  --jds-line-height-lg: var(--jds-line-height-36);
+  --jds-line-height-md: var(--jds-line-height-32);
+  --jds-line-height-sm: var(--jds-line-height-28);
+  --jds-line-height-xl: var(--jds-line-height-44);
+  --jds-line-height-xs: var(--jds-line-height-24);
+  --jds-text-gap-2-xl: var(--jds-spacer-8);
+  --jds-text-gap-2-xs: var(--jds-spacer-2);
+  --jds-text-gap-lg: var(--jds-spacer-6);
+  --jds-text-gap-md: var(--jds-spacer-5);
+  --jds-text-gap-sm: var(--jds-spacer-4);
+  --jds-text-gap-xl: var(--jds-spacer-7);
+  --jds-text-gap-xs: var(--jds-spacer-3);
+  --paragraph-font-weight-bold: "bold";
+  --sgds-body-font-size: 16;
+  --sgds-body-line-height: 32;
+  --sgds-display-font-size: 56;
+  --sgds-display-line-height: 64;
+  --sgds-font-family-inter: "Inter";
+  --sgds-font-size-0: 12;
+  --sgds-font-size-1-2: 14;
+  --sgds-font-size-1: 12;
+  --sgds-font-size-2: 16;
+  --sgds-font-size-3: 18;
+  --sgds-font-size-9: 40;
+  --sgds-font-weight-bold: "bold";
+  --sgds-font-weight-light: "light";
+  --sgds-font-weight-regular: "regular";
+  --sgds-font-weight-semibold: "semibold";
+  --sgds-header-1-font-size: 40;
+  --sgds-header-1-line-height: 48;
+  --sgds-header-2-font-size: 32;
+  --sgds-header-2-line-height: 40;
+  --sgds-header-3-font-size: 24;
+  --sgds-header-3-line-height: 32;
+  --sgds-header-4-font-size: 18;
+  --sgds-header-4-line-height: 32;
+  --sgds-letter-spacing-lg: 0; /* @kind spacing */
+  --sgds-letter-spacing-sm: -1; /* @kind spacing */
+  --sgds-letter-spacing-xl: 2; /* @kind spacing */
+  --sgds-paragraph-font-size: var(--sgds-body-font-size);
+  --sgds-paragraph-line-height: var(--sgds-body-line-height);
+  --sgds-paragraph-spacing-0: 0;
+  --sgds-paragraph-spacing-1: 24;
+  --sgds-small-font-size: 14;
+  --sgds-small-line-height: 16;
+}
+
+:root[data-mode="purple-mockup"] {
+  --jds-primary-100: rgb(246,243,251); /* @kind color */
+  --jds-primary-200: rgb(229,219,242); /* @kind color */
+  --jds-primary-300: rgb(206,186,231); /* @kind color */
+  --jds-primary-400: rgb(181,152,220); /* @kind color */
+  --jds-primary-500: rgb(154,116,207); /* @kind color */
+  --jds-primary-600: rgb(128,85,187); /* @kind color */
+  --jds-primary-700: rgb(99,65,144); /* @kind color */
+  --jds-primary-800: rgb(73,48,107); /* @kind color */
+  --jds-primary-900: rgb(51,33,74); /* @kind color */
+  --jds-secondary-100: rgb(255,255,255); /* @kind color */
+  --jds-secondary-200: rgb(255,255,255); /* @kind color */
+  --jds-secondary-300: rgb(255,255,255); /* @kind color */
+  --jds-secondary-400: rgb(255,255,255); /* @kind color */
+  --jds-secondary-500: rgb(255,255,255); /* @kind color */
+  --jds-secondary-600: rgb(255,255,255); /* @kind color */
+  --jds-secondary-700: rgb(255,255,255); /* @kind color */
+  --jds-secondary-800: rgb(255,255,255); /* @kind color */
+  --jds-secondary-900: rgb(255,255,255); /* @kind color */
+}
+
+:root[data-mode="imported-theme"] {
+  --colors-background-light: var(--tailwind-colors-base-white); /* @kind color */
+  --colors-destructive-light: var(--tailwind-colors-red-700); /* @kind color */
+  --colors-disable-dark: var(--tailwind-colors-zinc-600); /* @kind color */
+  --colors-disable-light: var(--tailwind-colors-zinc-200); /* @kind color */
+  --colors-foreground-light: var(--hcp-black); /* @kind color */
+  --colors-input-light: var(--tailwind-colors-slate-300); /* @kind color */
+  --colors-muted-foreground-light: var(--hcp-neutral-500); /* @kind color */
+  --colors-muted-light: var(--tailwind-colors-slate-100); /* @kind color */
+  --colors-primary-foreground-light: var(--tailwind-colors-slate-50); /* @kind color */
+  --colors-ring-light: var(--tailwind-colors-slate-400); /* @kind color */
+  --colors-sidebar-accent-foreground-light: var(--hcp-black); /* @kind color */
+  --colors-sidebar-accent-light: var(--tailwind-colors-slate-100); /* @kind color */
+  --colors-sidebar-background-light: var(--tailwind-colors-slate-50); /* @kind color */
+  --colors-sidebar-border-light: var(--tailwind-colors-slate-200); /* @kind color */
+  --colors-sidebar-foreground-light: var(--hcp-black); /* @kind color */
+  --colors-sidebar-primary-foreground-light: var(--tailwind-colors-slate-50); /* @kind color */
+  --colors-sidebar-primary-light: var(--tailwind-colors-slate-900); /* @kind color */
+  --colors-sidebar-ring-light: var(--tailwind-colors-slate-400); /* @kind color */
+  --font-font-sans: "Inter";
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --icon-size-icon-20: var(--spacing-5);
+  --icon-size-icon-24: var(--spacing-6);
+  --radius-lg: 10;
+  --radius-md: 8;
+  --text-base-font-size: 16;
+  --text-base-line-height: 24;
+  --text-sm-font-size: 14;
+  --text-sm-line-height: 20;
+  --text-xs-font-size: 12;
+  --text-xs-line-height: 16;
+}
