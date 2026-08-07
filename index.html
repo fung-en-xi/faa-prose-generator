@@ -1,33 +1,3 @@
-<!--
-  ================================================================
-  FIRST ANCILLARY AFFIDAVIT — Prose Generator Prototype
-  Family Justice Courts, Singapore
-  ================================================================
-
-  ARCHITECTURE
-  - Runtime:    DC-Runtime (support.js) — custom reactive template engine
-  - Template:   <sc-if>, <sc-for>, {{ expressions }}, sc-camel-on-* events
-  - Component:  Single class extending DCLogic (React-like lifecycle)
-  - Form:       Schema-driven wizard (SCHEMA array defines 18 steps)
-  - Tokens:     JDS (Judiciary Design System) CSS custom properties
-  - Storage:    Auto-saves draft to localStorage
-
-  CONSTRAINTS (dc-runtime)
-  - JS must remain inline in <script type="text/x-dc"> (parsed by runtime)
-  - HTML template must remain inside <x-dc> (mounted by runtime)
-  - style-hover / style-focus are runtime pseudo-class directives
-
-  ACCESSIBILITY
-  - WCAG 2.2 Level AA compliant
-  - SG Government A11y Checklist compliant
-  - Keyboard navigation, ARIA roles, focus trapping, live regions
-
-  DEMO DATA
-  - Persona: PHUA CHU KANG (MyInfo prefill)
-  - Address book with Singapore postal codes
-  - Sample supporting documents metadata
-  ================================================================
--->
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
