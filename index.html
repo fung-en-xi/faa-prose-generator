@@ -1,33 +1,3 @@
-<!--
-  ================================================================
-  FIRST ANCILLARY AFFIDAVIT — Prose Generator Prototype
-  Family Justice Courts, Singapore
-  ================================================================
-
-  ARCHITECTURE
-  - Runtime:    DC-Runtime (support.js) — custom reactive template engine
-  - Template:   <sc-if>, <sc-for>, {{ expressions }}, sc-camel-on-* events
-  - Component:  Single class extending DCLogic (React-like lifecycle)
-  - Form:       Schema-driven wizard (SCHEMA array defines 18 steps)
-  - Tokens:     JDS (Judiciary Design System) CSS custom properties
-  - Storage:    Auto-saves draft to localStorage
-
-  CONSTRAINTS (dc-runtime)
-  - JS must remain inline in <script type="text/x-dc"> (parsed by runtime)
-  - HTML template must remain inside <x-dc> (mounted by runtime)
-  - style-hover / style-focus are runtime pseudo-class directives
-
-  ACCESSIBILITY
-  - WCAG 2.2 Level AA compliant
-  - SG Government A11y Checklist compliant
-  - Keyboard navigation, ARIA roles, focus trapping, live regions
-
-  DEMO DATA
-  - Persona: PHUA CHU KANG (MyInfo prefill)
-  - Address book with Singapore postal codes
-  - Sample supporting documents metadata
-  ================================================================
--->
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
@@ -51,6 +21,7 @@
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+
 
 </helmet>
 
@@ -174,11 +145,11 @@
 </sc-if>
 
 <sc-if value="{{ hasFields }}" hint-placeholder-val="{{ true }}">
-<div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:26px 24px">
+<div style="display:flex;flex-wrap:wrap;align-items:stretch;gap:26px 24px">
 <sc-for list="{{ fields }}" as="f" hint-placeholder-count="5">
 <div id="{{ f.anchorId }}" style="{{ f.wrapStyle }}">
 <label for="{{ f.inputId }}" style="{{ f.labelStyle }}">
-<span style="display:block;width:100%;text-wrap:pretty">{{ f.labelPre }}<sc-if value="{{ f.defWord }}" hint-placeholder-val="{{ false }}"><span tabindex="0" role="definition" style="position:relative;border-bottom:1px dotted var(--jds-gray-600);cursor:help" sc-camel-on-mouse-enter="{{ f.onDefEnter }}" sc-camel-on-mouse-leave="{{ f.onDefLeave }}" sc-camel-on-focus="{{ f.onDefEnter }}" sc-camel-on-blur="{{ f.onDefLeave }}">{{ f.defWord }}<span role="tooltip" style="{{ f.defTipStyle }}">{{ f.defText }}</span></span></sc-if>{{ f.labelMid }}<sc-if value="{{ f.defWord2 }}" hint-placeholder-val="{{ false }}"><span tabindex="0" role="definition" style="position:relative;border-bottom:1px dotted var(--jds-gray-600);cursor:help" sc-camel-on-mouse-enter="{{ f.onDefEnter2 }}" sc-camel-on-mouse-leave="{{ f.onDefLeave2 }}" sc-camel-on-focus="{{ f.onDefEnter2 }}" sc-camel-on-blur="{{ f.onDefLeave2 }}">{{ f.defWord2 }}<span role="tooltip" style="{{ f.defTipStyle2 }}">{{ f.defText2 }}</span></span></sc-if>{{ f.labelPost }}<sc-if value="{{ f.required }}" hint-placeholder-val="{{ false }}"><span style="color:var(--jds-danger-color-default);font-weight:600" aria-hidden="true">&nbsp;*</span></sc-if><sc-if value="{{ f.optional }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:400;color:var(--jds-gray-600)">&nbsp;&nbsp;Optional</span></sc-if><sc-if value="{{ f.tip }}" hint-placeholder-val="{{ false }}"><span tabindex="0" role="note" aria-label="More information" style="position:relative;display:inline-flex;align-items:center;vertical-align:-3px;margin-left:6px" sc-camel-on-mouse-enter="{{ f.onTipEnter }}" sc-camel-on-mouse-leave="{{ f.onTipLeave }}" sc-camel-on-focus="{{ f.onTipEnter }}" sc-camel-on-blur="{{ f.onTipLeave }}"><i class="ph ph-info" style="font-size:17px;color:var(--jds-gray-600);cursor:help" aria-hidden="true"></i><span role="tooltip" style="{{ f.tipStyle }}">{{ f.tip }}</span></span></sc-if><sc-if value="{{ f.myinfo }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;vertical-align:2px;margin-left:8px;padding:2px 8px;border-radius:4px;background:var(--jds-gray-100);border:1px solid var(--jds-gray-200);font-size:12px;font-weight:500;line-height:1.5;color:var(--jds-gray-700)" aria-label="Pre-filled from MyInfo">MyInfo</span></sc-if></span>
+<span style="display:block;width:100%;text-wrap:pretty">{{ f.labelPre }}<sc-if value="{{ f.defWord }}" hint-placeholder-val="{{ false }}"><span tabindex="0" role="definition" aria-describedby="{{ f.defTipId }}" style="position:relative;border-bottom:1px dotted var(--jds-gray-600);cursor:help" sc-camel-on-mouse-enter="{{ f.onDefEnter }}" sc-camel-on-mouse-leave="{{ f.onDefLeave }}" sc-camel-on-focus="{{ f.onDefEnter }}" sc-camel-on-blur="{{ f.onDefLeave }}">{{ f.defWord }}<span id="{{ f.defTipId }}" role="tooltip" style="{{ f.defTipStyle }}">{{ f.defText }}</span></span></sc-if>{{ f.labelMid }}<sc-if value="{{ f.defWord2 }}" hint-placeholder-val="{{ false }}"><span tabindex="0" role="definition" aria-describedby="{{ f.defTipId2 }}" style="position:relative;border-bottom:1px dotted var(--jds-gray-600);cursor:help" sc-camel-on-mouse-enter="{{ f.onDefEnter2 }}" sc-camel-on-mouse-leave="{{ f.onDefLeave2 }}" sc-camel-on-focus="{{ f.onDefEnter2 }}" sc-camel-on-blur="{{ f.onDefLeave2 }}">{{ f.defWord2 }}<span id="{{ f.defTipId2 }}" role="tooltip" style="{{ f.defTipStyle2 }}">{{ f.defText2 }}</span></span></sc-if>{{ f.labelPost }}<sc-if value="{{ f.required }}" hint-placeholder-val="{{ false }}"><span style="color:var(--jds-danger-color-default);font-weight:600" aria-hidden="true">&nbsp;*</span></sc-if><sc-if value="{{ f.optional }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:400;color:var(--jds-gray-600)">&nbsp;&nbsp;Optional</span></sc-if><sc-if value="{{ f.tip }}" hint-placeholder-val="{{ false }}"><span tabindex="0" role="note" aria-label="More information" style="position:relative;display:inline-flex;align-items:center;vertical-align:-3px;margin-left:6px" sc-camel-on-mouse-enter="{{ f.onTipEnter }}" sc-camel-on-mouse-leave="{{ f.onTipLeave }}" sc-camel-on-focus="{{ f.onTipEnter }}" sc-camel-on-blur="{{ f.onTipLeave }}"><i class="ph ph-info" style="font-size:17px;color:var(--jds-gray-600);cursor:help" aria-hidden="true"></i><span role="tooltip" style="{{ f.tipStyle }}">{{ f.tip }}</span></span></sc-if><sc-if value="{{ f.myinfo }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;vertical-align:2px;margin-left:8px;padding:2px 8px;border-radius:4px;background:var(--jds-gray-100);border:1px solid var(--jds-gray-200);font-size:12px;font-weight:500;line-height:1.5;color:var(--jds-gray-700)" aria-label="Pre-filled from MyInfo">MyInfo</span></sc-if></span>
 </label>
 <sc-if value="{{ f.desc }}" hint-placeholder-val="{{ false }}">
 <span id="{{ f.descId }}" style="font-size:14px;line-height:1.6;color:var(--jds-gray-700);text-wrap:pretty">{{ f.descPre }}<sc-if value="{{ f.descDefWord }}" hint-placeholder-val="{{ false }}"><span style="position:relative;border-bottom:1px dotted var(--jds-gray-600);cursor:help" sc-camel-on-mouse-enter="{{ f.onDescDefEnter }}" sc-camel-on-mouse-leave="{{ f.onDescDefLeave }}">{{ f.descDefWord }}<span style="{{ f.descDefTipStyle }}">{{ f.descDefText }}</span></span></sc-if>{{ f.descMid }}<sc-if value="{{ f.descDefWord2 }}" hint-placeholder-val="{{ false }}"><span style="position:relative;border-bottom:1px dotted var(--jds-gray-600);cursor:help" sc-camel-on-mouse-enter="{{ f.onDescDefEnter2 }}" sc-camel-on-mouse-leave="{{ f.onDescDefLeave2 }}">{{ f.descDefWord2 }}<span style="{{ f.descDefTipStyle2 }}">{{ f.descDefText2 }}</span></span></sc-if>{{ f.descPost }}</span>
@@ -203,7 +174,7 @@
 <sc-if value="{{ f.prefix }}" hint-placeholder-val="{{ false }}">
 <span style="font-size:16px;font-weight:600;color:var(--jds-gray-700)">{{ f.prefix }}</span>
 </sc-if>
-<input id="{{ f.inputId }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" sc-camel-on-focus="{{ f.onFocus }}" sc-camel-on-blur="{{ f.onBlur }}" placeholder="{{ f.placeholder }}" type="{{ f.inputType }}" sc-camel-read-only="{{ f.readOnly }}" sc-camel-input-mode="{{ f.inputMode }}" aria-required="{{ f.ariaRequired }}" aria-invalid="{{ f.ariaInvalid }}" aria-describedby="{{ f.ariaDescribedBy }}" role="{{ f.comboRole }}" aria-expanded="{{ f.comboExpanded }}" aria-autocomplete="{{ f.comboAutocomplete }}" aria-controls="{{ f.comboListId }}" style="{{ f.inputStyle }}">
+<input id="{{ f.inputId }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" sc-camel-on-focus="{{ f.onFocus }}" sc-camel-on-blur="{{ f.onBlur }}" placeholder="{{ f.placeholder }}" sc-camel-read-only="{{ f.isReadOnly }}" type="{{ f.inputType }}" sc-camel-read-only="{{ f.readOnly }}" sc-camel-input-mode="{{ f.inputMode }}" aria-required="{{ f.ariaRequired }}" aria-invalid="{{ f.ariaInvalid }}" aria-describedby="{{ f.ariaDescribedBy }}" role="{{ f.comboRole }}" aria-expanded="{{ f.comboExpanded }}" aria-autocomplete="{{ f.comboAutocomplete }}" aria-controls="{{ f.comboListId }}" style="{{ f.inputStyle }}">
 <sc-if value="{{ f.comboOpen }}" hint-placeholder-val="{{ false }}">
 <div id="{{ f.comboListId }}" role="listbox" style="position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:30;max-height:264px;overflow:auto;background:var(--jds-gray-0);border:1px solid var(--jds-gray-200);border-radius:8px;box-shadow:0 6px 20px rgba(14,14,14,0.12);padding:4px 0">
 <sc-for list="{{ f.comboOptions }}" as="o" hint-placeholder-count="0">
@@ -272,7 +243,7 @@
 <div role="row" style="display:flex;align-items:stretch;background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200)">
 <span role="columnheader" style="flex:0 0 48px;box-sizing:border-box;padding:12px 8px;font-size:13px;font-weight:600;color:var(--jds-gray-1000)">S/N</span>
 <span role="columnheader" style="flex:1 1 200px;min-width:150px;box-sizing:border-box;padding:12px 14px;font-size:13px;font-weight:600;color:var(--jds-gray-1000)">Items</span>
-<span role="columnheader" style="flex:1 1 160px;min-width:140px;box-sizing:border-box;padding:12px 14px;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Amount per month (in SGD)</span>
+<span role="columnheader" style="flex:1 1 160px;min-width:140px;box-sizing:border-box;padding:12px 14px;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Amount per month</span>
 <span role="columnheader" style="flex:1 1 180px;min-width:150px;box-sizing:border-box;padding:12px 14px;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Remarks</span>
 </div>
 <sc-for list="{{ mt.rows }}" as="mr" hint-placeholder-count="6">
@@ -328,8 +299,8 @@
 <button type="button" sc-camel-on-click="{{ f.onRetrieve }}" style="{{ f.retrieveBtnStyle }}" style-hover="opacity:0.92"><i class="{{ f.retrieveIcon }}" style="font-size:18px"></i>{{ f.retrieveLabel }}</button>
 </div>
 
-<div role="table" aria-label="Asset declaration" style="width:100%;box-sizing:border-box;border:1px solid var(--jds-gray-200);border-radius:12px;overflow:hidden;background:var(--jds-gray-0)">
-<div role="row" style="display:grid;grid-template-columns:28% 18% 28% 26%;align-items:center;background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200);font-size:12px;font-weight:600;color:var(--jds-gray-1000)">
+<div role="table" aria-label="Asset declaration" style="width:100%;box-sizing:border-box;border:1px solid var(--jds-gray-200);border-radius:12px;overflow-x:auto;overflow-y:hidden;background:var(--jds-gray-0)">
+<div role="row" style="display:grid;grid-template-columns:26% 18% 30% 26%;min-width:660px;align-items:center;background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200);font-size:12px;font-weight:600;color:var(--jds-gray-1000)">
 <span role="columnheader" style="padding:10px 14px">Asset type</span>
 <span role="columnheader" style="padding:10px 12px;border-left:1px solid var(--jds-gray-200)">Status</span>
 <span role="columnheader" style="padding:10px 12px;border-left:1px solid var(--jds-gray-200)">Details</span>
@@ -387,7 +358,7 @@
 <div role="row" style="display:flex;align-items:stretch;background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200)">
 <span role="columnheader" style="flex:0 0 54px;box-sizing:border-box;padding:12px 8px;font-size:13px;font-weight:600;color:var(--jds-gray-1000)">S/N</span>
 <span role="columnheader" style="flex:1.7 1 170px;min-width:0;box-sizing:border-box;padding:12px 14px;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Items</span>
-<span role="columnheader" style="flex:1 1 110px;min-width:0;box-sizing:border-box;padding:12px 12px;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Amount per month (in SGD)</span>
+<span role="columnheader" style="flex:1 1 110px;min-width:0;box-sizing:border-box;padding:12px 12px;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Amount per month</span>
 <span role="columnheader" style="flex:1.2 1 130px;min-width:0;box-sizing:border-box;padding:12px 12px;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Remarks</span>
 <span role="columnheader" style="flex:0 0 46px;border-left:1px solid var(--jds-gray-200)"></span>
 </div>
@@ -576,7 +547,7 @@
 <sc-if value="{{ c.prefix }}" hint-placeholder-val="{{ false }}">
 <span style="font-size:16px;font-weight:600;color:var(--jds-gray-700)">{{ c.prefix }}</span>
 </sc-if>
-<input value="{{ c.value }}" sc-camel-on-change="{{ c.onChange }}" sc-camel-on-focus="{{ c.onFocus }}" sc-camel-on-blur="{{ c.onBlur }}" placeholder="{{ c.placeholder }}" type="{{ c.inputType }}" sc-camel-input-mode="{{ c.inputMode }}" style="{{ c.inputStyle }}">
+<input value="{{ c.value }}" sc-camel-on-change="{{ c.onChange }}" sc-camel-on-focus="{{ c.onFocus }}" sc-camel-on-blur="{{ c.onBlur }}" placeholder="{{ c.placeholder }}" type="{{ c.inputType }}" sc-camel-input-mode="{{ c.inputMode }}" sc-camel-read-only="{{ c.isReadOnly }}" style="{{ c.inputStyle }}">
 </div>
 </sc-if>
 </div>
@@ -689,7 +660,7 @@
 <sc-if value="{{ c.prefix }}" hint-placeholder-val="{{ false }}">
 <span style="font-size:16px;font-weight:600;color:var(--jds-gray-700)">{{ c.prefix }}</span>
 </sc-if>
-<input value="{{ c.value }}" sc-camel-on-change="{{ c.onChange }}" sc-camel-on-focus="{{ c.onFocus }}" sc-camel-on-blur="{{ c.onBlur }}" placeholder="{{ c.placeholder }}" type="{{ c.inputType }}" sc-camel-input-mode="{{ c.inputMode }}" style="{{ c.inputStyle }}">
+<input value="{{ c.value }}" sc-camel-on-change="{{ c.onChange }}" sc-camel-on-focus="{{ c.onFocus }}" sc-camel-on-blur="{{ c.onBlur }}" placeholder="{{ c.placeholder }}" type="{{ c.inputType }}" sc-camel-input-mode="{{ c.inputMode }}" sc-camel-read-only="{{ c.isReadOnly }}" style="{{ c.inputStyle }}">
 </div>
 </sc-if>
 </div>
@@ -721,7 +692,7 @@
 <sc-for list="{{ f.rows }}" as="r" hint-placeholder-count="1">
 <div role="row" style="{{ r.tableRowStyle }}">
 <sc-if value="{{ f.hasSn }}" hint-placeholder-val="{{ false }}">
-<span style="flex:0 0 62px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--jds-gray-700)">{{ r.sn }}</span>
+<span style="flex:0 0 62px;box-sizing:border-box;padding:14px;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--jds-gray-700)">{{ r.sn }}</span>
 </sc-if>
 <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="3">
 <div style="{{ c.cellStyle }}">
@@ -743,7 +714,7 @@
 <sc-if value="{{ c.prefix }}" hint-placeholder-val="{{ false }}">
 <span style="font-size:16px;font-weight:600;color:var(--jds-gray-700)">{{ c.prefix }}</span>
 </sc-if>
-<input value="{{ c.value }}" sc-camel-on-change="{{ c.onChange }}" sc-camel-on-focus="{{ c.onFocus }}" sc-camel-on-blur="{{ c.onBlur }}" placeholder="{{ c.placeholder }}" type="{{ c.inputType }}" sc-camel-input-mode="{{ c.inputMode }}" style="{{ c.inputStyle }}">
+<input value="{{ c.value }}" sc-camel-on-change="{{ c.onChange }}" sc-camel-on-focus="{{ c.onFocus }}" sc-camel-on-blur="{{ c.onBlur }}" placeholder="{{ c.placeholder }}" type="{{ c.inputType }}" sc-camel-input-mode="{{ c.inputMode }}" sc-camel-read-only="{{ c.isReadOnly }}" style="{{ c.inputStyle }}">
 </div>
 </sc-if>
 </div>
@@ -887,7 +858,7 @@
 <span style="font-size:13px;color:var(--jds-gray-700)">{{ grp.meta }}</span>
 </div>
 <div role="table" aria-label="{{ grp.section }} exhibits" style="width:100%;overflow-x:auto">
-<div role="row" style="display:grid;grid-template-columns:72px minmax(200px,1fr) 120px 90px;align-items:center;min-width:520px;border-top:1px solid var(--jds-gray-200);border-bottom:1px solid var(--jds-gray-200);background:var(--jds-gray-100)">
+<div role="row" style="display:grid;grid-template-columns:72px minmax(200px,1fr) 120px 90px;align-items:stretch;min-width:520px;border-top:1px solid var(--jds-gray-200);border-bottom:1px solid var(--jds-gray-200);background:var(--jds-gray-100)">
 <span role="columnheader" style="padding:10px 14px;font-size:12px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--jds-gray-600)">Exhibit</span>
 <span role="columnheader" style="min-width:0;padding:10px 14px;border-left:1px solid var(--jds-gray-200);font-size:12px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--jds-gray-600)">Supporting document</span>
 <span role="columnheader" style="padding:10px 14px;border-left:1px solid var(--jds-gray-200);font-size:12px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--jds-gray-600)">Pages</span>
@@ -896,11 +867,11 @@
 <sc-for list="{{ grp.rows }}" as="d" hint-placeholder-count="2">
 <div role="row" style="{{ d.rowStyle }}">
 <span style="{{ d.exStyle }};padding:12px 14px">{{ d.ex }}</span>
-<span style="display:flex;flex-direction:column;gap:3px;min-width:0;padding:12px 14px;border-left:1px solid var(--jds-gray-200)">
+<span style="display:flex;flex-direction:column;justify-content:center;gap:3px;min-width:0;padding:12px 14px;border-left:1px solid var(--jds-gray-200)">
 <span style="font-size:15px;font-weight:600;line-height:1.5;color:var(--jds-gray-1000);text-wrap:pretty">{{ d.name }}</span>
 <span style="font-size:13px;line-height:1.5;color:var(--jds-gray-600)">{{ d.pages }}</span>
 </span>
-<span style="padding:12px 14px;border-left:1px solid var(--jds-gray-200)">
+<span style="display:flex;align-items:center;padding:12px 14px;border-left:1px solid var(--jds-gray-200)">
 <sc-if value="{{ d.showStart }}" hint-placeholder-val="{{ false }}">
 <span style="{{ d.startShell }}">
 <input value="{{ d.start }}" sc-camel-on-change="{{ d.onStart }}" sc-camel-on-focus="{{ d.onStartFocus }}" sc-camel-on-blur="{{ d.onStartBlur }}" placeholder="e.g. 3-4" aria-label="{{ d.startLabel }}" title="{{ d.startLabel }}" style="{{ d.startStyle }}">
@@ -909,12 +880,12 @@
 </span>
 <span style="{{ d.statusStyle }};padding:12px 14px;border-left:1px solid var(--jds-gray-200)" title="{{ d.statusText }}"><i class="{{ d.statusIcon }}"></i></span>
 <sc-if value="{{ d.showActions }}" hint-placeholder-val="{{ false }}">
-<span style="display:flex;flex-wrap:wrap;gap:10px;grid-column:1 / -1;padding-left:78px">
+<span style="display:flex;flex-wrap:wrap;gap:10px;grid-column:1 / -1;padding:12px 14px 12px 78px;border-top:1px solid var(--jds-gray-200)">
 <button type="button" sc-camel-on-click="{{ d.onExclude }}" style="display:flex;align-items:center;gap:7px;height:38px;padding:0 14px;box-sizing:border-box;border:1px solid var(--jds-gray-300);border-radius:8px;background:var(--jds-gray-0);color:var(--jds-gray-900);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer" style-hover="border-color:var(--jds-gray-500)">This document is not included</button>
 </span>
 </sc-if>
 <sc-if value="{{ d.showReason }}" hint-placeholder-val="{{ false }}">
-<span style="display:flex;flex-direction:column;gap:8px;grid-column:1 / -1;padding-left:78px">
+<span style="display:flex;flex-direction:column;gap:8px;grid-column:1 / -1;padding:12px 14px 12px 78px;border-top:1px solid var(--jds-gray-200)">
 <span style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
 <span style="font-size:15px;font-weight:600;color:var(--jds-gray-1000)">Why are you unable to provide this document?<span style="color:var(--jds-danger-color-default)">&nbsp;*</span></span>
 <button type="button" sc-camel-on-click="{{ d.onUndoExclude }}" style="background:none;border:none;padding:2px 4px;border-radius:6px;font-family:inherit;font-size:13px;font-weight:600;color:var(--jds-primary-600);cursor:pointer" style-hover="background:var(--jds-primary-100)">Undo</button>
@@ -973,17 +944,18 @@
 </span>
 </div>
 <div id="jds-court-doc" style="flex:1 1 auto;overflow:auto;padding:clamp(14px,2.5vw,26px);background:var(--jds-gray-100)">
-<div style="max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--jds-gray-300);box-shadow:0 2px 10px rgba(14,14,14,0.08);padding:clamp(26px,5vw,58px) clamp(22px,5vw,62px);font-family:'Times New Roman',Times,serif;color:#000">
+<div id="jds-preview-sheet" style="max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--jds-gray-300);box-shadow:0 2px 10px rgba(14,14,14,0.08);padding:clamp(26px,5vw,58px) clamp(22px,5vw,62px);font-family:'Times New Roman',Times,serif;color:#000">
 <div style="text-align:right;font-size:10.5px;font-style:italic;margin-bottom:26px">{{ docStamp }}</div>
 <div style="text-align:center;font-size:13.5px;font-weight:700;margin-bottom:20px">IN THE FAMILY JUSTICE COURTS OF THE REPUBLIC OF SINGAPORE</div>
-<div style="display:flex;gap:14px;font-size:13px;margin-bottom:6px"><span style="flex:0 0 46%">Case No. : {{ previewCaseNo }}</span><span>Between</span></div>
-<div style="text-align:center;font-size:13px;line-height:1.7;margin:10px 0 0">{{ applicantName }}</div>
-<div style="text-align:center;font-size:13px;line-height:1.7">({{ applicantId }})</div>
-<div style="text-align:right;font-size:13px;line-height:1.7;margin-top:10px">...Applicant(s)</div>
-<div style="text-align:center;font-size:13px;line-height:1.7;margin-top:8px">And</div>
-<div style="text-align:center;font-size:13px;line-height:1.7;margin-top:10px">{{ respondentName }}</div>
-<div style="text-align:right;font-size:13px;line-height:1.7;margin-top:10px">...Respondent(s)</div>
-<div style="text-align:center;font-size:13.5px;font-weight:700;margin:34px 0 24px">FIRST ANCILLARY AFFIDAVIT</div>
+<div style="display:flex;gap:14px;font-size:13px;margin-bottom:6px"><span style="flex:0 0 62%">Case No. : {{ previewCaseNo }}</span><span>Between</span></div>
+<div style="padding-left:44%;font-size:13px;line-height:1.7;margin:18px 0 0">{{ applicantName }}</div>
+<div style="padding-left:44%;font-size:13px;line-height:1.7">({{ applicantId }})</div>
+<div style="text-align:right;font-size:13px;line-height:1.7;margin-top:24px">...Applicant(s)</div>
+<div style="padding-left:62%;font-size:13px;line-height:1.7;margin-top:4px">And</div>
+<div style="padding-left:44%;font-size:13px;line-height:1.7;margin-top:18px">{{ respondentName }}</div>
+<div style="padding-left:44%;font-size:13px;line-height:1.7">({{ respondentId }})</div>
+<div style="text-align:right;font-size:13px;line-height:1.7;margin-top:24px">...Respondent(s)</div>
+<div style="text-align:center;font-size:13.5px;font-weight:700;margin:64px 0 26px">FIRST ANCILLARY AFFIDAVIT</div>
 <sc-for list="{{ docBlocks }}" as="b" hint-placeholder-count="10">
 <div style="{{ b.wrapStyle }}">
 <sc-if value="{{ b.isH }}" hint-placeholder-val="{{ false }}"><span style="{{ b.headStyle }}">{{ b.text }}</span></sc-if>
@@ -1094,17 +1066,18 @@
 <button type="button" sc-camel-on-click="{{ onCloseDoc }}" title="Close" aria-label="Close" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;flex-shrink:0;border:none;border-radius:8px;background:transparent;color:var(--jds-gray-700);cursor:pointer" style-hover="background:var(--jds-gray-100)"><i class="ph ph-x" style="font-size:19px" aria-hidden="true"></i></button>
 </div>
 <div style="flex:1 1 auto;overflow:auto;padding:26px 24px;background:var(--jds-gray-50)">
-<div style="background:#fff;border:1px solid var(--jds-gray-300);border-radius:4px;padding:clamp(24px,4vw,48px);font-family:'Times New Roman',Times,serif;color:#000">
+<div id="jds-print-sheet" style="background:#fff;border:1px solid var(--jds-gray-300);border-radius:4px;padding:clamp(24px,4vw,48px);font-family:'Times New Roman',Times,serif;color:#000">
 <div style="text-align:right;font-size:10.5px;font-style:italic;margin-bottom:24px">{{ docStamp }}</div>
 <div style="text-align:center;font-size:13.5px;font-weight:700;margin-bottom:20px">IN THE FAMILY JUSTICE COURTS OF THE REPUBLIC OF SINGAPORE</div>
-<div style="display:flex;gap:14px;font-size:13px;margin-bottom:6px"><span style="flex:0 0 46%">Case No. : {{ previewCaseNo }}</span><span>Between</span></div>
-<div style="text-align:center;font-size:13px;line-height:1.7;margin:10px 0 0">{{ applicantName }}</div>
-<div style="text-align:center;font-size:13px;line-height:1.7">({{ applicantId }})</div>
-<div style="text-align:right;font-size:13px;line-height:1.7;margin-top:10px">...Applicant(s)</div>
-<div style="text-align:center;font-size:13px;line-height:1.7;margin-top:8px">And</div>
-<div style="text-align:center;font-size:13px;line-height:1.7;margin-top:10px">{{ respondentName }}</div>
-<div style="text-align:right;font-size:13px;line-height:1.7;margin-top:10px">...Respondent(s)</div>
-<div style="text-align:center;font-size:13.5px;font-weight:700;margin:34px 0 24px">FIRST ANCILLARY AFFIDAVIT</div>
+<div style="display:flex;gap:14px;font-size:13px;margin-bottom:6px"><span style="flex:0 0 62%">Case No. : {{ previewCaseNo }}</span><span>Between</span></div>
+<div style="padding-left:44%;font-size:13px;line-height:1.7;margin:18px 0 0">{{ applicantName }}</div>
+<div style="padding-left:44%;font-size:13px;line-height:1.7">({{ applicantId }})</div>
+<div style="text-align:right;font-size:13px;line-height:1.7;margin-top:24px">...Applicant(s)</div>
+<div style="padding-left:62%;font-size:13px;line-height:1.7;margin-top:4px">And</div>
+<div style="padding-left:44%;font-size:13px;line-height:1.7;margin-top:18px">{{ respondentName }}</div>
+<div style="padding-left:44%;font-size:13px;line-height:1.7">({{ respondentId }})</div>
+<div style="text-align:right;font-size:13px;line-height:1.7;margin-top:24px">...Respondent(s)</div>
+<div style="text-align:center;font-size:13.5px;font-weight:700;margin:64px 0 26px">FIRST ANCILLARY AFFIDAVIT</div>
 <sc-for list="{{ docBlocks }}" as="b" hint-placeholder-count="10">
 <div style="{{ b.wrapStyle }}">
 <sc-if value="{{ b.isH }}" hint-placeholder-val="{{ false }}"><span style="{{ b.headStyle }}">{{ b.text }}</span></sc-if>
@@ -1252,6 +1225,10 @@ const D = (iso) => {
   if (isNaN(d)) return iso;
   return d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
 };
+const labelWeight = (f) => String(f.label || "").length
+  + (f.myinfo ? 10 : 0)
+  + (f.optional ? 10 : 0)
+  + (f.tip ? 3 : 0) + 2;
 const blank = (v) => v === undefined || v === null || String(v).trim() === "";
 const num = (v) => Number(String(v ?? "").replace(/[^0-9.\-]/g, "")) || 0;
 
@@ -1513,6 +1490,29 @@ const cpfTotal_ = (v) => num(v.cpfOrdinary) + num(v.cpfSpecial) + num(v.cpfMedis
   + (v.hasCpfInvestment === "Yes" ? num(v.cpfInvestmentValue) : 0) + sum_(v, "pensionFunds", "value");
 const plural_ = (n, one, many) => n + " " + (n === 1 ? one : many);
 
+const OTHER_ASSET = "Other asset";
+/* Options for referring back to an asset the user already declared. */
+const ASSET_OPTIONS = (v) => {
+  const out = [];
+  const push = (name, kind) => { const t = String(name == null ? "" : name).trim(); if (t) out.push(t + " \u2014 " + kind); };
+  const j = (parts) => parts.filter((x) => !blank(x)).join(" · ");
+  rows_(v, "properties").forEach((r) => push(r.refName || r.address, "Property"));
+  rows_(v, "bankAccounts").forEach((r) => push(j([r.bank, r.accountNo]), "Bank account"));
+  if (v.hasCpf === "Yes") {
+    out.push("CPF accounts \u2014 CPF");
+    if (v.hasCpfInvestment === "Yes") push("CPF Investment Account" + (blank(v.cpfInvestmentInstitution) ? "" : " (" + v.cpfInvestmentInstitution + ")"), "CPF");
+  }
+  rows_(v, "pensionFunds").forEach((r) => push(r.fund, "Pension fund"));
+  rows_(v, "investmentList").forEach((r) => push(r.name, "Investment"));
+  rows_(v, "insuranceList").forEach((r) => push(j([r.insurer, r.policyNo]), "Insurance policy"));
+  rows_(v, "vehicleList").forEach((r) => push(j([r.regNo, r.model]), "Motor vehicle"));
+  rows_(v, "otherAssetsList").forEach((r) => push(r.desc, "Other valuable"));
+  rows_(v, "debtsDueList").forEach((r) => push(j([r.debtor, r.nature]), "Debt due to me"));
+  return [{ value: "", label: out.length ? "Select an asset" : "No assets declared yet" }]
+    .concat(out.map((x) => ({ value: x, label: x })))
+    .concat([{ value: OTHER_ASSET, label: "Other asset (not listed above)" }]);
+};
+
 const ASSET_TYPES = [
   { key: "property", flag: "hasProperty", step: "assetsProperty", label: "Property", icon: "ph ph-house", myinfo: true,
     total: (v) => sum_(v, "properties", "marketValue"), liability: (v) => sum_(v, "properties", "mortgage"),
@@ -1556,6 +1556,8 @@ const DEF_BANKRUPT_TEXT = "A person who has been declared bankrupt by the Court 
 const DEF_BANKRUPT = ["undischarged bankrupt", DEF_BANKRUPT_TEXT];
 const DEF_GROSS = ["total gross value", DEF_GROSS_TEXT];
 const DEF_GROSS_S = ["gross value", DEF_GROSS_TEXT];
+const DEF_PENSION = ["pension or provident fund",
+  "A retirement savings scheme you or an employer paid into, other than CPF — for example Malaysia’s EPF, an overseas state pension, or a company pension or retirement plan."];
 const DEF_MATRI = ["matrimonial assets", DEF_MATRI_TEXT];
 const DEF_MATRI_S = ["matrimonial asset", DEF_MATRI_TEXT];
 
@@ -1570,20 +1572,22 @@ const SCHEMA = [
     id: "instructions", label: "Instructions", title: "Instructions", instructions: true,
     paras: ["Use this form to prepare your First Ancillary Affidavit (Form 15) in the required court format.", "Before you begin, have ready:"],
     bullets: ["your case details;", "your income, expenses, assets and liabilities; and", "any supporting documents relevant to your case."],
-    parasAfter: ["Save your progress anytime and return later. Answer every question that applies to you — your answers generate the affidavit, so review them carefully before submitting."],
+    parasAfter: ["Answer every question that applies to you — your answers generate the affidavit, so review them carefully before submitting."],
     fields: []
   },
   {
     id: "intro", label: "Introduction", title: "Introduction",
     fields: [
-      { id: "name", label: "Name", type: "text", myinfo: true, readOnly: true },
-      { id: "nric", label: "NRIC / FIN / Passport Number", type: "text", required: true, upper: true, immediate: true, placeholder: "e.g. S1234567D",
+      { id: "name", label: "Name", type: "text", half: true, myinfo: true, readOnly: true },
+      { id: "nric", label: "NRIC / FIN / Passport Number", type: "text", half: true, required: true, upper: true, immediate: true, placeholder: "e.g. S1234567D",
         validate: (v) => /^[STFGM]\d{7}[A-Z]$/.test(String(v).trim()) || /^[A-Z0-9]{6,12}$/.test(String(v).trim()) ? null : "Enter a valid NRIC, FIN or passport number." },
       { id: "address", label: "Registered Address", type: "textarea", myinfo: true, readOnly: true },
-      { id: "occupation", label: "Occupation", type: "text", required: true, combo: true, comboList: OCCUPATIONS, placeholder: "Start typing your occupation" },
+      { id: "occupation", label: "Occupation", type: "text", wide: true, required: true, combo: true, comboList: OCCUPATIONS, placeholder: "Start typing your occupation" },
+      { id: "spouseName", label: "Name of my spouse", type: "text", half: true, required: true, placeholder: "Full name as per NRIC / Passport" },
+      { id: "spouseNric", label: "Spouse's NRIC / FIN / Passport number", type: "text", half: true, required: true, upper: true, placeholder: "e.g. S7654321B" },
       { id: "caseNumber", label: "Main case number", type: "text", required: true, upper: true, immediate: true, placeholder: "e.g. FC/OAD 24/2026",
         hint: "Refer to the case number on your Originating Application. Do not enter a sub-case number.",
-        validate: (v) => /^FC\/[A-Z]{2,5}\s?\d+\/\d{4}$/i.test(String(v).trim()) ? null : "Enter the case number in the format FC/OAD 24/2026." },
+        validate: (v) => /^[A-Za-z0-9]+(\/[A-Za-z0-9]+)*\s?\d+\/\d{4}$/.test(String(v).trim()) ? null : "Enter the case number as it appears on your Originating Application, ending in a number and year." },
       { id: "role", label: "Your role in this case", type: "radio", required: true, hint: "Refer to the Originating Application for your party type.",
         options: [
           { value: "Applicant", label: "Applicant" },
@@ -1650,7 +1654,7 @@ const SCHEMA = [
       { id: "bankruptPending", label: "Are there pending bankruptcy proceedings filed against you?", type: "radio", required: true, when: (v) => v.bankrupt === "No", options: YN },
       { id: "spouseBankrupt", label: "Is your spouse an undischarged bankrupt?", type: "radio", required: true, options: YN },
       { id: "spouseBankruptPending", label: "Are there pending bankruptcy proceedings filed against your spouse?", type: "radio", required: true, when: (v) => v.spouseBankrupt === "No", options: YN },
-      { id: "thirdPartyAsset", label: "At least 1 immovable asset in the asset pool is wholly or partially owned by a third party", type: "radio", required: true, options: YN,
+      { id: "thirdPartyAsset", label: "Is any immovable asset in the asset pool owned, wholly or partially, by a third party?", type: "radio", required: true, options: YN,
         defs: [["immovable asset", "Land or property that cannot be moved, such as an HDB flat, a condominium unit, a landed house or land held overseas."],
           ["third party", "Anyone who is not you or your spouse, for example a parent or sibling named on the title of the property."]] }
     ]
@@ -1658,10 +1662,16 @@ const SCHEMA = [
   {
     id: "general", label: "General Information", title: "General Information",
     fields: [
-      { id: "dob", label: "Date of birth", type: "date", myinfo: true, readOnly: true },
-      { id: "marriageDate", label: "Marriage date", type: "date", myinfo: true, readOnly: true },
-      { id: "spouseDob", label: "My spouse's date of birth", type: "date", required: true },
-      { id: "education", label: "My highest educational level", type: "text", required: true, myinfo: true, readOnly: true },
+      { id: "dob", label: "Date of birth", type: "date", half: true, myinfo: true, readOnly: true },
+      { id: "myAge", label: "My age", type: "text", half: true, readOnly: true, noStar: true,
+        derive: (v) => { const a = ageFrom(v.dob); return blank(a) ? "" : String(a); },
+        placeholder: "Calculated from your date of birth" },
+      { id: "marriageDate", label: "Marriage date", type: "date", half: true, myinfo: true, readOnly: true },
+      { id: "education", label: "My highest educational level", type: "text", half: true, required: true, myinfo: true, readOnly: true },
+      { id: "spouseDob", label: "My spouse's date of birth", type: "date", half: true, required: true },
+      { id: "spouseAge", label: "My spouse's age", type: "text", half: true, readOnly: true, noStar: true,
+        derive: (v) => { const a = ageFrom(v.spouseDob); return blank(a) ? "" : String(a); },
+        placeholder: "Calculated from their date of birth" },
       { id: "ijDate", label: "The Interim Judgment was granted on", type: "date", required: true, when: (v) => v.granted === "An Interim Judgment" },
       { id: "jsDate", label: "The Judgment of Judicial Separation was granted on", type: "date", required: true, when: (v) => v.granted === "A Judgment of Judicial Separation" },
       { id: "syariahDate", label: "The divorce / nullity / judicial separation was granted on", type: "date", required: true, when: (v) => v.forum === F_SYARIAH || v.forum === F_OVERSEAS },
@@ -1669,9 +1679,9 @@ const SCHEMA = [
       { id: "breakdownReasons", label: "Reason(s) for date of when marriage broke down", type: "textarea", required: true, max: 1000, placeholder: "State your reasons here" },
       { id: "reasonDocs", label: "Refer to other court document(s) containing my reasons", type: "repeat", optional: true, table: true, addLabel: "Add another row",
         row: [
-          { id: "docName", label: "Document name", type: "text", grow: "1 1 200px", minWidth: 180, noStar: true },
+          { id: "docName", label: "Document name", type: "text", grow: "1 1 200px", minWidth: 180, noStar: true, placeholder: "e.g. Statement of Particulars" },
           { id: "dateFiled", label: "Date filed", type: "date", grow: "1 1 210px", minWidth: 190, noStar: true },
-          { id: "paras", label: "Paragraph number(s)", type: "text", grow: "1 1 180px", minWidth: 150, noStar: true }
+          { id: "paras", label: "Paragraph number(s)", type: "text", grow: "1 1 180px", minWidth: 150, noStar: true, placeholder: "e.g. 5, 7-9" }
         ] },
       { id: "childCount", label: "Total number of living child(ren)", type: "number", required: true, wide: true, placeholder: "0" },
       { id: "childrenOfMarriage", label: "Do you have any children under 21 who were born or accepted as children of the marriage?", type: "radio", required: true, options: YN },
@@ -1688,10 +1698,6 @@ const SCHEMA = [
       { id: "childDetails", label: "Details of child(ren)", type: "repeat", required: (v) => CHILD_MAINT(v), optional: true, rowTitle: "Child", fixedCount: true, noAdd: true,
         row: [
           { id: "name", label: "Name", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "Full name as per NRIC / Passport" },
-          { id: "relation", label: "Relationship to you", type: "select", grow: "1 1 calc(50% - 8px)",
-            options: [{ value: "", label: "Select an option" }, { value: "Child of this marriage", label: "Child of this marriage" },
-              { value: "Child from a previous marriage or relationship", label: "Child from a previous marriage or relationship" },
-              { value: "Child accepted as a child of the marriage", label: "Child accepted as a child of the marriage" }] },
           { id: "unknown", label: "Particulars", type: "checks", grow: "1 1 100%", optional: true,
             desc: "Tick this only if you genuinely cannot obtain the child's particulars, for example a child from a previous marriage who is not in your care.",
             options: [{ value: "unknown", label: "I do not know this child's NRIC / FIN and date of birth" }] },
@@ -1770,7 +1776,7 @@ const SCHEMA = [
             when: (r) => r.source === "Others", placeholder: "e.g. Pocket money" },
           { id: "details", label: "Details on the source of income", type: "text", grow: "1 1 100%",
             placeholder: "e.g. Name of employer / property / business" },
-          { id: "received", label: "How are the monies received?", type: "select", grow: "1 1 calc(50% - 8px)",
+          { id: "received", label: "How are the monies received?", type: "select", grow: "1 1 calc(50% - 8px)", half: true,
             options: [
               { value: "", label: "Select an option" },
               { value: "In cash", label: "In cash" },
@@ -1778,15 +1784,15 @@ const SCHEMA = [
               { value: "Cheque", label: "Cheque" },
               { value: "Others", label: "Others" }
             ] },
-          { id: "receivedOther", label: "State how the monies are received", type: "text", grow: "1 1 calc(50% - 8px)",
-            when: (r) => r.received === "Others", placeholder: "e.g. PayNow transfer" },
-          { id: "frequency", label: "How often do you receive the monies?", type: "select", grow: "1 1 calc(50% - 8px)",
+          { id: "frequency", label: "How often do you receive the monies?", type: "select", grow: "1 1 calc(50% - 8px)", half: true,
             options: [
               { value: "", label: "Select an option" },
               { value: "Monthly", label: "Monthly" },
               { value: "Others", label: "Others" }
             ] },
-          { id: "frequencyOther", label: "State how often the monies are received", type: "text", grow: "1 1 calc(50% - 8px)",
+          { id: "receivedOther", label: "State how the monies are received", type: "text", grow: "1 1 calc(50% - 8px)", half: true,
+            when: (r) => r.received === "Others", placeholder: "e.g. PayNow transfer" },
+          { id: "frequencyOther", label: "State how often the monies are received", type: "text", grow: "1 1 calc(50% - 8px)", half: true,
             when: (r) => r.frequency === "Others", placeholder: "e.g. Quarterly, twice a year" },
           { id: "gross", label: "Gross amount per month", type: "money", grow: "1 1 calc(50% - 8px)" },
           { id: "nett", label: "Nett amount per month", type: "money", grow: "1 1 calc(50% - 8px)" }
@@ -1860,7 +1866,7 @@ const SCHEMA = [
       { id: "properties", label: "Details of my immovable property(ies)", type: "repeat", required: true, rowTitle: "Property", addLabel: "Add another property",
         helper: "Add one block for each property you own wholly or partly, in Singapore or overseas.",
         row: [
-          { id: "address", label: "Registered Address", type: "text", grow: "1 1 100%", placeholder: "Enter postal code or street name", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
+          { id: "address", label: "Registered Address", type: "search", searchWhen: (r) => !r._retrieved, grow: "1 1 100%", placeholder: "Enter postal code, street or building name", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
           { id: "refName", label: "Reference name", type: "text", grow: "1 1 100%", optional: true, placeholder: "e.g. The Siglap property",
             desc: "A short name you will use to refer to this property elsewhere in the affidavit." },
           { id: "propertyType", label: "Type of property", type: "select", grow: "1 1 100%", options: PROPERTY_TYPES, myinfo: FROM_MYINFO, readOnly: FROM_MYINFO,
@@ -1870,13 +1876,13 @@ const SCHEMA = [
             options: [{ value: "", label: "Select an option" }, { value: "Sole tenancy", label: "Sole tenancy" }, { value: "Joint tenancy", label: "Joint tenancy" }, { value: "Tenancy in common", label: "Tenancy in common" }] },
           { id: "share", label: "My share (in %)", type: "text", grow: "1 1 200px", when: (r) => r.holding === "Tenancy in common", placeholder: "e.g. 50%" },
           { id: "owners", label: "Name(s) of owner(s)", type: "text", grow: "1 1 100%", placeholder: "Full names as per NRIC / Passport, separated by commas" },
-          { id: "purchasePrice", label: "Purchase price (in SGD)", type: "money", grow: "1 1 calc(50% - 8px)", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
+          { id: "purchasePrice", label: "Purchase price", type: "money", grow: "1 1 calc(50% - 8px)", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
           { id: "purchaseDate", label: "Date of purchase", type: "date", grow: "1 1 calc(50% - 8px)", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
-          { id: "marketValue", label: "Estimated market value (in SGD)", type: "money", grow: "1 1 calc(50% - 8px)", when: PROP_VALUE_SHOWN },
+          { id: "marketValue", label: "Estimated market value", type: "money", grow: "1 1 calc(50% - 8px)", when: PROP_VALUE_SHOWN },
           { id: "valueBasis", label: "Basis of the value", type: "select", grow: "1 1 calc(50% - 8px)", when: PROP_VALUE_SHOWN,
             options: [{ value: "", label: "Select an option" }, { value: "HDB", label: "HDB" }, { value: "URA latest transaction records", label: "URA latest transaction records" }, { value: "Desktop valuation", label: "Desktop valuation" }, { value: "Onsite valuation", label: "Onsite valuation" }, { value: "Others", label: "Others" }] },
           { id: "valueBasisOther", label: "State the basis of the value", type: "text", grow: "1 1 100%", when: (r) => r.valueBasis === "Others", placeholder: "State how the value was derived" },
-          { id: "mortgage", label: "Outstanding mortgage (in SGD)", type: "money", grow: "1 1 calc(50% - 8px)", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
+          { id: "mortgage", label: "Outstanding mortgage", type: "money", grow: "1 1 calc(50% - 8px)", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
           { id: "mortgagee", label: "Name(s) of mortgagee(s)", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. DBS Bank Ltd", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO }
         ] },
       { id: "propertiesTotal", type: "note", noteText: (v) => "Total for this section: S$" + SGD((Array.isArray(v.properties) ? v.properties : []).reduce((t, r) => t + num(r && r.marketValue), 0)) },
@@ -1893,7 +1899,7 @@ const SCHEMA = [
           { id: "type", label: "Type of account", type: "select", grow: "1 1 calc(50% - 8px)",
             options: [{ value: "", label: "Select an option" }, { value: "Current", label: "Current" }, { value: "Deposit", label: "Deposit" }, { value: "Others", label: "Others" }] },
           { id: "typeOther", label: "State the type of account", type: "text", grow: "1 1 calc(50% - 8px)", when: (r) => r.type === "Others", placeholder: "e.g. Multi-currency account" },
-          { id: "balance", label: "Balance (in SGD)", type: "money", grow: "1 1 calc(50% - 8px)" },
+          { id: "balance", label: "Balance", type: "money", grow: "1 1 calc(50% - 8px)" },
           { id: "asAt", label: "As at", type: "date", grow: "1 1 calc(50% - 8px)" },
           { id: "holders", label: "Name(s) of other account holders", type: "text", grow: "1 1 100%", placeholder: "Full names as per NRIC / Passport, or 'None'" }
         ] },
@@ -1903,23 +1909,27 @@ const SCHEMA = [
   {
     id: "assetsCpf", label: "CPF and Pension Funds", title: "CPF and Pension Funds", sub: true, visibleWhen: (v) => v.hasCpf === "Yes",
     fields: [
-      { id: "cpfOrdinary", label: "Ordinary Account (in SGD)", type: "money", required: true, myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
-      { id: "cpfSpecial", label: "Special Account (in SGD)", type: "money", required: true, myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
-      { id: "cpfMedisave", label: "MediSave Account (in SGD)", type: "money", required: true, myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
-      { id: "cpfRetirement", label: "Retirement Account (in SGD)", type: "money", required: true, myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
-      { id: "cpfLifeScheme", label: "Are you under the CPF Life Investment Scheme?", type: "radio", required: true, options: YN },
-      { id: "hasCpfInvestment", label: "Do you have a CPF Investment Account?", type: "radio", required: true, options: YN },
-      { id: "cpfInvestmentInstitution", label: "Name of the financial institution", type: "text", required: true, when: (v) => v.hasCpfInvestment === "Yes", placeholder: "e.g. DBS Bank Ltd" },
-      { id: "cpfInvestmentValue", label: "CPF Investment Account value (in SGD)", type: "money", required: true, when: (v) => v.hasCpfInvestment === "Yes" },
+      { id: "cpfOrdinary", label: "Ordinary Account", type: "money", half: true, required: true, myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
+      { id: "cpfSpecial", label: "Special Account", type: "money", half: true, required: true, myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
+      { id: "cpfMedisave", label: "MediSave Account", type: "money", half: true, required: true, myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
+      { id: "cpfRetirement", label: "Retirement Account", type: "money", half: true, required: true, myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
+      { id: "cpfLifeScheme", label: "Are you under the CPF Life Investment Scheme?", type: "radio", required: true, options: YN,
+        myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
+      { id: "hasCpfInvestment", label: "Do you have a CPF Investment Account?", type: "radio", required: true, options: YN,
+        myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
+      { id: "cpfInvestmentInstitution", label: "Name of the financial institution", type: "text", half: true, required: true, when: (v) => v.hasCpfInvestment === "Yes", placeholder: "e.g. DBS Bank Ltd",
+        myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
+      { id: "cpfInvestmentValue", label: "CPF Investment Account value", type: "money", half: true, required: true, when: (v) => v.hasCpfInvestment === "Yes",
+        myinfo: CPF_RETRIEVED, readOnly: CPF_RETRIEVED },
       { id: "cpfTotal", type: "note", noteText: (v) => "Total for this section: S$" + SGD(num(v.cpfOrdinary) + num(v.cpfSpecial) + num(v.cpfMedisave) + num(v.cpfRetirement) + (v.hasCpfInvestment === "Yes" ? num(v.cpfInvestmentValue) : 0)) },
-      { id: "hasPension", label: "Do you have any pension or provident fund, other than CPF?", type: "radio", required: true, options: YN },
+      { id: "hasPension", label: "Do you have any pension or provident fund, other than CPF?", type: "radio", required: true, options: YN, def: DEF_PENSION },
       { id: "pensionFunds", label: "Details of my pension fund(s)", type: "repeat", required: true, when: (v) => v.hasPension === "Yes", rowTitle: "Pension fund", addLabel: "Add another pension fund",
         row: [
           { id: "fund", label: "Country and name of fund", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. Malaysia, Employees Provident Fund" },
-          { id: "value", label: "Value of the fund (in SGD)", type: "money", grow: "1 1 calc(50% - 8px)" },
+          { id: "value", label: "Value of the fund", type: "money", grow: "1 1 calc(50% - 8px)" },
           { id: "asAt", label: "As at", type: "date", grow: "1 1 calc(50% - 8px)" },
           { id: "beneficiaries", label: "Name(s) of the beneficiary(ies)", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "Full names as per NRIC / Passport" },
-          { id: "payout", label: "Amount of payout (in SGD)", type: "money", grow: "1 1 calc(50% - 8px)" },
+          { id: "payout", label: "Amount of payout", type: "money", grow: "1 1 calc(50% - 8px)" },
           { id: "frequency", label: "Frequency of payout", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. Monthly" },
           { id: "firstPayout", label: "Date the first payout was made or will be made", type: "date", grow: "1 1 calc(50% - 8px)" },
           { id: "otherDetails", label: "Other relevant details", type: "text", grow: "1 1 100%", placeholder: "State anything else that affects the value of the fund, or 'None'" }
@@ -1941,7 +1951,7 @@ const SCHEMA = [
           { id: "basis", label: "Basis of the valuation", type: "select", grow: "1 1 calc(50% - 8px)",
             options: [{ value: "", label: "Select an option" }, { value: "Market value on the stock market", label: "Market value on the stock market" }, { value: "Formal valuation report", label: "Formal valuation report" }, { value: "Actual investment amount", label: "Actual investment amount" }, { value: "Others", label: "Others" }] },
           { id: "basisOther", label: "State the basis of the valuation", type: "text", grow: "1 1 calc(50% - 8px)", when: (r) => r.basis === "Others", placeholder: "State how the value was derived" },
-          { id: "value", label: "Value of my shares (in SGD)", type: "money", grow: "1 1 100%" }
+          { id: "value", label: "Value of my shares", type: "money", grow: "1 1 100%" }
         ] },
       { id: "investmentListTotal", type: "note", noteText: (v) => "Total for this section: S$" + SGD((Array.isArray(v.investmentList) ? v.investmentList : []).reduce((t, r) => t + num(r && r.value), 0)) },
     ]
@@ -1958,12 +1968,12 @@ const SCHEMA = [
           { id: "type", label: "Type of policy", type: "select", grow: "1 1 calc(50% - 8px)",
             options: [{ value: "", label: "Select an option" }, { value: "Life", label: "Life" }, { value: "Endowment", label: "Endowment" }, { value: "Hospitalisation", label: "Hospitalisation" }, { value: "Others", label: "Others" }] },
           { id: "typeOther", label: "State the type of policy", type: "text", grow: "1 1 calc(50% - 8px)", when: (r) => r.type === "Others", placeholder: "e.g. Investment-linked policy" },
-          { id: "premium", label: "Premium amount (in SGD)", type: "money", grow: "1 1 calc(50% - 8px)" },
+          { id: "premium", label: "Premium amount", type: "money", grow: "1 1 calc(50% - 8px)" },
           { id: "premiumFrequency", label: "Frequency of payment", type: "select", grow: "1 1 calc(50% - 8px)",
             options: [{ value: "", label: "Select an option" }, { value: "Monthly", label: "Monthly" }, { value: "Annually", label: "Annually" }, { value: "Lump sum", label: "Lump sum" }, { value: "Others", label: "Others" }] },
           { id: "mode", label: "Mode of payment for premiums", type: "select", grow: "1 1 calc(50% - 8px)",
             options: [{ value: "", label: "Select an option" }, { value: "Cash", label: "Cash" }, { value: "CPF", label: "CPF" }, { value: "Others", label: "Others" }] },
-          { id: "surrender", label: "Surrender value (in SGD)", type: "money", grow: "1 1 100%" }
+          { id: "surrender", label: "Surrender value", type: "money", grow: "1 1 100%" }
         ] },
       { id: "insuranceListTotal", type: "note", noteText: (v) => "Total for this section: S$" + SGD((Array.isArray(v.insuranceList) ? v.insuranceList : []).reduce((t, r) => t + num(r && r.surrender), 0)) },
     ]
@@ -1973,14 +1983,14 @@ const SCHEMA = [
     fields: [
       { id: "vehicleList", label: "Details of my motor vehicle(s)", type: "repeat", required: true, rowTitle: "Vehicle", addLabel: "Add another vehicle",
         row: [
-          { id: "regNo", label: "Vehicle number", type: "text", grow: "1 1 calc(50% - 8px)", upper: true, placeholder: "e.g. SLB1234A", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
-          { id: "model", label: "Brand and model of vehicle", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. Toyota Corolla Altis", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
-          { id: "age", label: "Age of vehicle", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. 5 years", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
-          { id: "purpose", label: "Purpose", type: "select", grow: "1 1 calc(50% - 8px)",
+          { id: "regNo", label: "Vehicle number", type: "text", grow: "1 1 calc(50% - 8px)", half: true, upper: true, placeholder: "e.g. SLB1234A", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
+          { id: "model", label: "Brand and model of vehicle", type: "text", grow: "1 1 calc(50% - 8px)", half: true, placeholder: "e.g. Toyota Corolla Altis", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
+          { id: "age", label: "Age of vehicle", type: "text", grow: "1 1 calc(50% - 8px)", half: true, placeholder: "e.g. 5 years", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
+          { id: "purpose", label: "Purpose", type: "select", grow: "1 1 calc(50% - 8px)", half: true,
             options: [{ value: "", label: "Select an option" }, { value: "Family", label: "Family" }, { value: "Personal", label: "Personal" }, { value: "Work", label: "Work" }, { value: "Others", label: "Others" }] },
-          { id: "hirePurchase", label: "Outstanding hire purchase amount (in SGD)", type: "money", grow: "1 1 calc(50% - 8px)" },
-          { id: "value", label: "Market value of vehicle (in SGD)", type: "money", grow: "1 1 calc(50% - 8px)" },
-          { id: "asAt", label: "As at", type: "date", grow: "1 1 calc(50% - 8px)" }
+          { id: "hirePurchase", label: "Outstanding hire purchase amount", type: "money", grow: "1 1 calc(50% - 8px)", half: true },
+          { id: "value", label: "Market value of vehicle", type: "money", grow: "1 1 calc(50% - 8px)", half: true },
+          { id: "asAt", label: "As at", type: "date", grow: "0 1 calc(50% - 8px)", half: true }
         ] },
       { id: "vehicleListTotal", type: "note", noteText: (v) => "Total for this section: S$" + SGD((Array.isArray(v.vehicleList) ? v.vehicleList : []).reduce((t, r) => t + num(r && r.value), 0)) },
     ]
@@ -1994,7 +2004,7 @@ const SCHEMA = [
           { id: "desc", label: "Description of item", type: "text", grow: "1 1 100%", placeholder: "e.g. Diamond ring, 1 carat" },
           { id: "basis", label: "Basis of valuation", type: "select", grow: "1 1 calc(50% - 8px)",
             options: [{ value: "", label: "Select an option" }, { value: "Purchase price", label: "Purchase price" }, { value: "Latest transacted price", label: "Latest transacted price" }, { value: "Formal valuation", label: "Formal valuation" }, { value: "Others", label: "Others" }] },
-          { id: "value", label: "Market value of item (in SGD)", type: "money", grow: "1 1 calc(50% - 8px)" },
+          { id: "value", label: "Market value of item", type: "money", grow: "1 1 calc(50% - 8px)" },
           { id: "owners", label: "Name(s) of other owners and your relationship with them", type: "text", grow: "1 1 100%", placeholder: "Full name as per NRIC / Passport and your relationship, or 'None'" },
           { id: "heldBy", label: "Who currently holds or owns this item?", type: "text", grow: "1 1 100%", placeholder: "For physical items state who holds it; for other items state who owns it" }
         ] },
@@ -2008,7 +2018,7 @@ const SCHEMA = [
         row: [
           { id: "debtor", label: "Name of debtor", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "Full name as per NRIC / Passport" },
           { id: "nature", label: "Nature of debt or payment", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. Personal loan extended in 2023" },
-          { id: "amount", label: "Amount due to me (in SGD)", type: "money", grow: "1 1 calc(50% - 8px)" }
+          { id: "amount", label: "Amount due to me", type: "money", grow: "1 1 calc(50% - 8px)" }
         ] },
       { id: "debtsDueListTotal", type: "note", noteText: (v) => "Total for this section: S$" + SGD((Array.isArray(v.debtsDueList) ? v.debtsDueList : []).reduce((t, r) => t + num(r && r.amount), 0)) },
       { id: "debtsDueNotes", label: "Additional information on these debts or payments", type: "textarea", required: true, max: 1500,
@@ -2024,7 +2034,7 @@ const SCHEMA = [
       { id: "loans", label: "I have the following debt(s)", type: "repeat", required: true, when: (v) => v.hasOtherDebt === "Yes",
         rowTitle: "Item", addLabel: "Add another debt",
         row: [
-          { id: "lender", label: "Name of creditor", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "Placeholder text" },
+          { id: "lender", label: "Name of creditor", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. DBS Bank Ltd" },
           { id: "account", label: "Account number", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. 12345" },
           { id: "type", label: "Nature of debt / loan", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. Personal loan / credit card / credit line" },
           { id: "amount", label: "Amount outstanding", type: "money", grow: "1 1 calc(50% - 8px)" },
@@ -2039,18 +2049,25 @@ const SCHEMA = [
       { id: "allMatrimonial", label: "Are all assets listed in the Assets section matrimonial assets?", type: "radio", required: true, options: YN,
         def: DEF_MATRI },
       { id: "notMatrimonial", label: "The following assets are NOT considered matrimonial assets", type: "repeat", when: (v) => v.allMatrimonial === "No", def: DEF_MATRI,
-        table: true, sn: true, addLabel: "Add another row",
+        rowTitle: "Asset", addLabel: "Add another asset",
+        helper: "Pick an asset you already declared in the Assets section, then say why it should not be treated as a matrimonial asset.",
         row: [
-          { id: "desc", label: "Assets", type: "text", grow: "1 1 240px", minWidth: 170, noStar: true, placeholder: "Enter details here" },
-          { id: "reason", label: "State your reasons", type: "text", grow: "1 1 280px", minWidth: 200, noStar: true, placeholder: "Enter details here" }
+          { id: "desc", label: "Asset", type: "select", grow: "1 1 100%", noStar: true, optionsFrom: ASSET_OPTIONS },
+          { id: "descOther", label: "Describe the asset", type: "text", grow: "1 1 100%", noStar: true,
+            when: (r) => r.desc === OTHER_ASSET, placeholder: "e.g. Inherited shophouse in Penang" },
+          { id: "reason", label: "Why should this not be considered a matrimonial asset?", type: "textarea", grow: "1 1 100%", noStar: true, max: 1000,
+            placeholder: "e.g. Inherited from my late father and never used by the family" }
         ] },
       { id: "paidForAsset", label: "Did you make any monetary contributions to the matrimonial asset?", type: "radio", required: true, options: YN, def: DEF_MATRI_S },
       { id: "paidAssets", label: "I have made these monetary contributions to the matrimonial assets", type: "repeat", when: (v) => v.paidForAsset === "Yes", def: DEF_MATRI,
-        table: true, sn: true, addLabel: "Add another row",
+        rowTitle: "Asset", addLabel: "Add another asset",
+        helper: "Pick an asset you already declared in the Assets section, then state what you contributed.",
         row: [
-          { id: "desc", label: "Assets", type: "text", grow: "1 1 200px", minWidth: 150, noStar: true, placeholder: "Enter details here" },
-          { id: "amount", label: "Amount / Percentage of contribution", type: "money", grow: "1 1 210px", minWidth: 170, noStar: true },
-          { id: "source", label: "Manner of contribution", type: "text", grow: "1 1 200px", minWidth: 160, noStar: true, placeholder: "e.g. CPF / cash / loans" }
+          { id: "desc", label: "Asset", type: "select", grow: "1 1 100%", noStar: true, optionsFrom: ASSET_OPTIONS },
+          { id: "descOther", label: "Describe the asset", type: "text", grow: "1 1 100%", noStar: true,
+            when: (r) => r.desc === OTHER_ASSET, placeholder: "e.g. Inherited shophouse in Penang" },
+          { id: "amount", label: "Amount / Percentage of contribution", type: "money", grow: "1 1 calc(50% - 8px)", half: true, noStar: true },
+          { id: "source", label: "Manner of contribution", type: "text", grow: "1 1 calc(50% - 8px)", half: true, noStar: true, placeholder: "e.g. CPF / cash / loans" }
         ] },
       { id: "contributionNotes", label: "Other relevant information on your monetary contribution to the above assets", type: "textarea", optional: true, when: (v) => v.paidForAsset === "Yes", max: 1500,
         hint: "You can further explain the manner of contribution, how the percentage of contribution is derived, breakdown of contribution etc.",
@@ -2214,7 +2231,7 @@ const SCHEMA = [
       { id: "ordSpouseBankHead", type: "heading", level: 2, when: SUB("ordSpouse", "bank"), headingText: "Payment to the party's bank account" },
       { id: "ordSpouseBankOwner", label: "Whose bank account is the maintenance to be paid into?", type: "radio", required: true, when: SUB("ordSpouse", "bank"), options: AR },
       { id: "ordSpouseBankName", label: "Name of bank", type: "text", required: true, when: SUB("ordSpouse", "bank"), placeholder: "e.g. DBS Bank Ltd" },
-      { id: "ordSpouseBankAccount", label: "Bank account number", type: "text", required: true, when: SUB("ordSpouse", "bank") },
+      { id: "ordSpouseBankAccount", label: "Bank account number", type: "text", required: true, when: SUB("ordSpouse", "bank"), placeholder: "e.g. 123-45678-9" },
       { id: "ordSpouseNoneHead", type: "heading", level: 2, when: SUB("ordSpouse", "none"), headingText: "No maintenance for a party" },
       { id: "ordSpouseNone", half: true, label: "There shall be no maintenance for", type: "checkgroup", required: true, when: SUB("ordSpouse", "none"), options: AR },
     ]
@@ -2249,7 +2266,7 @@ const SCHEMA = [
       { id: "ordChildBankHead", type: "heading", level: 2, when: SUB("ordChild", "bank"), headingText: "Payment to the party's bank account" },
       { id: "ordChildBankOwner", label: "Whose bank account is the maintenance to be paid into?", type: "radio", required: true, when: SUB("ordChild", "bank"), options: AR },
       { id: "ordChildBankName", label: "Name of bank", type: "text", required: true, when: SUB("ordChild", "bank"), placeholder: "e.g. DBS Bank Ltd" },
-      { id: "ordChildBankAccount", label: "Bank account number", type: "text", required: true, when: SUB("ordChild", "bank") },
+      { id: "ordChildBankAccount", label: "Bank account number", type: "text", required: true, when: SUB("ordChild", "bank"), placeholder: "e.g. 123-45678-9" },
     ]
   },
   {
@@ -2381,7 +2398,8 @@ class Component extends DCLogic {
     }
   }
 
-  componentDidUpdate(_, prevState) {
+  syncModals() {
+    const prevState = this._prevModalState || {};
     const modals = [
       { key: "previewOn", sel: "#jds-preview-modal" },
       { key: "confirmDownload", sel: '[role="alertdialog"]' },
@@ -2398,6 +2416,9 @@ class Component extends DCLogic {
         if (this["_trap_" + key]) { this["_trap_" + key](); this["_trap_" + key] = null; }
       }
     });
+    const snap = {};
+    modals.forEach(({ key }) => { snap[key] = !!this.state[key]; });
+    this._prevModalState = snap;
   }
 
   componentWillUnmount() {
@@ -2454,6 +2475,7 @@ class Component extends DCLogic {
           purchasePrice: "395,000.00", purchaseDate: "2015-08-14", marketValue: "", valueBasis: "",
           mortgage: "212,450.00", mortgagee: "Housing & Development Board" }],
         hasCpf: "Yes", cpfOrdinary: "142,300.00", cpfSpecial: "63,800.00", cpfMedisave: "45,100.00", cpfRetirement: "0.00",
+        cpfLifeScheme: "No", hasCpfInvestment: "Yes", cpfInvestmentInstitution: "DBS Bank Ltd", cpfInvestmentValue: "18,650.00",
         hasVehicles: "Yes",
         vehicleList: [{ _retrieved: true, regNo: "SLB1234A", model: "Toyota Corolla Altis 1.6", age: "5 years", purpose: "",
           hirePurchase: "", value: "", asAt: "" }]
@@ -2470,6 +2492,26 @@ class Component extends DCLogic {
       this.persist();
       if (goThere) this.go(this.stepIndexOf(a.step));
     });
+  }
+
+  spousePartyName() {
+    return blank(this.state.values.spouseName) ? "________" : this.state.values.spouseName;
+  }
+
+  spousePartyId() {
+    return this.partyId(this.state.values.spouseNric);
+  }
+
+  partyId(raw) {
+    const id = String(raw || "").trim();
+    const label = /^[ST]\d{7}[A-Z]$/i.test(id) ? "NRIC No."
+      : /^[FGM]\d{7}[A-Z]$/i.test(id) ? "FIN No."
+      : blank(id) ? "NRIC No." : "Passport No.";
+    return label + " " + (blank(id) ? "________" : id);
+  }
+
+  selfPartyId() {
+    return this.partyId(this.state.values.nric);
   }
 
   resumeDraft() {
@@ -2570,7 +2612,10 @@ class Component extends DCLogic {
     }));
   }
 
-  componentDidUpdate() { this.syncChildGrids(); }
+  componentDidUpdate() {
+    try { this.syncChildGrids(); } catch (e) {}
+    try { this.syncModals(); } catch (e) {}
+  }
 
   persist() {
     if (this._resetGuardUntil && Date.now() < this._resetGuardUntil) return;
@@ -2672,6 +2717,30 @@ class Component extends DCLogic {
     return errors;
   }
 
+  assetComplete(a) {
+    const idx = SCHEMA.findIndex((s) => s.id === a.step);
+    if (idx === -1) return false;
+    if (Object.keys(this.validateStep(idx)).length) return false;
+    const vals = this.state.values;
+    const filled = (x) => Array.isArray(x) ? x.length > 0 : !blank(x);
+    const rowOk = (cols, row) => (cols || []).every((c) => {
+      if (["sn", "note", "heading", "age"].includes(c.type)) return true;
+      if (c.optional) return true;
+      if (c.when && !c.when(row, vals)) return true;
+      return filled(row[c.id]);
+    });
+    return this.visibleFields(SCHEMA[idx]).every((f) => {
+      if (["note", "heading", "file", "grid", "assetTable"].includes(f.type)) return true;
+      if (f.optional) return true;
+      if (f.type === "repeat") {
+        const list = (Array.isArray(vals[f.id]) ? vals[f.id] : []).filter((r) => r && typeof r === "object");
+        if (!list.length) return !this.isRequired(f);
+        return list.every((r) => rowOk(f.row, r));
+      }
+      return filled(vals[f.id]);
+    });
+  }
+
   go(i, fieldId) {
     const target = Math.max(0, Math.min(SCHEMA.length - 1, i));
     if (target === this.state.step && !fieldId) return;
@@ -2731,16 +2800,19 @@ class Component extends DCLogic {
     const showFree = !!op.freeText && on;
     const isFirst = idx === 0;
     const isSelected = on;
+    const ro = typeof f.readOnly === "function" ? !!f.readOnly(this.state.values) : !!f.readOnly;
+    const markRing = ro ? "var(--jds-gray-500)" : "var(--jds-primary-600)";
     return {
       label: op.label, note: op.note || false,
       role: multi ? "checkbox" : "radio",
       checked: on ? "true" : "false",
       tabIdx: multi ? "0" : (isSelected || (!options.some((_, i) => this.state.values[f.id] === options[i].value) && isFirst)) ? "0" : "-1",
-      rowStyle: "display:flex;flex-direction:column;gap:10px;padding:2px 0;width:100%;box-sizing:border-box;background:transparent;border:none;cursor:pointer;outline-offset:2px;border-radius:4px;",
+      rowStyle: "display:flex;flex-direction:column;gap:10px;padding:2px 0;width:100%;box-sizing:border-box;background:transparent;border:none;outline-offset:2px;border-radius:4px;"
+        + (ro ? "cursor:default;" : "cursor:pointer;"),
       markStyle: "flex-shrink:0;display:flex;align-items:center;justify-content:center;width:22px;height:22px;box-sizing:border-box;margin-top:1px;"
-        + "border:2px solid var(--jds-primary-600);background:var(--jds-gray-0);"
-        + (multi ? "border-radius:4px;" + (on ? "background:var(--jds-primary-600);" : "")
-                 : "border-radius:999px;" + (on ? "box-shadow:inset 0 0 0 4px var(--jds-primary-600);" : "")),
+        + "border:2px solid " + markRing + ";background:var(--jds-gray-0);"
+        + (multi ? "border-radius:4px;" + (on ? "background:" + markRing + ";" : "")
+                 : "border-radius:999px;" + (on ? "box-shadow:inset 0 0 0 4px " + markRing + ";" : "")),
       checkStyle: multi && on ? "font-size:14px;color:var(--jds-gray-0)" : "display:none",
       hasFreeText: showFree,
       freeValue: showFree ? (this.state.values[op.freeText] || "") : "",
@@ -2770,6 +2842,7 @@ class Component extends DCLogic {
         }
       },
       onSelect: () => {
+        if (ro) return;
         if (multi) {
           const arr = Array.isArray(this.state.values[f.id]) ? this.state.values[f.id] : [];
           this.set(f.id, arr.includes(op.value) ? arr.filter((x) => x !== op.value) : arr.concat(op.value));
@@ -2780,11 +2853,13 @@ class Component extends DCLogic {
     };
   }
 
-  applyAddress(fid, i, hit) {
+  applyAddress(fid, i, hit, colId) {
     this.setState((s) => {
       const list = (Array.isArray(s.values[fid]) && s.values[fid].length ? s.values[fid] : [{}]).slice();
       while (list.length < i + 1) list.push({});
+      const full = (hit.building ? hit.building + ", " : "") + hit.block + " " + hit.street + ", Singapore " + hit.postal;
       list[i] = { ...list[i], postal: hit.postal, block: hit.block, street: hit.street, building: hit.building || "" };
+      if (colId && colId !== "postal") list[i][colId] = full;
       return { values: { ...s.values, [fid]: list }, focus: null };
     }, () => this.persist());
   }
@@ -2816,6 +2891,8 @@ class Component extends DCLogic {
   buildCells(fid, i, row, cols, seed, seedSn) {
     return cols.filter((c) => c.type !== "sn").map((c, ci) => {
       const shown = !c.when || c.when(row, this.state.values);
+      const isSearchCol = c.type === "search" && (!c.searchWhen || c.searchWhen(row, this.state.values));
+      const colRO = !!(typeof c.readOnly === "function" ? c.readOnly(row) : c.readOnly);
       const cv = row[c.id] == null ? "" : row[c.id];
       const key = fid + i + c.id;
       const cf = this.state.focus === key;
@@ -2834,12 +2911,13 @@ class Component extends DCLogic {
         placeholder: (typeof c.placeholder === "function" ? c.placeholder(row) : c.placeholder) || (c.type === "money" ? "0.00" : ""),
         isSelect: shown && c.type === "select",
         isStatic: shown && c.type === "age",
-        isSearch: shown && c.type === "search",
+        isSearch: shown && isSearchCol,
+        isReadOnly: colRO,
         isRadio: shown && c.type === "radio",
         isChecks: shown && c.type === "checks",
         isTextarea: shown && c.type === "textarea",
         isSegment: shown && c.type === "segment",
-        isInput: shown && ["select", "age", "search", "radio", "checks", "textarea", "segment"].indexOf(c.type) === -1,
+        isInput: shown && !isSearchCol && ["select", "age", "radio", "checks", "textarea", "segment"].indexOf(c.type) === -1,
         maxLength: c.max || 2000,
         counter: c.type === "textarea" && c.max ? String(String(cv).length) + "/" + c.max : false,
         textareaStyle: "width:100%;box-sizing:border-box;min-height:96px;padding:12px 16px;border-radius:8px;resize:vertical;font-size:16px;line-height:1.6;font-family:inherit;"
@@ -2854,7 +2932,7 @@ class Component extends DCLogic {
               : "border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);"),
           onSelect: () => this.setRow(fid, i, c.id, op.value, seed)
         })),
-        cellStyle: (shown ? "display:flex" : "display:none") + ";flex-direction:column;gap:4px;box-sizing:border-box;padding:10px 8px;min-width:"
+        cellStyle: (shown ? "display:flex" : "display:none") + ";flex-direction:column;gap:6px;box-sizing:border-box;padding:14px;min-width:"
           + (c.minWidth ? c.minWidth + "px" : "0") + ";flex:"
           + ((typeof c.grow === "function" ? c.grow(row) : c.grow) || "1 1 170px")
           + (ci > 0 || seedSn ? ";border-left:1px solid var(--jds-gray-200)" : ""),
@@ -2908,24 +2986,24 @@ class Component extends DCLogic {
         suggestions: matches.map((hit) => ({
           primary: (hit.building ? hit.building + ", " : "") + hit.block + " " + hit.street,
           secondary: "Singapore " + hit.postal,
-          onPick: (e) => { e.preventDefault(); this.applyAddress(fid, i, hit); }
+          onPick: (e) => { e.preventDefault(); this.applyAddress(fid, i, hit, c.id); }
         })),
-        onKeyDown: c.type === "search" ? (e) => {
+        onKeyDown: isSearchCol ? (e) => {
           if (e.key !== "Enter") return;
           e.preventDefault();
           const hit = addressMatches(row[c.id])[0];
-          if (hit) this.applyAddress(fid, i, hit);
+          if (hit) this.applyAddress(fid, i, hit, c.id);
         } : undefined,
-        onFind: c.type === "search" ? () => {
+        onFind: isSearchCol ? () => {
           const hit = addressMatches(row[c.id])[0];
-          if (hit) this.applyAddress(fid, i, hit);
+          if (hit) this.applyAddress(fid, i, hit, c.id);
         } : undefined,
         findStyle: "flex:0 0 auto;height:48px;padding:0 20px;border-radius:8px;border:1px solid var(--jds-primary-600);background:var(--jds-primary-600);color:var(--jds-gray-0);font-size:15px;font-weight:600;cursor:pointer;",
         inputType: c.type === "date" ? "date" : "text", inputMode: c.type === "money" ? "decimal" : "text",
         prefix: c.type === "money" ? "S$" : false,
-        wrapStyle: (shown ? "display:flex" : "display:none") + ";flex-direction:column;gap:6px;box-sizing:border-box;flex:" + ((typeof c.grow === "function" ? c.grow(row) : c.grow) || "1 1 170px") + ";min-width:min(240px,100%)"
+        wrapStyle: (shown ? "display:flex" : "display:none") + ";flex-direction:column;gap:6px;box-sizing:border-box;justify-content:flex-end;flex:" + ((!c.half && labelWeight(c) > 28) ? "1 1 100%" : ((typeof c.grow === "function" ? c.grow(row) : c.grow) || "1 1 170px")) + ";min-width:min(240px,100%)"
           + (dim ? ";opacity:0.5" : ""),
-        shellStyle: this.shell(cf ? "focus" : (typeof c.readOnly === "function" ? c.readOnly(row) : c.readOnly) ? "readonly" : "default") + (c.type === "search"
+        shellStyle: this.shell(cf ? "focus" : colRO ? "readonly" : "default") + (isSearchCol
           ? "height:48px;width:100%;min-width:0;box-sizing:border-box;"
           : "height:48px;flex:0 0 48px;width:100%;min-width:0;"),
         staticStyle: "display:flex;align-items:center;height:48px;padding:0 16px;box-sizing:border-box;border-radius:8px;border:1px solid var(--jds-border-color-default);background:var(--jds-gray-100);font-size:16px;color:"
@@ -2975,6 +3053,7 @@ class Component extends DCLogic {
       defText2: d2 ? d2.text : "",
       defTipStyle: DEF_TIP + (this.state.hoverTip === f.id + ":def" ? "" : "display:none;"),
       defTipStyle2: DEF_TIP + (this.state.hoverTip === f.id + ":def2" ? "" : "display:none;"),
+      defTipId: "deftip-" + f.id, defTipId2: "deftip2-" + f.id,
       onDefEnter: () => this.setState({ hoverTip: f.id + ":def" }),
       onDefLeave: () => this.setState({ hoverTip: null }),
       onDefEnter2: () => this.setState({ hoverTip: f.id + ":def2" }),
@@ -3013,11 +3092,24 @@ class Component extends DCLogic {
             onPick: (e) => { e.preventDefault(); if (f.onPick) f.onPick(hit, this); this.setState({ focus: null }); },
             style: "padding:10px 14px;font-size:16px;line-height:1.5;color:var(--jds-gray-1000);cursor:pointer;"
           }))
-        : !f.combo ? [] : (f.comboList || [])
-        .filter((op) => blank(v) || op.toLowerCase().indexOf(String(v).toLowerCase()) !== -1)
-        .slice(0, 7)
-        .map((op) => ({ label: op, onPick: (e) => { e.preventDefault(); this.set(f.id, op); this.setState({ focus: null }); },
-          style: "padding:10px 14px;font-size:16px;line-height:1.5;color:var(--jds-gray-1000);cursor:pointer;" })),
+        : !f.combo ? [] : (() => {
+          const typed = String(v == null ? "" : v).trim();
+          const pool = f.comboList || [];
+          const opts = pool
+            .filter((op) => blank(v) || op.toLowerCase().indexOf(typed.toLowerCase()) !== -1)
+            .slice(0, 7)
+            .map((op) => ({ text: op, custom: false }));
+          if (typed && !pool.some((op) => op.toLowerCase() === typed.toLowerCase())) {
+            opts.unshift({ text: typed, custom: true });
+          }
+          return opts.map((o) => ({
+            label: o.custom ? "Use \u201C" + o.text + "\u201D" : o.text,
+            onPick: (e) => { e.preventDefault(); this.set(f.id, o.text); this.setState({ focus: null }); },
+            style: "padding:10px 14px;font-size:16px;line-height:1.5;cursor:pointer;color:"
+              + (o.custom ? "var(--jds-gray-700)" : "var(--jds-gray-1000)")
+              + ";" + (o.custom ? "border-bottom:1px solid var(--jds-gray-200);" : "")
+          }));
+        })(),
       anchorId: "fld-" + f.id,
       inputId: "inp-" + f.id,
       descId: descText ? "desc-" + f.id : false,
@@ -3026,8 +3118,8 @@ class Component extends DCLogic {
       ariaInvalid: err ? "true" : false,
       ariaDescribedBy: [descText ? "desc-" + f.id : "", err ? "err-" + f.id : ""].filter(Boolean).join(" ") || false,
       wrapStyle: (this.state.jumpTo === f.id ? "outline:2px solid var(--jds-primary-600);outline-offset:10px;border-radius:4px;" : "")
-        + "display:flex;flex-direction:column;gap:8px;box-sizing:border-box;justify-content:flex-start;"
-        + ((f.half || (["text", "date", "money", "number", "select"].includes(f.type) && !f.wide))
+        + "display:flex;flex-direction:column;gap:8px;box-sizing:border-box;justify-content:flex-end;"
+        + ((f.half || (["text", "date", "money", "number", "select"].includes(f.type) && !f.wide && labelWeight(f) <= 28))
           ? "flex:1 1 calc(50% - 12px);min-width:min(260px,100%);"
           : "flex:1 1 100%;min-width:0;"),
       labelStyle: !lbl ? "display:none;" : "font-size:16px;font-weight:600;line-height:1.5;display:block;",
@@ -3039,7 +3131,7 @@ class Component extends DCLogic {
       onTipLeave: () => this.setState({ hoverTip: null }),
       optional: !!f.optional && !this.isRequired(f), myinfo: typeof f.myinfo === "function" ? !!f.myinfo(this.state.values) : !!f.myinfo, placeholder: f.placeholder || (f.type === "money" ? "0.00" : ""),
       readOnly: ro, prefix: f.type === "money" ? "S$" : false,
-      value: v == null ? "" : v, inputType: f.type === "date" ? "date" : "text",
+      value: typeof f.derive === "function" ? f.derive(this.state.values) : (v == null ? "" : v), inputType: f.type === "date" ? "date" : "text",
       inputMode: f.type === "money" || f.type === "number" ? "decimal" : "text",
       isInput: ["text", "date", "money", "number"].includes(f.type), isTextarea: f.type === "textarea",
       isSelect: f.type === "select", isChoice: f.type === "radio" || f.type === "checkgroup",
@@ -3057,6 +3149,7 @@ class Component extends DCLogic {
       noteText: typeof f.noteText === "function" ? f.noteText(this.state.values) : (f.noteText || ""), valid: false,
       noteLinkLabel: f.noteLink ? f.noteLink[0] : false, noteLinkHref: f.noteLink ? f.noteLink[1] : "#", notePost: f.notePost || "",
       shellStyle: this.shell(shellState) + "flex:1 1 auto;height:48px;box-sizing:border-box;align-self:stretch;" + (f.search ? "min-width:0;" : "width:100%;"),
+      isReadOnly: ro,
       inputStyle: this.baseInput(f.readOnly) + (f.myinfo ? "text-transform:uppercase;" : ""),
       selectStyle: "flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:16px;color:"
         + (blank(v) ? "var(--jds-gray-600)" : "var(--jds-form-color-default)") + ";appearance:none;cursor:pointer;padding:0;",
@@ -3128,17 +3221,18 @@ class Component extends DCLogic {
         const reviewed = !!vals[a.key + "_reviewed"];
         const failedRetrieve = !!vals[a.key + "_failed"];
         const det = state === "Yes" ? a.details(vals) : ["—", ""];
-        const hasMissing = state === "Yes" && det[0] === "—";
-        const statusText = state === "Yes" ? "Complete"
+        const complete = state === "Yes" && this.assetComplete(a);
+        const statusText = state === "Yes"
+          ? (complete ? "Declared" : isRetrieved ? "Retrieved" : "In progress")
           : state === "No" ? "None"
-          : isRetrieved ? "Review"
           : "Not added";
-        const statusColor = statusText === "Complete" ? pill(GREEN_BG, GREEN_FG, GREEN_BD)
-          : statusText === "Review" ? pill("var(--jds-primary-100)", "var(--jds-primary-700)", "var(--jds-primary-200)")
+        const statusColor = statusText === "Declared" ? pill(GREEN_BG, GREEN_FG, GREEN_BD)
+          : statusText === "Retrieved" ? pill("var(--jds-primary-100)", "var(--jds-primary-700)", "var(--jds-primary-200)")
+          : statusText === "In progress" ? pill("#fdf5e6", "#8a6100", "#e8c98a")
           : pill("var(--jds-gray-100)", "var(--jds-gray-700)", "var(--jds-gray-200)");
         return {
           icon: a.icon, label: a.label,
-          rowStyle: "display:grid;grid-template-columns:28% 18% 28% 26%;align-items:center;box-sizing:border-box;"
+          rowStyle: "display:grid;grid-template-columns:26% 18% 30% 26%;min-width:660px;align-items:center;box-sizing:border-box;"
             + (ai ? "border-top:1px solid var(--jds-gray-200);" : ""),
           iconStyle: "display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;border-radius:6px;"
             + "background:var(--jds-gray-100);color:var(--jds-gray-800);font-size:16px;",
@@ -3147,8 +3241,8 @@ class Component extends DCLogic {
           detail1: det[0], detail2: det[1] || false,
           detail1Style: "font-size:13px;font-weight:" + (state === "Yes" ? "600" : "400") + ";line-height:1.4;color:var("
             + (state === "Yes" ? "--jds-gray-1000" : "--jds-gray-600") + ")",
-          primaryLabel: statusText === "Review" ? "Review" : state === "Yes" ? "Edit" : state === "No" ? "I have this" : "Add",
-          primaryIcon: statusText === "Review" ? "ph ph-eye" : state === "Yes" ? "ph ph-pencil-simple" : "ph ph-plus",
+          primaryLabel: statusText === "Retrieved" ? "Review" : statusText === "In progress" ? "Continue" : state === "Yes" ? "Edit" : state === "No" ? "I have this" : "Add",
+          primaryIcon: statusText === "Retrieved" ? "ph ph-eye" : statusText === "In progress" ? "ph ph-arrow-right" : state === "Yes" ? "ph ph-pencil-simple" : "ph ph-plus",
           primaryStyle: btn("primary"),
           onPrimary: () => this.setAssetFlag(a, "Yes", true),
           secondaryLabel: state === "Yes" ? "I do not have this" : state === "No" ? false : "I do not have this",
@@ -3233,7 +3327,7 @@ class Component extends DCLogic {
             isData: true, sn: "(" + (LETTERS[k] || k + 1) + ")",
             item: r.item == null ? "" : r.item, amount: r.amount == null ? "" : r.amount, remarks: r.remarks == null ? "" : r.remarks,
             fixed: false, editable: true, canRemove: true,
-            rowStyle: "display:flex;align-items:stretch;min-height:62px;padding:9px 0;border-bottom:1px solid var(--jds-gray-200);",
+            rowStyle: "display:flex;align-items:stretch;min-height:62px;border-bottom:1px solid var(--jds-gray-200);",
             itemShell: this.shell(this.state.focus === key("item") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
             amountShell: this.shell(this.state.focus === key("amount") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
             remarksShell: this.shell(this.state.focus === key("remarks") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
@@ -3267,12 +3361,12 @@ class Component extends DCLogic {
     if (f.type === "repeat") {
       o.headers = f.row.filter((c) => c.type !== "sn").map((c, hi) => ({ label: c.label,
         style: "flex:" + (c.grow || "1 1 170px") + ";min-width:" + (f.table && c.minWidth ? c.minWidth + "px" : "0")
-          + ";box-sizing:border-box;padding:13px " + (f.table ? "8px" : "14px") + ";font-size:14px;font-weight:600;line-height:1.4;color:var(--jds-gray-1000);"
+          + ";box-sizing:border-box;padding:13px 14px;font-size:14px;font-weight:600;line-height:1.4;color:var(--jds-gray-1000);"
           + (f.table && (hi > 0 || f.sn) ? "border-left:1px solid var(--jds-gray-200);" : "") }))
         .concat(!f.table || (Array.isArray(v) && v.length > 1)
           ? [{ label: "", style: "flex:0 0 56px;box-sizing:border-box;padding:13px 0;border-left:1px solid var(--jds-gray-200);" }] : []);
       o.showTrashCol = !f.table || (Array.isArray(v) && v.length > 1);
-      if (f.table && f.sn) o.headers = [{ label: "S/N", style: "flex:0 0 62px;box-sizing:border-box;padding:13px 8px;font-size:14px;font-weight:600;line-height:1.4;color:var(--jds-gray-1000);" }].concat(o.headers);
+      if (f.table && f.sn) o.headers = [{ label: "S/N", style: "flex:0 0 62px;box-sizing:border-box;padding:13px 14px;font-size:14px;font-weight:600;line-height:1.4;color:var(--jds-gray-1000);" }].concat(o.headers);
       o.hasSn = !!(f.table && f.sn);
     }
     if (f.type === "repeat") {
@@ -3372,9 +3466,9 @@ class Component extends DCLogic {
     H("1.  Introduction");
     TBL([
       [c("Name of maker :", "0 0 34%"), c(g(v.name), "1 1 auto")],
-      [c("Identity No. :", "0 0 34%"), c(g(v.nric), "1 1 auto")],
-      [c("Address :", "0 0 34%"), c(g(v.address), "1 1 auto")],
-      [c("Occupation :", "0 0 34%"), c(g(v.occupation), "1 1 auto")]
+      [c("Identity No.:", "0 0 34%"), c(g(v.nric), "1 1 auto")],
+      [c("Address:", "0 0 34%"), c(g(v.address), "1 1 auto")],
+      [c("Occupation:", "0 0 34%"), c(g(v.occupation), "1 1 auto")]
     ]);
     P("I am the " + (v.role === "Others" ? g(v.roleOther) : g(v.role)) + " in " + g(v.caseNumber) + ".");
     const purposes = (v.purpose || []).map((p) => p === "support" ? "in support of my ancillary claim in this Originating Application"
@@ -3673,14 +3767,14 @@ class Component extends DCLogic {
     if (v.allMatrimonial === "No" && list("notMatrimonial").length) {
       P("The following assets are NOT considered matrimonial assets:");
       TBL([[c("S/N", "0 0 10%", { b: true, sh: true, a: "center" }), c("Assets", "1 1 45%", { b: true, sh: true, a: "center" }), c("State your reasons", "1 1 45%", { b: true, sh: true, a: "center" })]]
-        .concat(list("notMatrimonial").map((r, i) => [c("(" + LET[i] + ")", "0 0 10%", { a: "center" }), c(g(r.desc, ""), "1 1 45%"), c(g(r.reason, ""), "1 1 45%")])));
+        .concat(list("notMatrimonial").map((r, i) => [c("(" + LET[i] + ")", "0 0 10%", { a: "center" }), c(g(r.desc === OTHER_ASSET ? r.descOther : r.desc, ""), "1 1 45%"), c(g(r.reason, ""), "1 1 45%")])));
     } else {
       P("All the assets listed in Section 8 are matrimonial assets.");
     }
     if (v.paidForAsset === "Yes" && list("paidAssets").length) {
       P("I have made these monetary contributions to the matrimonial assets:");
       TBL([[c("S/N", "0 0 10%", { b: true, sh: true, a: "center" }), c("Assets", "1 1 45%", { b: true, sh: true, a: "center" }), c("Details of contribution", "1 1 45%", { b: true, sh: true, a: "center" })]]
-        .concat(list("paidAssets").map((r, i) => [c("(" + LET[i] + ")", "0 0 10%", { a: "center" }), c(g(r.desc, ""), "1 1 45%"),
+        .concat(list("paidAssets").map((r, i) => [c("(" + LET[i] + ")", "0 0 10%", { a: "center" }), c(g(r.desc === OTHER_ASSET ? r.descOther : r.desc, ""), "1 1 45%"),
           c([r.amount, r.source].filter((x) => !blank(x)).join(" by "), "1 1 45%")])));
       P("I provide the following relevant information on my financial contribution to the above assets:");
       TX(g(v.contributionNotes, "NIL"));
@@ -3850,9 +3944,6 @@ class Component extends DCLogic {
       + incomeRows.map((r) => (r.source === "Others" ? g(r.sourceOther, "other income") : g(r.source, "income")) + " of S$" + r.gross + " gross" + (blank(r.nett) ? "" : " and S$" + r.nett + " nett")).join("; ") + "." });
     if (!blank(v.employmentStatus)) paras.push({ keys: ["employmentStatus", "jobEmployee", "jobSelf", "previousJobs", "lastSalary"], text: "My current employment status is " + v.employmentStatus.toLowerCase() + "."
       + (v.employmentStatus === "Unemployed" && !blank(v.lastSalary) ? " My last drawn salary was S$" + v.lastSalary + "." : "") });
-    if (v.ownsProperty === "Yes") paras.push({ keys: ["ownsProperty", "propertyType", "holding", "purchasePrice", "marketValue"], text: "I own the property at my registered address"
-      + (blank(v.holding) ? "" : ", held under " + v.holding.toLowerCase())
-      + (blank(v.marketValue) ? "." : ", with an estimated market value of S$" + v.marketValue + ".") });
     if (v.paidForAsset === "Yes") paras.push({ keys: ["paidForAsset", "paidAssets", "contributionNotes"], text: "I have made monetary contributions to the matrimonial assets set out in this affidavit." + (blank(v.contributionNotes) ? "" : " " + v.contributionNotes) });
     if (!blank(v.swornOrAffirmed)) paras.push({ keys: ["swornOrAffirmed", "swornDate", "affirmedDate"], text: "This affidavit has been " + v.swornOrAffirmed.toLowerCase() + " on " + g(D(v.swornDate || v.affirmedDate), "________") + "." });
 
@@ -3926,9 +4017,9 @@ class Component extends DCLogic {
         showStart: scanned,
         statusIcon: m[0], statusText: state === "detected" ? "Detected" : state === "missing" ? "Not detected" : "Awaiting upload",
         statusStyle: "display:flex;align-items:center;justify-content:center;font-size:19px;color:" + m[1] + ";",
-        rowStyle: "display:grid;grid-template-columns:72px minmax(200px,1fr) 120px 90px;align-items:center;min-width:520px;border-top:1px solid var(--jds-gray-200);background:"
+        rowStyle: "display:grid;grid-template-columns:72px minmax(200px,1fr) 120px 90px;align-items:stretch;min-width:520px;border-top:1px solid var(--jds-gray-200);background:"
           + (state === "missing" ? "var(--jds-gray-50)" : "var(--jds-gray-0)") + ";",
-        exStyle: "text-align:center;font-family:'Roboto Mono',monospace;font-size:14px;font-weight:500;color:"
+        exStyle: "display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Roboto Mono',monospace;font-size:14px;font-weight:500;color:"
           + (d.detected ? "var(--jds-gray-900)" : "var(--jds-gray-500)") + ";",
         startShell: "display:flex;align-items:center;justify-content:center;height:44px;width:84px;margin:0 auto;padding:0 8px;box-sizing:border-box;border-radius:8px;background:var(--jds-form-surface-default);border:"
           + (focused ? "2px solid var(--jds-primary-600)" : "1px solid var(--jds-border-color-default)") + ";",
@@ -4286,17 +4377,17 @@ class Component extends DCLogic {
           }
         });
       },
-      previewCaseNo: blank(this.state.values.caseNumber) ? "FC/OAD ____/20__" : this.state.values.caseNumber,
+      previewCaseNo: blank(this.state.values.caseNumber) ? "________" : this.state.values.caseNumber,
       previewTitle: "First affidavit of assets and means of " + (blank(this.state.values.name) ? "________" : this.state.values.name),
       docBlocks: this.courtDoc(),
       docStamp: [(this.state.values.role === "Respondent" ? "Respondent" : "Applicant"),
         blank(this.state.values.name) ? "________" : this.state.values.name, "1",
         (new Date()).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }).toUpperCase(),
-        blank(this.state.values.caseNumber) ? "FC/OAD ____/20__" : this.state.values.caseNumber].join(" : "),
-      applicantName: blank(this.state.values.name) ? "________" : this.state.values.name,
-      applicantId: (/^[STFGM]\d{7}[A-Z]$/i.test(String(this.state.values.nric || "").trim()) ? "NRIC No. " : "ID No. ")
-        + (blank(this.state.values.nric) ? "________" : this.state.values.nric),
-      respondentName: "________",
+        blank(this.state.values.caseNumber) ? "________" : this.state.values.caseNumber].join(" : "),
+      applicantName: this.state.values.role === "Respondent" ? this.spousePartyName() : (blank(this.state.values.name) ? "________" : this.state.values.name),
+      applicantId: this.state.values.role === "Respondent" ? this.spousePartyId() : this.selfPartyId(),
+      respondentName: this.state.values.role === "Respondent" ? (blank(this.state.values.name) ? "________" : this.state.values.name) : this.spousePartyName(),
+      respondentId: this.state.values.role === "Respondent" ? this.selfPartyId() : this.spousePartyId(),
       stopClick: (e) => e.stopPropagation(),
       completeChipLabel: incomplete.length === 0 ? "All sections complete" : incomplete.length + " section" + (incomplete.length === 1 ? "" : "s") + " incomplete",
       completeChipIcon: incomplete.length === 0 ? "ph-fill ph-check-circle" : "ph-fill ph-warning-circle",
