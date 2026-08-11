@@ -22,6 +22,8 @@
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
 
+<!-- PDF Generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
 
 </helmet>
 
@@ -1018,7 +1020,8 @@
 <span style="font-size:13px;line-height:1.55;color:var(--jds-gray-700);flex:1 1 240px;text-wrap:pretty">Draft only. Downloading does not file your affidavit with the Court.</span>
 <span style="display:flex;flex-wrap:wrap;gap:10px">
 <button type="button" sc-camel-on-click="{{ onClosePreview }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:1px solid var(--jds-gray-300);border-radius:8px;background:var(--jds-gray-0);color:var(--jds-gray-900);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="border-color:var(--jds-gray-500)">Close</button>
-<button type="button" sc-camel-on-click="{{ onDownloadDraft }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-download-simple" style="font-size:18px"></i>Download draft</button>
+<button type="button" sc-camel-on-click="{{ onDownloadDraftPDF }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-file-pdf" style="font-size:18px"></i>Download PDF</button>
+<button type="button" sc-camel-on-click="{{ onDownloadDraftWord }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-file-doc" style="font-size:18px"></i>Download Word</button>
 </span>
 </div>
 </div>
@@ -1037,8 +1040,9 @@
 <span style="font-size:14px;line-height:1.6;color:var(--jds-gray-800);text-wrap:pretty"><strong style="font-weight:700">Do not affirm, file or submit this version.</strong> It is a working draft only. Finish the outstanding sections, then download the completed affidavit.</span>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:12px;padding:22px 28px 26px">
-<button type="button" sc-camel-on-click="{{ onCancelDownload }}" style="flex:1 1 auto;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-primary-600);background:var(--jds-primary-600);color:var(--jds-gray-0);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-primary-700);border-color:var(--jds-primary-700)">Go back and finish</button>
-<button type="button" sc-camel-on-click="{{ onConfirmDownload }}" style="flex:1 1 auto;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100)">Download incomplete draft</button>
+<button type="button" sc-camel-on-click="{{ onCancelDownload }}" style="flex:1 1 100%;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-primary-600);background:var(--jds-primary-600);color:var(--jds-gray-0);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-primary-700);border-color:var(--jds-primary-700)">Go back and finish</button>
+<button type="button" sc-camel-on-click="{{ onConfirmDownloadPDF }}" style="flex:1 1 auto;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100)">Download PDF</button>
+<button type="button" sc-camel-on-click="{{ onConfirmDownloadWord }}" style="flex:1 1 auto;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100)">Download Word</button>
 </div>
 </div>
 </div>
@@ -1148,7 +1152,8 @@
 <span style="font-size:13px;line-height:1.55;color:var(--jds-gray-700);text-wrap:pretty">Download or print the complete document, then affirm it before filing with the Court.</span>
 <span style="display:flex;flex-wrap:wrap;gap:10px">
 <button type="button" sc-camel-on-click="{{ onCloseDoc }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:1px solid var(--jds-gray-300);border-radius:8px;background:var(--jds-gray-0);color:var(--jds-gray-900);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="border-color:var(--jds-gray-500)">Close</button>
-<button type="button" sc-camel-on-click="{{ onPrintAll }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-download-simple" style="font-size:18px"></i>Download PDF</button>
+<button type="button" sc-camel-on-click="{{ onPrintAllPDF }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-file-pdf" style="font-size:18px"></i>Download PDF</button>
+<button type="button" sc-camel-on-click="{{ onPrintAllWord }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-file-doc" style="font-size:18px"></i>Download Word</button>
 </span>
 </div>
 </div>
@@ -1207,6 +1212,83 @@
 /* ────────────────────────────────────────────────────────────────
  * [A] UTILITY FUNCTIONS
  * ──────────────────────────────────────────────────────────────── */
+
+function downloadPDF(elementId, filename) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  const clone = el.cloneNode(true);
+  clone.style.padding = "48px 62px";
+  clone.style.border = "none";
+  clone.style.boxShadow = "none";
+  clone.style.maxWidth = "none";
+  clone.style.fontFamily = "'Times New Roman', Times, serif";
+  clone.style.color = "#000";
+  clone.style.background = "#fff";
+
+  const wrapper = document.createElement("div");
+  wrapper.style.position = "fixed";
+  wrapper.style.left = "-9999px";
+  wrapper.style.top = "0";
+  wrapper.style.width = "210mm";
+  wrapper.appendChild(clone);
+  document.body.appendChild(wrapper);
+
+  html2pdf().set({
+    margin: [18, 16, 22, 16],
+    filename: filename || "First_Ancillary_Affidavit.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+    jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    pagebreak: { mode: ["avoid-all", "css", "legacy"] }
+  }).from(clone).toPdf().get("pdf").then(function(pdf) {
+    var totalPages = pdf.internal.getNumberOfPages();
+    for (var i = 1; i <= totalPages; i++) {
+      pdf.setPage(i);
+      pdf.setFontSize(9);
+      pdf.setTextColor(0, 0, 0);
+      var pageWidth = pdf.internal.pageSize.getWidth();
+      pdf.text("P" + i, pageWidth - 16, pdf.internal.pageSize.getHeight() - 10, { align: "right" });
+    }
+  }).save().then(function() {
+    document.body.removeChild(wrapper);
+  });
+}
+
+function downloadWord(elementId, filename) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  const clone = el.cloneNode(true);
+  clone.style.border = "none";
+  clone.style.boxShadow = "none";
+  clone.style.maxWidth = "none";
+
+  var header = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'
+    + '<head><meta charset="utf-8">'
+    + '<xml><w:WordDocument><w:View>Print</w:View></w:WordDocument></xml>'
+    + '<style>'
+    + 'body { font-family: "Times New Roman", Times, serif; font-size: 13.5px; line-height: 1.6; color: #000; }'
+    + 'table { border-collapse: collapse; width: 100%; }'
+    + 'td, th { border: 1px solid #000; padding: 3px 5px; font-size: 12.5px; line-height: 1.45; vertical-align: top; }'
+    + '@page { margin: 18mm 16mm; }'
+    + '@page Section1 { mso-footer: f1; }'
+    + 'div.Section1 { page: Section1; }'
+    + '</style></head><body>'
+    + '<div class="Section1">';
+  var footer = '</div>'
+    + '<div style="mso-element:footer" id="f1"><p style="text-align:right;font-size:9px;">P<span style="mso-field-code: PAGE"></span></p></div>'
+    + '</body></html>';
+
+  var content = header + clone.outerHTML + footer;
+  var blob = new Blob(['﻿' + content], { type: 'application/msword' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.href = url;
+  a.download = filename || "First_Ancillary_Affidavit.doc";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
 
 /** Focus-trap a container element. Returns cleanup function. Used for modals. */
 const jdsTrapFocus = (container) => {
@@ -3598,7 +3680,7 @@ class Component extends DCLogic {
     const UL = (text) => B.push({ kind: "ul", text });
     const P = (text, items) => B.push({ kind: "p", nn: (++n) + ".", text, items: items || [] });
     const TX = (text) => B.push({ kind: "t", text });
-    const c = (t, w, o) => ({ t: t == null || t === "" ? "" : String(t), w: w || "1 1 0", b: !!(o && o.b), a: (o && o.a) || "left", sh: !!(o && o.sh) });
+    const c = (t, w, o) => ({ t: t == null || t === "" ? "" : String(t), w: w || "1 1 0", b: !!(o && o.b), u: !!(o && o.u), a: (o && o.a) || "left", sh: !!(o && o.sh) });
     const TBL = (rows) => B.push({ kind: "tbl", rows: rows.filter(Boolean).map((r) => ({ cells: r })) });
     const list = (id) => rows_(v, id);
     const gridRows = (id) => (Array.isArray(v[id]) ? v[id] : []).filter((r) => r && !blank(r.item));
@@ -3916,10 +3998,10 @@ class Component extends DCLogic {
       [c("(a)", "0 0 6%"), c("My total average monthly income", "1 1 54%"), c("Gross: " + SGD(sum_(v, "incomeSources", "gross")) + "\nNett: " + SGD(sum_(v, "incomeSources", "nett")), "1 1 40%")],
       [c("(b)", "0 0 6%"), c("My total monthly personal expenses", "1 1 54%"), c(SGD(gridTotal("personalExpensesTable")), "1 1 40%")],
       [c("(c)", "0 0 6%"), c("Child(ren)'s total monthly expenses", "1 1 54%"), c(SGD(childExp), "1 1 40%")],
-      [c("(d)", "0 0 6%"), c("Total value of my assets", "1 1 54%", { b: true }), c(SGD(assetTotal), "1 1 40%")],
+      [c("(d)", "0 0 6%"), c("Total value of my assets", "1 1 54%", { b: true, u: true }), c(SGD(assetTotal), "1 1 40%")],
       [c("(e)", "0 0 6%"), c("Total of my mortgage and hire purchase liabilities", "1 1 54%"), c(SGD(secured), "1 1 40%")],
       [c("(f)", "0 0 6%"), c("Total of my liabilities (apart from mortgage and hire purchase)", "1 1 54%"), c(SGD(otherDebt), "1 1 40%")],
-      [c("(g)", "0 0 6%"), c("Net Value of my assets", "1 1 54%", { b: true }), c(SGD(assetTotal - secured - otherDebt), "1 1 40%")]]);
+      [c("(g)", "0 0 6%"), c("Net Value of my assets", "1 1 54%", { b: true, u: true }), c(SGD(assetTotal - secured - otherDebt), "1 1 40%")]]);
 
     // ---- Section 11 ----
     H("Section 11:     Matrimonial Assets and Direct Contributions");
@@ -4066,7 +4148,7 @@ class Component extends DCLogic {
             text: cc.t,
             style: "flex:" + cc.w + ";min-width:0;box-sizing:border-box;padding:3px 5px;border-right:1px solid #000;border-bottom:1px solid #000;"
               + "font-size:12.5px;line-height:1.45;white-space:pre-wrap;word-break:break-word;text-align:" + cc.a + ";"
-              + (cc.b ? "font-weight:700;" : "") + (cc.sh && cc.b ? "background:#d9d9d9;" : cc.sh ? "background:#f2f2f2;" : "")
+              + (cc.b ? "font-weight:700;" : "") + (cc.u ? "text-decoration:underline;" : "") + (cc.sh && cc.b ? "background:#d9d9d9;" : cc.sh ? "background:#f2f2f2;" : "")
           }))
         })) : []
       };
@@ -4582,7 +4664,8 @@ class Component extends DCLogic {
       isDocs,
 
       docsDone: isDocs && !!this.state.docsDone,
-      onPrintAll: () => window.print(),
+      onPrintAllPDF: () => downloadPDF("jds-print-sheet", "First_Ancillary_Affidavit.pdf"),
+      onPrintAllWord: () => downloadWord("jds-print-sheet", "First_Ancillary_Affidavit.doc"),
       onOpenDoc: () => this.setState({ showDoc: true }),
       onCloseDoc: () => this.setState({ showDoc: false }),
       showDoc: !!this.state.showDoc,
@@ -4659,12 +4742,17 @@ class Component extends DCLogic {
       confirmDownloadText: incomplete.length
         ? "You have not finished " + incomplete.length + " section" + (incomplete.length === 1 ? "" : "s") + ": " + incomplete.join(", ") + "."
         : "",
-      onDownloadDraft: () => {
-        if (incomplete.length) { this.setState({ confirmDownload: true }); return; }
-        window.print();
+      onDownloadDraftPDF: () => {
+        if (incomplete.length) { this.setState({ confirmDownload: true, confirmFormat: "pdf" }); return; }
+        downloadPDF("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.pdf");
+      },
+      onDownloadDraftWord: () => {
+        if (incomplete.length) { this.setState({ confirmDownload: true, confirmFormat: "word" }); return; }
+        downloadWord("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.doc");
       },
       onCancelDownload: () => this.setState({ confirmDownload: false }),
-      onConfirmDownload: () => this.setState({ confirmDownload: false }, () => window.print()),
+      onConfirmDownloadPDF: () => this.setState({ confirmDownload: false }, () => downloadPDF("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.pdf")),
+      onConfirmDownloadWord: () => this.setState({ confirmDownload: false }, () => downloadWord("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.doc")),
       previewParas: this.previewParas()
     };
   }
