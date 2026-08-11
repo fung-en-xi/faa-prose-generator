@@ -1262,10 +1262,11 @@ function downloadPDF(elementId, filename) {
     var totalPages = pdf.internal.getNumberOfPages();
     for (var i = 1; i <= totalPages; i++) {
       pdf.setPage(i);
-      pdf.setFontSize(9);
+      pdf.setFont("times", "normal");
+      pdf.setFontSize(13.5);
       pdf.setTextColor(0, 0, 0);
       var pageWidth = pdf.internal.pageSize.getWidth();
-      pdf.text("P" + i, pageWidth - 16, pdf.internal.pageSize.getHeight() - 10, { align: "right" });
+      pdf.text("P" + i, pageWidth / 2, pdf.internal.pageSize.getHeight() - 10, { align: "center" });
     }
   }).save().then(function() {
     document.body.removeChild(wrapper);
@@ -1293,7 +1294,7 @@ function downloadWord(elementId, filename) {
     + '</style></head><body>'
     + '<div class="Section1">';
   var footer = '</div>'
-    + '<div style="mso-element:footer" id="f1"><p style="text-align:right;font-size:9px;">P<span style="mso-field-code: PAGE"></span></p></div>'
+    + '<div style="mso-element:footer" id="f1"><p style="text-align:center;font-family:Times New Roman,Times,serif;font-size:13.5px;">P<span style="mso-field-code: PAGE"></span></p></div>'
     + '</body></html>';
 
   var content = header + clone.outerHTML + footer;
