@@ -1039,21 +1039,10 @@
 </sc-if>
 <span style="font-size:14px;line-height:1.6;color:var(--jds-gray-800);text-wrap:pretty"><strong style="font-weight:700">Do not affirm, file or submit this version.</strong> It is a working draft only. Finish the outstanding sections, then download the completed affidavit.</span>
 </div>
-<sc-if value="{{ showFormatPicker }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:22px 28px 26px">
-<span style="font-size:14px;font-weight:600;color:var(--jds-gray-800)">Choose format:</span>
-<span style="display:flex;gap:10px;flex:1 1 auto">
-<button type="button" sc-camel-on-click="{{ onConfirmDownloadPDF }}" style="flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100)"><i class="ph ph-file-pdf" style="font-size:18px"></i>PDF</button>
-<button type="button" sc-camel-on-click="{{ onConfirmDownloadWord }}" style="flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100)"><i class="ph ph-file-doc" style="font-size:18px"></i>Word</button>
-</span>
-</div>
-</sc-if>
-<sc-if value="{{ showConfirmButtons }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;flex-wrap:wrap;gap:12px;padding:22px 28px 26px">
 <button type="button" sc-camel-on-click="{{ onCancelDownload }}" style="flex:1 1 100%;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-primary-600);background:var(--jds-primary-600);color:var(--jds-gray-0);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-primary-700);border-color:var(--jds-primary-700)">Go back and finish</button>
 <button type="button" sc-camel-on-click="{{ onDownloadAnyway }}" style="flex:1 1 100%;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100)">Download anyway</button>
 </div>
-</sc-if>
 </div>
 </div>
 </sc-if>
@@ -1141,8 +1130,7 @@
 </sc-if>
 </div>
 </sc-for>
-</div>
-<div style="margin-top:24px;font-family:'Times New Roman',Times,serif;color:#000">
+<div style="margin-top:24px">
 <div style="font-size:13px;font-weight:700;margin-bottom:4px">Table 16-1</div>
 <div style="border:1px solid #000;border-collapse:collapse">
 <div style="display:grid;grid-template-columns:72px minmax(0,1fr) 90px;border-bottom:1px solid #000">
@@ -1166,13 +1154,29 @@
 </div>
 </div>
 </div>
+</div>
 <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:16px 24px;border-top:1px solid var(--jds-gray-200)">
-<span style="font-size:13px;line-height:1.55;color:var(--jds-gray-700);text-wrap:pretty">Download or print the complete document, then affirm it before filing with the Court.</span>
+<span style="font-size:13px;line-height:1.55;color:var(--jds-gray-700);text-wrap:pretty">Download the complete document, then affirm it before filing with the Court.</span>
 <span style="display:flex;flex-wrap:wrap;gap:10px">
 <button type="button" sc-camel-on-click="{{ onCloseDoc }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:1px solid var(--jds-gray-300);border-radius:8px;background:var(--jds-gray-0);color:var(--jds-gray-900);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="border-color:var(--jds-gray-500)">Close</button>
-<button type="button" sc-camel-on-click="{{ onPrintAllPDF }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-file-pdf" style="font-size:18px"></i>Download PDF</button>
-<button type="button" sc-camel-on-click="{{ onPrintAllWord }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-file-doc" style="font-size:18px"></i>Download Word</button>
+<button type="button" sc-camel-on-click="{{ onDownloadFinal }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-download-simple" style="font-size:18px"></i>Download</button>
 </span>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- Format Picker Dialog -->
+<sc-if value="{{ showFormatDialog }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:98;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(14,14,14,0.6)" role="dialog" aria-modal="{{ true }}" aria-label="Choose download format">
+<div style="display:flex;flex-direction:column;width:100%;max-width:400px;background:var(--jds-gray-0);border-radius:12px;box-shadow:0 18px 48px rgba(14,14,14,0.3);overflow:hidden">
+<div style="display:flex;flex-direction:column;gap:12px;padding:26px 28px 0">
+<span style="font-size:18px;font-weight:700;line-height:1.3;color:var(--jds-gray-1000)">Choose download format</span>
+<span style="font-size:14px;line-height:1.6;color:var(--jds-gray-700)">Select the file format for your document.</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;padding:22px 28px 26px">
+<button type="button" sc-camel-on-click="{{ onFormatPDF }}" style="flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100);border-color:var(--jds-primary-600)"><i class="ph ph-file-pdf" style="font-size:20px"></i>PDF</button>
+<button type="button" sc-camel-on-click="{{ onFormatWord }}" style="flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100);border-color:var(--jds-primary-600)"><i class="ph ph-file-doc" style="font-size:20px"></i>Word</button>
 </div>
 </div>
 </div>
@@ -2602,7 +2606,8 @@ class Component extends DCLogic {
     this._onKey = (e) => {
       if (e.key !== "Escape") return;
       if (this.state.navSheetOpen) this.setSheet(false);
-      else if (this.state.confirmDownload) this.setState({ confirmDownload: false, showFormatPicker: false });
+      else if (this.state.showFormatDialog) this.setState({ showFormatDialog: false });
+      else if (this.state.confirmDownload) this.setState({ confirmDownload: false });
       else if (this.state.draftGateOpen) this.setState({ draftGateOpen: false });
       else if (this.state.showDoc) this.setState({ showDoc: false });
       else if (this.state.previewOn) this.setState({ previewOn: false });
@@ -4551,7 +4556,7 @@ class Component extends DCLogic {
       previewBtnIcon: this.state.previewOn ? "ph ph-eye-slash" : "ph ph-eye",
       stepHeadStyle: "display:flex;gap:12px;padding:clamp(18px,3vw,24px) clamp(16px,3.2vw,32px) 16px;border-bottom:1px solid var(--jds-gray-200);"
         + "align-items:center;justify-content:space-between;",
-      previewBtnStyle: (step.instructions ? "display:none;" : "display:flex;")
+      previewBtnStyle: (step.instructions || isDocs ? "display:none;" : "display:flex;")
         + "align-items:center;flex:0 0 auto;box-sizing:border-box;white-space:nowrap;"
         + (this.state.isNarrow ? "gap:6px;height:36px;padding:0 11px;font-size:13px;" : "gap:8px;height:40px;padding:0 15px;font-size:14px;")
         + "border:1px solid var(--jds-primary-300);border-radius:8px;font-family:inherit;font-weight:600;cursor:pointer;color:var(--jds-primary-700);background:"
@@ -4683,10 +4688,10 @@ class Component extends DCLogic {
       isDocs,
 
       docsDone: isDocs && !!this.state.docsDone,
-      onPrintAllPDF: () => downloadPDF("jds-print-sheet", "First_Ancillary_Affidavit.pdf"),
-      onPrintAllWord: () => downloadWord("jds-print-sheet", "First_Ancillary_Affidavit.doc"),
+      onDownloadFinal: () => this.setState({ showFormatDialog: true, formatTarget: "final" }),
+      showFormatDialog: !!this.state.showFormatDialog,
       onOpenDoc: () => this.setState({ showDoc: true }),
-      onCloseDoc: () => this.setState({ showDoc: false }),
+      onCloseDoc: () => this.setState({ showDoc: false, showFormatDialog: false }),
       showDoc: !!this.state.showDoc,
       exhibitRows: (() => {
         const detected = (docs.rows || []).filter((r) => r.statusText === "Detected");
@@ -4771,18 +4776,24 @@ class Component extends DCLogic {
         : "This draft is not complete. Outstanding: " + incomplete.slice(0, 6).join(", ")
           + (incomplete.length > 6 ? " and " + (incomplete.length - 6) + " more" : "") + ".",
       confirmDownload: !!this.state.confirmDownload,
-      showConfirmButtons: !!this.state.confirmDownload && !this.state.showFormatPicker,
-      showFormatPicker: !!this.state.showFormatPicker,
       confirmDownloadText: incomplete.length
         ? "You have not finished " + incomplete.length + " section" + (incomplete.length === 1 ? "" : "s") + ": " + incomplete.join(", ") + "."
         : "",
       onDownloadDraft: () => {
-        this.setState({ confirmDownload: true, showFormatPicker: false });
+        this.setState({ confirmDownload: true });
       },
-      onCancelDownload: () => this.setState({ confirmDownload: false, showFormatPicker: false }),
-      onDownloadAnyway: () => this.setState({ showFormatPicker: true }),
-      onConfirmDownloadPDF: () => this.setState({ confirmDownload: false, showFormatPicker: false }, () => downloadPDF("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.pdf")),
-      onConfirmDownloadWord: () => this.setState({ confirmDownload: false, showFormatPicker: false }, () => downloadWord("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.doc")),
+      onCancelDownload: () => this.setState({ confirmDownload: false, showFormatDialog: false }),
+      onDownloadAnyway: () => this.setState({ confirmDownload: false, showFormatDialog: true, formatTarget: "draft" }),
+      onFormatPDF: () => {
+        var target = this.state.formatTarget === "draft" ? "jds-preview-sheet" : "jds-print-sheet";
+        var name = this.state.formatTarget === "draft" ? "First_Ancillary_Affidavit_Draft.pdf" : "First_Ancillary_Affidavit.pdf";
+        this.setState({ showFormatDialog: false }, () => downloadPDF(target, name));
+      },
+      onFormatWord: () => {
+        var target = this.state.formatTarget === "draft" ? "jds-preview-sheet" : "jds-print-sheet";
+        var name = this.state.formatTarget === "draft" ? "First_Ancillary_Affidavit_Draft.doc" : "First_Ancillary_Affidavit.doc";
+        this.setState({ showFormatDialog: false }, () => downloadWord(target, name));
+      },
       previewParas: this.previewParas()
     };
   }
