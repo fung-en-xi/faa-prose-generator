@@ -35,10 +35,10 @@
      GOVERNMENT TRUST BANNER
      ============================================================ -->
 <div id="jds-gov" style="background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200)">
-<div style="display:flex;align-items:center;gap:8px;padding:6px clamp(12px,2.4vw,24px);font-size:12px;line-height:1.5;color:var(--jds-gray-700)">
-<i class="ph-fill ph-shield-check" style="font-size:14px;color:var(--jds-primary-600)"></i>
+<div style="{{ govRowStyle }}">
+<i class="ph-fill ph-shield-check" style="{{ govIconStyle }}" aria-hidden="true"></i>
 <span>A Singapore Government Agency Website</span>
-<button type="button" sc-camel-on-click="{{ onToggleBanner }}" aria-expanded="{{ bannerOpen }}" style="display:inline-flex;align-items:center;gap:4px;border:none;background:none;padding:2px 4px;font-size:12px;font-weight:500;line-height:1.5;color:var(--jds-primary-600);cursor:pointer;font-family:inherit;text-decoration:none" style-hover=""><span style-hover="text-decoration:underline">How to identify</span><i class="ph ph-caret-down" style="{{ bannerCaretStyle }}" aria-hidden="true"></i></button>
+<button type="button" sc-camel-on-click="{{ onToggleBanner }}" aria-expanded="{{ bannerOpen }}" style="display:inline-flex;align-items:center;gap:4px;border:none;background:none;padding:2px 4px;font-size:inherit;font-weight:500;line-height:1.5;color:var(--jds-primary-600);cursor:pointer;font-family:inherit;text-decoration:none" style-hover=""><span style-hover="text-decoration:underline">How to identify</span><i class="ph ph-caret-down" style="{{ bannerCaretStyle }}" aria-hidden="true"></i></button>
 </div>
 <sc-if value="{{ bannerOpen }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-wrap:wrap;gap:20px 48px;padding:4px 24px 20px">
@@ -64,21 +64,23 @@
 <!-- ============================================================
      SITE HEADER (Logo, App Title, Save Status)
      ============================================================ -->
-<header id="jds-hdr" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:14px clamp(12px,2.4vw,24px);background:var(--jds-gray-0);border-bottom:1px solid var(--jds-gray-200)">
-<div style="display:flex;align-items:center;gap:14px;min-width:0">
+<header id="jds-hdr" style="{{ hdrStyle }}">
+<div style="{{ hdrLeftStyle }}">
 <div style="flex-shrink:0;display:flex;align-items:center">
-<img src="./sg-courts-logo.png" alt="SG Courts" style="height:36px;width:auto">
+<img src="./sg-courts-logo.png" alt="SG Courts" style="{{ hdrLogoStyle }}">
 </div>
-<div style="width:1px;height:28px;background:var(--jds-gray-200)"></div>
+<div style="{{ hdrDividerStyle }}"></div>
 <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
-<span style="font-size:15px;font-weight:600;line-height:1.35">First Ancillary Affidavit Prose Generator</span>
-<span style="font-size:13px;line-height:1.4;color:var(--jds-gray-700)">Family Justice Courts</span>
+<span style="{{ hdrTitleStyle }}">First Ancillary Affidavit Prose Generator</span>
+<span style="{{ hdrSubStyle }}">Family Justice Courts</span>
 </div>
 </div>
 <div style="display:flex;align-items:center;gap:12px">
 <span aria-live="polite" aria-atomic="true" style="{{ saveChipStyle }}"><i class="{{ saveIcon }}" style="font-size:16px" aria-hidden="true"></i>{{ savedLabel }}</span>
+<button type="button" sc-camel-on-click="{{ onHdrMenu }}" title="Show all sections" aria-label="Show all sections" aria-expanded="{{ hdrMenuExpanded }}" style="{{ hdrMenuStyle }}" style-hover="background:var(--jds-gray-100)"><i class="ph-bold ph-list" style="font-size:18px" aria-hidden="true"></i></button>
 </div>
 </header>
+<div aria-live="polite" aria-atomic="true" style="{{ saveBarStyle }}"><i class="{{ saveIcon }}" style="font-size:13px" aria-hidden="true"></i><span>{{ saveBarLabel }}</span></div>
 
 <!-- ============================================================
      PAGE LAYOUT (Sidebar Nav + Main Content)
@@ -87,11 +89,23 @@
 
 <!-- ---- Sidebar: Section Navigation (Stepper) ---- -->
 <nav aria-label="Form sections" style="{{ navStyle }}">
-<div style="{{ navHeadStyle }}">
+<div style="{{ navHeadStyle }}" sc-camel-on-click="{{ onNavHeadClick }}">
 <span style="{{ navTitleStyle }}">Sections</span>
-<button type="button" sc-camel-on-click="{{ onToggleNav }}" title="{{ navToggleTitle }}" aria-label="{{ navToggleTitle }}" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;border:none;border-radius:6px;background:transparent;color:var(--jds-gray-700);cursor:pointer" style-hover="background:var(--jds-gray-100)"><i class="{{ navToggleIcon }}" style="font-size:18px" aria-hidden="true"></i></button>
+<span style="{{ navMetaStyle }}">
+<span style="{{ navProgressStyle }}">{{ navProgressLabel }}</span>
+<span style="{{ navCurrentStyle }}">{{ navCurrentLabel }}</span>
+</span>
+<button type="button" sc-camel-on-click="{{ onToggleNav }}" title="{{ navToggleTitle }}" aria-label="{{ navToggleTitle }}" aria-expanded="{{ navExpanded }}" style="{{ navToggleStyle }}" style-hover="background:var(--jds-gray-100)"><i class="{{ navToggleIcon }}" style="font-size:18px" aria-hidden="true"></i><span style="{{ navToggleLabelStyle }}">{{ navToggleLabel }}</span></button>
 </div>
-<div style="display:flex;flex-direction:column">
+<div style="{{ navTrackStyle }}"><span style="{{ navFillStyle }}"></span></div>
+<sc-if value="{{ navSheetOpen }}" hint-placeholder-val="{{ false }}">
+<div sc-camel-on-click="{{ onCloseSheet }}" style="position:fixed;inset:0;z-index:88;background:rgba(14,14,14,0.45)"></div>
+</sc-if>
+<div id="jds-nav-sheet" role="{{ navSheetRole }}" aria-modal="{{ navSheetOpen }}" aria-label="Jump to a section" style="{{ navListStyle }}">
+<div style="{{ navSheetHeadStyle }}">
+<span style="font-size:16px;font-weight:600;line-height:1.4;color:var(--jds-gray-1000)">Jump to a section</span>
+<button type="button" sc-camel-on-click="{{ onCloseSheet }}" title="Close" aria-label="Close section list" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex-shrink:0;border:none;border-radius:8px;background:transparent;color:var(--jds-gray-700);cursor:pointer;font-family:inherit"><i class="ph ph-x" style="font-size:20px" aria-hidden="true"></i></button>
+</div>
 <sc-for list="{{ steps }}" as="s" hint-placeholder-count="18">
 <div style="{{ s.wrapStyle }}">
 <button type="button" sc-camel-on-click="{{ s.onClick }}" sc-camel-on-mouse-enter="{{ s.onEnter }}" sc-camel-on-mouse-leave="{{ s.onLeave }}" title="{{ s.label }}" style="{{ s.rowStyle }}">
@@ -109,7 +123,7 @@
 </sc-for>
 </div>
 <sc-if value="{{ navResizable }}" hint-placeholder-val="{{ true }}">
-<div sc-camel-on-mouse-down="{{ onNavResize }}" sc-camel-on-key-down="{{ onNavResizeKey }}" sc-camel-on-double-click="{{ onNavResetWidth }}" role="separator" sc-camel-tab-index="{{ 0 }}" aria-orientation="vertical" aria-label="{{ navResizeLabel }}" aria-valuenow="{{ navWidthNow }}" aria-valuemin="{{ 220 }}" aria-valuemax="{{ 420 }}" title="Drag or use arrow keys to resize the section list&nbsp;· double-click to reset" style="position:absolute;top:0;right:-8px;width:16px;height:100%;cursor:col-resize;display:flex;align-items:center;justify-content:center;border-radius:6px;outline-offset:2px" style-focus="outline:2px solid var(--jds-primary-600)">
+<div sc-camel-on-mouse-down="{{ onNavResize }}" sc-camel-on-key-down="{{ onNavResizeKey }}" sc-camel-on-double-click="{{ onNavResetWidth }}" role="separator" sc-camel-tab-index="{{ 0 }}" aria-orientation="vertical" aria-label="{{ navResizeLabel }}" aria-valuenow="{{ navWidthNow }}" aria-valuemin="{{ 264 }}" aria-valuemax="{{ 336 }}" title="Drag or use arrow keys to resize the section list&nbsp;· double-click to reset" style="position:absolute;top:0;right:-8px;width:16px;height:100%;cursor:col-resize;display:flex;align-items:center;justify-content:center;border-radius:6px;outline-offset:2px" style-focus="outline:2px solid var(--jds-primary-600)">
 <span style="width:4px;height:52px;border-radius:2px;background:var(--jds-gray-300)"></span>
 </div>
 </sc-if>
@@ -120,8 +134,8 @@
 
 
 <section style="background:var(--jds-gray-0);border:1px solid var(--jds-gray-200);border-radius:12px;box-shadow:0 1px 3px rgba(14,14,14,0.06)">
-<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:clamp(18px,3vw,24px) clamp(16px,3.2vw,32px) 16px;border-bottom:1px solid var(--jds-gray-200)">
-<h1 style="margin:0;font-size:clamp(21px,3.6vw,26px);font-weight:700;line-height:1.25;letter-spacing:-0.4px;color:var(--jds-primary-600)">{{ stepTitle }}</h1>
+<div style="{{ stepHeadStyle }}">
+<h1 style="flex:1 1 0%;min-width:0;margin:0;font-size:clamp(21px,3.6vw,26px);font-weight:700;line-height:1.25;letter-spacing:-0.4px;color:var(--jds-primary-600);text-wrap:pretty">{{ stepTitle }}</h1>
 <button type="button" sc-camel-on-click="{{ onTogglePreview }}" style="{{ previewBtnStyle }}" style-hover="background:var(--jds-primary-100)"><i class="{{ previewBtnIcon }}" style="font-size:17px"></i>{{ previewBtnLabel }}</button>
 </div>
 
@@ -299,36 +313,35 @@
 <button type="button" sc-camel-on-click="{{ f.onRetrieve }}" style="{{ f.retrieveBtnStyle }}" style-hover="opacity:0.92"><i class="{{ f.retrieveIcon }}" style="font-size:18px"></i>{{ f.retrieveLabel }}</button>
 </div>
 
-<div role="table" aria-label="Asset declaration" style="width:100%;box-sizing:border-box;border:1px solid var(--jds-gray-200);border-radius:12px;overflow-x:auto;overflow-y:hidden;background:var(--jds-gray-0)">
-<div role="row" style="display:grid;grid-template-columns:26% 18% 30% 26%;min-width:660px;align-items:center;background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200);font-size:12px;font-weight:600;color:var(--jds-gray-1000)">
-<span role="columnheader" style="padding:10px 14px">Asset type</span>
-<span role="columnheader" style="padding:10px 12px;border-left:1px solid var(--jds-gray-200)">Status</span>
+<div role="table" aria-label="Asset declaration" style="width:100%;box-sizing:border-box;border:1px solid var(--jds-gray-200);border-radius:12px;overflow:hidden;background:var(--jds-gray-0)">
+<div role="row" style="{{ f.assetHeadStyle }}">
+<span role="columnheader" style="padding:10px 12px">Asset type</span>
+<span role="columnheader" style="padding:10px 12px;border-left:1px solid var(--jds-gray-200);text-align:center">Status</span>
 <span role="columnheader" style="padding:10px 12px;border-left:1px solid var(--jds-gray-200)">Details</span>
-<span role="columnheader" style="padding:10px 12px;border-left:1px solid var(--jds-gray-200)">Action</span>
+<span role="columnheader" style="padding:10px 12px;border-left:1px solid var(--jds-gray-200);text-align:center">Action</span>
 </div>
 <sc-for list="{{ f.assetRows }}" as="a" hint-placeholder-count="8">
 <div role="row" style="{{ a.rowStyle }}">
-<span role="cell" style="padding:12px 14px;display:flex;align-items:center;gap:10px;min-width:0;align-self:stretch">
+<span role="cell" style="padding:14px 12px;display:flex;align-items:center;gap:10px;min-width:0;align-self:stretch">
 <span style="{{ a.iconStyle }}" aria-hidden="true"><i class="{{ a.icon }}"></i></span>
-<span style="font-size:13px;font-weight:600;line-height:1.35;color:var(--jds-gray-1000)">{{ a.label }}</span>
+<span style="display:flex;align-items:center;min-height:32px;font-size:13px;font-weight:600;line-height:1.35;color:var(--jds-gray-1000)">{{ a.label }}</span>
 </span>
-<span role="cell" style="padding:12px 12px;border-left:1px solid var(--jds-gray-200);display:flex;align-items:center;align-self:stretch"><span style="{{ a.statusStyle }}">{{ a.statusText }}</span></span>
-<span role="cell" style="padding:12px 12px;border-left:1px solid var(--jds-gray-200);display:flex;flex-direction:column;justify-content:center;gap:1px;min-width:0;align-self:stretch">
+<span role="cell" style="padding:14px 12px;border-left:1px solid var(--jds-gray-200);display:flex;align-items:center;justify-content:center;align-self:stretch"><span style="{{ a.statusStyle }}">{{ a.statusText }}</span></span>
+<span role="cell" style="padding:14px 10px;border-left:1px solid var(--jds-gray-200);display:flex;flex-direction:column;justify-content:center;gap:1px;min-width:0;align-self:stretch">
 <span style="{{ a.detail1Style }}">{{ a.detail1 }}</span>
 <sc-if value="{{ a.detail2 }}" hint-placeholder-val="{{ false }}">
 <span style="font-size:12px;line-height:1.4;color:var(--jds-gray-600)">{{ a.detail2 }}</span>
 </sc-if>
 </span>
-<span style="padding:12px 12px;border-left:1px solid var(--jds-gray-200);display:flex;align-items:center;gap:10px;align-self:stretch;flex-wrap:wrap">
+<span style="padding:14px 12px;border-left:1px solid var(--jds-gray-200);display:flex;align-items:center;justify-content:center;gap:10px;white-space:nowrap;align-self:stretch">
 <button type="button" sc-camel-on-click="{{ a.onPrimary }}" style="{{ a.primaryStyle }}" style-hover="background:var(--jds-primary-100)"><i class="{{ a.primaryIcon }}" style="font-size:14px"></i>{{ a.primaryLabel }}</button>
 <sc-if value="{{ a.secondaryLabel }}" hint-placeholder-val="{{ false }}">
-<button type="button" sc-camel-on-click="{{ a.onSecondary }}" style="{{ a.secondaryStyle }}" style-hover="color:var(--jds-gray-1000);text-decoration:underline">{{ a.secondaryLabel }}</button>
+<button type="button" sc-camel-on-click="{{ a.onSecondary }}" title="{{ a.secondaryTitle }}" aria-label="{{ a.secondaryTitle }}" style="{{ a.secondaryStyle }}" style-hover="color:var(--jds-gray-1000);text-decoration:underline">{{ a.secondaryLabel }}</button>
 </sc-if>
 </span>
 </div>
 </sc-for>
 </div>
-
 <div style="display:flex;flex-wrap:wrap;gap:16px 32px;padding:18px 20px;border:1px solid var(--jds-gray-200);border-radius:12px;background:var(--jds-gray-50);box-sizing:border-box">
 <span style="flex:1 1 150px;display:flex;flex-direction:column;gap:4px">
 <span style="font-size:13px;font-weight:600;color:var(--jds-gray-700)">Total assets</span>
@@ -356,10 +369,10 @@
 <div style="width:100%">
 <div role="table" aria-label="{{ t.title }}" style="width:100%;box-sizing:border-box;border:1px solid var(--jds-gray-200);border-radius:12px;overflow:hidden;background:var(--jds-gray-0)">
 <div role="row" style="display:flex;align-items:stretch;background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200)">
-<span role="columnheader" style="flex:0 0 54px;box-sizing:border-box;padding:12px 8px;font-size:13px;font-weight:600;color:var(--jds-gray-1000)">S/N</span>
-<span role="columnheader" style="flex:1.7 1 170px;min-width:0;box-sizing:border-box;padding:12px 14px;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Items</span>
-<span role="columnheader" style="flex:1 1 110px;min-width:0;box-sizing:border-box;padding:12px 12px;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Amount per month</span>
-<span role="columnheader" style="flex:1.2 1 130px;min-width:0;box-sizing:border-box;padding:12px 12px;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Remarks</span>
+<span role="columnheader" style="flex:0 0 54px;box-sizing:border-box;padding:12px 8px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000)">S/N</span>
+<span role="columnheader" style="flex:1 1 120px;min-width:0;min-width:0;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Items</span>
+<span role="columnheader" style="flex:0 1 150px;min-width:150px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Amount per month</span>
+<span role="columnheader" style="flex:0 1 140px;min-width:140px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Remarks</span>
 <span role="columnheader" style="flex:0 0 46px;border-left:1px solid var(--jds-gray-200)"></span>
 </div>
 <sc-for list="{{ t.rows }}" as="g" hint-placeholder-count="5">
@@ -369,7 +382,7 @@
 </sc-if>
 <sc-if value="{{ g.isData }}" hint-placeholder-val="{{ true }}">
 <span style="flex:0 0 54px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--jds-gray-700)">{{ g.sn }}</span>
-<div style="flex:1.7 1 170px;min-width:0;box-sizing:border-box;padding:0 14px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:1 1 120px;min-width:0;min-width:0;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <sc-if value="{{ g.fixed }}" hint-placeholder-val="{{ true }}">
 <span style="font-size:15px;line-height:1.5;color:var(--jds-gray-1000);text-wrap:pretty">{{ g.item }}</span>
 </sc-if>
@@ -379,15 +392,15 @@
 </div>
 </sc-if>
 </div>
-<div style="flex:1 1 110px;min-width:0;box-sizing:border-box;padding:0 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:0 1 150px;min-width:150px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <div style="{{ g.amountShell }}">
 <span style="font-size:15px;font-weight:600;color:var(--jds-gray-700)">S$</span>
 <input value="{{ g.amount }}" sc-camel-on-change="{{ g.onAmount }}" sc-camel-on-focus="{{ g.onAmountFocus }}" sc-camel-on-blur="{{ g.onAmountBlur }}" placeholder="0.00" sc-camel-input-mode="decimal" style="{{ g.inputStyle }}">
 </div>
 </div>
-<div style="flex:1.2 1 130px;min-width:0;box-sizing:border-box;padding:0 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:0 1 140px;min-width:140px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <div style="{{ g.remarksShell }}">
-<input value="{{ g.remarks }}" sc-camel-on-change="{{ g.onRemarks }}" sc-camel-on-focus="{{ g.onRemarksFocus }}" sc-camel-on-blur="{{ g.onBlur }}" placeholder="Enter remarks here" style="{{ g.inputStyle }}">
+<input value="{{ g.remarks }}" sc-camel-on-change="{{ g.onRemarks }}" sc-camel-on-focus="{{ g.onRemarksFocus }}" sc-camel-on-blur="{{ g.onBlur }}" placeholder="Remarks" style="{{ g.inputStyle }}">
 </div>
 </div>
 <div style="flex:0 0 46px;display:flex;align-items:center;justify-content:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
@@ -684,7 +697,7 @@
 <sc-if value="{{ f.isTableRepeat }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-direction:column;gap:12px;width:100%;margin-top:4px">
 <div role="table" aria-label="{{ f.label }}" style="width:100%;max-width:100%;overflow-x:auto;border:1px solid var(--jds-gray-200);border-radius:12px;background:var(--jds-gray-0)">
-<div role="row" style="display:flex;align-items:stretch;min-width:min-content;background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200)">
+<div role="row" style="display:flex;align-items:stretch;min-width:0;background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200)">
 <sc-for list="{{ f.headers }}" as="hd" hint-placeholder-count="4">
 <span role="columnheader" style="{{ hd.style }}">{{ hd.label }}</span>
 </sc-for>
@@ -818,14 +831,14 @@
 
 <sc-if value="{{ isDocs }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-direction:column;gap:22px;width:100%">
-<p style="margin:0;max-width:82ch;font-size:16px;line-height:1.7;color:var(--jds-gray-900);text-wrap:pretty">The Exhibit Content Page has been generated based on what you declared in earlier sections. Upload one PDF containing all your supporting documents — we will scan it and detect each document listed below.</p>
+<p style="margin:0;max-width:82ch;font-size:16px;line-height:1.7;color:var(--jds-gray-900);text-wrap:pretty">The Exhibit Content Page has been generated based on the supporting documents you declared earlier. Upload one PDF containing all your supporting documents. We'll scan the PDF and match each document to the items listed below.</p>
 <p style="margin:0;max-width:82ch;font-size:14px;line-height:1.7;color:var(--jds-gray-700);text-wrap:pretty"><strong style="font-weight:600">Note:</strong> Scanning is not 100% accurate. Please check that the page numbers are correct and edit them where needed.</p>
 
 <sc-if value="{{ docsEmpty }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:34px 24px;border:2px dashed var(--jds-gray-300);border-radius:12px;background:var(--jds-gray-50);text-align:center">
 <span style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:999px;background:var(--jds-primary-100);color:var(--jds-primary-600)"><i class="ph ph-cloud-arrow-up" style="font-size:26px"></i></span>
 <span style="font-size:16px;font-weight:600;color:var(--jds-gray-1000)">Upload your supporting documents</span>
-<span style="max-width:52ch;font-size:14px;line-height:1.6;color:var(--jds-gray-700);text-wrap:pretty">One combined PDF, up to 50 MB. Keep the documents in any order — we will find them.</span>
+<span style="max-width:52ch;font-size:14px;line-height:1.6;color:var(--jds-gray-700);text-wrap:pretty">One combined PDF, up to 50 MB. Arrange the documents in the same order as the list below.</span>
 <button type="button" sc-camel-on-click="{{ onUpload }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 20px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-upload-simple" style="font-size:18px"></i>Choose PDF</button>
 </div>
 </sc-if>
@@ -1142,6 +1155,9 @@
 </div>
 </sc-if>
 
+<!-- Back to Top (mobile only) -->
+<button type="button" sc-camel-on-click="{{ onBackToTop }}" aria-label="Back to top" style="{{ backToTopStyle }}" style-hover="opacity:1"><i class="ph ph-caret-up" style="font-size:18px" aria-hidden="true"></i></button>
+
 </div>
 </div>
 
@@ -1265,6 +1281,22 @@ const NATURE = [{ value: "", label: "Select an option" }, { value: "Full-time", 
 const PERSONAL_ITEMS = ["Food", "Transport / fuel expenses", "Utilities", "Telephone, internet and cable TV charges", "Medical expenses", "Rent",
   "Insurance premiums", "Payment of debts (excluding housing loans and hire purchase loans)", "Maintenance paid to others", "Tax payments",
   "Financial provision for another person"];
+const HAS_FIN_PROVISION = (v) => {
+  const rows = Array.isArray(v.personalExpensesTable) ? v.personalExpensesTable : [];
+  return rows.some((r) => r && r.item === "Financial provision for another person" && !blank(r.amount));
+};
+const FIN_PROV_PAY_OPTIONS = [
+  { value: "", label: "Select an option" },
+  { value: "In cash", label: "In cash" },
+  { value: "Bank transfer", label: "Bank transfer" },
+  { value: "Direct payment to relevant agency", label: "Direct payment to relevant agency" },
+  { value: "Others", label: "Others" }
+];
+const FIN_PROV_FREQ_OPTIONS = [
+  { value: "", label: "Select an option" },
+  { value: "Monthly", label: "Monthly" },
+  { value: "Others", label: "Others" }
+];
 const CHILD_ITEMS = ["Food (including milk)", "Transport", "Mobile phone charges", "Pocket money", "School fees", "Enrichment fees",
   "Extracurricular expenses", "Schoolbooks and school uniform", "Insurance premiums"];
 const childList = (v) => {
@@ -1301,29 +1333,61 @@ const VALUE_LABELS = {
 const DOC_FILE = { name: "supporting-documents.pdf", scanned: "8 Aug 2026, 6.02pm" };
 const DOC_LEN = [2, 3, 1, 6, 4, 9, 2, 5, 3, 2, 4, 2, 7, 3, 2, 6, 2, 4, 3, 5];
 const REQ_DOCS = [
-  { key: "marriage", section: "Introduction", name: "Marriage certificate", when: () => true },
-  { key: "syariah", section: "Introduction", name: "Notice of Syariah Court Proceedings (Form 58)", when: (v) => v.forum === F_SYARIAH },
-  { key: "foreign", section: "Introduction", name: "Application for Financial Relief (Form 15A)", when: (v) => v.forum === F_OVERSEAS },
-  { key: "ij", section: "General Information", name: "Interim Judgment", when: (v) => v.granted === "An Interim Judgment" },
-  { key: "js", section: "General Information", name: "Judgment of Judicial Separation", when: (v) => v.granted === "A Judgment of Judicial Separation" },
-  { key: "childBirth", section: "Child(ren) Details", name: "Birth certificate(s) of the child(ren)", when: (v) => num(v.childCount) > 0 },
-  { key: "childSchool", section: "Child(ren) Details", name: "School and enrichment fee statements", when: (v) => CHILD_MAINT(v), elusive: true },
-  { key: "bankruptcy", section: "Bankruptcy Status", name: "Bankruptcy search result or statement of affairs",
+  { key: "e1", section: "Section 1 · Introduction", name: "Completed Application for Financial Relief (Form 15A) and all relevant supporting document(s)",
+    when: (v) => v.forum === F_OVERSEAS },
+  { key: "e2", section: "Section 1 · Introduction", name: "Completed Notice of Syariah Court Proceedings Form (Form 58) and all relevant supporting document(s)",
+    when: (v) => v.forum === F_SYARIAH },
+  { key: "e3", section: "Section 3 · Bankruptcy Status", name: "Statement of Affairs for Bankruptcy for self and/or ex-spouse", when: (v) => v.bankrupt === "Yes" || v.spouseBankrupt === "Yes" },
+  { key: "e4", section: "Section 3 · Bankruptcy Status", name: "Income and Expenditure Statement for self and/or ex-spouse", when: (v) => v.bankrupt === "Yes" || v.spouseBankrupt === "Yes" },
+  { key: "e5", section: "Section 4 · Child(ren) Details", name: "Court order relating to a minor child (excluding orders made in the current proceedings)",
+    when: (v) => num(v.childCount) > 0 },
+  { key: "e6", section: "Section 4 · Child(ren) Details", name: "Medical report of a child", when: (v) => num(v.childCount) > 0 },
+  { key: "e7", section: "Section 6 · Employment Details", name: "Payslips or similar documents to show evidence of income for the past 6 months",
+    when: (v) => v.employmentStatus === "Employee" },
+  { key: "e8", section: "Section 6 · Employment Details", name: "Current employment contract OR similar evidence showing the current terms of my employment",
+    when: (v) => v.employmentStatus === "Employee" },
+  { key: "e9", section: "Section 6 · Employment Details", name: "Tax assessment notices or similar documents for the past 3 years",
+    when: (v) => !blank(v.employmentStatus) },
+  { key: "e10", section: "Section 6 · Employment Details", name: "Updated ACRA search results or similar documents to show ownership of my businesses",
+    when: (v) => v.employmentStatus === "Self-employed" || v.director === "Yes" },
+  { key: "e11", section: "Section 6 · Employment Details", name: "Current tenancy agreement or similar evidence showing the rental I receive", when: (v) => (Array.isArray(v.incomeSources) ? v.incomeSources : []).some((r) => r && r.source === "Rental") },
+  { key: "e12", section: "Section 6 · Employment Details", name: "Updated search results on my bankruptcy status from the Ministry of Law's Insolvency Office",
     when: (v) => v.bankrupt === "Yes" || v.spouseBankrupt === "Yes" || v.bankruptPending === "Yes" || v.spouseBankruptPending === "Yes" },
-  { key: "payslips", section: "Employment Details", name: "Payslips for the last 3 months", when: (v) => v.employmentStatus === "Employee" },
-  { key: "acra", section: "Employment Details", name: "ACRA business profile", when: (v) => v.employmentStatus === "Self-employed" || v.director === "Yes" },
-  { key: "noa", section: "Source(s) of Income", name: "Notice of Assessment for the last 3 years", when: () => true, elusive: true },
-  { key: "rental", section: "Source(s) of Income", name: "Tenancy agreement for rental income",
-    when: (v) => (Array.isArray(v.incomeSources) ? v.incomeSources : []).some((r) => r && r.source === "Rental") },
-  { key: "cpf", section: "Assets", name: "CPF contribution and account statements", when: () => true },
-  { key: "bank", section: "Assets", name: "Bank statements for the last 3 months", when: (v) => v.hasBank === "Yes" },
-  { key: "property", section: "Assets", name: "Property title search or HDB flat particulars", when: (v) => v.hasProperty === "Yes" },
-  { key: "insurance", section: "Assets", name: "Insurance policy statements", when: (v) => v.hasInsurance === "Yes" },
-  { key: "vehicle", section: "Assets", name: "Vehicle registration and valuation", when: (v) => v.hasVehicles === "Yes" },
-  { key: "investment", section: "Assets", name: "Investment statements", when: (v) => v.hasInvestments === "Yes" },
-  { key: "mortgage", section: "Debts", name: "Outstanding housing loan statement", when: (v) => v.hasProperty === "Yes" },
-  { key: "loans", section: "Debts", name: "Statements for other debts", when: (v) => v.hasOtherDebt === "Yes" },
-  { key: "expenses", section: "Family Expenses", name: "Bills or receipts for major monthly expenses", when: () => true, elusive: true }
+  { key: "e13", section: "Section 7 · Family Expenses", name: "Documents to prove my monthly expenses",
+    when: (v) => (Array.isArray(v.personalExpensesTable) ? v.personalExpensesTable : []).some((r) => r && num(r.amount) > 0) },
+  { key: "e14", section: "Section 7 · Family Expenses", name: "Documents to prove the child(ren)'s monthly expenses", when: (v) => num(v.childCount) > 0 },
+  { key: "e15", section: "Section 7 · Family Expenses", name: "Evidence that I have supported my dependents",
+    when: (v) => num(v.childCount) > 0 && (Array.isArray(v.personalExpensesTable) ? v.personalExpensesTable : []).some((r) => r && /financial provision/i.test(r.item || "") && num(r.amount) > 0) },
+  { key: "e16", section: "Section 7 · Family Expenses", name: "Current maintenance order(s)", when: (v) => v.maintenanceOrders === "Yes" },
+  { key: "e17", section: "Section 7 · Family Expenses", name: "My medical report OR evidence of my incapacity to work",
+    when: (v) => INCAP(v) && !blank(v.incapacityReportDate) },
+  { key: "e18", section: "Section 8A · Property", name: "Updated mortgage statement showing the outstanding mortgage loan", when: (v) => v.hasProperty === "Yes" },
+  { key: "e19", section: "Section 8A · Property", name: "Updated valuation report or transaction history to show the value of the property", when: (v) => v.hasProperty === "Yes" },
+  { key: "e20", section: "Section 8B · Bank accounts", name: "Updated bank account statements for the past 3 months", when: (v) => v.hasBank === "Yes" },
+  { key: "e21", section: "Section 8C · CPF and pension funds", name: "Updated CPF statement showing the balance in each account", when: (v) => v.hasCpf === "Yes" },
+  { key: "e22", section: "Section 8C · CPF and pension funds", name: "Updated CPF investment account statements from the banks / investment companies",
+    when: (v) => v.hasCpfInvestment === "Yes" },
+  { key: "e23", section: "Section 8C · CPF and pension funds", name: "Updated statement showing the balance in the pension funds (excluding CPF)", when: (v) => v.hasPension === "Yes" },
+  { key: "e24", section: "Section 8C · CPF and pension funds", name: "Terms and conditions of the pension scheme OR similar evidence to show how the scheme works (excluding CPF)",
+    when: (v) => v.hasPension === "Yes" },
+  { key: "e25", section: "Section 8D · Investments", name: "Updated Central Depository Pte Ltd statements OR similar evidence to show the balance and details of my investments",
+    when: (v) => v.hasInvestments === "Yes" },
+  { key: "e26", section: "Section 8D · Investments", name: "Updated ACRA search results OR similar evidence to show my shareholdings",
+    when: (v) => v.employmentStatus === "Self-employed" || v.director === "Yes" },
+  { key: "e27", section: "Section 8D · Investments", name: "Evidence of the value of my investments or shares", when: (v) => v.hasInvestments === "Yes" },
+  { key: "e28", section: "Section 8E · Insurance policies", name: "Insurance policy documents OR similar evidence to show the surrender values and beneficiaries of my insurance policies",
+    when: (v) => v.hasInsurance === "Yes" },
+  { key: "e29", section: "Section 8E · Insurance policies", name: "Evidence of my insurance premiums and the payment mode", when: (v) => v.hasInsurance === "Yes" },
+  { key: "e30", section: "Section 8F · Motor vehicles", name: "Evidence of vehicle ownership", when: (v) => v.hasVehicles === "Yes" },
+  { key: "e31", section: "Section 8F · Motor vehicles", name: "Updated hire purchase statement", when: (v) => v.hasVehicles === "Yes" },
+  { key: "e32", section: "Section 8G · Other valuables", name: "Valuation report OR similar documents to show value of items", when: (v) => v.hasValuables === "Yes" },
+  { key: "e33", section: "Section 8H · Money owed to me", name: "Evidence of the debts owed to me", when: (v) => v.hasDebtsDue === "Yes" },
+  { key: "e34", section: "Section 9 · Debts", name: "Updated statements OR similar documents to show the outstanding balance", when: (v) => v.hasOtherDebt === "Yes" },
+  { key: "e35", section: "Section 9 · Debts", name: "Evidence to show why the debt was incurred", when: (v) => v.hasOtherDebt === "Yes" },
+  { key: "e36", section: "Section 11 · Matrimonial Assets", name: "Evidence to show why the assets are not matrimonial assets", when: (v) => v.allMatrimonial === "No" },
+  { key: "e37", section: "Section 11 · Matrimonial Assets", name: "Updated CPF housing withdrawal statement OR similar evidence to show use of CPF monies for the assets",
+    when: (v) => v.paidForAsset === "Yes" },
+  { key: "e38", section: "Section 11 · Matrimonial Assets", name: "Evidence of other payments made for the purchase of the assets", when: (v) => v.paidForAsset === "Yes" }
 ];
 const DEF_TIP = "position:absolute;left:50%;transform:translateX(-50%);bottom:calc(100% + 8px);z-index:20;width:max-content;max-width:min(300px, 90vw);"
   + "padding:8px 10px;border-radius:6px;background:var(--jds-gray-1000);color:var(--jds-gray-0);font-size:13px;font-weight:400;line-height:1.5;"
@@ -1363,7 +1427,7 @@ const PROPERTY_TYPES = [{ value: "", label: "Select an option" },
   { value: "Commercial or industrial property", label: "Commercial or industrial property" },
   { value: "Property outside Singapore", label: "Property outside Singapore" }];
 const MOP_TYPE = (r) => r.propertyType === "HDB flat" || r.propertyType === "Executive Condominium (EC)";
-const PROP_VALUE_SHOWN = (r) => !!r.propertyType && (!MOP_TYPE(r) || r.mop === "Yes");
+const PROP_VALUE_SHOWN = (r) => r.propertyLocation === "Foreign" || (!!r.propertyType && (!MOP_TYPE(r) || r.mop === "Yes"));
 const CPF_RETRIEVED = (v) => (v.assetRetrieved || []).indexOf("cpf") !== -1;
 const FROM_MYINFO = (r) => !!r._retrieved;
 const ORDER_GUIDE = "Use these references to prepare the orders: I = applicant; my spouse = respondent.";
@@ -1465,6 +1529,7 @@ const BUSINESS_ROW = [
   { id: "business", label: "Nature of business", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. Retail" }
 ].concat(ADDRESS_ROW);
 const OCCUPATIONS = ["Accountant","Administrative executive","Architect","Business owner","Chef","Civil servant","Cleaner","Delivery rider","Dentist","Doctor","Driver","Engineer","Financial adviser","Hawker","Homemaker","Human resource executive","Insurance agent","IT professional","Lawyer","Lecturer","Logistics coordinator","Nurse","Operations manager","Pilot","Police officer","Property agent","Renovation contractor","Retail assistant","Retired","Sales executive","Security officer","Social worker","Software engineer","Teacher","Technician","Unemployed"];
+const COUNTRIES = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","East Timor","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
 const ADD_LABELS = {
   cpfBalances: "Add another CPF account",
   jobEmployee: "Add another job", jobSelf: "Add another business", previousJobs: "Add another job",
@@ -1582,12 +1647,27 @@ const SCHEMA = [
       { id: "nric", label: "NRIC / FIN / Passport Number", type: "text", half: true, required: true, upper: true, immediate: true, placeholder: "e.g. S1234567D",
         validate: (v) => /^[STFGM]\d{7}[A-Z]$/.test(String(v).trim()) || /^[A-Z0-9]{6,12}$/.test(String(v).trim()) ? null : "Enter a valid NRIC, FIN or passport number." },
       { id: "address", label: "Registered Address", type: "textarea", myinfo: true, readOnly: true },
-      { id: "occupation", label: "Occupation", type: "text", wide: true, required: true, combo: true, comboList: OCCUPATIONS, placeholder: "Start typing your occupation" },
-      { id: "spouseName", label: "Name of my spouse", type: "text", half: true, required: true, placeholder: "Full name as per NRIC / Passport" },
-      { id: "spouseNric", label: "Spouse's NRIC / FIN / Passport number", type: "text", half: true, required: true, upper: true, placeholder: "e.g. S7654321B" },
-      { id: "caseNumber", label: "Main case number", type: "text", required: true, upper: true, immediate: true, placeholder: "e.g. FC/OAD 24/2026",
+      { id: "occupation", label: "Occupation", type: "text", wide: true, required: true, combo: true, comboList: OCCUPATIONS, placeholder: "Search for your occupation" },
+      { id: "spouseName", label: "Name of spouse", type: "text", half: true, required: true, placeholder: "Full name as per NRIC / Passport" },
+      { id: "spouseIdType", label: "Spouse's identity type", type: "select", half: true, required: true,
+        options: [
+          { value: "", label: "Select identity type" },
+          { value: "Singapore NRIC", label: "Singapore NRIC" },
+          { value: "Singapore Birth Certificate", label: "Singapore Birth Certificate" },
+          { value: "Singapore FIN", label: "Singapore FIN" },
+          { value: "Foreign Passport", label: "Foreign Passport" },
+          { value: "Others", label: "Others" }
+        ] },
+      { id: "spouseIdTypeOther", label: "State the type of identification document", type: "text", half: true, required: true, when: (v) => v.spouseIdType === "Others", placeholder: "e.g. Long-term visit pass" },
+      { id: "spousePassportCountry", label: "Country / region of issue", type: "text", half: true, required: true, combo: true, comboList: COUNTRIES, placeholder: "Start typing the country or region",
+        when: (v) => v.spouseIdType === "Foreign Passport" },
+      { id: "spouseNric", label: (v) => v.spouseIdType === "Singapore NRIC" ? "Spouse's NRIC" : v.spouseIdType === "Singapore Birth Certificate" ? "Spouse's Birth Certificate number" : v.spouseIdType === "Singapore FIN" ? "Spouse's FIN" : v.spouseIdType === "Foreign Passport" ? "Spouse's Passport number" : "Spouse's NRIC / FIN / Passport number", type: "text", half: true, required: true, upper: true, placeholder: "e.g. S7654321B",
+        when: (v) => v.spouseIdType === "Singapore NRIC" || v.spouseIdType === "Singapore Birth Certificate" || v.spouseIdType === "Singapore FIN" || v.spouseIdType === "Foreign Passport" },
+      { id: "caseNumber", label: "Main case number", type: "text", wide: true, required: true, upper: true, immediate: true, placeholder: "e.g. FC/OAD 24/2026",
         hint: "Refer to the case number on your Originating Application. Do not enter a sub-case number.",
         validate: (v) => /^[A-Za-z0-9]+(\/[A-Za-z0-9]+)*\s?\d+\/\d{4}$/.test(String(v).trim()) ? null : "Enter the case number as it appears on your Originating Application, ending in a number and year." },
+      { id: "priorAffidavits", label: "Have you filed any affidavits in this case before?", type: "radio", required: true, options: YN },
+      { id: "priorAffidavitCount", label: "How many affidavits have you filed before this one?", type: "number", half: true, required: true, when: (v) => v.priorAffidavits === "Yes", placeholder: "e.g. 2" },
       { id: "role", label: "Your role in this case", type: "radio", required: true, hint: "Refer to the Originating Application for your party type.",
         options: [
           { value: "Applicant", label: "Applicant" },
@@ -1605,9 +1685,7 @@ const SCHEMA = [
           ? "Complete an Application for Financial Relief (Form 15A) and include it as an exhibit to this affidavit."
           : v.forum === F_SYARIAH
             ? "Complete a Notice of Syariah Court Proceedings (Form 58) and include it as an exhibit to this affidavit."
-            : v.forum === F_THIS_COURT
-              ? "Give the details of the Interim Judgment or Judgment of Judicial Separation granted by this Court below."
-              : "Your answer determines which matters this Court can decide, and which documents you must attach.",
+            : "",
         options: [{ value: F_THIS_COURT, label: F_THIS_COURT }, { value: F_OVERSEAS, label: F_OVERSEAS }, { value: F_SYARIAH, label: F_SYARIAH }] },
       { id: "granted", label: "This Court granted", type: "radio", required: true, when: (v) => v.forum === F_THIS_COURT,
         options: [{ value: "An Interim Judgment", label: "An Interim Judgment" }, { value: "A Judgment of Judicial Separation", label: "A Judgment of Judicial Separation" }] },
@@ -1648,8 +1726,8 @@ const SCHEMA = [
   {
     id: "bankruptcy", label: "Bankruptcy Status", title: "Bankruptcy Status",
     fields: [
-      { id: "bankruptcyIntro", type: "note",
-        noteText: "If you or your spouse is an undischarged bankrupt, you must serve a copy of this affidavit on the Official Assignee and inform the Official Assignee of the next Court date." },
+      { id: "bankruptcyIntro", type: "note", when: (v) => v.bankrupt === "Yes" || v.spouseBankrupt === "Yes",
+        noteText: "As you or your spouse is an undischarged bankrupt, you must serve a copy of this affidavit on the Official Assignee and inform the Official Assignee of the next Court date." },
       { id: "bankrupt", label: "Are you an undischarged bankrupt?", type: "radio", required: true, options: YN, def: DEF_BANKRUPT },
       { id: "bankruptPending", label: "Are there pending bankruptcy proceedings filed against you?", type: "radio", required: true, when: (v) => v.bankrupt === "No", options: YN },
       { id: "spouseBankrupt", label: "Is your spouse an undischarged bankrupt?", type: "radio", required: true, options: YN },
@@ -1672,16 +1750,16 @@ const SCHEMA = [
       { id: "spouseAge", label: "My spouse's age", type: "text", half: true, readOnly: true, noStar: true,
         derive: (v) => { const a = ageFrom(v.spouseDob); return blank(a) ? "" : String(a); },
         placeholder: "Calculated from their date of birth" },
-      { id: "ijDate", label: "The Interim Judgment was granted on", type: "date", required: true, when: (v) => v.granted === "An Interim Judgment" },
-      { id: "jsDate", label: "The Judgment of Judicial Separation was granted on", type: "date", required: true, when: (v) => v.granted === "A Judgment of Judicial Separation" },
-      { id: "syariahDate", label: "The divorce / nullity / judicial separation was granted on", type: "date", required: true, when: (v) => v.forum === F_SYARIAH || v.forum === F_OVERSEAS },
-      { id: "breakdownDate", label: "In my view, the marriage broke down on", type: "date", required: true },
+      { id: "ijDate", label: "The Interim Judgment was granted on", type: "date", half: true, required: true, when: (v) => v.granted === "An Interim Judgment" },
+      { id: "jsDate", label: "The Judgment of Judicial Separation was granted on", type: "date", half: true, required: true, when: (v) => v.granted === "A Judgment of Judicial Separation" },
+      { id: "syariahDate", label: "The divorce / nullity / judicial separation was granted on", type: "date", half: true, required: true, when: (v) => v.forum === F_SYARIAH || v.forum === F_OVERSEAS },
+      { id: "breakdownDate", label: "In my view, the marriage broke down on", type: "date", half: true, required: true },
       { id: "breakdownReasons", label: "Reason(s) for date of when marriage broke down", type: "textarea", required: true, max: 1000, placeholder: "State your reasons here" },
       { id: "reasonDocs", label: "Refer to other court document(s) containing my reasons", type: "repeat", optional: true, table: true, addLabel: "Add another row",
         row: [
-          { id: "docName", label: "Document name", type: "text", grow: "1 1 200px", minWidth: 180, noStar: true, placeholder: "e.g. Statement of Particulars" },
-          { id: "dateFiled", label: "Date filed", type: "date", grow: "1 1 210px", minWidth: 190, noStar: true },
-          { id: "paras", label: "Paragraph number(s)", type: "text", grow: "1 1 180px", minWidth: 150, noStar: true, placeholder: "e.g. 5, 7-9" }
+          { id: "docName", label: "Document name", type: "text", grow: "5 1 260px", minWidth: 180, noStar: true, placeholder: "e.g. Statement of Particulars" },
+          { id: "dateFiled", label: "Date filed", type: "date", grow: "0 1 160px", minWidth: 150, noStar: true },
+          { id: "paras", label: "Paragraph number(s)", type: "text", grow: "0 1 140px", minWidth: 120, noStar: true, placeholder: "e.g. 5, 7-9" }
         ] },
       { id: "childCount", label: "Total number of living child(ren)", type: "number", required: true, wide: true, placeholder: "0" },
       { id: "childrenOfMarriage", label: "Do you have any children under 21 who were born or accepted as children of the marriage?", type: "radio", required: true, options: YN },
@@ -1813,10 +1891,21 @@ const SCHEMA = [
       { id: "personalExpensesTable", label: "My personal expenses are as follows:", type: "grid", required: true, items: PERSONAL_ITEMS, addLabel: "Add another expense",
         hint: "If an expense is not incurred monthly, state it as a monthly average. For example an expense of S$60 every 3 months is S$20 per month.",
         desc: "For financial provision made to another person, state in Remarks your relationship with the person, how the monies are paid, and how often." },
+      { id: "finProvisionPersons", label: "I provide for the following person(s) who are NOT part of this family:", type: "repeat",
+        when: (v) => HAS_FIN_PROVISION(v), rowTitle: "Person", addLabel: "Add another person",
+        row: [
+          { id: "name", label: "Name of person", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "Full name of the person" },
+          { id: "relationship", label: "Relationship with person", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. Mother, Friend" },
+          { id: "payMethod", label: "How are the monies paid?", type: "select", grow: "1 1 calc(50% - 8px)", options: FIN_PROV_PAY_OPTIONS },
+          { id: "payMethodOther", label: "State how the monies are paid", type: "text", grow: "1 1 calc(50% - 8px)", when: (r) => r.payMethod === "Others", placeholder: "e.g. PayNow transfer" },
+          { id: "amount", label: "Amount per month", type: "money", grow: "1 1 calc(50% - 8px)", placeholder: "0.00" },
+          { id: "frequency", label: "How often are monies paid?", type: "select", grow: "1 1 calc(50% - 8px)",
+            options: FIN_PROV_FREQ_OPTIONS },
+          { id: "frequencyOther", label: "State how often the monies are paid", type: "text", grow: "1 1 calc(50% - 8px)", when: (r) => r.frequency === "Others", placeholder: "e.g. Quarterly, twice a year" }
+        ] },
       { id: "childExpensesTableNote", type: "note", when: (v) => childNames(v).length === 0,
         noteText: "Enter the total number of living child(ren) in General Information first, so that each child's expenses can be recorded here." },
       { id: "childExpensesTable", label: "The monthly expenses for the child(ren) are:", type: "grid", perChild: true, items: CHILD_ITEMS, addLabel: "Add another expense",
-        helper: "One table is shown for each child. Amounts are monthly — delete any row that does not apply, and add a row for anything not already listed.",
         when: (v) => childNames(v).length > 0 },
       { id: "maintenanceOrders", label: "Are there existing maintenance order(s) for yourself, your spouse or your child(ren)?", type: "radio", required: true, options: YN },
       { id: "orderForumNote", type: "note", when: (v) => v.maintenanceOrders === "Yes" && blank(v.forum),
@@ -1864,14 +1953,15 @@ const SCHEMA = [
     id: "assetsProperty", label: "Immovable Property", title: "Immovable Property", sub: true, visibleWhen: (v) => v.hasProperty === "Yes",
     fields: [
       { id: "properties", label: "Details of my immovable property(ies)", type: "repeat", required: true, rowTitle: "Property", addLabel: "Add another property",
-        helper: "Add one block for each property you own wholly or partly, in Singapore or overseas.",
         row: [
-          { id: "address", label: "Registered Address", type: "search", searchWhen: (r) => !r._retrieved, grow: "1 1 100%", placeholder: "Enter postal code, street or building name", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
+          { id: "propertyLocation", label: "Is this a local or foreign property?", type: "radio", grow: "1 1 100%",
+            options: [{ value: "Local", label: "Local (in Singapore)" }, { value: "Foreign", label: "Foreign (outside Singapore)" }] },
+          { id: "address", label: "Address of property", type: "search", searchWhen: (r) => r.propertyLocation === "Local" && !r._retrieved, grow: "1 1 100%", placeholder: "Enter postal code, street or building name", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
           { id: "refName", label: "Reference name", type: "text", grow: "1 1 100%", optional: true, placeholder: "e.g. The Siglap property",
             desc: "A short name you will use to refer to this property elsewhere in the affidavit." },
-          { id: "propertyType", label: "Type of property", type: "select", grow: "1 1 100%", options: PROPERTY_TYPES, myinfo: FROM_MYINFO, readOnly: FROM_MYINFO,
+          { id: "propertyType", label: "Type of property", type: "select", grow: "1 1 100%", when: (r) => r.propertyLocation === "Local", options: PROPERTY_TYPES, myinfo: FROM_MYINFO, readOnly: FROM_MYINFO,
             desc: (r) => r._retrieved ? "Detected from your HDB ownership record retrieved via MyInfo." : "" },
-          { id: "mop", label: "Have you satisfied the Minimum Occupation Period (MOP)?", type: "radio", grow: "1 1 100%", when: MOP_TYPE, options: YN },
+          { id: "mop", label: "Have you satisfied the Minimum Occupation Period (MOP)?", type: "radio", grow: "1 1 100%", when: (r) => r.propertyLocation === "Local" && MOP_TYPE(r), options: YN },
           { id: "holding", label: "Nature of holding", type: "select", grow: "1 1 260px",
             options: [{ value: "", label: "Select an option" }, { value: "Sole tenancy", label: "Sole tenancy" }, { value: "Joint tenancy", label: "Joint tenancy" }, { value: "Tenancy in common", label: "Tenancy in common" }] },
           { id: "share", label: "My share (in %)", type: "text", grow: "1 1 200px", when: (r) => r.holding === "Tenancy in common", placeholder: "e.g. 50%" },
@@ -1883,9 +1973,18 @@ const SCHEMA = [
             options: [{ value: "", label: "Select an option" }, { value: "HDB", label: "HDB" }, { value: "URA latest transaction records", label: "URA latest transaction records" }, { value: "Desktop valuation", label: "Desktop valuation" }, { value: "Onsite valuation", label: "Onsite valuation" }, { value: "Others", label: "Others" }] },
           { id: "valueBasisOther", label: "State the basis of the value", type: "text", grow: "1 1 100%", when: (r) => r.valueBasis === "Others", placeholder: "State how the value was derived" },
           { id: "mortgage", label: "Outstanding mortgage", type: "money", grow: "1 1 calc(50% - 8px)", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
-          { id: "mortgagee", label: "Name(s) of mortgagee(s)", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. DBS Bank Ltd", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO }
+          { id: "mortgagee", label: "Name(s) of mortgagee(s)", type: "select", grow: "1 1 calc(50% - 8px)",
+            options: [{ value: "", label: "Select an option" }, { value: "All Legal Owners", label: "All Legal Owners" }, { value: "Others", label: "Others" }] },
+          { id: "mortgageeOther", label: "State the name(s) of mortgagee(s)", type: "text", grow: "1 1 calc(50% - 8px)",
+            when: (r) => r.mortgagee === "Others", placeholder: "e.g. DBS Bank Ltd" }
         ] },
-      { id: "propertiesTotal", type: "note", noteText: (v) => "Total for this section: S$" + SGD((Array.isArray(v.properties) ? v.properties : []).reduce((t, r) => t + num(r && r.marketValue), 0)) },
+      { id: "propertiesTotal", type: "note", noteText: (v) => {
+          const props = Array.isArray(v.properties) ? v.properties : [];
+          const totalMarket = props.reduce((t, r) => t + num(r && r.marketValue), 0);
+          const totalMortgage = props.reduce((t, r) => t + num(r && r.mortgage), 0);
+          return "Estimated market value of ALL immovable assets: S$" + SGD(totalMarket)
+            + "\nOutstanding Mortgage of ALL immovable assets: S$" + SGD(totalMortgage);
+        } },
     ]
   },
   {
@@ -2350,8 +2449,8 @@ DEFAULTS.childCount = "0";
 const KEY = "jds-first-ancillary-affidavit-draft-v15";
 const SCHEMA_VERSION = 15;
 const MYINFO_FIELDS = ["name", "address", "dob", "marriageDate", "education"];
-const NAV_MIN = 220;
-const NAV_MAX = 420;
+const NAV_MIN = 264;
+const NAV_MAX = 336;
 
 
 /* ════════════════════════════════════════════════════════════════
@@ -2364,7 +2463,8 @@ class Component extends DCLogic {
   state = {
     step: 0, values: { ...DEFAULTS }, errors: {}, focus: null, visited: { instructions: true },
     files: {}, savedAt: null, submitted: false, saving: false,
-    navCollapsed: false, navWidth: 296, previewOn: false, hoverStep: null, hoverTip: null, expanded: { general: true }, attempted: {}
+    navCollapsed: false, isNarrow: false, navSheetOpen: false, navWidth: 296, previewOn: false, hoverStep: null, hoverTip: null, expanded: { general: true }, attempted: {},
+    scrolledDown: false
   };
 
   /* ── G.1 State & Lifecycle ───────────────────────────────────── */
@@ -2383,11 +2483,25 @@ class Component extends DCLogic {
       const w = parseInt(window.localStorage.getItem("jds-faa-nav-width") || "", 10);
       if (w >= NAV_MIN && w <= NAV_MAX) this.setState({ navWidth: w });
     } catch (e) {}
+    this._mq = window.matchMedia("(max-width:700px)");
+    this._applyMq = (m) => {
+      this.setState({ isNarrow: !!m.matches, navSheetOpen: false });
+      try { document.body.style.overflow = ""; } catch (e) {}
+    };
+    this._applyMq(this._mq);
+    if (this._mq.addEventListener) this._mq.addEventListener("change", this._applyMq);
+    else if (this._mq.addListener) this._mq.addListener(this._applyMq);
+    this._onScroll = () => {
+      const down = window.scrollY > 400;
+      if (down !== this.state.scrolledDown) this.setState({ scrolledDown: down });
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
     this.syncChildGrids();
     if (this.props.previewPane === true) this.setState({ previewOn: true });
     this._onKey = (e) => {
       if (e.key !== "Escape") return;
-      if (this.state.confirmDownload) this.setState({ confirmDownload: false });
+      if (this.state.navSheetOpen) this.setSheet(false);
+      else if (this.state.confirmDownload) this.setState({ confirmDownload: false });
       else if (this.state.draftGateOpen) this.setState({ draftGateOpen: false });
       else if (this.state.showDoc) this.setState({ showDoc: false });
       else if (this.state.previewOn) this.setState({ previewOn: false });
@@ -2404,7 +2518,8 @@ class Component extends DCLogic {
       { key: "previewOn", sel: "#jds-preview-modal" },
       { key: "confirmDownload", sel: '[role="alertdialog"]' },
       { key: "draftGateOpen", sel: '[aria-label="Start a new affidavit?"]' },
-      { key: "showDoc", sel: '[aria-label="Your affidavit is ready"]' }
+      { key: "showDoc", sel: '[aria-label="Your affidavit is ready"]' },
+      { key: "navSheetOpen", sel: "#jds-nav-sheet" }
     ];
     modals.forEach(({ key, sel }) => {
       if (this.state[key] && !prevState[key]) {
@@ -2424,6 +2539,12 @@ class Component extends DCLogic {
   componentWillUnmount() {
     clearTimeout(this._t);
     if (this._onKey) document.removeEventListener("keydown", this._onKey);
+    try { document.body.style.overflow = ""; } catch (e) {}
+    if (this._mq && this._applyMq) {
+      if (this._mq.removeEventListener) this._mq.removeEventListener("change", this._applyMq);
+      else if (this._mq.removeListener) this._mq.removeListener(this._applyMq);
+    }
+    if (this._onScroll) window.removeEventListener("scroll", this._onScroll);
   }
 
   startNavResize(e) {
@@ -2440,6 +2561,11 @@ class Component extends DCLogic {
     document.body.style.userSelect = "none";
     document.addEventListener("mousemove", move);
     document.addEventListener("mouseup", up);
+  }
+
+  setSheet(open) {
+    this.setState({ navSheetOpen: open });
+    try { document.body.style.overflow = open ? "hidden" : ""; } catch (e) {}
   }
 
   stepIndexOf(id) { return SCHEMA.findIndex((s) => s.id === id); }
@@ -2499,15 +2625,31 @@ class Component extends DCLogic {
   }
 
   spousePartyId() {
-    return this.partyId(this.state.values.spouseNric);
+    const v = this.state.values;
+    const id = String(v.spouseNric || "").trim();
+    const typeMap = {
+      "Singapore NRIC": "NRIC No.",
+      "Singapore Birth Certificate": "Birth Certificate No.",
+      "Singapore FIN": "FIN No.",
+      "Foreign Passport": "Passport No.",
+    };
+    let label = typeMap[v.spouseIdType];
+    if (v.spouseIdType === "Foreign Passport" && !blank(v.spousePassportCountry)) label = v.spousePassportCountry + " Passport No.";
+    else if (!label && v.spouseIdType === "Others") label = (blank(v.spouseIdTypeOther) ? "ID No." : String(v.spouseIdTypeOther).trim() + " No.");
+    if (!label) label = this.inferIdLabel(id);
+    return label + " " + (blank(id) ? "________" : id);
+  }
+
+  inferIdLabel(raw) {
+    const id = String(raw || "").trim();
+    if (/^[ST]\d{7}[A-Z]$/i.test(id)) return "NRIC No.";
+    if (/^[FGM]\d{7}[A-Z]$/i.test(id)) return "FIN No.";
+    return blank(id) ? "NRIC No." : "Passport No.";
   }
 
   partyId(raw) {
     const id = String(raw || "").trim();
-    const label = /^[ST]\d{7}[A-Z]$/i.test(id) ? "NRIC No."
-      : /^[FGM]\d{7}[A-Z]$/i.test(id) ? "FIN No."
-      : blank(id) ? "NRIC No." : "Passport No.";
-    return label + " " + (blank(id) ? "________" : id);
+    return this.inferIdLabel(id) + " " + (blank(id) ? "________" : id);
   }
 
   selfPartyId() {
@@ -2932,8 +3074,7 @@ class Component extends DCLogic {
               : "border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);"),
           onSelect: () => this.setRow(fid, i, c.id, op.value, seed)
         })),
-        cellStyle: (shown ? "display:flex" : "display:none") + ";flex-direction:column;gap:6px;box-sizing:border-box;padding:14px;min-width:"
-          + (c.minWidth ? c.minWidth + "px" : "0") + ";flex:"
+        cellStyle: (shown ? "display:flex" : "display:none") + ";flex-direction:column;gap:6px;box-sizing:border-box;padding:14px 12px;min-width:0;flex:"
           + ((typeof c.grow === "function" ? c.grow(row) : c.grow) || "1 1 170px")
           + (ci > 0 || seedSn ? ";border-left:1px solid var(--jds-gray-200)" : ""),
         required: !c.optional && !c.noStar, optional: !!c.optional,
@@ -3199,11 +3340,13 @@ class Component extends DCLogic {
       const pill = (bg, fg, bd) => "display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap;"
         + "background:" + bg + ";color:" + fg + ";border:1px solid " + bd + ";";
       const GREEN_BG = "var(--jds-success-bg-muted)", GREEN_FG = "var(--jds-success-color-emphasis)", GREEN_BD = "var(--jds-success-border-color-muted)";
-      const btn = (kind) => "display:inline-flex;align-items:center;justify-content:center;gap:5px;height:32px;padding:0 12px;border-radius:6px;"
-        + "font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap;box-sizing:border-box;"
-        + (kind === "primary" ? "border:1px solid var(--jds-primary-600);background:var(--jds-gray-0);color:var(--jds-primary-600);"
-          : "border:none;background:transparent;color:var(--jds-gray-600);height:auto;padding:0;font-weight:500;font-size:11px;");
+      const btn = (kind) => "display:inline-flex;align-items:center;justify-content:center;gap:4px;height:28px;padding:0 9px;border-radius:6px;"
+        + "font-size:11.5px;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap;box-sizing:border-box;"
+        + (kind === "primary" ? "min-width:78px;border:1px solid var(--jds-primary-600);background:var(--jds-gray-0);color:var(--jds-primary-600);"
+          : "border:none;background:transparent;color:var(--jds-gray-600);height:auto;padding:0;font-weight:500;font-size:12px;");
       o.isAssetTable = true;
+      o.assetHeadStyle = "display:grid;grid-template-columns:minmax(0,1.5fr) 108px minmax(0,1.3fr) 156px;min-width:0;align-items:center;"
+        + "background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200);font-size:12px;font-weight:600;color:var(--jds-gray-1000)";
       o.assetRetrieved = got.length > 0;
       o.retrieveText = got.length
         ? "Retrieved via Singpass on " + D(vals.assetRetrievedOn) + "."
@@ -3232,7 +3375,7 @@ class Component extends DCLogic {
           : pill("var(--jds-gray-100)", "var(--jds-gray-700)", "var(--jds-gray-200)");
         return {
           icon: a.icon, label: a.label,
-          rowStyle: "display:grid;grid-template-columns:26% 18% 30% 26%;min-width:660px;align-items:center;box-sizing:border-box;"
+          rowStyle: "display:grid;grid-template-columns:minmax(0,1.5fr) 108px minmax(0,1.3fr) 156px;min-width:0;align-items:stretch;box-sizing:border-box;"
             + (ai ? "border-top:1px solid var(--jds-gray-200);" : ""),
           iconStyle: "display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;border-radius:6px;"
             + "background:var(--jds-gray-100);color:var(--jds-gray-800);font-size:16px;",
@@ -3245,7 +3388,8 @@ class Component extends DCLogic {
           primaryIcon: statusText === "Retrieved" ? "ph ph-eye" : statusText === "In progress" ? "ph ph-arrow-right" : state === "Yes" ? "ph ph-pencil-simple" : "ph ph-plus",
           primaryStyle: btn("primary"),
           onPrimary: () => this.setAssetFlag(a, "Yes", true),
-          secondaryLabel: state === "Yes" ? "I do not have this" : state === "No" ? false : "I do not have this",
+          secondaryLabel: state === "No" ? false : "None",
+          secondaryTitle: "I do not have any " + a.label.toLowerCase(),
           secondaryStyle: btn("ghost"),
           onSecondary: () => this.setAssetFlag(a, "No", false)
         };
@@ -3326,7 +3470,7 @@ class Component extends DCLogic {
           rows.push({
             isData: true, sn: "(" + (LETTERS[k] || k + 1) + ")",
             item: r.item == null ? "" : r.item, amount: r.amount == null ? "" : r.amount, remarks: r.remarks == null ? "" : r.remarks,
-            fixed: false, editable: true, canRemove: true,
+            fixed: !!r.fixed, editable: !r.fixed, canRemove: true,
             rowStyle: "display:flex;align-items:stretch;min-height:62px;border-bottom:1px solid var(--jds-gray-200);",
             itemShell: this.shell(this.state.focus === key("item") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
             amountShell: this.shell(this.state.focus === key("amount") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
@@ -3360,7 +3504,7 @@ class Component extends DCLogic {
 
     if (f.type === "repeat") {
       o.headers = f.row.filter((c) => c.type !== "sn").map((c, hi) => ({ label: c.label,
-        style: "flex:" + (c.grow || "1 1 170px") + ";min-width:" + (f.table && c.minWidth ? c.minWidth + "px" : "0")
+        style: "flex:" + (c.grow || "1 1 170px") + ";min-width:0"
           + ";box-sizing:border-box;padding:13px 14px;font-size:14px;font-weight:600;line-height:1.4;color:var(--jds-gray-1000);"
           + (f.table && (hi > 0 || f.sn) ? "border-left:1px solid var(--jds-gray-200);" : "") }))
         .concat(!f.table || (Array.isArray(v) && v.length > 1)
@@ -3379,7 +3523,7 @@ class Component extends DCLogic {
           return { values: { ...s.values, [f.id]: kept.length ? kept : [{}] } };
         }, () => this.persist()),
         canRemove: i > 0 && !f.fixedCount,
-        tableRowStyle: "display:flex;align-items:stretch;min-width:min-content;border-bottom:1px solid var(--jds-gray-200);",
+        tableRowStyle: "display:flex;align-items:stretch;min-width:0;border-bottom:1px solid var(--jds-gray-200);",
         sn: String(i + 1),
         cells: this.buildCells(f.id, i, row, f.row, null, !!(f.table && f.sn)),
         ...this.buildSubRepeat(f, row, i)
@@ -3512,8 +3656,9 @@ class Component extends DCLogic {
       if (mo < 0) mo = 0;
       marLen = Math.floor(mo / 12) + " years and " + (mo % 12) + " months";
     }
-    P("The length of my marriage is " + marLen + " up to the date of interim judgment.");
-    P("The date of my interim judgment is " + g(D(v.ijDate || v.jsDate || v.syariahDate)) + ".");
+    const marEndLabel = v.granted === "A Judgment of Judicial Separation" ? "judgment of judicial separation" : "interim judgment";
+    P("The length of my marriage is " + marLen + " up to the date of " + marEndLabel + ".");
+    P("The date of my " + marEndLabel + " is " + g(D(v.ijDate || v.jsDate || v.syariahDate)) + ".");
     P("In my view, the marriage broke down on: " + g(D(v.breakdownDate)) + ".");
     P("These are my reasons for my statement:");
     TX(g(v.breakdownReasons, "________"));
@@ -3582,6 +3727,21 @@ class Component extends DCLogic {
     TBL([[c("S/N", "0 0 10%", { b: true, sh: true, a: "center" }), c("Items", "1 1 62%", { b: true, sh: true, a: "center" }), c("Amount per month (in SGD)", "1 1 28%", { b: true, sh: true, a: "center" })]]
       .concat(gridRows("personalExpensesTable").map((r, i) => [c("(" + LET[i] + ")", "0 0 10%", { a: "center" }), c(r.item, "1 1 62%"), c(SGD(r.amount), "1 1 28%")]))
       .concat([[c("Monthly TOTAL", "0 0 72%", { b: true, a: "right" }), c(SGD(gridTotal("personalExpensesTable")), "1 1 28%", { b: true })]]));
+    const finProv = list("finProvisionPersons");
+    if (finProv.length) {
+      P("I provide for the following person(s) who are NOT part of this family:");
+      TBL([[c("S/N", "0 0 8%", { b: true, sh: true, a: "center" }), c("Name of person", "1 1 20%", { b: true, sh: true, a: "center" }),
+        c("Relationship", "1 1 18%", { b: true, sh: true, a: "center" }), c("How are the monies paid?", "1 1 20%", { b: true, sh: true, a: "center" }),
+        c("Amount per month (in SGD)", "1 1 17%", { b: true, sh: true, a: "center" }), c("How often are monies paid?", "1 1 17%", { b: true, sh: true, a: "center" })]]
+        .concat(finProv.map((r, i) => [
+          c("(" + LET[i] + ")", "0 0 8%", { a: "center" }),
+          c(g(r.name, ""), "1 1 20%"),
+          c(g(r.relationship, ""), "1 1 18%"),
+          c(r.payMethod === "Others" ? g(r.payMethodOther, "") : g(r.payMethod, ""), "1 1 20%"),
+          c(SGD(r.amount), "1 1 17%"),
+          c(r.frequency === "Others" ? g(r.frequencyOther, "") : g(r.frequency, ""), "1 1 17%")
+        ])));
+    }
     kids.forEach((k) => {
       const rowsK = (Array.isArray(v.childExpensesTable) ? v.childExpensesTable : []).filter((r) => r && r.child === k.id && !blank(r.item));
       if (!rowsK.length) return;
@@ -3620,14 +3780,14 @@ class Component extends DCLogic {
         TBL([
           [c("Address of property", "0 0 22%", { sh: true }), c(g(p.address, ""), "1 1 auto")],
           [c("Reference name", "0 0 22%", { sh: true }), c(g(p.refName, ""), "1 1 auto")],
-          [c("Type of property", "0 0 22%", { sh: true }), c(g(p.propertyType, "") + (blank(p.mop) ? "" : "\nI have " + (p.mop === "Yes" ? "" : "not ") + "satisfied the Minimum Occupation Period (\u201cMOP\u201d)."), "1 1 auto")],
+          [c("Is this an HDB\nproperty?", "0 0 22%", { sh: true }), c((MOP_TYPE(p) ? "Yes" : "No") + (blank(p.mop) ? "" : "\nI have " + (p.mop === "Yes" ? "" : "not ") + "satisfied the Minimum Occupation Period (\u201cMOP\u201d)."), "1 1 auto")],
           [c("Owners of the property", "1 1 100%", { b: true, sh: true, a: "center" })],
           [c("Name", "1 1 40%", { sh: true, a: "center" }), c("Nature of holding", "1 1 35%", { sh: true, a: "center" }), c("Share (in %)", "1 1 25%", { sh: true, a: "center" })],
           [c(g(p.owners, ""), "1 1 40%"), c(g(p.holding, ""), "1 1 35%"), c(g(p.share, ""), "1 1 25%")],
           [c("Market value", "1 1 100%", { b: true, sh: true, a: "center" })],
           [c("Estimated market value (in SGD)", "0 0 30%", { sh: true }), c(SGD(p.marketValue), "1 1 22%"), c("Basis of the value", "0 0 22%", { sh: true }), c(g(p.valueBasis === "Others" ? p.valueBasisOther : p.valueBasis, ""), "1 1 26%")],
           [c("Mortgage", "1 1 100%", { b: true, sh: true, a: "center" })],
-          [c("Outstanding Mortgage (in SGD)", "0 0 30%", { sh: true }), c(SGD(p.mortgage), "1 1 22%"), c("Name(s) of mortgagee(s)", "0 0 22%", { sh: true }), c(g(p.mortgagee, ""), "1 1 26%")]
+          [c("Outstanding Mortgage (in SGD)", "0 0 30%", { sh: true }), c(SGD(p.mortgage), "1 1 22%"), c("Name(s) of mortgagee(s)", "0 0 22%", { sh: true }), c(p.mortgagee === "Others" ? g(p.mortgageeOther, "") : g(p.mortgagee, ""), "1 1 26%")]
         ]);
       });
       TBL([[c("Estimated market value of ALL immovable assets", "0 0 30%", { sh: true }), c(SGD(sum_(v, "properties", "marketValue")), "1 1 20%"),
@@ -3641,11 +3801,11 @@ class Component extends DCLogic {
       P("I have the following bank accounts:");
       list("bankAccounts").forEach((b, i) => {
         TBL([
-          [c("Details of Bank Account", "1 1 100%", { b: true, sh: true })],
-          [c("Name of Bank", "0 0 34%", { sh: true }), c(g(b.bank, ""), "1 1 40%"), c("Balance amount (in SGD)\n(within past 3 months)", "1 1 26%", { sh: true, a: "center" })],
-          [c("Account Number", "0 0 34%", { sh: true }), c(g(b.accountNo, ""), "1 1 40%"), c(SGD(b.balance), "1 1 26%", { a: "center" })],
-          [c("Type of Account", "0 0 34%", { sh: true }), c(b.type === "Others" ? g(b.typeOther, "") : g(b.type, ""), "1 1 40%"), c("", "1 1 26%")],
-          [c("Name(s) of other account holder(s)", "0 0 34%", { sh: true }), c(g(b.holders, "NIL"), "1 1 40%"), c(blank(b.asAt) ? "" : "As of: " + D(b.asAt), "1 1 26%", { a: "center" })]
+          [c("", "0 0 8%"), c("Details of Bank Account", "1 1 92%", { b: true, sh: true })],
+          [c("", "0 0 8%"), c("Name of Bank", "0 0 26%", { sh: true }), c(g(b.bank, ""), "1 1 34%"), c("Balance amount (in SGD)\n(within past 3 months)", "1 1 24%", { sh: true, a: "center" })],
+          [c("(" + LET[i] + ")", "0 0 8%"), c("Account Number", "0 0 26%", { sh: true }), c(g(b.accountNo, ""), "1 1 34%"), c(SGD(b.balance), "1 1 24%", { a: "center" })],
+          [c("", "0 0 8%"), c("Type of Account", "0 0 26%", { sh: true }), c(b.type === "Others" ? g(b.typeOther, "") : g(b.type, ""), "1 1 34%"), c("", "1 1 24%")],
+          [c("", "0 0 8%"), c("Name(s) of other account holder(s)", "0 0 26%", { sh: true }), c(g(b.holders, "NIL"), "1 1 34%"), c(blank(b.asAt) ? "" : "As of: " + D(b.asAt), "1 1 24%", { a: "center" })]
         ]);
       });
       TBL([[c("TOTAL for ALL bank accounts", "0 0 55%", { b: true, sh: true, a: "center" }), c(SGD(sum_(v, "bankAccounts", "balance")), "1 1 45%")]]);
@@ -3687,16 +3847,16 @@ class Component extends DCLogic {
     SH("Part 8E: Insurance Policies");
     if (v.hasInsurance === "Yes" && list("insuranceList").length) {
       P("I have the following insurance policies:");
-      list("insuranceList").forEach((r) => TBL([
-        [c("Details of Insurance Policy", "1 1 100%", { b: true, sh: true })],
-        [c("Name of insurer", "0 0 34%", { sh: true }), c(g(r.insurer, ""), "1 1 auto")],
-        [c("Policy number", "0 0 34%", { sh: true }), c(g(r.policyNo, ""), "1 1 auto")],
-        [c("Name(s) of all policy holder(s)", "0 0 34%", { sh: true }), c(g(r.holders, ""), "1 1 auto")],
-        [c("Names of all beneficiaries", "0 0 34%", { sh: true }), c(g(r.beneficiaries, ""), "1 1 auto")],
-        [c("Type of policy", "0 0 22%", { sh: true, a: "center" }), c("Premium amount (in SGD) and frequency of payment", "1 1 28%", { sh: true, a: "center" }),
-          c("Mode of payment for premiums", "1 1 24%", { sh: true, a: "center" }), c("Surrender value (in SGD)", "1 1 26%", { sh: true, a: "center" })],
-        [c(r.type === "Others" ? g(r.typeOther, "") : g(r.type, ""), "0 0 22%"), c(SGD(r.premium) + (blank(r.premiumFrequency) ? "" : "\n" + r.premiumFrequency), "1 1 28%"),
-          c(r.mode === "Others" ? "Others" : g(r.mode, ""), "1 1 24%"), c(SGD(r.surrender), "1 1 26%")]
+      list("insuranceList").forEach((r, i) => TBL([
+        [c("(" + LET[i] + ")", "0 0 8%"), c("Details of Insurance Policy", "1 1 92%", { b: true, sh: true })],
+        [c("", "0 0 8%"), c("Name of insurer", "0 0 26%", { sh: true }), c(g(r.insurer, ""), "1 1 auto")],
+        [c("", "0 0 8%"), c("Policy number", "0 0 26%", { sh: true }), c(g(r.policyNo, ""), "1 1 auto")],
+        [c("", "0 0 8%"), c("Name(s) of all policy holder(s)", "0 0 26%", { sh: true }), c(g(r.holders, ""), "1 1 auto")],
+        [c("", "0 0 8%"), c("Names of all beneficiaries", "0 0 26%", { sh: true }), c(g(r.beneficiaries, ""), "1 1 auto")],
+        [c("", "0 0 8%"), c("Type of policy", "0 0 20%", { sh: true, a: "center" }), c("Premium amount\n(in SGD) and\nfrequency of payment", "1 1 26%", { sh: true, a: "center" }),
+          c("Mode of payment for\npremiums", "1 1 22%", { sh: true, a: "center" }), c("Surrender value\n(in SGD)", "1 1 24%", { sh: true, a: "center" })],
+        [c("", "0 0 8%"), c(r.type === "Others" ? g(r.typeOther, "") : g(r.type, ""), "0 0 20%"), c(SGD(r.premium) + (blank(r.premiumFrequency) ? "" : "\n" + r.premiumFrequency), "1 1 26%"),
+          c(r.mode === "Others" ? "Others" : g(r.mode, ""), "1 1 22%"), c(SGD(r.surrender) + (blank(r.surrenderAsAt) ? "" : "\nAs of:\n" + D(r.surrenderAsAt)), "1 1 24%")]
       ]));
       TBL([[c("TOTAL surrender values of ALL policies", "0 0 70%", { b: true, sh: true, a: "right" }), c(SGD(sum_(v, "insuranceList", "surrender")), "1 1 30%")]]);
       P("Other than what is stated above, I declare that I do not own any other insurance policies.");
@@ -3906,7 +4066,7 @@ class Component extends DCLogic {
             text: cc.t,
             style: "flex:" + cc.w + ";min-width:0;box-sizing:border-box;padding:3px 5px;border-right:1px solid #000;border-bottom:1px solid #000;"
               + "font-size:12.5px;line-height:1.45;white-space:pre-wrap;word-break:break-word;text-align:" + cc.a + ";"
-              + (cc.b ? "font-weight:700;" : "") + (cc.sh ? "background:#d9d9d9;" : "")
+              + (cc.b ? "font-weight:700;" : "") + (cc.sh && cc.b ? "background:#d9d9d9;" : cc.sh ? "background:#f2f2f2;" : "")
           }))
         })) : []
       };
@@ -4151,7 +4311,7 @@ class Component extends DCLogic {
   }
 
   navItems() {
-    const collapsed = this.state.navCollapsed;
+    const collapsed = this.state.navCollapsed && !this.state.isNarrow;
     const shown = [];
     SCHEMA.forEach((s, i) => {
       if (!this.stepVisible(i)) return;
@@ -4176,17 +4336,23 @@ class Component extends DCLogic {
         : st === "partial" ? "var(--jds-danger-color-default)"
         : "var(--jds-gray-400)";
       const line = "width:2px;flex:1 1 auto;min-height:9px;background:var(--jds-gray-200);";
+      const vpad = collapsed ? 8 : this.state.isNarrow ? 12 : 9;
       return {
         label: typeof s.label === "function" ? s.label(this.state.values) : s.label,
-        wrapStyle: "position:relative;display:flex;align-items:stretch;width:100%",
-        rowStyle: "flex:1;min-width:0;display:flex;align-items:stretch;gap:" + (collapsed ? "0" : "12px")
-          + ";padding:" + (collapsed ? "8px 0" : "9px 10px")
+        wrapStyle: "position:relative;display:flex;align-items:stretch;width:100%"
+          + (this.state.isNarrow && k !== shown.length - 1 ? ";border-bottom:1px solid var(--jds-gray-100)" : ""),
+        rowStyle: "flex:1;min-width:0;display:flex;align-items:" + (this.state.isNarrow ? "center" : "stretch")
+          + ";gap:" + (collapsed ? "0" : this.state.isNarrow ? "14px" : "12px")
+          + ";padding:" + vpad + "px " + (collapsed ? "0" : "10px")
           + ";border:none;border-radius:8px;box-sizing:border-box;cursor:pointer;text-align:left;transition:background 140ms ease;"
           + "justify-content:" + (collapsed ? "center" : "flex-start") + ";"
-          + "background:" + (hover ? "var(--jds-gray-100)" : "transparent") + ";",
-        dotWrapStyle: "position:relative;display:flex;flex-direction:column;align-items:center;align-self:stretch;width:20px;flex-shrink:0;margin:-9px 0;",
-        lineTopStyle: line + (k === 0 ? "visibility:hidden;" : ""),
-        lineBottomStyle: line + (k === shown.length - 1 ? "visibility:hidden;" : ""),
+          + "background:" + (this.state.isNarrow && current ? "var(--jds-primary-100)" : hover ? "var(--jds-gray-100)" : "transparent") + ";",
+        dotWrapStyle: this.state.isNarrow
+          ? "display:flex;align-items:center;justify-content:center;width:20px;flex-shrink:0;"
+          : "position:relative;display:flex;flex-direction:column;align-items:center;align-self:stretch;width:20px;flex-shrink:0;margin:-" + vpad + "px 0;",
+
+        lineTopStyle: this.state.isNarrow ? "display:none" : line + (k === 0 ? "visibility:hidden;" : ""),
+        lineBottomStyle: this.state.isNarrow ? "display:none" : line + (k === shown.length - 1 ? "visibility:hidden;" : ""),
         dotStyle: "flex-shrink:0;display:flex;align-items:center;justify-content:center;box-sizing:border-box;margin:0;"
           + "width:" + dot + "px;height:" + dot + "px;border-radius:999px;background:" + dotFill + ";"
           + (s.sub ? "outline:3px solid var(--jds-gray-0);" : "")
@@ -4198,12 +4364,20 @@ class Component extends DCLogic {
           ? "font-size:12px;font-weight:600;line-height:1;color:" + (st === "todo" && !current ? "var(--jds-gray-700)" : "var(--jds-gray-0)")
           : "display:none",
         labelStyle: collapsed ? "display:none"
-          : "flex:1;min-width:0;align-self:center;" + (s.sub ? "margin-left:12px;" : "") + "font-size:" + (s.sub ? "13px" : "14px") + ";line-height:1.45;text-wrap:pretty;"
+          : "flex:1;min-width:0;align-self:center;" + (s.sub ? "margin-left:12px;" : "")
+            + "font-size:" + (this.state.isNarrow ? (s.sub ? "14px" : "15px") : (s.sub ? "13px" : "14px")) + ";line-height:1.45;text-wrap:pretty;"
             + "font-weight:" + (current ? "600" : "400") + ";color:" + color + ";",
         hasCaret: false, caretIcon: "", caretTitle: "", caretStyle: "display:none", onToggle: () => {},
         onEnter: () => this.setState({ hoverStep: i }),
         onLeave: () => this.setState({ hoverStep: null }),
-        onClick: () => this.go(i)
+        onClick: () => {
+          this.go(i);
+          if (this.state.isNarrow) {
+            this.setSheet(false);
+            const main = document.getElementById("jds-main");
+            if (main) window.scrollTo({ top: Math.max(0, main.getBoundingClientRect().top + window.pageYOffset - 12), behavior: "smooth" });
+          }
+        }
       };
     });
   }
@@ -4230,6 +4404,9 @@ class Component extends DCLogic {
     const last = this.state.step === SCHEMA.length - 1;
     const generate = isReview;
     const confirmed = this.state.values.confirmTrue === "confirmed";
+    const navVisible = SCHEMA.map((s, i) => i).filter((i) => this.stepVisible(i));
+    const navTotal = Math.max(1, navVisible.length - 1);
+    const navPos = Math.max(0, navVisible.indexOf(this.state.step));
 
     const btn = (kind, disabled) => "display:flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;font-size:15px;font-weight:600;box-sizing:border-box;"
       + "cursor:" + (disabled ? "not-allowed" : "pointer") + ";opacity:" + (disabled ? "0.5" : "1") + ";"
@@ -4271,10 +4448,17 @@ class Component extends DCLogic {
       onClosePreview: () => this.setState({ previewOn: false }),
       previewBtnLabel: this.state.previewOn ? "Hide prose preview" : "Preview prose",
       previewBtnIcon: this.state.previewOn ? "ph ph-eye-slash" : "ph ph-eye",
-      previewBtnStyle: "display:flex;align-items:center;gap:8px;height:40px;padding:0 15px;box-sizing:border-box;white-space:nowrap;"
-        + "border:1px solid var(--jds-primary-300);border-radius:8px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;color:var(--jds-primary-700);background:"
+      stepHeadStyle: "display:flex;gap:12px;padding:clamp(18px,3vw,24px) clamp(16px,3.2vw,32px) 16px;border-bottom:1px solid var(--jds-gray-200);"
+        + "align-items:center;justify-content:space-between;",
+      previewBtnStyle: (step.instructions ? "display:none;" : "display:flex;")
+        + "align-items:center;flex:0 0 auto;box-sizing:border-box;white-space:nowrap;"
+        + (this.state.isNarrow ? "gap:6px;height:36px;padding:0 11px;font-size:13px;" : "gap:8px;height:40px;padding:0 15px;font-size:14px;")
+        + "border:1px solid var(--jds-primary-300);border-radius:8px;font-family:inherit;font-weight:600;cursor:pointer;color:var(--jds-primary-700);background:"
         + (this.state.previewOn ? "var(--jds-primary-100);" : "var(--jds-gray-0);"),
-      navResizable: !this.state.navCollapsed,
+      steps: this.navItems(),
+      navSheetOpen: this.state.isNarrow && this.state.navSheetOpen,
+      navSheetRole: this.state.isNarrow && this.state.navSheetOpen ? "dialog" : false,
+      navResizable: !this.state.navCollapsed && !this.state.isNarrow,
       navWidthNow: this.state.navWidth || 296,
       navResizeLabel: "Section list width, " + (this.state.navWidth || 296) + " pixels. Use the left and right arrow keys to resize.",
       onNavResize: (e) => this.startNavResize(e),
@@ -4283,27 +4467,101 @@ class Component extends DCLogic {
         if (k !== "ArrowLeft" && k !== "ArrowRight" && k !== "Home" && k !== "End") return;
         e.preventDefault();
         const cur = this.state.navWidth || 296;
-        const stepPx = e.shiftKey ? 40 : 16;
         const w = k === "Home" ? NAV_MIN : k === "End" ? NAV_MAX
-          : Math.max(NAV_MIN, Math.min(NAV_MAX, cur + (k === "ArrowLeft" ? -stepPx : stepPx)));
+          : Math.max(NAV_MIN, Math.min(NAV_MAX, cur + (k === "ArrowLeft" ? -8 : 8)));
         this.setState({ navWidth: w }, () => { try { window.localStorage.setItem("jds-faa-nav-width", String(w)); } catch (err) {} });
       },
       onNavResetWidth: () => { this.setState({ navWidth: 296 }); try { window.localStorage.setItem("jds-faa-nav-width", "296"); } catch (err) {} },
-      steps: this.navItems(),
-      navStyle: "flex:0 1 auto;position:sticky;top:24px;box-sizing:border-box;display:flex;flex-direction:column;"
+      navStyle: "box-sizing:border-box;display:flex;flex-direction:column;"
         + "background:var(--jds-gray-0);border:1px solid var(--jds-gray-200);border-radius:12px;box-shadow:0 1px 3px rgba(14,14,14,0.06);"
         + "padding:12px 10px;transition:width 180ms ease;"
-        + (this.state.navCollapsed ? "width:64px;min-width:64px;" : "width:min(" + (this.state.navWidth || 296) + "px,100%);min-width:min(212px,100%);"),
-      navHeadStyle: "display:flex;align-items:center;gap:8px;padding:2px 2px 10px;margin-bottom:6px;border-bottom:1px solid var(--jds-gray-200);"
-        + "justify-content:" + (this.state.navCollapsed ? "center" : "space-between") + ";",
-      navTitleStyle: this.state.navCollapsed ? "display:none"
+        + (this.state.isNarrow
+          ? "flex:1 1 100%;min-width:0;position:sticky;top:0;z-index:60;margin:calc(-1 * clamp(14px,2.4vw,28px)) calc(-1 * clamp(12px,2.4vw,24px)) 0;padding:0 14px;border-radius:0;border-width:0 0 1px;box-shadow:none;"
+          : "flex:0 1 auto;position:sticky;top:24px;"
+            + (this.state.navCollapsed ? "width:64px;min-width:64px;" : "width:min(" + (this.state.navWidth || 296) + "px,100%);min-width:min(212px,100%);")),
+      navHeadStyle: this.state.isNarrow
+        ? "display:none;"
+        : "display:flex;align-items:center;gap:8px;padding:2px 2px 10px;border-bottom:1px solid var(--jds-gray-200);margin-bottom:6px;"
+          + "justify-content:" + (this.state.navCollapsed ? "center" : "space-between") + ";",
+      navTitleStyle: (this.state.navCollapsed || this.state.isNarrow) ? "display:none"
         : "padding-left:8px;font-size:12px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--jds-gray-600)",
-      navToggleIcon: this.state.navCollapsed ? "ph ph-sidebar-simple" : "ph ph-sidebar",
-      navToggleTitle: this.state.navCollapsed ? "Expand section list" : "Collapse section list",
-      onToggleNav: () => this.setState((s) => ({ navCollapsed: !s.navCollapsed })),
-      saveChipStyle: "display:flex;align-items:center;gap:8px;font-size:14px;color:var(--jds-gray-700);",
+      navMetaStyle: this.state.isNarrow
+        ? "display:flex;flex-direction:column;gap:1px;flex:1 1 auto;min-width:0"
+        : "display:none",
+      navProgressStyle: "font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--jds-gray-600)",
+      navProgressLabel: navPos > 0 ? "Step " + navPos + " of " + navTotal : "Getting started",
+      navCurrentStyle: "font-size:16px;font-weight:600;line-height:1.3;color:var(--jds-gray-1000);white-space:nowrap;overflow:hidden;text-overflow:ellipsis",
+      navCurrentLabel: (typeof step.label === "function" ? step.label(this.state.values) : step.label) || "",
+      navTrackStyle: this.state.isNarrow
+        ? "display:block;height:3px;margin:0 -14px;background:var(--jds-gray-200)"
+        : "display:none",
+      navFillStyle: "display:block;height:3px;background:var(--jds-primary-600);transition:width 220ms ease;width:"
+        + Math.round((navPos / Math.max(1, navTotal)) * 100) + "%",
+      navSheetHeadStyle: this.state.isNarrow
+        ? "position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;"
+          + "padding:20px 4px 12px;background:var(--jds-gray-0);border-bottom:1px solid var(--jds-gray-200);margin-bottom:4px"
+        : "display:none",
+      navListStyle: !this.state.isNarrow
+        ? "display:flex;flex-direction:column;"
+        : (this.state.navSheetOpen
+          ? "display:flex;flex-direction:column;position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(320px,85vw);overflow-y:auto;"
+            + "background:var(--jds-gray-0);border-radius:0;box-shadow:-4px 0 24px rgba(14,14,14,0.18);"
+            + "padding:0 16px calc(20px + env(safe-area-inset-bottom));"
+          : "display:none"),
+      navToggleStyle: this.state.isNarrow
+        ? "display:flex;align-items:center;gap:6px;flex-shrink:0;height:44px;padding:0 14px;border-radius:999px;box-sizing:border-box;"
+          + "border:1px solid var(--jds-primary-300);background:var(--jds-gray-0);color:var(--jds-primary-700);"
+          + "font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;"
+        : "display:flex;align-items:center;justify-content:center;flex-shrink:0;border:none;background:transparent;"
+          + "color:var(--jds-gray-700);cursor:pointer;font-family:inherit;width:32px;height:32px;border-radius:6px;",
+      navToggleIcon: this.state.isNarrow ? "ph-bold ph-list"
+        : (this.state.navCollapsed ? "ph ph-sidebar-simple" : "ph ph-sidebar"),
+      navToggleLabel: this.state.isNarrow ? "Sections" : "",
+      navToggleLabelStyle: this.state.isNarrow ? "white-space:nowrap" : "display:none",
+      navToggleTitle: this.state.isNarrow ? "Show all sections"
+        : (this.state.navCollapsed ? "Expand section list" : "Collapse section list"),
+      navExpanded: this.state.isNarrow ? !!this.state.navSheetOpen : !this.state.navCollapsed,
+      onNavHeadClick: () => { if (this.state.isNarrow) this.setSheet(!this.state.navSheetOpen); },
+      onCloseSheet: () => this.setSheet(false),
+      onToggleNav: (e) => {
+        if (e && e.stopPropagation) e.stopPropagation();
+        if (this.state.isNarrow) this.setSheet(!this.state.navSheetOpen);
+        else this.setState((s) => ({ navCollapsed: !s.navCollapsed }));
+      },
+      govRowStyle: this.state.isNarrow
+        ? "display:flex;align-items:center;gap:5px;padding:4px 12px;font-size:10px;line-height:1.4;color:var(--jds-gray-700)"
+        : "display:flex;align-items:center;gap:8px;padding:6px clamp(12px,2.4vw,24px);font-size:12px;line-height:1.5;color:var(--jds-gray-700)",
+      govIconStyle: this.state.isNarrow
+        ? "font-size:12px;color:var(--jds-primary-600)"
+        : "font-size:14px;color:var(--jds-primary-600)",
+      hdrStyle: this.state.isNarrow
+        ? "display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--jds-gray-0)"
+        : "display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:14px clamp(12px,2.4vw,24px);background:var(--jds-gray-0);border-bottom:1px solid var(--jds-gray-200)",
+      hdrLeftStyle: "display:flex;align-items:center;min-width:0;gap:" + (this.state.isNarrow ? "10px" : "14px"),
+      hdrLogoStyle: "width:auto;height:" + (this.state.isNarrow ? "26px" : "36px"),
+      hdrDividerStyle: this.state.isNarrow ? "display:none" : "width:1px;height:28px;background:var(--jds-gray-200)",
+      hdrTitleStyle: this.state.isNarrow
+        ? "font-size:13px;font-weight:600;line-height:1.3;text-wrap:pretty"
+        : "font-size:15px;font-weight:600;line-height:1.35",
+      hdrSubStyle: this.state.isNarrow ? "display:none" : "font-size:13px;line-height:1.4;color:var(--jds-gray-700)",
+      saveChipStyle: this.state.isNarrow
+        ? "display:none;"
+        : "display:flex;align-items:center;flex-shrink:0;color:var(--jds-gray-700);gap:8px;font-size:14px;",
       saveIcon: "ph ph-file-text",
       savedLabel: this.state.saving ? "Saving draft…" : this.state.savedAt ? "Draft saved " + this.state.savedAt : "Draft saves automatically",
+      saveBarStyle: this.state.isNarrow
+        ? "display:flex;align-items:center;gap:5px;padding:10px clamp(12px,2.4vw,24px) 0;font-size:11px;color:var(--jds-gray-500);background:transparent"
+        : "display:none",
+      saveBarLabel: this.state.saving ? "Saving…" : this.state.savedAt ? "Saved " + this.state.savedAt : "Autosaves",
+      hdrMenuStyle: this.state.isNarrow
+        ? "display:flex;align-items:center;justify-content:center;flex-shrink:0;width:40px;height:40px;border:none;border-radius:8px;background:transparent;color:var(--jds-gray-800);cursor:pointer;font-family:inherit"
+        : "display:none",
+      hdrMenuExpanded: this.state.isNarrow ? (this.state.navSheetOpen ? "true" : "false") : "false",
+      onHdrMenu: () => { this.setSheet(!this.state.navSheetOpen); },
+      backToTopStyle: (this.state.isNarrow && this.state.scrolledDown)
+        ? "position:fixed;bottom:24px;right:16px;z-index:80;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-700);box-shadow:0 2px 8px rgba(14,14,14,0.12);cursor:pointer;opacity:0.85;transition:opacity 0.2s ease"
+        : "display:none",
+      onBackToTop: () => { window.scrollTo({ top: 0, behavior: "smooth" }); },
       stepTitle: typeof step.title === "function" ? step.title(this.state.values) : step.title,
       isInstructions: !!step.instructions,
       instructionParas: (step.paras || []).map((t) => ({ text: t })),
@@ -4356,7 +4614,7 @@ class Component extends DCLogic {
         this.go(this.adjacentStep(-1));
       },
       nextStyle: btn("primary", isDocs && !docs.scanned),
-      nextLabel: isDocs ? "Review everything and download PDF" : step.instructions ? "Start" : "Continue",
+      nextLabel: isDocs ? "Review full affidavit" : step.instructions ? "Start" : "Continue",
       nextIcon: isDocs ? "ph ph-file-arrow-down" : "ph ph-arrow-right",
       onNext: () => {
         if (isDocs) {
@@ -4381,7 +4639,8 @@ class Component extends DCLogic {
       previewTitle: "First affidavit of assets and means of " + (blank(this.state.values.name) ? "________" : this.state.values.name),
       docBlocks: this.courtDoc(),
       docStamp: [(this.state.values.role === "Respondent" ? "Respondent" : "Applicant"),
-        blank(this.state.values.name) ? "________" : this.state.values.name, "1",
+        blank(this.state.values.name) ? "________" : this.state.values.name,
+        String((this.state.values.priorAffidavits === "Yes" ? (num(this.state.values.priorAffidavitCount) + 1) : 1)),
         (new Date()).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }).toUpperCase(),
         blank(this.state.values.caseNumber) ? "________" : this.state.values.caseNumber].join(" : "),
       applicantName: this.state.values.role === "Respondent" ? this.spousePartyName() : (blank(this.state.values.name) ? "________" : this.state.values.name),

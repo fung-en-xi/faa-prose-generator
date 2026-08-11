@@ -55,6 +55,12 @@ input[type="date"] {
   font-size: 16px;
 }
 
+/* Placeholders inside data tables sit in narrow columns */
+
+#jds-main [role="table"] input::placeholder {
+  font-size: 15px;
+}
+
 /* --- Focus Indicators (WCAG 2.4.7 / 2.4.11) --- */
 
 :focus-visible {
@@ -140,4 +146,49 @@ select:focus-visible {
 
 @page {
   margin: 18mm 16mm;
+}
+
+/* --- Mobile: tables stack instead of scrolling sideways --- */
+
+@media (max-width: 700px) {
+  #jds-main div[style*="overflow-x"] {
+    overflow-x: visible !important;
+  }
+
+  #jds-main [role="table"] {
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: visible !important;
+  }
+
+  #jds-main [role="table"] [role="row"]:has([role="columnheader"]) {
+    display: none !important;
+  }
+
+  #jds-main [role="table"] [role="row"],
+  #jds-main [role="table"] > div:not([role="row"]) {
+    min-width: 0 !important;
+    grid-template-columns: 1fr !important;
+    flex-wrap: wrap !important;
+  }
+
+  #jds-main [role="table"] [role="row"] > *,
+  #jds-main [role="table"] > div:not([role="row"]) > * {
+    min-width: 0 !important;
+    border-left: none !important;
+  }
+
+  /* one field per line — no half-wrapped rows */
+  #jds-main [role="table"] [role="row"] > div,
+  #jds-main [role="table"] > div:not([role="row"]) > span:not(:first-child) {
+    flex-basis: 100% !important;
+  }
+
+  /* the S/N column is noise on a phone (matrix tables only) */
+  #jds-main [role="row"] > span[style*="0 0 48px"],
+  #jds-main [role="row"] > span[style*="0 0 54px"],
+  #jds-main [role="table"] > div:not([role="row"]) > span[style*="0 0 48px"],
+  #jds-main [role="table"] > div:not([role="row"]) > span[style*="0 0 54px"] {
+    display: none !important;
+  }
 }
