@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <title>First Ancillary Affidavit — Family Justice Courts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -22,8 +23,6 @@
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
 
-<!-- PDF Generation -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
 
 </helmet>
 
@@ -1132,20 +1131,28 @@
 </div>
 </sc-for>
 </div>
-<div style="background:var(--jds-gray-0);border:1px solid var(--jds-gray-200);border-radius:10px;padding:28px 32px;margin-top:18px">
-<div style="text-align:center;padding-bottom:16px;border-bottom:1px solid var(--jds-gray-200);margin-bottom:16px">
-<span style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase">Exhibit Content Page</span>
+<div style="margin-top:24px;font-family:'Times New Roman',Times,serif;color:#000">
+<div style="font-size:13px;font-weight:700;margin-bottom:4px">Table 16-1</div>
+<div style="border:1px solid #000;border-collapse:collapse">
+<div style="display:grid;grid-template-columns:72px minmax(0,1fr) 90px;border-bottom:1px solid #000">
+<span style="padding:6px 8px;font-size:12px;font-weight:700;line-height:1.4;border-right:1px solid #000">Exhibit number</span>
+<span style="padding:6px 8px;font-size:12px;line-height:1.4;border-right:1px solid #000"><span style="font-weight:700">Reference in Affidavit to the exhibit</span><br><span style="font-style:italic;font-size:11px">(e.g. Paragraph 1 of Section 5)</span></span>
+<span style="padding:6px 8px;font-size:12px;font-weight:700;line-height:1.4">Page numbers</span>
 </div>
-<div style="display:grid;grid-template-columns:70px minmax(0,1fr) 110px;gap:10px 14px;font-size:12px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--jds-gray-600);padding-bottom:8px;border-bottom:1px solid var(--jds-gray-200)">
-<span>Exhibit</span><span>Description of document</span><span>Page(s)</span>
-</div>
+<div style="background:#3d6b6b;color:#fff;padding:6px 10px;font-size:12px;font-weight:700;border-bottom:1px solid #000">Supporting Documents (Standard documents)</div>
 <sc-for list="{{ exhibitRows }}" as="x" hint-placeholder-count="4">
-<div style="display:grid;grid-template-columns:70px minmax(0,1fr) 110px;gap:10px 14px;padding:11px 0;border-bottom:1px solid var(--jds-gray-100);font-size:14px;line-height:1.55;color:var(--jds-gray-1000)">
-<span style="font-family:'Roboto Mono',monospace">{{ x.ex }}</span>
-<span style="text-wrap:pretty">{{ x.name }}</span>
-<span>{{ x.pages }}</span>
+<sc-if value="{{ x.isSection }}" hint-placeholder-val="{{ false }}">
+<div style="background:#6b2226;color:#fff;padding:5px 10px;font-size:11.5px;font-weight:700;border-bottom:1px solid #000">{{ x.sectionLabel }}</div>
+</sc-if>
+<sc-if value="{{ x.isRow }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:72px minmax(0,1fr) 90px;border-bottom:1px solid #000">
+<span style="padding:8px;font-size:12.5px;text-align:center;border-right:1px solid #000;display:flex;align-items:center;justify-content:center">{{ x.ex }}</span>
+<span style="padding:8px;font-size:12.5px;line-height:1.45;text-align:justify;border-right:1px solid #000">{{ x.name }}</span>
+<span style="padding:8px;font-size:11px;font-style:italic;color:#666;line-height:1.4;display:flex;align-items:center">{{ x.pages }}</span>
 </div>
+</sc-if>
 </sc-for>
+</div>
 </div>
 </div>
 <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:16px 24px;border-top:1px solid var(--jds-gray-200)">
@@ -1214,9 +1221,9 @@
  * ──────────────────────────────────────────────────────────────── */
 
 function downloadPDF(elementId, filename) {
-  const el = document.getElementById(elementId);
+  var el = document.getElementById(elementId);
   if (!el) return;
-  const clone = el.cloneNode(true);
+  var clone = el.cloneNode(true);
   clone.style.padding = "48px 62px";
   clone.style.border = "none";
   clone.style.boxShadow = "none";
@@ -1225,7 +1232,7 @@ function downloadPDF(elementId, filename) {
   clone.style.color = "#000";
   clone.style.background = "#fff";
 
-  const wrapper = document.createElement("div");
+  var wrapper = document.createElement("div");
   wrapper.style.position = "fixed";
   wrapper.style.left = "-9999px";
   wrapper.style.top = "0";
@@ -1233,7 +1240,7 @@ function downloadPDF(elementId, filename) {
   wrapper.appendChild(clone);
   document.body.appendChild(wrapper);
 
-  html2pdf().set({
+  window.html2pdf().set({
     margin: [18, 16, 22, 16],
     filename: filename || "First_Ancillary_Affidavit.pdf",
     image: { type: "jpeg", quality: 0.98 },
@@ -4669,7 +4676,20 @@ class Component extends DCLogic {
       onOpenDoc: () => this.setState({ showDoc: true }),
       onCloseDoc: () => this.setState({ showDoc: false }),
       showDoc: !!this.state.showDoc,
-      exhibitRows: (docs.rows || []).filter((r) => r.statusText === "Detected").map((r) => ({ ex: r.ex, name: r.name, pages: r.pages.replace(/^Pages /, "").split(" · ")[0] })),
+      exhibitRows: (() => {
+        const detected = (docs.rows || []).filter((r) => r.statusText === "Detected");
+        const result = [];
+        let lastSection = "";
+        detected.forEach((r) => {
+          const sec = (r.section || "").replace(/ · .+$/, "");
+          if (sec !== lastSection) {
+            result.push({ isSection: true, isRow: false, sectionLabel: sec, ex: "", name: "", pages: "" });
+            lastSection = sec;
+          }
+          result.push({ isSection: false, isRow: true, ex: r.ex, name: r.name, pages: "Enter page no. here" });
+        });
+        return result;
+      })(),
       docsGroups: docs.groups,
       docsScanned: docs.scanned && !this.state.scanning,
       docsScanning: !!this.state.scanning,
