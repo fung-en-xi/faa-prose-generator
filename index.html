@@ -1019,8 +1019,7 @@
 <span style="font-size:13px;line-height:1.55;color:var(--jds-gray-700);flex:1 1 240px;text-wrap:pretty">Draft only. Downloading does not file your affidavit with the Court.</span>
 <span style="display:flex;flex-wrap:wrap;gap:10px">
 <button type="button" sc-camel-on-click="{{ onClosePreview }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:1px solid var(--jds-gray-300);border-radius:8px;background:var(--jds-gray-0);color:var(--jds-gray-900);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="border-color:var(--jds-gray-500)">Close</button>
-<button type="button" sc-camel-on-click="{{ onDownloadDraftPDF }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-file-pdf" style="font-size:18px"></i>Download PDF</button>
-<button type="button" sc-camel-on-click="{{ onDownloadDraftWord }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-file-doc" style="font-size:18px"></i>Download Word</button>
+<button type="button" sc-camel-on-click="{{ onDownloadDraft }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;box-sizing:border-box;border:none;border-radius:8px;background:var(--jds-primary-600);color:var(--jds-gray-0);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--jds-primary-700)"><i class="ph ph-download-simple" style="font-size:18px"></i>Download draft</button>
 </span>
 </div>
 </div>
@@ -1028,21 +1027,33 @@
 </div>
 </sc-if>
 
-<!-- Confirmation Dialog: Incomplete Download Warning -->
+<!-- Confirmation Dialog: Download Draft -->
 <sc-if value="{{ confirmDownload }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;inset:0;z-index:96;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(14,14,14,0.6)" role="alertdialog" aria-modal="{{ true }}" aria-label="This affidavit is not complete">
+<div style="position:fixed;inset:0;z-index:96;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(14,14,14,0.6)" role="alertdialog" aria-modal="{{ true }}" aria-label="Download draft">
 <div style="display:flex;flex-direction:column;width:100%;max-width:540px;background:var(--jds-gray-0);border-radius:12px;box-shadow:0 18px 48px rgba(14,14,14,0.3);overflow:hidden">
 <div style="display:flex;flex-direction:column;gap:12px;padding:26px 28px 0">
 <span style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;background:#fdf0d5;color:#8a6100"><i class="ph ph-warning" style="font-size:22px"></i></span>
 <span style="font-size:20px;font-weight:700;line-height:1.3;color:var(--jds-gray-1000)">This affidavit is not complete</span>
+<sc-if value="{{ confirmDownloadText }}" hint-placeholder-val="{{ false }}">
 <span style="font-size:15px;line-height:1.6;color:var(--jds-gray-800);text-wrap:pretty">{{ confirmDownloadText }}</span>
+</sc-if>
 <span style="font-size:14px;line-height:1.6;color:var(--jds-gray-800);text-wrap:pretty"><strong style="font-weight:700">Do not affirm, file or submit this version.</strong> It is a working draft only. Finish the outstanding sections, then download the completed affidavit.</span>
 </div>
+<sc-if value="{{ showFormatPicker }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:22px 28px 26px">
+<span style="font-size:14px;font-weight:600;color:var(--jds-gray-800)">Choose format:</span>
+<span style="display:flex;gap:10px;flex:1 1 auto">
+<button type="button" sc-camel-on-click="{{ onConfirmDownloadPDF }}" style="flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100)"><i class="ph ph-file-pdf" style="font-size:18px"></i>PDF</button>
+<button type="button" sc-camel-on-click="{{ onConfirmDownloadWord }}" style="flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100)"><i class="ph ph-file-doc" style="font-size:18px"></i>Word</button>
+</span>
+</div>
+</sc-if>
+<sc-if value="{{ showConfirmButtons }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;flex-wrap:wrap;gap:12px;padding:22px 28px 26px">
 <button type="button" sc-camel-on-click="{{ onCancelDownload }}" style="flex:1 1 100%;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-primary-600);background:var(--jds-primary-600);color:var(--jds-gray-0);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-primary-700);border-color:var(--jds-primary-700)">Go back and finish</button>
-<button type="button" sc-camel-on-click="{{ onConfirmDownloadPDF }}" style="flex:1 1 auto;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100)">Download PDF</button>
-<button type="button" sc-camel-on-click="{{ onConfirmDownloadWord }}" style="flex:1 1 auto;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100)">Download Word</button>
+<button type="button" sc-camel-on-click="{{ onDownloadAnyway }}" style="flex:1 1 100%;height:48px;padding:0 22px;border-radius:8px;border:1px solid var(--jds-gray-300);background:var(--jds-gray-0);color:var(--jds-gray-900);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:var(--jds-gray-100)">Download anyway</button>
 </div>
+</sc-if>
 </div>
 </div>
 </sc-if>
@@ -2590,7 +2601,7 @@ class Component extends DCLogic {
     this._onKey = (e) => {
       if (e.key !== "Escape") return;
       if (this.state.navSheetOpen) this.setSheet(false);
-      else if (this.state.confirmDownload) this.setState({ confirmDownload: false });
+      else if (this.state.confirmDownload) this.setState({ confirmDownload: false, showFormatPicker: false });
       else if (this.state.draftGateOpen) this.setState({ draftGateOpen: false });
       else if (this.state.showDoc) this.setState({ showDoc: false });
       else if (this.state.previewOn) this.setState({ previewOn: false });
@@ -4759,20 +4770,18 @@ class Component extends DCLogic {
         : "This draft is not complete. Outstanding: " + incomplete.slice(0, 6).join(", ")
           + (incomplete.length > 6 ? " and " + (incomplete.length - 6) + " more" : "") + ".",
       confirmDownload: !!this.state.confirmDownload,
+      showConfirmButtons: !!this.state.confirmDownload && !this.state.showFormatPicker,
+      showFormatPicker: !!this.state.showFormatPicker,
       confirmDownloadText: incomplete.length
         ? "You have not finished " + incomplete.length + " section" + (incomplete.length === 1 ? "" : "s") + ": " + incomplete.join(", ") + "."
         : "",
-      onDownloadDraftPDF: () => {
-        if (incomplete.length) { this.setState({ confirmDownload: true, confirmFormat: "pdf" }); return; }
-        downloadPDF("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.pdf");
+      onDownloadDraft: () => {
+        this.setState({ confirmDownload: true, showFormatPicker: false });
       },
-      onDownloadDraftWord: () => {
-        if (incomplete.length) { this.setState({ confirmDownload: true, confirmFormat: "word" }); return; }
-        downloadWord("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.doc");
-      },
-      onCancelDownload: () => this.setState({ confirmDownload: false }),
-      onConfirmDownloadPDF: () => this.setState({ confirmDownload: false }, () => downloadPDF("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.pdf")),
-      onConfirmDownloadWord: () => this.setState({ confirmDownload: false }, () => downloadWord("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.doc")),
+      onCancelDownload: () => this.setState({ confirmDownload: false, showFormatPicker: false }),
+      onDownloadAnyway: () => this.setState({ showFormatPicker: true }),
+      onConfirmDownloadPDF: () => this.setState({ confirmDownload: false, showFormatPicker: false }, () => downloadPDF("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.pdf")),
+      onConfirmDownloadWord: () => this.setState({ confirmDownload: false, showFormatPicker: false }, () => downloadWord("jds-preview-sheet", "First_Ancillary_Affidavit_Draft.doc")),
       previewParas: this.previewParas()
     };
   }
