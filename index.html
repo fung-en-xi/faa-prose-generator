@@ -1753,7 +1753,7 @@ const SCHEMA = [
       { id: "address", label: "Registered Address", type: "textarea", myinfo: true, readOnly: true },
       { id: "occupation", label: "Occupation", type: "text", wide: true, required: true, combo: true, comboList: OCCUPATIONS, placeholder: "Search for your occupation" },
       { id: "spouseName", label: "Name of spouse", type: "text", half: true, required: true, placeholder: "Full name as per NRIC / Passport" },
-      { id: "spouseIdType", label: "Spouse's identity type", type: "select", half: true, required: true,
+      { id: "spouseIdType", label: "Spouse's identification document type", type: "select", half: true, required: true,
         options: [
           { value: "", label: "Select identity type" },
           { value: "Singapore NRIC", label: "Singapore NRIC" },
@@ -1836,7 +1836,7 @@ const SCHEMA = [
       { id: "bankruptPending", label: "Are there pending bankruptcy proceedings filed against you?", type: "radio", required: true, when: (v) => v.bankrupt === "No", options: YN },
       { id: "spouseBankrupt", label: "Is your spouse an undischarged bankrupt?", type: "radio", required: true, options: YN },
       { id: "spouseBankruptPending", label: "Are there pending bankruptcy proceedings filed against your spouse?", type: "radio", required: true, when: (v) => v.spouseBankrupt === "No", options: YN },
-      { id: "thirdPartyAsset", label: "Is any immovable asset in the asset pool owned, wholly or partially, by a third party?", type: "radio", required: true, options: YN,
+      { id: "thirdPartyAsset", label: "Does a third party wholly or partially own an immovable asset in the asset pool?", type: "radio", required: true, options: YN,
         defs: [["immovable asset", "Land or property that cannot be moved, such as an HDB flat, a condominium unit, a landed house or land held overseas."],
           ["third party", "Anyone who is not you or your spouse, for example a parent or sibling named on the title of the property."]] }
     ]
