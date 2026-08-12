@@ -367,13 +367,14 @@
 <sc-if value="{{ t.title }}" hint-placeholder-val="{{ false }}">
 <span style="align-self:flex-start;font-size:15px;font-weight:700;line-height:1.5;color:var(--jds-primary-700);padding-bottom:4px;border-bottom:2px solid var(--jds-primary-600)">{{ t.title }}</span>
 </sc-if>
-<div style="width:100%">
-<div role="table" aria-label="{{ t.title }}" style="width:100%;box-sizing:border-box;border:1px solid var(--jds-gray-200);border-radius:12px;overflow:hidden;background:var(--jds-gray-0)">
+<div style="width:100%;overflow-x:auto">
+<div role="table" aria-label="{{ t.title }}" style="width:100%;min-width:600px;box-sizing:border-box;border:1px solid var(--jds-gray-200);border-radius:12px;overflow:hidden;background:var(--jds-gray-0)">
 <div role="row" style="display:flex;align-items:stretch;background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200)">
 <span role="columnheader" style="flex:0 0 54px;box-sizing:border-box;padding:12px 8px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000)">S/N</span>
-<span role="columnheader" style="flex:1 1 120px;min-width:0;min-width:0;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Items</span>
-<span role="columnheader" style="flex:0 1 150px;min-width:150px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Amount per month</span>
-<span role="columnheader" style="flex:0 1 140px;min-width:140px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Remarks</span>
+<span role="columnheader" style="flex:1 1 160px;min-width:120px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Items</span>
+<span role="columnheader" style="flex:0 0 148px;min-width:148px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Amount</span>
+<span role="columnheader" style="flex:0 0 140px;min-width:140px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">How often</span>
+<span role="columnheader" style="flex:1 1 130px;min-width:110px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Remarks</span>
 <span role="columnheader" style="flex:0 0 46px;border-left:1px solid var(--jds-gray-200)"></span>
 </div>
 <sc-for list="{{ t.rows }}" as="g" hint-placeholder-count="5">
@@ -383,7 +384,7 @@
 </sc-if>
 <sc-if value="{{ g.isData }}" hint-placeholder-val="{{ true }}">
 <span style="flex:0 0 54px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--jds-gray-700)">{{ g.sn }}</span>
-<div style="flex:1 1 120px;min-width:0;min-width:0;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:1 1 160px;min-width:120px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <sc-if value="{{ g.fixed }}" hint-placeholder-val="{{ true }}">
 <span style="font-size:15px;line-height:1.5;color:var(--jds-gray-1000);text-wrap:pretty">{{ g.item }}</span>
 </sc-if>
@@ -393,13 +394,26 @@
 </div>
 </sc-if>
 </div>
-<div style="flex:0 1 150px;min-width:150px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:0 0 148px;min-width:148px;box-sizing:border-box;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;gap:4px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <div style="{{ g.amountShell }}">
 <span style="font-size:15px;font-weight:600;color:var(--jds-gray-700)">S$</span>
 <input value="{{ g.amount }}" sc-camel-on-change="{{ g.onAmount }}" sc-camel-on-focus="{{ g.onAmountFocus }}" sc-camel-on-blur="{{ g.onAmountBlur }}" placeholder="0.00" sc-camel-input-mode="decimal" style="{{ g.inputStyle }}">
 </div>
+<sc-if value="{{ g.monthlyNote }}" hint-placeholder-val="{{ false }}">
+<span style="font-size:12px;font-weight:600;line-height:1.35;white-space:nowrap;color:var(--jds-primary-600)">{{ g.monthlyNote }}</span>
+</sc-if>
 </div>
-<div style="flex:0 1 140px;min-width:140px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:0 0 140px;min-width:140px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="{{ g.freqShell }}">
+<sc-raw-select value="{{ g.freq }}" sc-camel-on-change="{{ g.onFreq }}" sc-camel-on-focus="{{ g.onFreqFocus }}" sc-camel-on-blur="{{ g.onBlur }}" aria-label="How often this expense is paid" style="{{ g.freqSelectStyle }}">
+<sc-for list="{{ g.freqOptions }}" as="o" hint-placeholder-count="5">
+<option value="{{ o.value }}">{{ o.label }}</option>
+</sc-for>
+</sc-raw-select>
+<i class="ph ph-caret-down" style="font-size:16px;color:var(--jds-gray-700);pointer-events:none" aria-hidden="true"></i>
+</div>
+</div>
+<div style="flex:1 1 130px;min-width:110px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <div style="{{ g.remarksShell }}">
 <input value="{{ g.remarks }}" sc-camel-on-change="{{ g.onRemarks }}" sc-camel-on-focus="{{ g.onRemarksFocus }}" sc-camel-on-blur="{{ g.onBlur }}" placeholder="Remarks" style="{{ g.inputStyle }}">
 </div>
@@ -787,7 +801,7 @@
 </sc-if>
 
 <sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}">
-<span id="{{ f.errorId }}" role="alert" style="display:flex;align-items:flex-start;gap:6px;font-size:13px;line-height:1.5;color:var(--jds-danger-color-default)"><i class="ph-fill ph-warning-circle" style="font-size:16px;flex-shrink:0" aria-hidden="true"></i>{{ f.error }}</span>
+<span id="{{ f.errorId }}" role="alert" style="display:flex;align-items:flex-start;gap:6px;height:0;overflow:visible;font-size:13px;line-height:1.5;color:var(--jds-danger-color-default)"><i class="ph-fill ph-warning-circle" style="font-size:16px;flex-shrink:0" aria-hidden="true"></i>{{ f.error }}</span>
 </sc-if>
 </div>
 </sc-for>
@@ -1385,6 +1399,18 @@ const NATURE = [{ value: "", label: "Select an option" }, { value: "Full-time", 
 const PERSONAL_ITEMS = ["Food", "Transport / fuel expenses", "Utilities", "Telephone, internet and cable TV charges", "Medical expenses", "Rent",
   "Insurance premiums", "Payment of debts (excluding housing loans and hire purchase loans)", "Maintenance paid to others", "Tax payments",
   "Financial provision for another person"];
+const FREQ_OPTIONS = [
+  { value: "Monthly", label: "Monthly" },
+  { value: "Weekly", label: "Weekly" },
+  { value: "Quarterly", label: "Quarterly" },
+  { value: "Half-yearly", label: "Half-yearly" },
+  { value: "Annually", label: "Annually" }
+];
+const FREQ_PER_MONTH = { Weekly: 52 / 12, Monthly: 1, Quarterly: 1 / 3, "Half-yearly": 1 / 6, Annually: 1 / 12 };
+const MONTHLY = (r) => num(r && r.amount) * (FREQ_PER_MONTH[(r && r.freq) || "Monthly"] || 1);
+const FREQ_ADVERB = { Weekly: "weekly", Monthly: "monthly", Quarterly: "every 3 months", "Half-yearly": "every 6 months", Annually: "annually" };
+const FREQ_NOTE = (r) => (r && !blank(r.freq) && r.freq !== "Monthly" && !blank(r.amount)
+  ? "\n(S$" + SGD(r.amount) + " paid " + (FREQ_ADVERB[r.freq] || String(r.freq).toLowerCase()) + ")" : "");
 const HAS_FIN_PROVISION = (v) => {
   const rows = Array.isArray(v.personalExpensesTable) ? v.personalExpensesTable : [];
   return rows.some((r) => r && r.item === "Financial provision for another person" && !blank(r.amount));
@@ -1815,12 +1841,12 @@ const SCHEMA = [
         when: (v) => v.forum === F_SYARIAH && (v.mattersSyariah || []).indexOf("division") !== -1, options: BANDS },
       { id: "incapNote", type: "note", when: (v) => INCAP(v),
         noteText: "You are asking this Court for maintenance for the incapacitated husband, so please give details of the incapacity below." },
-      { id: "incapacityNature", label: "Nature of incapacity", type: "text", required: true, when: (v) => INCAP(v),
+      { id: "incapacityNature", label: "Nature of incapacity", type: "text", required: true, half: true, when: (v) => INCAP(v),
         placeholder: "e.g. Stroke affecting mobility" },
-      { id: "incapacityDuration", label: "Is the incapacity permanent or temporary?", type: "select", required: true, when: (v) => INCAP(v),
+      { id: "incapacityDuration", label: "Is the incapacity permanent or temporary?", type: "select", required: true, half: true, when: (v) => INCAP(v),
         options: [{ value: "", label: "Select an option" }, { value: "Permanent", label: "Permanent" }, { value: "Temporary", label: "Temporary" }] },
-      { id: "incapacityReportDate", label: "Date of most recent medical report", type: "date", required: true, when: (v) => INCAP(v) },
-      { id: "incapacityDoctor", label: "Name of doctor", type: "text", required: true, when: (v) => INCAP(v), placeholder: "e.g. Dr Tan Wei Ming" },
+      { id: "incapacityReportDate", label: "Date of most recent medical report", type: "date", required: true, half: true, when: (v) => INCAP(v) },
+      { id: "incapacityDoctor", label: "Name of doctor", type: "text", required: true, half: true, when: (v) => INCAP(v), placeholder: "e.g. Dr Tan Wei Ming" },
       { id: "doctorLicensed", label: "Is the doctor licensed to practise in Singapore?", type: "radio", required: true, when: (v) => INCAP(v), options: YN },
       { id: "doctorCountry", label: "Country in which the doctor is licensed to practise", type: "text", required: true, when: (v) => INCAP(v) && v.doctorLicensed === "No", placeholder: "e.g. Malaysia" },
       { id: "forumNote", type: "note", when: (v) => blank(v.forum),
@@ -1993,7 +2019,7 @@ const SCHEMA = [
     id: "expensesTable", label: "Family Expenses", title: "Family Expenses",
     fields: [
       { id: "personalExpensesTable", label: "My personal expenses are as follows:", type: "grid", required: true, items: PERSONAL_ITEMS, addLabel: "Add another expense",
-        hint: "If an expense is not incurred monthly, state it as a monthly average. For example an expense of S$60 every 3 months is S$20 per month.",
+        hint: "Enter each expense as you actually pay it and choose how often. Anything not paid monthly is converted to a monthly figure for you — that is the figure the affidavit will state.",
         desc: "For financial provision made to another person, state in Remarks your relationship with the person, how the monies are paid, and how often." },
       { id: "finProvisionPersons", label: "I provide for the following person(s) who are NOT part of this family:", type: "repeat",
         when: (v) => HAS_FIN_PROVISION(v), rowTitle: "Person", addLabel: "Add another person",
@@ -2009,7 +2035,8 @@ const SCHEMA = [
         ] },
       { id: "childExpensesTableNote", type: "note", when: (v) => childNames(v).length === 0,
         noteText: "Enter the total number of living child(ren) in General Information first, so that each child's expenses can be recorded here." },
-      { id: "childExpensesTable", label: "The monthly expenses for the child(ren) are:", type: "grid", perChild: true, items: CHILD_ITEMS, addLabel: "Add another expense",
+      { id: "childExpensesTable", label: "The expenses for the child(ren) are:", type: "grid", perChild: true, items: CHILD_ITEMS, addLabel: "Add another expense",
+        hint: "Enter each expense as you actually pay it and choose how often. Anything not paid monthly is converted to a monthly figure for you.",
         when: (v) => childNames(v).length > 0 },
       { id: "maintenanceOrders", label: "Are there existing maintenance order(s) for yourself, your spouse or your child(ren)?", type: "radio", required: true, options: YN },
       { id: "orderForumNote", type: "note", when: (v) => v.maintenanceOrders === "Yes" && blank(v.forum),
@@ -3282,6 +3309,7 @@ class Component extends DCLogic {
     const lbl = (typeof f.label === "function" ? f.label(this.state.values) : f.label) || "";
     const { d1, d2 } = this.splitDefs(lbl, f.defs || (f.def ? [f.def] : []));
     const descText = (typeof f.desc === "function" ? f.desc(this.state.values) : f.desc) || "";
+    const isHalf = !!(f.half || (["text", "date", "money", "number", "select"].includes(f.type) && !f.wide && labelWeight(f) <= 28));
     const { d1: dd1, d2: dd2 } = this.splitDefs(descText, f.descDefs || []);
     const err = this.state.errors[f.id] || null;
     const focused = this.state.focus === f.id;
@@ -3363,9 +3391,10 @@ class Component extends DCLogic {
       ariaRequired: this.isRequired(f) ? "true" : false,
       ariaInvalid: err ? "true" : false,
       ariaDescribedBy: [descText ? "desc-" + f.id : "", err ? "err-" + f.id : ""].filter(Boolean).join(" ") || false,
+      isHalfField: isHalf,
       wrapStyle: (this.state.jumpTo === f.id ? "outline:2px solid var(--jds-primary-600);outline-offset:10px;border-radius:4px;" : "")
         + "display:flex;flex-direction:column;gap:8px;box-sizing:border-box;justify-content:flex-end;"
-        + ((f.half || (["text", "date", "money", "number", "select"].includes(f.type) && !f.wide && labelWeight(f) <= 28))
+        + (isHalf
           ? "flex:1 1 calc(50% - 12px);min-width:min(260px,100%);"
           : "flex:1 1 100%;min-width:0;"),
       labelStyle: !lbl ? "display:none;" : "font-size:16px;font-weight:600;line-height:1.5;display:block;",
@@ -3570,16 +3599,22 @@ class Component extends DCLogic {
         const mine = list.map((r, idx) => ({ r, idx })).filter(({ r }) => (r.child || "") === (f.perChild ? gname : ""));
         let sub = 0;
         mine.forEach(({ r, idx }, k) => {
-          sub += num(r.amount);
+          sub += MONTHLY(r);
           const key = (p) => f.id + idx + p;
           rows.push({
             isData: true, sn: "(" + (LETTERS[k] || k + 1) + ")",
             item: r.item == null ? "" : r.item, amount: r.amount == null ? "" : r.amount, remarks: r.remarks == null ? "" : r.remarks,
+            freq: blank(r.freq) ? "Monthly" : r.freq, freqOptions: FREQ_OPTIONS,
+            monthlyNote: !blank(r.amount) && num(r.amount) > 0 && !blank(r.freq) && r.freq !== "Monthly" ? "S$" + SGD(MONTHLY(r)) + " / month" : false,
             fixed: !!r.fixed, editable: !r.fixed, canRemove: true,
             rowStyle: "display:flex;align-items:stretch;min-height:62px;border-bottom:1px solid var(--jds-gray-200);",
             itemShell: this.shell(this.state.focus === key("item") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
             amountShell: this.shell(this.state.focus === key("amount") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
             remarksShell: this.shell(this.state.focus === key("remarks") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
+            freqShell: this.shell(this.state.focus === key("freq") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
+            freqSelectStyle: "flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:15px;color:var(--jds-form-color-default);appearance:none;cursor:pointer;padding:0;",
+            onFreq: (ev) => this.setRow(f.id, idx, "freq", ev.target.value),
+            onFreqFocus: () => this.setState({ focus: key("freq") }),
             inputStyle: this.baseInput(false),
             onItem: (ev) => this.setRow(f.id, idx, "item", ev.target.value),
             onAmount: (ev) => this.setRow(f.id, idx, "amount", ev.target.value),
@@ -3597,7 +3632,7 @@ class Component extends DCLogic {
         });
         rows.push({ isAdd: true, addLabel: f.addLabel || "Add another expense",
           rowStyle: "display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid var(--jds-gray-200);",
-          onAdd: () => this.setState((st) => ({ values: { ...st.values, [f.id]: (st.values[f.id] || []).concat({ child: f.perChild ? gname : "", item: "", amount: "", remarks: "" }) } }), () => this.persist()) });
+          onAdd: () => this.setState((st) => ({ values: { ...st.values, [f.id]: (st.values[f.id] || []).concat({ child: f.perChild ? gname : "", item: "", amount: "", freq: "Monthly", remarks: "" }) } }), () => this.persist()) });
         rows.push({ isTotal: true, label: f.perChild ? "Sub-total for " + nameOf(gname) : "Monthly total", value: "S$" + SGD(sub || 0),
           rowStyle: "display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--jds-gray-50);" });
         grand += sub;
@@ -3707,7 +3742,7 @@ class Component extends DCLogic {
     const TBL = (rows) => B.push({ kind: "tbl", rows: rows.filter(Boolean).map((r) => ({ cells: r })) });
     const list = (id) => rows_(v, id);
     const gridRows = (id) => (Array.isArray(v[id]) ? v[id] : []).filter((r) => r && !blank(r.item));
-    const gridTotal = (id, cid) => (Array.isArray(v[id]) ? v[id] : []).filter((r) => r && (cid == null || r.child === cid)).reduce((t, r) => t + num(r.amount), 0);
+    const gridTotal = (id, cid) => (Array.isArray(v[id]) ? v[id] : []).filter((r) => r && (cid == null || r.child === cid)).reduce((t, r) => t + MONTHLY(r), 0);
     const kids = childList(v);
     const LET = "abcdefghijklmnopqrstuvwxyz";
 
@@ -3830,7 +3865,7 @@ class Component extends DCLogic {
     H("Section 7:      Family Expenses");
     P("My personal expenses are as follows:");
     TBL([[c("S/N", "0 0 10%", { b: true, sh: true, a: "center" }), c("Items", "1 1 62%", { b: true, sh: true, a: "center" }), c("Amount per month (in SGD)", "1 1 28%", { b: true, sh: true, a: "center" })]]
-      .concat(gridRows("personalExpensesTable").map((r, i) => [c("(" + LET[i] + ")", "0 0 10%", { a: "center" }), c(r.item, "1 1 62%"), c(SGD(r.amount), "1 1 28%")]))
+      .concat(gridRows("personalExpensesTable").map((r, i) => [c("(" + LET[i] + ")", "0 0 10%", { a: "center" }), c(r.item, "1 1 62%"), c(SGD(MONTHLY(r)) + FREQ_NOTE(r), "1 1 28%")]))
       .concat([[c("Monthly TOTAL", "0 0 72%", { b: true, a: "right" }), c(SGD(gridTotal("personalExpensesTable")), "1 1 28%", { b: true })]]));
     const finProv = list("finProvisionPersons");
     if (finProv.length) {
@@ -3854,8 +3889,8 @@ class Component extends DCLogic {
       TX("Name of child: " + g(k.name, "________"));
       TBL([[c("S/N", "0 0 9%", { b: true, sh: true, a: "center" }), c("Items", "1 1 43%", { b: true, sh: true, a: "center" }),
         c("Amount per month (in SGD)", "1 1 24%", { b: true, sh: true, a: "center" }), c("Remarks", "1 1 24%", { b: true, sh: true, a: "center" })]]
-        .concat(rowsK.map((r, i) => [c("(" + LET[i] + ")", "0 0 9%", { a: "center" }), c(r.item, "1 1 43%"), c(SGD(r.amount), "1 1 24%"), c(g(r.remarks, ""), "1 1 24%")]))
-        .concat([[c("Monthly Total", "0 0 52%", { b: true, a: "right" }), c(SGD(rowsK.reduce((t, r) => t + num(r.amount), 0)), "1 1 24%", { b: true }), c("", "1 1 24%")]]));
+        .concat(rowsK.map((r, i) => [c("(" + LET[i] + ")", "0 0 9%", { a: "center" }), c(r.item, "1 1 43%"), c(SGD(MONTHLY(r)) + FREQ_NOTE(r), "1 1 24%"), c(g(r.remarks, ""), "1 1 24%")]))
+        .concat([[c("Monthly Total", "0 0 52%", { b: true, a: "right" }), c(SGD(rowsK.reduce((t, r) => t + MONTHLY(r), 0)), "1 1 24%", { b: true }), c("", "1 1 24%")]]));
     });
     P(v.maintenanceOrders === "Yes"
       ? "There are existing maintenance order(s) for myself, my spouse or my child(ren)."
@@ -4016,7 +4051,7 @@ class Component extends DCLogic {
 
     // ---- Section 10 ----
     H("Section 10:     Financial Summary");
-    const childExp = (Array.isArray(v.childExpensesTable) ? v.childExpensesTable : []).reduce((t, r) => t + num(r && r.amount), 0);
+    const childExp = (Array.isArray(v.childExpensesTable) ? v.childExpensesTable : []).reduce((t, r) => t + MONTHLY(r), 0);
     TBL([[c("", "0 0 6%", { sh: true }), c("The total amounts for", "1 1 54%", { b: true, sh: true, a: "center" }), c("Amount (in SGD)", "1 1 40%", { b: true, sh: true, a: "center" })],
       [c("(a)", "0 0 6%"), c("My total average monthly income", "1 1 54%"), c("Gross: " + SGD(sum_(v, "incomeSources", "gross")) + "\nNett: " + SGD(sum_(v, "incomeSources", "nett")), "1 1 40%")],
       [c("(b)", "0 0 6%"), c("My total monthly personal expenses", "1 1 54%"), c(SGD(gridTotal("personalExpensesTable")), "1 1 40%")],
@@ -4350,7 +4385,8 @@ class Component extends DCLogic {
           val = ASSET_TYPES.map((a) => a.label + ": " + (v[a.flag] === "Yes" ? a.details(v)[0] : v[a.flag] === "No" ? "None" : "Not declared")).join("\n");
         } else if (f.type === "grid") {
           const list = (Array.isArray(v[f.id]) ? v[f.id] : []).filter((r) => r && !blank(r.amount));
-          val = list.map((r) => { const k = childList(v).find((x) => x.cid === r.child); return (k ? k.name + " — " : "") + (r.item || "Expense") + ": S$" + r.amount; }).join("\n");
+          val = list.map((r) => { const k = childList(v).find((x) => x.cid === r.child); return (k ? k.name + " — " : "") + (r.item || "Expense") + ": S$" + r.amount
+            + (blank(r.freq) || r.freq === "Monthly" ? " monthly" : " " + String(r.freq).toLowerCase() + " (S$" + SGD(MONTHLY(r)) + " a month)"); }).join("\n");
         } else if (f.type === "repeat") {
           const cols = (f.row || []).filter((c) => c.type !== "sn");
           const list = (Array.isArray(v[f.id]) ? v[f.id] : []).filter((r) => r && typeof r === "object" && Object.keys(r).some((k) => !blank(r[k])));
