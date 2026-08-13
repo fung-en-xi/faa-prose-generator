@@ -189,7 +189,7 @@
 <sc-if value="{{ f.prefix }}" hint-placeholder-val="{{ false }}">
 <span style="font-size:16px;font-weight:600;color:var(--jds-gray-700)">{{ f.prefix }}</span>
 </sc-if>
-<input id="{{ f.inputId }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" sc-camel-on-focus="{{ f.onFocus }}" sc-camel-on-blur="{{ f.onBlur }}" placeholder="{{ f.placeholder }}" sc-camel-read-only="{{ f.isReadOnly }}" type="{{ f.inputType }}" sc-camel-read-only="{{ f.readOnly }}" sc-camel-input-mode="{{ f.inputMode }}" aria-required="{{ f.ariaRequired }}" aria-invalid="{{ f.ariaInvalid }}" aria-describedby="{{ f.ariaDescribedBy }}" role="{{ f.comboRole }}" aria-expanded="{{ f.comboExpanded }}" aria-autocomplete="{{ f.comboAutocomplete }}" aria-controls="{{ f.comboListId }}" style="{{ f.inputStyle }}">
+<input id="{{ f.inputId }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" sc-camel-on-focus="{{ f.onFocus }}" sc-camel-on-blur="{{ f.onBlur }}" placeholder="{{ f.placeholder }}" sc-camel-read-only="{{ f.isReadOnly }}" type="{{ f.inputType }}" sc-camel-tab-index="{{ f.fieldTabIdx }}" sc-camel-input-mode="{{ f.inputMode }}" aria-required="{{ f.ariaRequired }}" aria-invalid="{{ f.ariaInvalid }}" aria-describedby="{{ f.ariaDescribedBy }}" role="{{ f.comboRole }}" aria-expanded="{{ f.comboExpanded }}" aria-autocomplete="{{ f.comboAutocomplete }}" aria-controls="{{ f.comboListId }}" style="{{ f.inputStyle }}">
 <sc-if value="{{ f.comboOpen }}" hint-placeholder-val="{{ false }}">
 <div id="{{ f.comboListId }}" role="listbox" style="position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:30;max-height:264px;overflow:auto;background:var(--jds-gray-0);border:1px solid var(--jds-gray-200);border-radius:8px;box-shadow:0 6px 20px rgba(14,14,14,0.12);padding:4px 0">
 <sc-for list="{{ f.comboOptions }}" as="o" hint-placeholder-count="0">
@@ -208,7 +208,7 @@
 </sc-if>
 
 <sc-if value="{{ f.isTextarea }}" hint-placeholder-val="{{ false }}">
-<textarea id="{{ f.inputId }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" sc-camel-on-focus="{{ f.onFocus }}" sc-camel-on-blur="{{ f.onBlur }}" placeholder="{{ f.placeholder }}" sc-camel-read-only="{{ f.readOnly }}" sc-camel-max-length="{{ f.maxLength }}" aria-required="{{ f.ariaRequired }}" aria-invalid="{{ f.ariaInvalid }}" aria-describedby="{{ f.ariaDescribedBy }}" rows="4" style="{{ f.textareaStyle }}"></textarea>
+<textarea id="{{ f.inputId }}" value="{{ f.value }}" sc-camel-on-change="{{ f.onChange }}" sc-camel-on-focus="{{ f.onFocus }}" sc-camel-on-blur="{{ f.onBlur }}" placeholder="{{ f.placeholder }}" sc-camel-read-only="{{ f.readOnly }}" sc-camel-tab-index="{{ f.fieldTabIdx }}" sc-camel-max-length="{{ f.maxLength }}" aria-required="{{ f.ariaRequired }}" aria-invalid="{{ f.ariaInvalid }}" aria-describedby="{{ f.ariaDescribedBy }}" rows="4" style="{{ f.textareaStyle }}"></textarea>
 </sc-if>
 <sc-if value="{{ f.counter }}" hint-placeholder-val="{{ false }}">
 <span style="align-self:flex-end;font-size:13px;color:var(--jds-gray-600)">{{ f.counter }}</span>
@@ -582,7 +582,7 @@
 <sc-if value="{{ c.prefix }}" hint-placeholder-val="{{ false }}">
 <span style="font-size:16px;font-weight:600;color:var(--jds-gray-700)">{{ c.prefix }}</span>
 </sc-if>
-<input value="{{ c.value }}" sc-camel-on-change="{{ c.onChange }}" sc-camel-on-focus="{{ c.onFocus }}" sc-camel-on-blur="{{ c.onBlur }}" placeholder="{{ c.placeholder }}" type="{{ c.inputType }}" sc-camel-input-mode="{{ c.inputMode }}" sc-camel-read-only="{{ c.isReadOnly }}" style="{{ c.inputStyle }}">
+<input value="{{ c.value }}" sc-camel-on-change="{{ c.onChange }}" sc-camel-on-focus="{{ c.onFocus }}" sc-camel-on-blur="{{ c.onBlur }}" placeholder="{{ c.placeholder }}" type="{{ c.inputType }}" sc-camel-tab-index="{{ c.cellTabIdx }}" sc-camel-input-mode="{{ c.inputMode }}" sc-camel-read-only="{{ c.isReadOnly }}" style="{{ c.inputStyle }}">
 <sc-if value="{{ c.unitSuffix }}" hint-placeholder-val="{{ false }}">
 <span style="font-size:16px;font-weight:600;color:var(--jds-gray-700)">{{ c.unitSuffix }}</span>
 </sc-if>
@@ -1811,8 +1811,7 @@ const SCHEMA = [
     id: "intro", label: "Introduction", title: "Introduction",
     fields: [
       { id: "name", label: "Name", type: "text", half: true, myinfo: true, readOnly: true },
-      { id: "nric", label: "NRIC / FIN / Passport Number", type: "text", half: true, required: true, upper: true, immediate: true, placeholder: "e.g. S1234567D",
-        validate: (v) => /^[STFGM]\d{7}[A-Z]$/.test(String(v).trim()) || /^[A-Z0-9]{6,12}$/.test(String(v).trim()) ? null : "Enter a valid NRIC, FIN or passport number." },
+      { id: "nric", label: "NRIC / FIN / Passport Number", type: "text", half: true, myinfo: true, readOnly: true, upper: true },
       { id: "address", label: "Registered Address", type: "textarea", myinfo: true, readOnly: true },
       { id: "occupation", label: "Occupation", type: "text", wide: true, required: true, combo: true, comboList: OCCUPATIONS, placeholder: "Search for your occupation" },
       { id: "spouseName", label: "Name of spouse", type: "text", half: true, required: true, placeholder: "Full name as per NRIC / Passport" },
@@ -2609,6 +2608,7 @@ SCHEMA.forEach((s) => (s.fields || []).forEach((fd) => {
   if (fd.type === "heading") delete DEFAULTS[fd.id];
 }));
 DEFAULTS.name = "PHUA CHU KANG";
+DEFAULTS.nric = "S1234567D";
 DEFAULTS.address = "411 CHUA CHU KANG AVE 3, #12-3, SINGAPORE 238823";
 DEFAULTS.dob = "1999-02-02";
 DEFAULTS.marriageDate = "1999-02-02";
@@ -2617,7 +2617,7 @@ DEFAULTS.childCount = "0";
 
 const KEY = "jds-first-ancillary-affidavit-draft-v15";
 const SCHEMA_VERSION = 15;
-const MYINFO_FIELDS = ["name", "address", "dob", "marriageDate", "education"];
+const MYINFO_FIELDS = ["name", "nric", "address", "dob", "marriageDate", "education"];
 const NAV_MIN = 264;
 const NAV_MAX = 336;
 
@@ -3063,7 +3063,7 @@ class Component extends DCLogic {
   go(i, fieldId) {
     const target = Math.max(0, Math.min(SCHEMA.length - 1, i));
     if (target === this.state.step && !fieldId) return;
-    this.setState((s) => ({ step: target, errors: {}, jumpTo: fieldId || null, visited: { ...s.visited, [SCHEMA[s.step].id]: true, [SCHEMA[target].id]: true } }), () => {
+    this.setState((s) => ({ step: target, jumpTo: fieldId || null, visited: { ...s.visited, [SCHEMA[s.step].id]: true, [SCHEMA[target].id]: true } }), () => {
       this.persist();
       if (fieldId) { this.scrollToField(fieldId); return; }
       if (window.scrollY > 120) window.scrollTo({ top: 0, behavior: "smooth" });
@@ -3241,7 +3241,7 @@ class Component extends DCLogic {
         isSelect: shown && c.type === "select",
         isStatic: shown && c.type === "age",
         isSearch: shown && isSearchCol,
-        isReadOnly: colRO,
+        isReadOnly: colRO, cellTabIdx: colRO ? "-1" : "0",
         isRadio: shown && c.type === "radio",
         isChecks: shown && c.type === "checks",
         isTextarea: shown && c.type === "textarea",
@@ -3341,14 +3341,15 @@ class Component extends DCLogic {
         })),
         wrapStyle: (shown ? "display:flex" : "display:none") + ";flex-direction:column;gap:6px;box-sizing:border-box;justify-content:flex-end;flex:" + ((!c.half && labelWeight(c) > 28) ? "1 1 100%" : ((typeof c.grow === "function" ? c.grow(row) : c.grow) || "1 1 170px")) + ";min-width:min(240px,100%)"
           + (dim ? ";opacity:0.5" : ""),
-        shellStyle: this.shell(cf ? "focus" : colRO ? "readonly" : "default") + (isSearchCol
+        shellStyle: this.shell(colRO ? "readonly" : cf ? "focus" : "default") + (isSearchCol
           ? "height:48px;width:100%;min-width:0;box-sizing:border-box;"
-          : "height:48px;flex:0 0 48px;width:100%;min-width:0;"),
+          : "height:48px;flex:0 0 48px;width:100%;min-width:0;") + (colRO ? "pointer-events:none;" : ""),
         staticStyle: "display:flex;align-items:center;height:48px;padding:0 16px;box-sizing:border-box;border-radius:8px;border:1px solid var(--jds-border-color-default);background:var(--jds-gray-100);font-size:16px;color:"
           + (blank(ageFrom(row.dob)) ? "var(--jds-gray-600)" : "var(--jds-gray-1000)") + ";",
-        inputStyle: this.baseInput(false) + "width:100%;min-width:0;",
-        selectStyle: "flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:16px;appearance:none;cursor:pointer;padding:0;color:"
-          + (blank(cv) ? "var(--jds-gray-600)" : "var(--jds-form-color-default)") + ";",
+        inputStyle: this.baseInput(colRO) + "width:100%;min-width:0;" + (colRO ? "cursor:default;" : ""),
+        selectStyle: "flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:16px;appearance:none;padding:0;color:"
+          + (colRO ? "var(--jds-gray-700)" : blank(cv) ? "var(--jds-gray-600)" : "var(--jds-form-color-default)")
+          + ";" + (colRO ? "cursor:default;pointer-events:none;" : "cursor:pointer;"),
         selectOptions: (c.optionsFrom ? c.optionsFrom(this.state.values) : (c.options || [])).map((op) => ({ value: op.value, label: op.label })),
         onChange: (e) => this.setRow(fid, i, c.id, c.upper ? String(e.target.value).toUpperCase() : e.target.value, seed),
         onFocus: () => this.setState({ focus: key }),
@@ -3492,8 +3493,8 @@ class Component extends DCLogic {
       retrieveBtnStyle: "", onRetrieve: () => {}, assetTotal: "", liabilityTotal: "", netTotal: "",
       noteText: typeof f.noteText === "function" ? f.noteText(this.state.values) : (f.noteText || ""), valid: false,
       noteLinkLabel: f.noteLink ? f.noteLink[0] : false, noteLinkHref: f.noteLink ? f.noteLink[1] : "#", notePost: f.notePost || "",
-      shellStyle: this.shell(shellState) + "flex:1 1 auto;height:48px;box-sizing:border-box;align-self:stretch;" + (f.search ? "min-width:0;" : "width:100%;"),
-      isReadOnly: ro,
+      shellStyle: this.shell(shellState) + "flex:1 1 auto;height:48px;box-sizing:border-box;align-self:stretch;" + (f.search ? "min-width:0;" : "width:100%;") + (ro ? "pointer-events:none;" : ""),
+      isReadOnly: ro, fieldTabIdx: ro ? "-1" : "0",
       inputStyle: this.baseInput(ro) + (ro ? "cursor:default;" : "") + (mi ? "text-transform:uppercase;" : ""),
       selectStyle: "flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:16px;color:"
         + (ro ? "var(--jds-gray-700)" : blank(v) ? "var(--jds-gray-600)" : "var(--jds-form-color-default)")
@@ -3502,7 +3503,7 @@ class Component extends DCLogic {
         + "background:" + (ro ? "var(--jds-gray-100)" : "var(--jds-form-surface-default)") + ";outline:none;"
         + "color:" + (ro ? "var(--jds-gray-700)" : "var(--jds-form-color-default)") + ";"
         + "border:" + (err ? "2px solid var(--jds-form-danger-border-color-default)" : (!ro && focused) ? "2px solid var(--jds-primary-600)" : "1px solid var(--jds-border-color-default)") + ";"
-        + (ro ? "cursor:default;resize:none;" : "") + (mi ? "text-transform:uppercase;" : ""),
+        + (ro ? "cursor:default;resize:none;pointer-events:none;" : "") + (mi ? "text-transform:uppercase;" : ""),
       onChange: (e) => {
         if (ro) return;
         const val = f.upper ? e.target.value.toUpperCase() : e.target.value;
@@ -4849,8 +4850,15 @@ class Component extends DCLogic {
           this.setState({ docsDone: true, submitted: true, showDoc: true });
           return;
         }
-        const errors = this.validateStep();
-        this.setState((s) => ({ errors, attempted: { ...s.attempted, [step.id]: true } }), () => {
+        const stepErrors = this.validateStep();
+        const stepFieldIds = new Set(this.visibleFields(step).map((f) => f.id));
+        this.setState((s) => {
+          const errors = { ...s.errors };
+          stepFieldIds.forEach((id) => { delete errors[id]; });
+          Object.assign(errors, stepErrors);
+          return { errors, attempted: { ...s.attempted, [step.id]: true } };
+        }, () => {
+          const errors = stepErrors;
           if (!Object.keys(errors).length) this.go(this.adjacentStep(1));
           else {
             const firstErrId = Object.keys(errors)[0];
