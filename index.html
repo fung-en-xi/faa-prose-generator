@@ -373,7 +373,7 @@
 <span role="columnheader" style="flex:0 0 54px;box-sizing:border-box;padding:12px 8px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000)">S/N</span>
 <span role="columnheader" style="flex:1 1 160px;min-width:120px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Items</span>
 <span role="columnheader" style="flex:0 0 148px;min-width:148px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Amount</span>
-<span role="columnheader" style="flex:0 0 140px;min-width:140px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">How often</span>
+<span role="columnheader" style="flex:0 0 168px;min-width:168px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">How often</span>
 <span role="columnheader" style="flex:1 1 130px;min-width:110px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Remarks</span>
 <span role="columnheader" style="flex:0 0 46px;border-left:1px solid var(--jds-gray-200)"></span>
 </div>
@@ -384,7 +384,7 @@
 </sc-if>
 <sc-if value="{{ g.isData }}" hint-placeholder-val="{{ true }}">
 <span style="flex:0 0 54px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--jds-gray-700)">{{ g.sn }}</span>
-<div style="flex:1 1 160px;min-width:120px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:1 1 160px;min-width:120px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:flex-start;padding-top:14px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <sc-if value="{{ g.fixed }}" hint-placeholder-val="{{ true }}">
 <span style="font-size:15px;line-height:1.5;color:var(--jds-gray-1000);text-wrap:pretty">{{ g.item }}</span>
 </sc-if>
@@ -394,7 +394,7 @@
 </div>
 </sc-if>
 </div>
-<div style="flex:0 0 148px;min-width:148px;box-sizing:border-box;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;gap:4px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:0 0 148px;min-width:148px;box-sizing:border-box;padding:14px 12px 8px;display:flex;flex-direction:column;justify-content:flex-start;gap:4px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <div style="{{ g.amountShell }}">
 <span style="font-size:15px;font-weight:600;color:var(--jds-gray-700)">S$</span>
 <input value="{{ g.amount }}" sc-camel-on-change="{{ g.onAmount }}" sc-camel-on-focus="{{ g.onAmountFocus }}" sc-camel-on-blur="{{ g.onAmountBlur }}" placeholder="0.00" sc-camel-input-mode="decimal" style="{{ g.inputStyle }}">
@@ -403,7 +403,7 @@
 <span style="font-size:12px;font-weight:600;line-height:1.35;white-space:nowrap;color:var(--jds-primary-600)">{{ g.monthlyNote }}</span>
 </sc-if>
 </div>
-<div style="flex:0 0 140px;min-width:140px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:0 0 168px;min-width:168px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:flex-start;padding-top:14px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <div style="{{ g.freqShell }}">
 <sc-raw-select value="{{ g.freq }}" sc-camel-on-change="{{ g.onFreq }}" sc-camel-on-focus="{{ g.onFreqFocus }}" sc-camel-on-blur="{{ g.onBlur }}" aria-label="How often this expense is paid" style="{{ g.freqSelectStyle }}">
 <sc-for list="{{ g.freqOptions }}" as="o" hint-placeholder-count="5">
@@ -413,7 +413,7 @@
 <i class="ph ph-caret-down" style="font-size:16px;color:var(--jds-gray-700);pointer-events:none" aria-hidden="true"></i>
 </div>
 </div>
-<div style="flex:1 1 130px;min-width:110px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:1 1 130px;min-width:110px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:flex-start;padding-top:14px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <div style="{{ g.remarksShell }}">
 <input value="{{ g.remarks }}" sc-camel-on-change="{{ g.onRemarks }}" sc-camel-on-focus="{{ g.onRemarksFocus }}" sc-camel-on-blur="{{ g.onBlur }}" placeholder="Remarks" style="{{ g.inputStyle }}">
 </div>
@@ -571,11 +571,21 @@
 </sc-if>
 </sc-if>
 <sc-if value="{{ c.isInput }}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{ c.hasUnitToggle }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:4px;padding:3px;border-radius:8px;background:var(--jds-gray-100);width:max-content">
+<sc-for list="{{ c.unitOptions }}" as="u" hint-placeholder-count="2">
+<button type="button" sc-camel-on-click="{{ u.onSelect }}" style="{{ u.style }}">{{ u.label }}</button>
+</sc-for>
+</div>
+</sc-if>
 <div style="{{ c.shellStyle }}">
 <sc-if value="{{ c.prefix }}" hint-placeholder-val="{{ false }}">
 <span style="font-size:16px;font-weight:600;color:var(--jds-gray-700)">{{ c.prefix }}</span>
 </sc-if>
 <input value="{{ c.value }}" sc-camel-on-change="{{ c.onChange }}" sc-camel-on-focus="{{ c.onFocus }}" sc-camel-on-blur="{{ c.onBlur }}" placeholder="{{ c.placeholder }}" type="{{ c.inputType }}" sc-camel-input-mode="{{ c.inputMode }}" sc-camel-read-only="{{ c.isReadOnly }}" style="{{ c.inputStyle }}">
+<sc-if value="{{ c.unitSuffix }}" hint-placeholder-val="{{ false }}">
+<span style="font-size:16px;font-weight:600;color:var(--jds-gray-700)">{{ c.unitSuffix }}</span>
+</sc-if>
 </div>
 </sc-if>
 </div>
@@ -1401,14 +1411,13 @@ const PERSONAL_ITEMS = ["Food", "Transport / fuel expenses", "Utilities", "Telep
   "Financial provision for another person"];
 const FREQ_OPTIONS = [
   { value: "Monthly", label: "Monthly" },
-  { value: "Weekly", label: "Weekly" },
   { value: "Quarterly", label: "Quarterly" },
   { value: "Half-yearly", label: "Half-yearly" },
   { value: "Annually", label: "Annually" }
 ];
-const FREQ_PER_MONTH = { Weekly: 52 / 12, Monthly: 1, Quarterly: 1 / 3, "Half-yearly": 1 / 6, Annually: 1 / 12 };
+const FREQ_PER_MONTH = { Monthly: 1, Quarterly: 1 / 3, "Half-yearly": 1 / 6, Annually: 1 / 12 };
 const MONTHLY = (r) => num(r && r.amount) * (FREQ_PER_MONTH[(r && r.freq) || "Monthly"] || 1);
-const FREQ_ADVERB = { Weekly: "weekly", Monthly: "monthly", Quarterly: "every 3 months", "Half-yearly": "every 6 months", Annually: "annually" };
+const FREQ_ADVERB = { Monthly: "monthly", Quarterly: "every 3 months", "Half-yearly": "every 6 months", Annually: "annually" };
 const FREQ_NOTE = (r) => (r && !blank(r.freq) && r.freq !== "Monthly" && !blank(r.amount)
   ? "\n(S$" + SGD(r.amount) + " paid " + (FREQ_ADVERB[r.freq] || String(r.freq).toLowerCase()) + ")" : "");
 const HAS_FIN_PROVISION = (v) => {
@@ -2296,7 +2305,7 @@ const SCHEMA = [
           { id: "desc", label: "Asset", type: "select", grow: "1 1 100%", noStar: true, optionsFrom: ASSET_OPTIONS },
           { id: "descOther", label: "Describe the asset", type: "text", grow: "1 1 100%", noStar: true,
             when: (r) => r.desc === OTHER_ASSET, placeholder: "e.g. Inherited shophouse in Penang" },
-          { id: "amount", label: "Amount / Percentage of contribution", type: "money", grow: "1 1 calc(50% - 8px)", half: true, noStar: true },
+          { id: "amount", label: "Amount / Percentage of contribution", type: "text", grow: "1 1 calc(50% - 8px)", half: true, noStar: true, unitToggle: true, inputMode: "decimal" },
           { id: "source", label: "Manner of contribution", type: "text", grow: "1 1 calc(50% - 8px)", half: true, noStar: true, placeholder: "e.g. CPF / cash / loans" }
         ] },
       { id: "contributionNotes", label: "Other relevant information on your monetary contribution to the above assets", type: "textarea", optional: true, when: (v) => v.paidForAsset === "Yes", max: 1500,
@@ -2432,7 +2441,7 @@ const SCHEMA = [
       { id: "ordTransferStreet", half: true, label: "Street name", type: "text", required: true, when: SUB("ordAssets", "transfer"), placeholder: "e.g. Bukit Batok Street 11" },
       { id: "ordTransferBuilding", half: true, label: "Building name", type: "text", optional: true, when: SUB("ordAssets", "transfer"), placeholder: "e.g. Midview Building" },
       { id: "ordTransferUnit", half: true, label: "Unit number", type: "text", optional: true, when: SUB("ordAssets", "transfer"), placeholder: "e.g. #01-123" },
-      { id: "ordTransferType", half: true, label: "Type of immovable asset", type: "text", required: true, readOnly: true, when: SUB("ordAssets", "transfer"), placeholder: "Detected automatically" },
+      { id: "ordTransferType", wide: true, label: "Type of immovable asset", type: "text", required: true, readOnly: true, when: SUB("ordAssets", "transfer"), placeholder: "Detected automatically" },
       { id: "ordTransferFrom", half: true, label: "Who is to transfer the property?", type: "radio", required: true, when: SUB("ordAssets", "transfer"), options: AR },
       { id: "ordTransferTo", half: true, label: "Who is to receive the transfer?", type: "radio", required: true, when: SUB("ordAssets", "transfer"), options: AR },
       { id: "ordTransferCpf", half: true, label: "Who is to make the full refund of the outgoing owner's CPF monies?", type: "radio", required: true, when: SUB("ordAssets", "transfer"), options: AR },
@@ -2532,7 +2541,7 @@ const SCHEMA = [
         desc: ORDER_GUIDE, placeholder: ORDER_PLACEHOLDER },
       { id: "ordAccessParent", half: true, label: "Which parent is to have reasonable access?", type: "radio", required: true, when: SUB("ordAccess", "reasonable"), options: AR_OTHER("ordAccessParentName") },
       { id: "ordWeeklyParent", half: true, label: "Which parent is to have weekly access?", type: "radio", required: true, when: SUB("ordAccess", "weekly"), options: AR_OTHER("ordWeeklyParentName") },
-      { id: "ordWeeklyChildren", half: true, label: "Which child(ren) does the weekly access apply to?", type: "checkgroup", required: true, when: SUB("ordAccess", "weekly"), options: CHILD_OPTS },
+      { id: "ordWeeklyChildren", wide: true, label: "Which child(ren) does the weekly access apply to?", type: "checkgroup", required: true, when: SUB("ordAccess", "weekly"), options: CHILD_OPTS },
       { id: "ordWeeklyStart", label: "Access starts on", type: "text", required: true, when: SUB("ordAccess", "weekly"), placeholder: "e.g. Saturday, 9.00 am" },
       { id: "ordWeeklyEnd", label: "Access ends on", type: "text", required: true, when: SUB("ordAccess", "weekly"), placeholder: "e.g. Sunday, 6.00 pm" },
     ]
@@ -3075,14 +3084,18 @@ class Component extends DCLogic {
     const isFirst = idx === 0;
     const isSelected = on;
     const ro = typeof f.readOnly === "function" ? !!f.readOnly(this.state.values) : !!f.readOnly;
-    const markRing = ro ? "var(--jds-gray-500)" : "var(--jds-primary-600)";
+    const arrNow = multi && Array.isArray(this.state.values[f.id]) ? this.state.values[f.id] : [];
+    const isChildOpt = multi && options.some((o) => o.value === "All the children");
+    const lockedOff = isChildOpt && op.value !== "All the children" && arrNow.includes("All the children");
+    const disabled = ro || lockedOff;
+    const markRing = disabled ? "var(--jds-gray-500)" : "var(--jds-primary-600)";
     return {
       label: op.label, note: op.note || false,
       role: multi ? "checkbox" : "radio",
       checked: on ? "true" : "false",
       tabIdx: multi ? "0" : (isSelected || (!options.some((_, i) => this.state.values[f.id] === options[i].value) && isFirst)) ? "0" : "-1",
       rowStyle: "display:flex;flex-direction:column;gap:10px;padding:2px 0;width:100%;box-sizing:border-box;background:transparent;border:none;outline-offset:2px;border-radius:4px;"
-        + (ro ? "cursor:default;" : "cursor:pointer;"),
+        + (disabled ? "cursor:default;opacity:0.5;" : "cursor:pointer;"),
       markStyle: "flex-shrink:0;display:flex;align-items:center;justify-content:center;width:22px;height:22px;box-sizing:border-box;margin-top:1px;"
         + "border:2px solid " + markRing + ";background:var(--jds-gray-0);"
         + (multi ? "border-radius:4px;" + (on ? "background:" + markRing + ";" : "")
@@ -3116,10 +3129,14 @@ class Component extends DCLogic {
         }
       },
       onSelect: () => {
-        if (ro) return;
+        if (disabled) return;
         if (multi) {
           const arr = Array.isArray(this.state.values[f.id]) ? this.state.values[f.id] : [];
-          this.set(f.id, arr.includes(op.value) ? arr.filter((x) => x !== op.value) : arr.concat(op.value));
+          if (isChildOpt && op.value === "All the children") {
+            this.set(f.id, arr.includes(op.value) ? [] : ["All the children"]);
+          } else {
+            this.set(f.id, arr.includes(op.value) ? arr.filter((x) => x !== op.value) : arr.concat(op.value));
+          }
         } else {
           this.set(f.id, this.state.values[f.id] === op.value ? "" : op.value);
         }
@@ -3182,7 +3199,9 @@ class Component extends DCLogic {
         hasDescList: Array.isArray(c.descList) && c.descList.length > 0,
         descList: this.tickList(key, c.descList),
         value: c.type === "age" ? ageFrom(row.dob) : cv,
-        placeholder: (typeof c.placeholder === "function" ? c.placeholder(row) : c.placeholder) || (c.type === "money" ? "0.00" : ""),
+        placeholder: c.unitToggle
+          ? ((row[c.id + "Unit"] || "S$") === "%" ? "e.g. 50" : "0.00")
+          : (typeof c.placeholder === "function" ? c.placeholder(row) : c.placeholder) || (c.type === "money" ? "0.00" : ""),
         isSelect: shown && c.type === "select",
         isStatic: shown && c.type === "age",
         isSearch: shown && isSearchCol,
@@ -3273,7 +3292,17 @@ class Component extends DCLogic {
         } : undefined,
         findStyle: "flex:0 0 auto;height:48px;padding:0 20px;border-radius:8px;border:1px solid var(--jds-primary-600);background:var(--jds-primary-600);color:var(--jds-gray-0);font-size:15px;font-weight:600;cursor:pointer;",
         inputType: c.type === "date" ? "date" : "text", inputMode: c.type === "money" ? "decimal" : "text",
-        prefix: c.type === "money" ? "S$" : false,
+        prefix: c.unitToggle ? false : (c.type === "money" ? "S$" : false),
+        hasUnitToggle: !!c.unitToggle,
+        unitSuffix: c.unitToggle && (row[c.id + "Unit"] || "S$") === "%" ? "%" : false,
+        unitOptions: !c.unitToggle ? [] : [{ value: "S$", label: "S$" }, { value: "%", label: "%" }].map((op) => ({
+          value: op.value, label: op.label,
+          style: "display:flex;align-items:center;justify-content:center;height:32px;padding:0 12px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;box-sizing:border-box;"
+            + ((row[c.id + "Unit"] || "S$") === op.value
+              ? "background:var(--jds-primary-600);color:var(--jds-gray-0);"
+              : "background:var(--jds-gray-0);color:var(--jds-gray-700);"),
+          onSelect: () => this.setRow(fid, i, c.id + "Unit", op.value, seed)
+        })),
         wrapStyle: (shown ? "display:flex" : "display:none") + ";flex-direction:column;gap:6px;box-sizing:border-box;justify-content:flex-end;flex:" + ((!c.half && labelWeight(c) > 28) ? "1 1 100%" : ((typeof c.grow === "function" ? c.grow(row) : c.grow) || "1 1 170px")) + ";min-width:min(240px,100%)"
           + (dim ? ";opacity:0.5" : ""),
         shellStyle: this.shell(cf ? "focus" : colRO ? "readonly" : "default") + (isSearchCol
@@ -3393,7 +3422,7 @@ class Component extends DCLogic {
       ariaDescribedBy: [descText ? "desc-" + f.id : "", err ? "err-" + f.id : ""].filter(Boolean).join(" ") || false,
       isHalfField: isHalf,
       wrapStyle: (this.state.jumpTo === f.id ? "outline:2px solid var(--jds-primary-600);outline-offset:10px;border-radius:4px;" : "")
-        + "display:flex;flex-direction:column;gap:8px;box-sizing:border-box;justify-content:flex-end;"
+        + "display:flex;flex-direction:column;gap:8px;box-sizing:border-box;justify-content:flex-start;"
         + (isHalf
           ? "flex:1 1 calc(50% - 12px);min-width:min(260px,100%);"
           : "flex:1 1 100%;min-width:0;"),
@@ -3611,7 +3640,7 @@ class Component extends DCLogic {
             itemShell: this.shell(this.state.focus === key("item") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
             amountShell: this.shell(this.state.focus === key("amount") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
             remarksShell: this.shell(this.state.focus === key("remarks") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
-            freqShell: this.shell(this.state.focus === key("freq") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
+            freqShell: this.shell(this.state.focus === key("freq") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;min-width:144px;box-sizing:border-box;",
             freqSelectStyle: "flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:15px;color:var(--jds-form-color-default);appearance:none;cursor:pointer;padding:0;",
             onFreq: (ev) => this.setRow(f.id, idx, "freq", ev.target.value),
             onFreqFocus: () => this.setState({ focus: key("freq") }),
@@ -4075,7 +4104,7 @@ class Component extends DCLogic {
       P("I have made these monetary contributions to the matrimonial assets:");
       TBL([[c("S/N", "0 0 10%", { b: true, sh: true, a: "center" }), c("Assets", "1 1 45%", { b: true, sh: true, a: "center" }), c("Details of contribution", "1 1 45%", { b: true, sh: true, a: "center" })]]
         .concat(list("paidAssets").map((r, i) => [c("(" + LET[i] + ")", "0 0 10%", { a: "center" }), c(g(r.desc === OTHER_ASSET ? r.descOther : r.desc, ""), "1 1 45%"),
-          c([r.amount, r.source].filter((x) => !blank(x)).join(" by "), "1 1 45%")])));
+          c([blank(r.amount) ? "" : ((r.amountUnit === "%" ? r.amount + "%" : "S$" + r.amount)), r.source].filter((x) => !blank(x)).join(" by "), "1 1 45%")])));
       P("I provide the following relevant information on my financial contribution to the above assets:");
       TX(g(v.contributionNotes, "NIL"));
     } else {
