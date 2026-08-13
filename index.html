@@ -394,13 +394,13 @@
 </div>
 </sc-if>
 </div>
-<div style="flex:0 0 148px;min-width:148px;box-sizing:border-box;padding:14px 12px 8px;display:flex;flex-direction:column;justify-content:flex-start;gap:4px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:0 0 148px;min-width:148px;box-sizing:border-box;padding:14px 12px 8px;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;gap:4px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <div style="{{ g.amountShell }}">
 <span style="font-size:15px;font-weight:600;color:var(--jds-gray-700)">S$</span>
 <input value="{{ g.amount }}" sc-camel-on-change="{{ g.onAmount }}" sc-camel-on-focus="{{ g.onAmountFocus }}" sc-camel-on-blur="{{ g.onAmountBlur }}" placeholder="0.00" sc-camel-input-mode="decimal" style="{{ g.inputStyle }}">
 </div>
 <sc-if value="{{ g.monthlyNote }}" hint-placeholder-val="{{ false }}">
-<span style="font-size:12px;font-weight:600;line-height:1.35;white-space:nowrap;color:var(--jds-primary-600)">{{ g.monthlyNote }}</span>
+<span style="width:100%;text-align:center;font-size:12px;font-weight:600;line-height:1.35;white-space:nowrap;color:var(--jds-primary-600)">{{ g.monthlyNote }}</span>
 </sc-if>
 </div>
 <div style="flex:0 0 168px;min-width:168px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:flex-start;padding-top:14px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
@@ -811,7 +811,7 @@
 </sc-if>
 
 <sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}">
-<span id="{{ f.errorId }}" role="alert" style="display:flex;align-items:flex-start;gap:6px;height:0;overflow:visible;font-size:13px;line-height:1.5;color:var(--jds-danger-color-default)"><i class="ph-fill ph-warning-circle" style="font-size:16px;flex-shrink:0" aria-hidden="true"></i>{{ f.error }}</span>
+<span id="{{ f.errorId }}" role="alert" style="display:flex;align-items:flex-start;gap:6px;font-size:13px;line-height:1.5;color:var(--jds-danger-color-default);text-wrap:pretty"><i class="ph-fill ph-warning-circle" style="font-size:16px;flex-shrink:0" aria-hidden="true"></i>{{ f.error }}</span>
 </sc-if>
 </div>
 </sc-for>
@@ -1411,8 +1411,6 @@ const PERSONAL_ITEMS = ["Food", "Transport / fuel expenses", "Utilities", "Telep
   "Financial provision for another person"];
 const FREQ_OPTIONS = [
   { value: "Monthly", label: "Monthly" },
-  { value: "Quarterly", label: "Quarterly" },
-  { value: "Half-yearly", label: "Half-yearly" },
   { value: "Annually", label: "Annually" }
 ];
 const FREQ_PER_MONTH = { Monthly: 1, Quarterly: 1 / 3, "Half-yearly": 1 / 6, Annually: 1 / 12 };
@@ -1592,6 +1590,36 @@ const CARE_SPLIT = (v) => CARE_ONE(v) || v.careScope === "Each child separately"
 const CARE_WHO = (v) => {
   const k = MINOR_KIDS(v)[0];
   return CARE_ONE(v) && k && !blank(k.name) ? k.name : "";
+};
+
+const isFutureDate = (val) => {
+  const s = String(val == null ? "" : val).trim();
+  if (!s) return false;
+  const d = new Date(s);
+  if (isNaN(d.getTime())) return false;
+  const end = new Date();
+  end.setHours(23, 59, 59, 999);
+  return d.getTime() > end.getTime();
+};
+
+const NOT_FUTURE = (val) => {
+  const s = String(val == null ? "" : val).trim();
+  if (!s) return null;
+  if (isNaN(new Date(s).getTime())) return "Enter a valid date.";
+  return isFutureDate(s) ? "This date cannot be in the future." : null;
+};
+
+const dobError = (val, who) => {
+  const s = String(val == null ? "" : val).trim();
+  if (!s) return null;
+  const d = new Date(s);
+  if (isNaN(d.getTime())) return "Enter a valid date.";
+  const now = new Date();
+  let age = now.getFullYear() - d.getFullYear();
+  const m = now.getMonth() - d.getMonth();
+  if (m < 0 || (m === 0 && now.getDate() < d.getDate())) age--;
+  if (isFutureDate(s) || age < 18 || age > 120) return "Check " + who + " date of birth.";
+  return null;
 };
 
 const ageFrom = (dob) => {
@@ -1830,7 +1858,7 @@ const SCHEMA = [
         options: [{ value: "An Interim Judgment", label: "An Interim Judgment" }, { value: "A Judgment of Judicial Separation", label: "A Judgment of Judicial Separation" }] },
       { id: "permission", label: "Who obtained permission from this Court to file this application?", type: "radio", required: true, when: (v) => v.forum === F_OVERSEAS,
         options: [{ value: "I obtained permission", label: "I obtained permission" }, { value: "The other party obtained permission", label: "The other party obtained permission" }] },
-      { id: "permissionDate", label: "Date permission was granted", type: "date", required: true, when: (v) => v.forum === F_OVERSEAS && v.permission === "I obtained permission" },
+      { id: "permissionDate", label: "Date permission was granted", type: "date", required: true, immediate: true, validate: NOT_FUTURE, when: (v) => v.forum === F_OVERSEAS && v.permission === "I obtained permission" },
       { id: "confirmTrue", label: "Please confirm that your answers are true and accurate.", type: "radio", required: true,
         options: [{ value: "confirmed", label: "I confirm that the information in this affidavit is true to the best of my knowledge." }] }
     ]
@@ -1854,7 +1882,7 @@ const SCHEMA = [
         placeholder: "e.g. Stroke affecting mobility" },
       { id: "incapacityDuration", label: "Is the incapacity permanent or temporary?", type: "select", required: true, half: true, when: (v) => INCAP(v),
         options: [{ value: "", label: "Select an option" }, { value: "Permanent", label: "Permanent" }, { value: "Temporary", label: "Temporary" }] },
-      { id: "incapacityReportDate", label: "Date of most recent medical report", type: "date", required: true, half: true, when: (v) => INCAP(v) },
+      { id: "incapacityReportDate", label: "Date of most recent medical report", type: "date", required: true, immediate: true, validate: NOT_FUTURE, half: true, when: (v) => INCAP(v) },
       { id: "incapacityDoctor", label: "Name of doctor", type: "text", required: true, half: true, when: (v) => INCAP(v), placeholder: "e.g. Dr Tan Wei Ming" },
       { id: "doctorLicensed", label: "Is the doctor licensed to practise in Singapore?", type: "radio", required: true, when: (v) => INCAP(v), options: YN },
       { id: "doctorCountry", label: "Country in which the doctor is licensed to practise", type: "text", required: true, when: (v) => INCAP(v) && v.doctorLicensed === "No", placeholder: "e.g. Malaysia" },
@@ -1885,19 +1913,20 @@ const SCHEMA = [
         placeholder: "Calculated from your date of birth" },
       { id: "marriageDate", label: "Marriage date", type: "date", half: true, myinfo: true, readOnly: true },
       { id: "education", label: "My highest educational level", type: "text", half: true, required: true, myinfo: true, readOnly: true },
-      { id: "spouseDob", label: "My spouse's date of birth", type: "date", half: true, required: true },
+      { id: "spouseDob", label: "My spouse's date of birth", type: "date", half: true, required: true, immediate: true,
+        validate: (val) => dobError(val, "your spouse's") },
       { id: "spouseAge", label: "My spouse's age", type: "text", half: true, readOnly: true, noStar: true,
         derive: (v) => { const a = ageFrom(v.spouseDob); return blank(a) ? "" : String(a); },
         placeholder: "Calculated from their date of birth" },
-      { id: "ijDate", label: "The Interim Judgment was granted on", type: "date", half: true, required: true, when: (v) => v.granted === "An Interim Judgment" },
-      { id: "jsDate", label: "The Judgment of Judicial Separation was granted on", type: "date", half: true, required: true, when: (v) => v.granted === "A Judgment of Judicial Separation" },
-      { id: "syariahDate", label: "The divorce / nullity / judicial separation was granted on", type: "date", half: true, required: true, when: (v) => v.forum === F_SYARIAH || v.forum === F_OVERSEAS },
-      { id: "breakdownDate", label: "In my view, the marriage broke down on", type: "date", half: true, required: true },
+      { id: "ijDate", label: "The Interim Judgment was granted on", type: "date", half: true, required: true, immediate: true, validate: NOT_FUTURE, when: (v) => v.granted === "An Interim Judgment" },
+      { id: "jsDate", label: "The Judgment of Judicial Separation was granted on", type: "date", half: true, required: true, immediate: true, validate: NOT_FUTURE, when: (v) => v.granted === "A Judgment of Judicial Separation" },
+      { id: "syariahDate", label: "The divorce / nullity / judicial separation was granted on", type: "date", half: true, required: true, immediate: true, validate: NOT_FUTURE, when: (v) => v.forum === F_SYARIAH || v.forum === F_OVERSEAS },
+      { id: "breakdownDate", label: "In my view, the marriage broke down on", type: "date", half: true, required: true, immediate: true, validate: NOT_FUTURE },
       { id: "breakdownReasons", label: "Reason(s) for date of when marriage broke down", type: "textarea", required: true, max: 1000, placeholder: "State your reasons here" },
       { id: "reasonDocs", label: "Refer to other court document(s) containing my reasons", type: "repeat", optional: true, table: true, addLabel: "Add another row",
         row: [
           { id: "docName", label: "Document name", type: "text", grow: "5 1 260px", minWidth: 180, noStar: true, placeholder: "e.g. Statement of Particulars" },
-          { id: "dateFiled", label: "Date filed", type: "date", grow: "0 1 160px", minWidth: 150, noStar: true },
+          { id: "dateFiled", label: "Date filed", type: "date", grow: "0 1 160px", minWidth: 150, noStar: true, noFuture: true },
           { id: "paras", label: "Paragraph number(s)", type: "text", grow: "0 1 140px", minWidth: 120, noStar: true, placeholder: "e.g. 5, 7-9" }
         ] },
       { id: "childCount", label: "Total number of living child(ren)", type: "number", required: true, wide: true, placeholder: "0" },
@@ -1920,7 +1949,7 @@ const SCHEMA = [
             options: [{ value: "unknown", label: "I do not know this child's NRIC / FIN and date of birth" }] },
           { id: "nric", label: "NRIC / FIN / Passport number", type: "text", grow: "1 1 calc(50% - 8px)", upper: true, placeholder: "e.g. T1234567D",
             when: (r) => (r.unknown || []).indexOf("unknown") === -1 },
-          { id: "dob", label: "Date of birth", type: "date", grow: "1 1 calc(50% - 8px)",
+          { id: "dob", label: "Date of birth", type: "date", grow: "1 1 calc(50% - 8px)", noFuture: true,
             when: (r) => (r.unknown || []).indexOf("unknown") === -1 },
           { id: "age", label: "Age", type: "age", grow: "1 1 calc(50% - 8px)",
             when: (r) => (r.unknown || []).indexOf("unknown") === -1 },
@@ -2054,20 +2083,20 @@ const SCHEMA = [
         rowTitle: "Order", addLabel: "Add another order",
         row: [
           { id: "caseNo", label: "Case number issued by this Court", type: "text", grow: "1 1 240px", upper: true, placeholder: "e.g. FC/OSM 24/2026" },
-          { id: "orderDate", label: "Date of order", type: "date", grow: "1 1 200px" },
+          { id: "orderDate", label: "Date of order", type: "date", grow: "1 1 200px", noFuture: true },
           { id: "details", label: "Brief details of the order", type: "text", grow: "1 1 100%", placeholder: "e.g. S$800 per month for 1 child, payable on the 1st of each month" }
         ] },
       { id: "orderSyariah", label: "Details of the existing maintenance order(s)", type: "repeat", when: (v) => v.maintenanceOrders === "Yes" && v.forum === F_SYARIAH,
         rowTitle: "Order", addLabel: "Add another order",
         row: [
           { id: "caseNo", label: "Syariah Court case number", type: "text", grow: "1 1 240px", upper: true, placeholder: "e.g. 12345/2026" },
-          { id: "orderDate", label: "Date of order", type: "date", grow: "1 1 200px" },
+          { id: "orderDate", label: "Date of order", type: "date", grow: "1 1 200px", noFuture: true },
           { id: "details", label: "Brief details of the order", type: "text", grow: "1 1 100%", placeholder: "e.g. S$800 per month for 1 child, payable on the 1st of each month" }
         ] },
       { id: "orderOverseas", label: "Details of the existing maintenance order(s)", type: "repeat", when: (v) => v.maintenanceOrders === "Yes" && v.forum === F_OVERSEAS,
         rowTitle: "Order", addLabel: "Add another order",
         row: [
-          { id: "orderDate", label: "Date of order", type: "date", grow: "1 1 200px" },
+          { id: "orderDate", label: "Date of order", type: "date", grow: "1 1 200px", noFuture: true },
           { id: "country", label: "Country in which the order was made", type: "text", grow: "1 1 240px", placeholder: "e.g. Malaysia" },
           { id: "details", label: "Brief details of the order", type: "text", grow: "1 1 100%", placeholder: "e.g. S$800 per month for 1 child, payable on the 1st of each month" }
         ] },
@@ -2107,7 +2136,7 @@ const SCHEMA = [
           { id: "share", label: "My share (in %)", type: "text", grow: "1 1 200px", when: (r) => r.holding === "Tenancy in common", placeholder: "e.g. 50%" },
           { id: "owners", label: "Name(s) of owner(s)", type: "text", grow: "1 1 100%", placeholder: "Full names as per NRIC / Passport, separated by commas" },
           { id: "purchasePrice", label: "Purchase price", type: "money", grow: "1 1 calc(50% - 8px)", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
-          { id: "purchaseDate", label: "Date of purchase", type: "date", grow: "1 1 calc(50% - 8px)", myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
+          { id: "purchaseDate", label: "Date of purchase", type: "date", grow: "1 1 calc(50% - 8px)", noFuture: true, myinfo: FROM_MYINFO, readOnly: FROM_MYINFO },
           { id: "marketValue", label: "Estimated market value", type: "money", grow: "1 1 calc(50% - 8px)", when: PROP_VALUE_SHOWN },
           { id: "valueBasis", label: "Basis of the value", type: "select", grow: "1 1 calc(50% - 8px)", when: PROP_VALUE_SHOWN,
             options: [{ value: "", label: "Select an option" }, { value: "HDB", label: "HDB" }, { value: "URA latest transaction records", label: "URA latest transaction records" }, { value: "Desktop valuation", label: "Desktop valuation" }, { value: "Onsite valuation", label: "Onsite valuation" }, { value: "Others", label: "Others" }] },
@@ -2139,7 +2168,7 @@ const SCHEMA = [
             options: [{ value: "", label: "Select an option" }, { value: "Current", label: "Current" }, { value: "Deposit", label: "Deposit" }, { value: "Others", label: "Others" }] },
           { id: "typeOther", label: "State the type of account", type: "text", grow: "1 1 calc(50% - 8px)", when: (r) => r.type === "Others", placeholder: "e.g. Multi-currency account" },
           { id: "balance", label: "Balance", type: "money", grow: "1 1 calc(50% - 8px)" },
-          { id: "asAt", label: "As at", type: "date", grow: "1 1 calc(50% - 8px)" },
+          { id: "asAt", label: "As at", type: "date", grow: "1 1 calc(50% - 8px)", noFuture: true },
           { id: "holders", label: "Name(s) of other account holders", type: "text", grow: "1 1 100%", placeholder: "Full names as per NRIC / Passport, or 'None'" }
         ] },
       { id: "bankAccountsTotal", type: "note", noteText: (v) => "Total for this section: S$" + SGD((Array.isArray(v.bankAccounts) ? v.bankAccounts : []).reduce((t, r) => t + num(r && r.balance), 0)) },
@@ -2166,7 +2195,7 @@ const SCHEMA = [
         row: [
           { id: "fund", label: "Country and name of fund", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. Malaysia, Employees Provident Fund" },
           { id: "value", label: "Value of the fund", type: "money", grow: "1 1 calc(50% - 8px)" },
-          { id: "asAt", label: "As at", type: "date", grow: "1 1 calc(50% - 8px)" },
+          { id: "asAt", label: "As at", type: "date", grow: "1 1 calc(50% - 8px)", noFuture: true },
           { id: "beneficiaries", label: "Name(s) of the beneficiary(ies)", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "Full names as per NRIC / Passport" },
           { id: "payout", label: "Amount of payout", type: "money", grow: "1 1 calc(50% - 8px)" },
           { id: "frequency", label: "Frequency of payout", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. Monthly" },
@@ -2229,7 +2258,7 @@ const SCHEMA = [
             options: [{ value: "", label: "Select an option" }, { value: "Family", label: "Family" }, { value: "Personal", label: "Personal" }, { value: "Work", label: "Work" }, { value: "Others", label: "Others" }] },
           { id: "hirePurchase", label: "Outstanding hire purchase amount", type: "money", grow: "1 1 calc(50% - 8px)", half: true },
           { id: "value", label: "Market value of vehicle", type: "money", grow: "1 1 calc(50% - 8px)", half: true },
-          { id: "asAt", label: "As at", type: "date", grow: "0 1 calc(50% - 8px)", half: true }
+          { id: "asAt", label: "As at", type: "date", grow: "0 1 calc(50% - 8px)", half: true, noFuture: true }
         ] },
       { id: "vehicleListTotal", type: "note", noteText: (v) => "Total for this section: S$" + SGD((Array.isArray(v.vehicleList) ? v.vehicleList : []).reduce((t, r) => t + num(r && r.value), 0)) },
     ]
@@ -2553,8 +2582,8 @@ const SCHEMA = [
         desc: "The affidavit is to be sworn / affirmed in accordance with the Form of Attestation (Form 106) of the Family Justice (General) Rules 2024.",
         descDefs: [["sworn", "You swear on a religious text (e.g. the Bible or Quran) that your affidavit is true."], ["affirmed", "You solemnly and sincerely declare that your affidavit is true, without a religious oath."]],
         options: [{ value: "Sworn", label: "Sworn" }, { value: "Affirmed", label: "Affirmed" }] },
-      { id: "swornDate", label: "Date affidavit was sworn", type: "date", required: true, when: (v) => v.swornOrAffirmed === "Sworn" },
-      { id: "affirmedDate", label: "Date affidavit was affirmed", type: "date", required: true, when: (v) => v.swornOrAffirmed === "Affirmed" }
+      { id: "swornDate", label: "Date affidavit was sworn", type: "date", required: true, immediate: true, validate: NOT_FUTURE, when: (v) => v.swornOrAffirmed === "Sworn" },
+      { id: "affirmedDate", label: "Date affidavit was affirmed", type: "date", required: true, immediate: true, validate: NOT_FUTURE, when: (v) => v.swornOrAffirmed === "Affirmed" }
     ]
   },
   { id: "review", label: "Review Affidavit", title: "Review Affidavit", review: true, fields: [] },
@@ -2977,6 +3006,13 @@ class Component extends DCLogic {
       const filled = list.some((r) => r && typeof r === "object" && Object.keys(r).some((k) => !["fixed", "child", "cid"].includes(k) && !(r.fixed && k === "item") && !blank(r[k])));
       if (!filled) return "Add at least one entry.";
     }
+    if (f.type === "repeat" && Array.isArray(f.row)) {
+      const list = Array.isArray(v) ? v : [];
+      for (const c of f.row) {
+        if (!c.noFuture) continue;
+        if (list.some((r) => r && isFutureDate(r[c.id]))) return String(c.label || "This date") + " cannot be in the future.";
+      }
+    }
     if (["repeat", "file", "note", "grid"].includes(f.type)) return null;
     if (this.isRequired(f) && (Array.isArray(v) ? !v.length : blank(v))) return "This field is required.";
     if (f.type === "radio" || f.type === "checkgroup") {
@@ -3343,7 +3379,8 @@ class Component extends DCLogic {
     const err = this.state.errors[f.id] || null;
     const focused = this.state.focus === f.id;
     const ro = typeof f.readOnly === "function" ? !!f.readOnly(this.state.values) : !!f.readOnly;
-    const shellState = err ? "error" : focused ? "focus" : ro ? "readonly" : "default";
+    const mi = typeof f.myinfo === "function" ? !!f.myinfo(this.state.values) : !!f.myinfo;
+    const shellState = err ? "error" : ro ? "readonly" : focused ? "focus" : "default";
     const multi = f.type === "checkgroup";
     const o = {
       id: f.id, num: false, label: lbl, hint: false, error: err,
@@ -3361,7 +3398,7 @@ class Component extends DCLogic {
       onDefLeave: () => this.setState({ hoverTip: null }),
       onDefEnter2: () => this.setState({ hoverTip: f.id + ":def2" }),
       onDefLeave2: () => this.setState({ hoverTip: null }),
-      required: this.isRequired(f) && !!lbl, tip: (typeof f.hint === "function" ? f.hint(this.state.values) : f.hint) || false,
+      required: this.isRequired(f) && !!lbl && !ro, tip: (typeof f.hint === "function" ? f.hint(this.state.values) : f.hint) || false,
       desc: descText || false,
       descPre: dd1 ? descText.slice(0, dd1.at) : descText,
       descDefWord: dd1 ? dd1.term : false,
@@ -3435,7 +3472,10 @@ class Component extends DCLogic {
       onTipLeave: () => this.setState({ hoverTip: null }),
       optional: !!f.optional && !this.isRequired(f), myinfo: typeof f.myinfo === "function" ? !!f.myinfo(this.state.values) : !!f.myinfo, placeholder: f.placeholder || (f.type === "money" ? "0.00" : ""),
       readOnly: ro, prefix: f.type === "money" ? "S$" : false,
-      value: typeof f.derive === "function" ? f.derive(this.state.values) : (v == null ? "" : v), inputType: f.type === "date" ? "date" : "text",
+      value: typeof f.derive === "function" ? f.derive(this.state.values)
+        : (ro && f.type === "date" && !blank(v)) ? D(v)
+        : (v == null ? "" : v),
+      inputType: (f.type === "date" && !ro) ? "date" : "text",
       inputMode: f.type === "money" || f.type === "number" ? "decimal" : "text",
       isInput: ["text", "date", "money", "number"].includes(f.type), isTextarea: f.type === "textarea",
       isSelect: f.type === "select", isChoice: f.type === "radio" || f.type === "checkgroup",
@@ -3454,15 +3494,17 @@ class Component extends DCLogic {
       noteLinkLabel: f.noteLink ? f.noteLink[0] : false, noteLinkHref: f.noteLink ? f.noteLink[1] : "#", notePost: f.notePost || "",
       shellStyle: this.shell(shellState) + "flex:1 1 auto;height:48px;box-sizing:border-box;align-self:stretch;" + (f.search ? "min-width:0;" : "width:100%;"),
       isReadOnly: ro,
-      inputStyle: this.baseInput(f.readOnly) + (f.myinfo ? "text-transform:uppercase;" : ""),
+      inputStyle: this.baseInput(ro) + (ro ? "cursor:default;" : "") + (mi ? "text-transform:uppercase;" : ""),
       selectStyle: "flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:16px;color:"
-        + (blank(v) ? "var(--jds-gray-600)" : "var(--jds-form-color-default)") + ";appearance:none;cursor:pointer;padding:0;",
+        + (ro ? "var(--jds-gray-700)" : blank(v) ? "var(--jds-gray-600)" : "var(--jds-form-color-default)")
+        + ";appearance:none;padding:0;" + (ro ? "cursor:default;pointer-events:none;" : "cursor:pointer;"),
       textareaStyle: "width:100%;box-sizing:border-box;min-height:104px;padding:12px 16px;border-radius:8px;resize:vertical;font-size:16px;line-height:1.6;"
-        + "background:" + (f.readOnly ? "var(--jds-gray-100)" : "var(--jds-form-surface-default)") + ";outline:none;"
-        + "color:" + (f.readOnly ? "var(--jds-gray-700)" : "var(--jds-form-color-default)") + ";"
-        + "border:" + (err ? "2px solid var(--jds-form-danger-border-color-default)" : focused ? "2px solid var(--jds-primary-600)" : "1px solid var(--jds-border-color-default)") + ";"
-        + (f.myinfo ? "text-transform:uppercase;" : ""),
+        + "background:" + (ro ? "var(--jds-gray-100)" : "var(--jds-form-surface-default)") + ";outline:none;"
+        + "color:" + (ro ? "var(--jds-gray-700)" : "var(--jds-form-color-default)") + ";"
+        + "border:" + (err ? "2px solid var(--jds-form-danger-border-color-default)" : (!ro && focused) ? "2px solid var(--jds-primary-600)" : "1px solid var(--jds-border-color-default)") + ";"
+        + (ro ? "cursor:default;resize:none;" : "") + (mi ? "text-transform:uppercase;" : ""),
       onChange: (e) => {
+        if (ro) return;
         const val = f.upper ? e.target.value.toUpperCase() : e.target.value;
         this.set(f.id, val);
         if (f.onSet) f.onSet(val, this);
