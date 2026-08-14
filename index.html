@@ -181,7 +181,7 @@
 </sc-if>
 
 <sc-if value="{{ f.isInput }}" hint-placeholder-val="{{ true }}">
-<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;width:100%">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;width:100%;margin-top:auto">
 <div style="{{ f.shellStyle }}">
 <sc-if value="{{ f.showSearchIcon }}" hint-placeholder-val="{{ false }}">
 <i class="ph ph-magnifying-glass" style="font-size:18px;color:var(--jds-gray-600)"></i>
@@ -368,14 +368,14 @@
 <span style="align-self:flex-start;font-size:15px;font-weight:700;line-height:1.5;color:var(--jds-primary-700);padding-bottom:4px;border-bottom:2px solid var(--jds-primary-600)">{{ t.title }}</span>
 </sc-if>
 <div style="width:100%;overflow-x:auto">
-<div role="table" aria-label="{{ t.title }}" style="width:100%;min-width:600px;box-sizing:border-box;border:1px solid var(--jds-gray-200);border-radius:12px;overflow:hidden;background:var(--jds-gray-0)">
+<div role="table" aria-label="{{ t.title }}" style="width:100%;min-width:450px;box-sizing:border-box;border:1px solid var(--jds-gray-200);border-radius:12px;overflow:hidden;background:var(--jds-gray-0)">
 <div role="row" style="display:flex;align-items:stretch;background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200)">
-<span role="columnheader" style="flex:0 0 54px;box-sizing:border-box;padding:12px 8px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000)">S/N</span>
-<span role="columnheader" style="flex:1 1 160px;min-width:120px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Items</span>
-<span role="columnheader" style="flex:0 0 148px;min-width:148px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Amount</span>
-<span role="columnheader" style="flex:0 0 168px;min-width:168px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">How often</span>
-<span role="columnheader" style="flex:1 1 130px;min-width:110px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Remarks</span>
-<span role="columnheader" style="flex:0 0 46px;border-left:1px solid var(--jds-gray-200)"></span>
+<span role="columnheader" style="flex:0 0 40px;box-sizing:border-box;padding:12px 6px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000)">S/N</span>
+<span role="columnheader" style="flex:1 1 130px;min-width:90px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Items</span>
+<span role="columnheader" style="flex:1 1 100px;min-width:88px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Amount</span>
+<span role="columnheader" style="flex:1 1 110px;min-width:96px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">How often</span>
+<span role="columnheader" style="flex:1 1 110px;min-width:90px;box-sizing:border-box;padding:12px 12px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--jds-gray-1000);border-left:1px solid var(--jds-gray-200)">Remarks</span>
+<span role="columnheader" style="flex:0 0 40px;border-left:1px solid var(--jds-gray-200)"></span>
 </div>
 <sc-for list="{{ t.rows }}" as="g" hint-placeholder-count="5">
 <div role="row" style="{{ g.rowStyle }}">
@@ -383,8 +383,8 @@
 <span style="font-size:14px;font-weight:600;letter-spacing:0.02em;color:var(--jds-gray-1000)">{{ g.label }}</span>
 </sc-if>
 <sc-if value="{{ g.isData }}" hint-placeholder-val="{{ true }}">
-<span style="flex:0 0 54px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--jds-gray-700)">{{ g.sn }}</span>
-<div style="flex:1 1 160px;min-width:120px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:flex-start;padding-top:14px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<span style="flex:0 0 40px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--jds-gray-700)">{{ g.sn }}</span>
+<div style="flex:1 1 130px;min-width:90px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:flex-start;padding-top:14px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <sc-if value="{{ g.fixed }}" hint-placeholder-val="{{ true }}">
 <span style="font-size:15px;line-height:1.5;color:var(--jds-gray-1000);text-wrap:pretty">{{ g.item }}</span>
 </sc-if>
@@ -394,7 +394,7 @@
 </div>
 </sc-if>
 </div>
-<div style="flex:0 0 148px;min-width:148px;box-sizing:border-box;padding:14px 12px 8px;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;gap:4px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:1 1 100px;min-width:88px;box-sizing:border-box;padding:14px 12px 8px;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;gap:4px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <div style="{{ g.amountShell }}">
 <span style="font-size:15px;font-weight:600;color:var(--jds-gray-700)">S$</span>
 <input value="{{ g.amount }}" sc-camel-on-change="{{ g.onAmount }}" sc-camel-on-focus="{{ g.onAmountFocus }}" sc-camel-on-blur="{{ g.onAmountBlur }}" placeholder="0.00" sc-camel-input-mode="decimal" style="{{ g.inputStyle }}">
@@ -403,7 +403,7 @@
 <span style="width:100%;text-align:center;font-size:12px;font-weight:600;line-height:1.35;white-space:nowrap;color:var(--jds-primary-600)">{{ g.monthlyNote }}</span>
 </sc-if>
 </div>
-<div style="flex:0 0 168px;min-width:168px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:flex-start;padding-top:14px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:1 1 110px;min-width:96px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:flex-start;padding-top:14px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <div style="{{ g.freqShell }}">
 <sc-raw-select value="{{ g.freq }}" sc-camel-on-change="{{ g.onFreq }}" sc-camel-on-focus="{{ g.onFreqFocus }}" sc-camel-on-blur="{{ g.onBlur }}" aria-label="How often this expense is paid" style="{{ g.freqSelectStyle }}">
 <sc-for list="{{ g.freqOptions }}" as="o" hint-placeholder-count="5">
@@ -413,12 +413,12 @@
 <i class="ph ph-caret-down" style="font-size:16px;color:var(--jds-gray-700);pointer-events:none" aria-hidden="true"></i>
 </div>
 </div>
-<div style="flex:1 1 130px;min-width:110px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:flex-start;padding-top:14px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:1 1 110px;min-width:90px;box-sizing:border-box;padding:8px 12px;display:flex;align-items:flex-start;padding-top:14px;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <div style="{{ g.remarksShell }}">
 <input value="{{ g.remarks }}" sc-camel-on-change="{{ g.onRemarks }}" sc-camel-on-focus="{{ g.onRemarksFocus }}" sc-camel-on-blur="{{ g.onBlur }}" placeholder="Remarks" style="{{ g.inputStyle }}">
 </div>
 </div>
-<div style="flex:0 0 46px;display:flex;align-items:center;justify-content:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
+<div style="flex:0 0 40px;display:flex;align-items:center;justify-content:center;align-self:stretch;border-left:1px solid var(--jds-gray-200)">
 <sc-if value="{{ g.canRemove }}" hint-placeholder-val="{{ false }}">
 <button type="button" sc-camel-on-click="{{ g.onRemove }}" title="Remove this row" aria-label="Remove this row" style="border:none;background:none;padding:4px;border-radius:6px;color:var(--jds-danger-color-default);cursor:pointer" style-hover="background:var(--jds-danger-surface-translucent)"><i class="ph ph-trash" style="font-size:17px" aria-hidden="true"></i></button>
 </sc-if>
@@ -587,6 +587,9 @@
 <span style="font-size:16px;font-weight:600;color:var(--jds-gray-700)">{{ c.unitSuffix }}</span>
 </sc-if>
 </div>
+</sc-if>
+<sc-if value="{{ c.cellError }}" hint-placeholder-val="{{ false }}">
+<span style="display:flex;align-items:flex-start;gap:6px;font-size:13px;line-height:1.5;color:var(--jds-danger-color-default)"><i class="ph-fill ph-warning-circle" style="font-size:16px;flex-shrink:0" aria-hidden="true"></i>{{ c.cellError }}</span>
 </sc-if>
 </div>
 </sc-for>
@@ -807,6 +810,31 @@
 <div style="display:flex;gap:12px;padding:14px 16px;border-radius:8px;background:var(--jds-gray-50);border:1px solid var(--jds-gray-200)">
 <i class="ph-fill ph-info" style="font-size:18px;color:var(--jds-gray-700);flex-shrink:0"></i>
 <span style="font-size:14px;line-height:1.6;color:var(--jds-gray-900);text-wrap:pretty">{{ f.noteText }}<sc-if value="{{ f.noteLinkLabel }}" hint-placeholder-val="{{ false }}"><a href="{{ f.noteLinkHref }}" target="_blank" style="color:var(--jds-primary-600);text-decoration:underline">{{ f.noteLinkLabel }}</a></sc-if>{{ f.notePost }}</span>
+</div>
+</sc-if>
+
+<sc-if value="{{ f.isDebtSummary }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:0;width:100%;border:1px solid var(--jds-gray-200);border-radius:12px;overflow:hidden;background:var(--jds-gray-50)">
+<div style="display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--jds-gray-100);border-bottom:1px solid var(--jds-gray-200)">
+<i class="ph ph-lock-simple" style="font-size:16px;color:var(--jds-gray-600)"></i>
+<span style="font-size:14px;font-weight:600;color:var(--jds-gray-800)">Declared housing loans and hire purchase liabilities</span>
+</div>
+<div style="display:flex;align-items:stretch;padding:0;background:var(--jds-gray-50);border-bottom:1px solid var(--jds-gray-200);font-size:13px;font-weight:600;color:var(--jds-gray-700)">
+<span style="flex:1 1 35%;padding:10px 14px">Source</span>
+<span style="flex:1 1 35%;padding:10px 14px;border-left:1px solid var(--jds-gray-200)">Type</span>
+<span style="flex:0 0 130px;padding:10px 14px;border-left:1px solid var(--jds-gray-200);text-align:right">Amount</span>
+</div>
+<sc-for list="{{ f.debtSummaryRows }}" as="dr" hint-placeholder-count="0">
+<div style="display:flex;align-items:stretch;border-bottom:1px solid var(--jds-gray-200);font-size:14px;color:var(--jds-gray-900)">
+<span style="flex:1 1 35%;padding:12px 14px">{{ dr.source }}</span>
+<span style="flex:1 1 35%;padding:12px 14px;border-left:1px solid var(--jds-gray-200)">{{ dr.type }}</span>
+<span style="flex:0 0 130px;padding:12px 14px;border-left:1px solid var(--jds-gray-200);text-align:right;font-weight:600">{{ dr.amount }}</span>
+</div>
+</sc-for>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--jds-gray-100);font-size:14px;font-weight:600;color:var(--jds-gray-1000)">
+<span>Total</span>
+<span>{{ f.debtSummaryTotal }}</span>
+</div>
 </div>
 </sc-if>
 
@@ -1622,6 +1650,24 @@ const dobError = (val, who) => {
   return null;
 };
 
+const idDuplicate = (val, vals, selfKey) => {
+  const s = String(val || "").trim().toUpperCase();
+  if (!s) return null;
+  const all = [];
+  if (selfKey !== "nric") all.push({ id: vals.nric, who: "your own" });
+  if (selfKey !== "spouseNric") all.push({ id: vals.spouseNric, who: "your spouse's" });
+  const kids = Array.isArray(vals.childDetails) ? vals.childDetails : [];
+  kids.forEach((k, i) => {
+    const kidId = k && k.nric;
+    if (selfKey === "child:" + i) return;
+    if (kidId) all.push({ id: kidId, who: "Child " + (i + 1) + "'s" });
+  });
+  for (const entry of all) {
+    if (String(entry.id || "").trim().toUpperCase() === s) return "This is the same as " + entry.who + " identification number.";
+  }
+  return null;
+};
+
 const ageFrom = (dob) => {
   if (blank(dob)) return "";
   const d = new Date(dob);
@@ -1812,7 +1858,7 @@ const SCHEMA = [
     fields: [
       { id: "name", label: "Name", type: "text", half: true, myinfo: true, readOnly: true },
       { id: "nric", label: "NRIC / FIN / Passport Number", type: "text", half: true, myinfo: true, readOnly: true, upper: true },
-      { id: "address", label: "Registered Address", type: "textarea", myinfo: true, readOnly: true },
+      { id: "address", label: "Registered Address", type: "text", myinfo: true, readOnly: true },
       { id: "occupation", label: "Occupation", type: "text", wide: true, required: true, combo: true, comboList: OCCUPATIONS, placeholder: "Search for your occupation" },
       { id: "spouseName", label: "Name of spouse", type: "text", half: true, required: true, placeholder: "Full name as per NRIC / Passport" },
       { id: "spouseIdType", label: "Spouse's identification document type", type: "select", half: true, required: true,
@@ -1827,8 +1873,9 @@ const SCHEMA = [
       { id: "spouseIdTypeOther", label: "State the type of identification document", type: "text", half: true, required: true, when: (v) => v.spouseIdType === "Others", placeholder: "e.g. Long-term visit pass" },
       { id: "spousePassportCountry", label: "Country / region of issue", type: "text", half: true, required: true, combo: true, comboList: COUNTRIES, placeholder: "Start typing the country or region",
         when: (v) => v.spouseIdType === "Foreign Passport" },
-      { id: "spouseNric", label: (v) => v.spouseIdType === "Singapore NRIC" ? "Spouse's NRIC" : v.spouseIdType === "Singapore Birth Certificate" ? "Spouse's Birth Certificate number" : v.spouseIdType === "Singapore FIN" ? "Spouse's FIN" : v.spouseIdType === "Foreign Passport" ? "Spouse's Passport number" : "Spouse's NRIC / FIN / Passport number", type: "text", half: true, required: true, upper: true, placeholder: "e.g. S7654321B",
-        when: (v) => v.spouseIdType === "Singapore NRIC" || v.spouseIdType === "Singapore Birth Certificate" || v.spouseIdType === "Singapore FIN" || v.spouseIdType === "Foreign Passport" },
+      { id: "spouseNric", label: (v) => v.spouseIdType === "Singapore NRIC" ? "Spouse's NRIC" : v.spouseIdType === "Singapore Birth Certificate" ? "Spouse's Birth Certificate number" : v.spouseIdType === "Singapore FIN" ? "Spouse's FIN" : v.spouseIdType === "Foreign Passport" ? "Spouse's Passport number" : "Spouse's NRIC / FIN / Passport number", type: "text", half: true, required: true, upper: true, immediate: true, placeholder: "e.g. S7654321B",
+        when: (v) => v.spouseIdType === "Singapore NRIC" || v.spouseIdType === "Singapore Birth Certificate" || v.spouseIdType === "Singapore FIN" || v.spouseIdType === "Foreign Passport",
+        validate: (val, vals) => idDuplicate(val, vals, "spouseNric") },
       { id: "caseNumber", label: "Main case number", type: "text", wide: true, required: true, upper: true, immediate: true, placeholder: "e.g. FC/OAD 24/2026",
         hint: "Refer to the case number on your Originating Application. Do not enter a sub-case number.",
         validate: (v) => /^[A-Za-z0-9]+(\/[A-Za-z0-9]+)*\s?\d+\/\d{4}$/.test(String(v).trim()) ? null : "Enter the case number as it appears on your Originating Application, ending in a number and year." },
@@ -1916,7 +1963,7 @@ const SCHEMA = [
         validate: (val) => dobError(val, "your spouse's") },
       { id: "spouseAge", label: "My spouse's age", type: "text", half: true, readOnly: true, noStar: true,
         derive: (v) => { const a = ageFrom(v.spouseDob); return blank(a) ? "" : String(a); },
-        placeholder: "Calculated from their date of birth" },
+        placeholder: "Calculated from their date of birth", errorFrom: "spouseDob" },
       { id: "ijDate", label: "The Interim Judgment was granted on", type: "date", half: true, required: true, immediate: true, validate: NOT_FUTURE, when: (v) => v.granted === "An Interim Judgment" },
       { id: "jsDate", label: "The Judgment of Judicial Separation was granted on", type: "date", half: true, required: true, immediate: true, validate: NOT_FUTURE, when: (v) => v.granted === "A Judgment of Judicial Separation" },
       { id: "syariahDate", label: "The divorce / nullity / judicial separation was granted on", type: "date", half: true, required: true, immediate: true, validate: NOT_FUTURE, when: (v) => v.forum === F_SYARIAH || v.forum === F_OVERSEAS },
@@ -1943,20 +1990,10 @@ const SCHEMA = [
       { id: "childDetails", label: "Details of child(ren)", type: "repeat", required: (v) => CHILD_MAINT(v), optional: true, rowTitle: "Child", fixedCount: true, noAdd: true,
         row: [
           { id: "name", label: "Name", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "Full name as per NRIC / Passport" },
-          { id: "unknown", label: "Particulars", type: "checks", grow: "1 1 100%", optional: true,
-            desc: "Tick this only if you genuinely cannot obtain the child's particulars, for example a child from a previous marriage who is not in your care.",
-            options: [{ value: "unknown", label: "I do not know this child's NRIC / FIN and date of birth" }] },
           { id: "nric", label: "NRIC / FIN / Passport number", type: "text", grow: "1 1 calc(50% - 8px)", upper: true, placeholder: "e.g. T1234567D",
-            when: (r) => (r.unknown || []).indexOf("unknown") === -1 },
-          { id: "dob", label: "Date of birth", type: "date", grow: "1 1 calc(50% - 8px)", noFuture: true,
-            when: (r) => (r.unknown || []).indexOf("unknown") === -1 },
-          { id: "age", label: "Age", type: "age", grow: "1 1 calc(50% - 8px)",
-            when: (r) => (r.unknown || []).indexOf("unknown") === -1 },
-          { id: "ageApprox", label: "Approximate age", type: "text", grow: "1 1 calc(50% - 8px)", placeholder: "e.g. About 14 years old",
-            when: (r) => (r.unknown || []).indexOf("unknown") !== -1 },
-          { id: "unknownReason", label: "Explain why these particulars are not known to you", type: "textarea", grow: "1 1 100%", max: 500,
-            when: (r) => (r.unknown || []).indexOf("unknown") !== -1,
-            placeholder: "e.g. The child is from my spouse's previous marriage and lives overseas with the other parent." },
+            validate: (val, vals, ri) => idDuplicate(val, vals, "child:" + ri) },
+          { id: "dob", label: "Date of birth", type: "date", grow: "1 1 calc(50% - 8px)", noFuture: true },
+          { id: "age", label: "Age", type: "age", grow: "1 1 calc(50% - 8px)" },
           { id: "gender", label: "Gender", type: "radio", grow: "1 1 calc(50% - 8px)", options: [{ value: "Female", label: "Female" }, { value: "Male", label: "Male" }] },
           { id: "currentStatus", label: "Current status", type: "select", grow: "1 1 calc(50% - 8px)", when: (r, v) => v.forum === F_SYARIAH, options: CHILD_CURRENT_STATUS },
           { id: "health", label: "Any health condition or disability which will affect the child's living expenses or care arrangement?", type: "textarea", grow: "1 1 100%", optional: true, max: 1000,
@@ -2295,9 +2332,9 @@ const SCHEMA = [
   {
     id: "debts", label: "Debts", title: "Debts",
     fields: [
-      { id: "hasOtherDebt", label: "Do you have any other debt?", type: "radio", required: true, options: YN,
-        desc: "This excludes housing loans and hire purchase loans, which you have already declared under Property and Motor Vehicles.",
-        descDefs: [["housing loans", "The outstanding mortgage on your property, declared in the Assets section."], ["hire purchase loans", "The outstanding hire purchase amount on your vehicle, declared in the Assets section."]] },
+      { id: "debtsSummaryNote", type: "note", debtSummary: true, noteText: "" },
+      { id: "hasOtherDebt", label: "Apart from the above, do you have any other debt?", type: "radio", required: true, options: YN,
+        desc: "This excludes housing loans and hire purchase loans already declared above." },
       { id: "loans", label: "I have the following debt(s)", type: "repeat", required: true, when: (v) => v.hasOtherDebt === "Yes",
         rowTitle: "Item", addLabel: "Add another debt",
         row: [
@@ -3009,8 +3046,29 @@ class Component extends DCLogic {
     if (f.type === "repeat" && Array.isArray(f.row)) {
       const list = Array.isArray(v) ? v : [];
       for (const c of f.row) {
-        if (!c.noFuture) continue;
-        if (list.some((r) => r && isFutureDate(r[c.id]))) return String(c.label || "This date") + " cannot be in the future.";
+        if (c.noFuture && list.some((r) => r && isFutureDate(r[c.id]))) return String(c.label || "This date") + " cannot be in the future.";
+        if (c.validate) {
+          for (let ri = 0; ri < list.length; ri++) {
+            const r = list[ri];
+            if (!r || blank(r[c.id])) continue;
+            const e = c.validate(r[c.id], this.state.values, ri);
+            if (e) return e;
+          }
+        }
+      }
+      const curStep = SCHEMA[this.state.step];
+      if (curStep && curStep.sub && list.length) {
+        for (const r of list) {
+          if (!r) continue;
+          for (const c of f.row) {
+            if (c.optional || c.type === "age") continue;
+            const colRO = typeof c.readOnly === "function" ? c.readOnly(r) : !!c.readOnly;
+            if (colRO) continue;
+            if (c.when && !c.when(r, this.state.values)) continue;
+            const cv = r[c.id];
+            if (Array.isArray(cv) ? !cv.length : blank(cv)) return "Fill in all required fields before continuing.";
+          }
+        }
       }
     }
     if (["repeat", "file", "note", "grid"].includes(f.type)) return null;
@@ -3020,7 +3078,7 @@ class Component extends DCLogic {
       const missing = (Array.isArray(f.options) ? f.options : []).filter((op) => op.freeText && chosen.includes(op.value) && blank(this.state.values[op.freeText]));
       if (missing.length) return "Enter details for " + missing[0].label.toLowerCase() + ".";
     }
-    if (!blank(v) && f.validate) return f.validate(v);
+    if (!blank(v) && f.validate) return f.validate(v, this.state.values);
     return null;
   }
 
@@ -3216,6 +3274,9 @@ class Component extends DCLogic {
   }
 
   buildCells(fid, i, row, cols, seed, seedSn) {
+    const curStep = SCHEMA[this.state.step];
+    const isSub = !!(curStep && curStep.sub);
+    const attempted = !!(curStep && (this.state.attempted[curStep.id] || this.state.submitted));
     return cols.filter((c) => c.type !== "sn").map((c, ci) => {
       const shown = !c.when || c.when(row, this.state.values);
       const isSearchCol = c.type === "search" && (!c.searchWhen || c.searchWhen(row, this.state.values));
@@ -3227,6 +3288,9 @@ class Component extends DCLogic {
       const matches = c.type === "search" ? addressMatches(cv) : [];
       const arr = Array.isArray(cv) ? cv : [];
       const myinfoFlag = typeof c.myinfo === "function" ? c.myinfo(row) : !!c.myinfo;
+      const cellRequired = !c.optional && shown && !colRO && !["age"].includes(c.type);
+      const cellEmpty = cellRequired && (Array.isArray(cv) ? !cv.length : blank(cv));
+      const cellErr = (isSub || attempted) && cellEmpty;
       return {
         label: c.label, desc: (typeof c.desc === "function" ? c.desc(row) : c.desc) || false, myinfo: myinfoFlag,
         labelStyle: "font-size:" + (c.big ? "16px" : "14px") + ";font-weight:600;line-height:1.5;color:var(--jds-gray-1000)",
@@ -3341,12 +3405,13 @@ class Component extends DCLogic {
         })),
         wrapStyle: (shown ? "display:flex" : "display:none") + ";flex-direction:column;gap:6px;box-sizing:border-box;justify-content:flex-end;flex:" + ((!c.half && labelWeight(c) > 28) ? "1 1 100%" : ((typeof c.grow === "function" ? c.grow(row) : c.grow) || "1 1 170px")) + ";min-width:min(240px,100%)"
           + (dim ? ";opacity:0.5" : ""),
-        shellStyle: this.shell(colRO ? "readonly" : cf ? "focus" : "default") + (isSearchCol
+        cellError: (cellErr && attempted) ? "This field is required." : false,
+        shellStyle: this.shell(cellErr ? "error" : colRO ? "readonly" : cf ? "focus" : "default") + (isSearchCol
           ? "height:48px;width:100%;min-width:0;box-sizing:border-box;"
           : "height:48px;flex:0 0 48px;width:100%;min-width:0;") + (colRO ? "pointer-events:none;" : ""),
         staticStyle: "display:flex;align-items:center;height:48px;padding:0 16px;box-sizing:border-box;border-radius:8px;border:1px solid var(--jds-border-color-default);background:var(--jds-gray-100);font-size:16px;color:"
           + (blank(ageFrom(row.dob)) ? "var(--jds-gray-600)" : "var(--jds-gray-1000)") + ";",
-        inputStyle: this.baseInput(colRO) + "width:100%;min-width:0;" + (colRO ? "cursor:default;" : ""),
+        inputStyle: this.baseInput(colRO) + "width:100%;min-width:0;" + (colRO ? "cursor:default;" : "") + (myinfoFlag ? "text-transform:uppercase;" : ""),
         selectStyle: "flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:16px;appearance:none;padding:0;color:"
           + (colRO ? "var(--jds-gray-700)" : blank(cv) ? "var(--jds-gray-600)" : "var(--jds-form-color-default)")
           + ";" + (colRO ? "cursor:default;pointer-events:none;" : "cursor:pointer;"),
@@ -3377,7 +3442,7 @@ class Component extends DCLogic {
     const descText = (typeof f.desc === "function" ? f.desc(this.state.values) : f.desc) || "";
     const isHalf = !!(f.half || (["text", "date", "money", "number", "select"].includes(f.type) && !f.wide && labelWeight(f) <= 28));
     const { d1: dd1, d2: dd2 } = this.splitDefs(descText, f.descDefs || []);
-    const err = this.state.errors[f.id] || null;
+    const err = this.state.errors[f.id] || (f.errorFrom ? this.state.errors[f.errorFrom] : null) || null;
     const focused = this.state.focus === f.id;
     const ro = typeof f.readOnly === "function" ? !!f.readOnly(this.state.values) : !!f.readOnly;
     const mi = typeof f.myinfo === "function" ? !!f.myinfo(this.state.values) : !!f.myinfo;
@@ -3437,7 +3502,7 @@ class Component extends DCLogic {
           const typed = String(v == null ? "" : v).trim();
           const pool = f.comboList || [];
           const opts = pool
-            .filter((op) => blank(v) || op.toLowerCase().indexOf(typed.toLowerCase()) !== -1)
+            .filter((op) => !typed || op.toLowerCase().indexOf(typed.toLowerCase()) !== -1)
             .slice(0, 7)
             .map((op) => ({ text: op, custom: false }));
           if (typed && !pool.some((op) => op.toLowerCase() === typed.toLowerCase())) {
@@ -3480,7 +3545,7 @@ class Component extends DCLogic {
       inputMode: f.type === "money" || f.type === "number" ? "decimal" : "text",
       isInput: ["text", "date", "money", "number"].includes(f.type), isTextarea: f.type === "textarea",
       isSelect: f.type === "select", isChoice: f.type === "radio" || f.type === "checkgroup",
-      isRepeat: f.type === "repeat" && !f.table, isTableRepeat: f.type === "repeat" && !!f.table, isFile: f.type === "file", isNote: f.type === "note", isGrid: f.type === "grid" && !f.matrix,
+      isRepeat: f.type === "repeat" && !f.table, isTableRepeat: f.type === "repeat" && !!f.table, isFile: f.type === "file", isNote: f.type === "note" && !f.debtSummary, isDebtSummary: !!(f.type === "note" && f.debtSummary), isGrid: f.type === "grid" && !f.matrix,
       isHeading: f.type === "heading",
       headingText: (typeof f.headingText === "function" ? f.headingText(this.state.values) : f.headingText) || "",
       headingSub: (typeof f.headingSub === "function" ? f.headingSub(this.state.values) : f.headingSub) || false,
@@ -3493,13 +3558,23 @@ class Component extends DCLogic {
       retrieveBtnStyle: "", onRetrieve: () => {}, assetTotal: "", liabilityTotal: "", netTotal: "",
       noteText: typeof f.noteText === "function" ? f.noteText(this.state.values) : (f.noteText || ""), valid: false,
       noteLinkLabel: f.noteLink ? f.noteLink[0] : false, noteLinkHref: f.noteLink ? f.noteLink[1] : "#", notePost: f.notePost || "",
-      shellStyle: this.shell(shellState) + "flex:1 1 auto;height:48px;box-sizing:border-box;align-self:stretch;" + (f.search ? "min-width:0;" : "width:100%;") + (ro ? "pointer-events:none;" : ""),
+      debtSummaryRows: !f.debtSummary ? [] : (() => {
+        const vals = this.state.values;
+        const props = vals.hasProperty === "Yes" ? (Array.isArray(vals.properties) ? vals.properties : []) : [];
+        const vehicles = vals.hasVehicles === "Yes" ? (Array.isArray(vals.vehicleList) ? vals.vehicleList : []) : [];
+        const rows = [];
+        props.forEach((p, pi) => { if (p && num(p.mortgage)) rows.push({ source: "Property " + (pi + 1) + (p.refName ? " — " + p.refName : ""), type: "Housing loan (mortgage)", amount: "S$" + SGD(p.mortgage) }); });
+        vehicles.forEach((ve, vi) => { if (ve && num(ve.hirePurchase)) rows.push({ source: (ve.regNo || "Vehicle " + (vi + 1)), type: "Hire purchase", amount: "S$" + SGD(ve.hirePurchase) }); });
+        return rows;
+      })(),
+      debtSummaryTotal: !f.debtSummary ? "" : "S$" + SGD((this.state.values.hasProperty === "Yes" ? sum_(this.state.values, "properties", "mortgage") : 0) + (this.state.values.hasVehicles === "Yes" ? sum_(this.state.values, "vehicleList", "hirePurchase") : 0)),
+      shellStyle: this.shell(shellState) + "flex:0 0 auto;height:48px;box-sizing:border-box;align-self:stretch;margin-top:auto;" + (f.search ? "min-width:0;" : "width:100%;") + (ro ? "pointer-events:none;" : ""),
       isReadOnly: ro, fieldTabIdx: ro ? "-1" : "0",
       inputStyle: this.baseInput(ro) + (ro ? "cursor:default;" : "") + (mi ? "text-transform:uppercase;" : ""),
       selectStyle: "flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:16px;color:"
         + (ro ? "var(--jds-gray-700)" : blank(v) ? "var(--jds-gray-600)" : "var(--jds-form-color-default)")
         + ";appearance:none;padding:0;" + (ro ? "cursor:default;pointer-events:none;" : "cursor:pointer;"),
-      textareaStyle: "width:100%;box-sizing:border-box;min-height:104px;padding:12px 16px;border-radius:8px;resize:vertical;font-size:16px;line-height:1.6;"
+      textareaStyle: "width:100%;box-sizing:border-box;min-height:104px;padding:12px 16px;border-radius:8px;resize:vertical;font-size:16px;line-height:1.6;margin-top:auto;"
         + "background:" + (ro ? "var(--jds-gray-100)" : "var(--jds-form-surface-default)") + ";outline:none;"
         + "color:" + (ro ? "var(--jds-gray-700)" : "var(--jds-form-color-default)") + ";"
         + "border:" + (err ? "2px solid var(--jds-form-danger-border-color-default)" : (!ro && focused) ? "2px solid var(--jds-primary-600)" : "1px solid var(--jds-border-color-default)") + ";"
@@ -3510,7 +3585,7 @@ class Component extends DCLogic {
         this.set(f.id, val);
         if (f.onSet) f.onSet(val, this);
         if (f.immediate) {
-          const e2 = blank(val) ? null : f.validate ? f.validate(val) : null;
+          const e2 = blank(val) ? null : f.validate ? f.validate(val, this.state.values) : null;
           this.setState((s) => {
             const errors = { ...s.errors };
             if (e2) errors[f.id] = e2; else delete errors[f.id];
@@ -3683,7 +3758,7 @@ class Component extends DCLogic {
             itemShell: this.shell(this.state.focus === key("item") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
             amountShell: this.shell(this.state.focus === key("amount") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
             remarksShell: this.shell(this.state.focus === key("remarks") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;box-sizing:border-box;",
-            freqShell: this.shell(this.state.focus === key("freq") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;min-width:144px;box-sizing:border-box;",
+            freqShell: this.shell(this.state.focus === key("freq") ? "focus" : "default") + "flex:0 0 auto;height:44px;width:100%;min-width:0;box-sizing:border-box;",
             freqSelectStyle: "flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:15px;color:var(--jds-form-color-default);appearance:none;cursor:pointer;padding:0;",
             onFreq: (ev) => this.setRow(f.id, idx, "freq", ev.target.value),
             onFreqFocus: () => this.setState({ focus: key("freq") }),
@@ -3801,9 +3876,11 @@ class Component extends DCLogic {
 
   courtDoc() {
     const v = this.state.values;
+    const errs = this.state.errors;
     const B = [];
     let n = 0;
     const g = (x, fb) => (blank(x) ? (fb === undefined ? "________" : fb) : String(x));
+    const gf = (id, fb) => (errs[id] ? (fb === undefined ? "________" : fb) : g(v[id], fb));
     const M = (x) => "$" + SGD(x);
     const H = (text) => B.push({ kind: "h", text });
     const SH = (text) => B.push({ kind: "sh", text });
@@ -3821,14 +3898,14 @@ class Component extends DCLogic {
     // ---- Section 1: Introduction ----
     H("1.  Introduction");
     TBL([
-      [c("Name of maker :", "0 0 34%"), c(g(v.name), "1 1 auto")],
-      [c("Identity No.:", "0 0 34%"), c(g(v.nric), "1 1 auto")],
-      [c("Address:", "0 0 34%"), c(g(v.address), "1 1 auto")],
-      [c("Occupation:", "0 0 34%"), c(g(v.occupation), "1 1 auto")]
+      [c("Name of maker :", "0 0 34%"), c(gf("name"), "1 1 auto")],
+      [c("Identity No.:", "0 0 34%"), c(gf("nric"), "1 1 auto")],
+      [c("Address:", "0 0 34%"), c(gf("address"), "1 1 auto")],
+      [c("Occupation:", "0 0 34%"), c(gf("occupation"), "1 1 auto")]
     ]);
-    P("I am the " + (v.role === "Others" ? g(v.roleOther) : g(v.role)) + " in " + g(v.caseNumber) + ".");
+    P("I am the " + (v.role === "Others" ? gf("roleOther") : gf("role")) + " in " + gf("caseNumber") + ".");
     const purposes = (v.purpose || []).map((p) => p === "support" ? "in support of my ancillary claim in this Originating Application"
-      : p === "reply" ? "in reply to another affidavit" : g(v.purposeOther));
+      : p === "reply" ? "in reply to another affidavit" : gf("purposeOther"));
     P("This affidavit is " + (purposes.length ? purposes.join(" and ") : "________") + ".");
     P("Where the facts in this affidavit are within my personal knowledge, they are true. Where they are not within my personal knowledge, they are true to the best of my knowledge, information and belief.");
     if (!blank(v.granted)) P("This Court granted " + v.granted.replace(/^An /, "an ").replace(/^A /, "a ") + ".");
@@ -3873,12 +3950,12 @@ class Component extends DCLogic {
     P("The date of my " + marEndLabel + " is " + g(D(v.ijDate || v.jsDate || v.syariahDate)) + ".");
     P("In my view, the marriage broke down on: " + g(D(v.breakdownDate)) + ".");
     P("These are my reasons for my statement:");
-    TX(g(v.breakdownReasons, "________"));
+    TX(gf("breakdownReasons", "________"));
     P("The age of the parties at the time of this application are as follows:");
     TX("My age: " + (myAge == null ? "____" : myAge));
     TX("My spouse's age: " + (spAge == null ? "____" : spAge));
-    P("My highest education level is " + g(v.education) + ".");
-    P("I have " + g(v.childCount, "0") + " living child(ren) including those above the age of 21 years.");
+    P("My highest education level is " + gf("education") + ".");
+    P("I have " + gf("childCount", "0") + " living child(ren) including those above the age of 21 years.");
     P(v.childrenOfMarriage === "Yes"
       ? "I have child(ren) below 21 years old who is / are either born of this marriage or accepted as child(ren) of this marriage."
       : "I do not have any child(ren) below 21 years old who is / are either born of this marriage or accepted as child(ren) of this marriage.");
@@ -3910,7 +3987,7 @@ class Component extends DCLogic {
         .concat(list("companies").map((r) => [c(g(r.name, ""), "1 1 40%"), c(g(r.country, ""), "1 1 35%"), c(g(r.remuneration, ""), "1 1 25%")])));
     }
     P("Additional information on my employment / lack of employment:");
-    TX(g(v.employmentNotes, "NIL"));
+    TX(gf("employmentNotes", "NIL"));
 
     // ---- Section 6 ----
     H("Section 6:      Sources of Income");
@@ -4239,7 +4316,7 @@ class Component extends DCLogic {
         TBL([
           [c("Name", "0 0 34%", { sh: true }), c(g(k.name, ""), "1 1 auto")],
           [c("NRIC / FIN / Passport number", "0 0 34%", { sh: true }), c(g(r.nric, ""), "1 1 30%"), c("Gender", "0 0 14%", { sh: true }), c(g(r.gender, ""), "1 1 22%")],
-          [c("Date of Birth (DD/MM/YYYY)", "0 0 34%", { sh: true }), c(g(D(r.dob), r.ageApprox ? "" : ""), "1 1 30%"), c("Age", "0 0 14%", { sh: true }), c(g(r.age || ageFrom(r.dob) || r.ageApprox, ""), "1 1 22%")],
+          [c("Date of Birth (DD/MM/YYYY)", "0 0 34%", { sh: true }), c(g(D(r.dob), ""), "1 1 30%"), c("Age", "0 0 14%", { sh: true }), c(g(r.age || ageFrom(r.dob), ""), "1 1 22%")],
           [c("Any health condition or disability which affect the child's living expenses or care arrangements", "0 0 34%", { sh: true }), c(g(r.health, "No"), "1 1 auto")],
           [c("Court orders / Proceedings relating to this Child", "1 1 100%", { b: true, sh: true, a: "center" })],
           [c("Are there any current or past court cases involving this child?", "0 0 34%", { sh: true }), c(g(r.cases, "No"), "1 1 auto")]
@@ -4289,11 +4366,13 @@ class Component extends DCLogic {
 
   previewParas() {
     const v = this.state.values;
+    const errs = this.state.errors;
     const focus = this.state.focus || "";
     const g = (val, fb) => (blank(val) ? fb : val);
+    const gf = (id, fb) => (errs[id] ? (fb === undefined ? "________" : fb) : g(v[id], fb));
     const role = v.role === "Others" ? g(v.roleOther, "________") : g(v.role, "________");
     const paras = [];
-    paras.push({ keys: ["name", "nric", "address", "occupation"], text: "I, " + g(v.name, "________") + ", holder of NRIC/FIN/Passport no. " + g(v.nric, "________") + ", of " + g(v.address, "________") + ", " + g(v.occupation, "________").toLowerCase() + ", affirm and say as follows:" });
+    paras.push({ keys: ["name", "nric", "address", "occupation"], text: "I, " + gf("name", "________") + ", holder of NRIC/FIN/Passport no. " + gf("nric", "________") + ", of " + gf("address", "________") + ", " + gf("occupation", "________").toLowerCase() + ", affirm and say as follows:" });
     const purposeText = (v.purpose || []).map((p) => p === "support" ? "to support my ancillary claim in the Originating Application" : p === "reply" ? "in reply to another affidavit" : g(v.purposeOther, "________")).join(" and ");
     paras.push({ keys: ["role", "roleOther", "caseNumber", "purpose", "purposeOther"], text: "I am the " + role + " in " + g(v.caseNumber, "________") + ". This affidavit is filed " + g(purposeText, "________") + "." });
     if (!blank(v.forum)) paras.push({ keys: ["forum", "granted", "permission", "permissionDate"], text: v.forum + "."
@@ -4841,7 +4920,7 @@ class Component extends DCLogic {
         if (step.sub) { this.go(this.stepIndexOf("assets")); return; }
         this.go(this.adjacentStep(-1));
       },
-      nextStyle: btn("primary", isDocs && !docs.scanned),
+      nextStyle: btn("primary", (isDocs && !docs.scanned) || (step.sub && !!Object.keys(this.validateStep()).length)),
       nextLabel: isDocs ? "Review full affidavit" : step.instructions ? "Start" : "Continue",
       nextIcon: isDocs ? "ph ph-file-arrow-down" : "ph ph-arrow-right",
       onNext: () => {
@@ -4851,6 +4930,10 @@ class Component extends DCLogic {
           return;
         }
         const stepErrors = this.validateStep();
+        if (step.sub && Object.keys(stepErrors).length) {
+          this.setState((s) => ({ attempted: { ...s.attempted, [step.id]: true } }));
+          return;
+        }
         const stepFieldIds = new Set(this.visibleFields(step).map((f) => f.id));
         this.setState((s) => {
           const errors = { ...s.errors };
@@ -4859,7 +4942,7 @@ class Component extends DCLogic {
           return { errors, attempted: { ...s.attempted, [step.id]: true } };
         }, () => {
           const errors = stepErrors;
-          if (!Object.keys(errors).length) this.go(this.adjacentStep(1));
+          if (!Object.keys(errors).length) this.go(step.sub ? this.stepIndexOf("assets") : this.adjacentStep(1));
           else {
             const firstErrId = Object.keys(errors)[0];
             const el = document.getElementById("fld-" + firstErrId);
